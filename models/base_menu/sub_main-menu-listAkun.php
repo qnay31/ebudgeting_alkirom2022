@@ -74,8 +74,6 @@ if ($_SESSION["username"] == "admin_facebook" || $_SESSION["username"] == "sekre
                                     <?php } ?>
                                 </div>
 
-
-
                                 <div class="col-6 tahunan">
                                     <?php
                                 $no = 1;
@@ -84,7 +82,7 @@ if ($_SESSION["username"] == "admin_facebook" || $_SESSION["username"] == "sekre
                                     <a href="<?= $_SESSION["username"] ?>.php?id_accountKey=<?= $data['id'] ?>">
                                         Per Tahun : <?= number_format($dataIncome["total_tf"],0,"." , ".") ?> →
                                     </a>
-                                    <?php } ?>
+                                    <?php } ?><span class="badge badge-danger badge-counter">New</span>
                                 </div>
 
                             </div>

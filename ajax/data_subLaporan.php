@@ -25,32 +25,30 @@ $table = 'laporan_media';
 $primaryKey = 'id';
 
 if ($_SESSION["id_pengurus"] == "manager_facebook" || $_SESSION["id_pengurus"] == "manager_instagram") {
-    if ($_SESSION["username"] == "admin_facebook" || $_SESSION["username"] == "sekretaris_facebook" || $_SESSION["username"] == "facebook_pusat") {
-        $where = "id_pengurus = 'facebook_depok' ORDER BY `tgl_laporan` DESC";
-    
-    } elseif ($_SESSION["username"] == "instagram_taman" || $_SESSION["username"] == "instagram_bojong" || $_SESSION["username"] == "instagram_meruyung") {
-        $where = "id_pengurus = 'instagram' ORDER BY `tgl_laporan` DESC";
-        
+    if ($_SESSION["username"] == "admin_facebook" || $_SESSION["username"] == "sekretaris_facebook") {
+        if ($_SESSION["bulan"] == "") {
+            $where = "nomor_id = '$_SESSION[keyAccount]' AND id_pengurus = 'facebook_depok' ORDER BY `tgl_laporan` DESC";
+        } else {
+            $where = "MONTH(tgl_laporan) = '$_SESSION[bulan]' AND nomor_id = '$_SESSION[keyAccount]' AND id_pengurus = 'facebook_depok' ORDER BY `tgl_laporan` DESC";
+        }
     } else {
-        $where = "id_pengurus = '$_SESSION[username]' ORDER BY `tgl_laporan` DESC";
+        
+        if ($_SESSION["bulan"] == "") {
+            $where = "nomor_id = '$_SESSION[keyAccount]' AND id_pengurus = '$_SESSION[username]' ORDER BY `tgl_laporan` DESC";
+
+        } else {
+            $where = "MONTH(tgl_laporan) = '$_SESSION[bulan]' AND nomor_id = '$_SESSION[keyAccount]' AND id_pengurus = '$_SESSION[username]' ORDER BY `tgl_laporan` DESC";
+        }
+        
     }
 
 } elseif ($_SESSION["id_pengurus"] == "ketua_yayasan") {
-    $where = "id_pengurus NOT LIKE 'A%' ORDER BY `tgl_laporan` DESC";
+    if ($_SESSION["bulan"] == "") {
+        $where = "nomor_id = '$_SESSION[keyAccount]' ORDER BY `tgl_laporan` DESC";
 
-} elseif ($_SESSION["id_pengurus"] == "kepala_cabang") {
-    $where = "id_pengurus = 'facebook_bogor' ORDER BY `tgl_laporan` DESC";
-
-} else {
-    $bulan      = date("Y-m-d");
-    $bln        = substr($bulan, 5,-3);
-    if ($_SESSION["media"] == "") {
-        $where = "pemegang = '$_SESSION[nama]' AND MONTH(tgl_laporan) = '$bln' ORDER BY `tgl_laporan` DESC";
-        
     } else {
-        $where = "pemegang = '$_SESSION[nama]' ORDER BY `tgl_laporan` DESC";
+        $where = "MONTH(tgl_laporan) = '$_SESSION[bulan]' AND nomor_id = '$_SESSION[keyAccount]' ORDER BY `tgl_laporan` DESC";
     }
-
 }
 
 // Array of database columns which should be read and sent back to DataTables.

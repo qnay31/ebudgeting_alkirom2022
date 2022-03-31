@@ -175,9 +175,9 @@ $columns = array(
  
 // SQL server connection information
 $sql_details = array(
-    'user' => 'u3268866_ebudgeting',
-    'pass' => 'alkirom123',
-    'db'   => 'u3268866_ebudgeting',
+    'user' => 'root',
+    'pass' => '',
+    'db'   => 'eb_v1',
     'host' => 'localhost'
 );
  

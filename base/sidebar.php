@@ -9,7 +9,7 @@
                 <span>Dashboard</span>
             </a>
         </li>
-        
+
         <?php } elseif ($_GET["idTeam"] == true) { ?>
         <li class="nav-item">
             <a class="nav-link collapsed" href="<?= $_SESSION["username"] ?>.php">
@@ -58,6 +58,14 @@
             </a>
         </li>
 
+        <?php } elseif ($_GET["id_accountKey"] == true && $_SESSION["id_pengurus"] == "ketua_yayasan") { ?>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="<?= $_SESSION["username"] ?>.php">
+                <i class="bi bi-grid"></i>
+                <span>Dashboard</span>
+            </a>
+        </li>
+
         <?php } else { ?>
         <li class="nav-item">
             <a class="nav-link" href="<?= $_SESSION["username"] ?>.php">
@@ -67,7 +75,7 @@
         </li>
 
         <?php } ?>
-        
+
         <?php if (
             $_SESSION["id_pengurus"] == "ketua_yayasan" ||
             $_SESSION["id_pengurus"] == "kepala_income" ||
@@ -128,7 +136,7 @@
                         <i class="bi bi-circle"></i><span>Lap Global Program</span>
                     </a>
                 </li>
-                
+
                 <li>
                     <a href="<?= $_SESSION["username"] ?>.php?id_database=database_paudqu">
                         <i class="bi bi-circle"></i><span>Lap Global PaudQu</span>
@@ -205,7 +213,7 @@
                     </a>
                 </li>
                 <?php } ?>
-                
+
                 <?php } elseif ($_GET["id_database"] == "database_paudqu") { ?>
                 <li>
                     <a href="<?= $_SESSION["username"] ?>.php?id_database=database_global">
@@ -308,7 +316,7 @@
                         <i class="bi bi-circle"></i><span>Lap Global Program</span>
                     </a>
                 </li>
-                
+
                 <li>
                     <a href="<?= $_SESSION["username"] ?>.php?id_database=database_paudqu">
                         <i class="bi bi-circle"></i><span>Lap Global PaudQu</span>
@@ -369,7 +377,7 @@
                         <i class="bi bi-circle"></i><span>Lap Pemasukan Media</span>
                     </a>
                 </li>
-                
+
                 <?php } ?>
 
                 <?php if ($_SESSION["id_pengurus"] == "ketua_yayasan") { ?>
@@ -385,8 +393,8 @@
                     </a>
                 </li>
                 <?php } ?>
-                
-                
+
+
 
                 <?php } elseif ($_GET["id_database"] == "database_aset_yayasan") { ?>
                 <li>
@@ -400,7 +408,7 @@
                         <i class="bi bi-circle"></i><span>Lap Global Program</span>
                     </a>
                 </li>
-                
+
                 <li>
                     <a href="<?= $_SESSION["username"] ?>.php?id_database=database_paudqu">
                         <i class="bi bi-circle"></i><span>Lap Global PaudQu</span>
@@ -490,7 +498,7 @@
                         <i class="bi bi-circle"></i><span>Lap Global Program</span>
                     </a>
                 </li>
-                
+
                 <li>
                     <a href="<?= $_SESSION["username"] ?>.php?id_database=database_paudqu">
                         <i class="bi bi-circle"></i><span>Lap Global PaudQu</span>
@@ -580,7 +588,7 @@
                         <i class="bi bi-circle"></i><span>Lap Global Program</span>
                     </a>
                 </li>
-                
+
                 <li>
                     <a href="<?= $_SESSION["username"] ?>.php?id_database=database_paudqu">
                         <i class="bi bi-circle"></i><span>Lap Global PaudQu</span>
@@ -670,7 +678,7 @@
                         <i class="bi bi-circle"></i><span>Lap Global Program</span>
                     </a>
                 </li>
-                
+
                 <li>
                     <a href="<?= $_SESSION["username"] ?>.php?id_database=database_paudqu">
                         <i class="bi bi-circle"></i><span>Lap Global PaudQu</span>
@@ -760,7 +768,7 @@
                         <i class="bi bi-circle"></i><span>Lap Global Program</span>
                     </a>
                 </li>
-                
+
                 <li>
                     <a href="<?= $_SESSION["username"] ?>.php?id_database=database_paudqu">
                         <i class="bi bi-circle"></i><span>Lap Global PaudQu</span>
@@ -850,7 +858,7 @@
                         <i class="bi bi-circle"></i><span>Lap Global Program</span>
                     </a>
                 </li>
-                
+
                 <li>
                     <a href="<?= $_SESSION["username"] ?>.php?id_database=database_paudqu">
                         <i class="bi bi-circle"></i><span>Lap Global PaudQu</span>
@@ -940,7 +948,7 @@
                         <i class="bi bi-circle"></i><span>Lap Global Program</span>
                     </a>
                 </li>
-                
+
                 <li>
                     <a href="<?= $_SESSION["username"] ?>.php?id_database=database_paudqu">
                         <i class="bi bi-circle"></i><span>Lap Global PaudQu</span>
@@ -1028,7 +1036,7 @@
                         <i class="bi bi-circle"></i><span>Lap Global Program</span>
                     </a>
                 </li>
-                
+
                 <li>
                     <a href="<?= $_SESSION["username"] ?>.php?id_database=database_paudqu">
                         <i class="bi bi-circle"></i><span>Lap Global PaudQu</span>
@@ -1114,7 +1122,7 @@
                         <i class="bi bi-circle"></i><span>Lap Global Program</span>
                     </a>
                 </li>
-                
+
                 <li>
                     <a href="<?= $_SESSION["username"] ?>.php?id_database=database_paudqu">
                         <i class="bi bi-circle"></i><span>Lap Global PaudQu</span>
@@ -1201,7 +1209,7 @@
                         <i class="bi bi-circle"></i><span>Lap Global Program</span>
                     </a>
                 </li>
-                
+
                 <li>
                     <a href="<?= $_SESSION["username"] ?>.php?id_database=database_paudqu">
                         <i class="bi bi-circle"></i><span>Lap Global PaudQu</span>
@@ -1312,7 +1320,7 @@
                         <i class="bi bi-circle"></i><span>Rincian Pemasukan</span>
                     </a>
                 </li>
-                
+
                 <?php } elseif ($_GET["id_database"] == "database_pemasukanMedia") { ?>
                 <li>
                     <a href="<?= $_SESSION["username"] ?>.php?id_database=database_program">
@@ -1455,9 +1463,10 @@
                         <i class="bi bi-circle"></i><span>Pemasukan Global (Sarah)</span>
                     </a>
                 </li>
-                
+
                 <li>
-                    <a href="<?= $_SESSION["username"] ?>.php?id_database=database_crossCheck&id_periode=<?= $cToday; ?>">
+                    <a
+                        href="<?= $_SESSION["username"] ?>.php?id_database=database_crossCheck&id_periode=<?= $cToday; ?>">
                         <i class="bi bi-circle"></i><span>Crosscheck Income</span>
                     </a>
                 </li>
@@ -1476,11 +1485,12 @@
                 </li>
 
                 <li>
-                    <a href="<?= $_SESSION["username"] ?>.php?id_database=database_crossCheck&id_periode=<?= $cToday; ?>" class="active">
+                    <a href="<?= $_SESSION["username"] ?>.php?id_database=database_crossCheck&id_periode=<?= $cToday; ?>"
+                        class="active">
                         <i class="bi bi-circle"></i><span>Crosscheck Income</span>
                     </a>
                 </li>
-                
+
                 <?php } else { ?>
                 <li>
                     <a href="<?= $_SESSION["username"] ?>.php?id_database=database_pemasukanMedia" class="active">
@@ -1493,9 +1503,10 @@
                         <i class="bi bi-circle"></i><span>Pemasukan Global (Sarah)</span>
                     </a>
                 </li>
-                
+
                 <li>
-                    <a href="<?= $_SESSION["username"] ?>.php?id_database=database_crossCheck&id_periode=<?= $cToday; ?>">
+                    <a
+                        href="<?= $_SESSION["username"] ?>.php?id_database=database_crossCheck&id_periode=<?= $cToday; ?>">
                         <i class="bi bi-circle"></i><span>Crosscheck Income</span>
                     </a>
                 </li>
@@ -1524,7 +1535,7 @@
                         <i class="bi bi-circle"></i><span>Rincian Pemasukan</span>
                     </a>
                 </li>
-                
+
                 <?php } elseif ($_GET["id_database"] == "database_pemasukanMedia") { ?>
                 <li>
                     <a href="<?= $_SESSION["username"] ?>.php?id_database=database_akunMedia">
@@ -1585,13 +1596,13 @@
                         <i class="bi bi-circle"></i><span>Lap Global Yayasan</span>
                     </a>
                 </li>
-                
+
                 <li>
                     <a href="<?= $_SESSION["username"] ?>.php?id_database=database_program">
                         <i class="bi bi-circle"></i><span>Lap Global Program</span>
                     </a>
                 </li>
-                
+
                 <li>
                     <a href="<?= $_SESSION["username"] ?>.php?id_database=database_paudqu">
                         <i class="bi bi-circle"></i><span>Lap Global PaudQu</span>
@@ -1718,9 +1729,10 @@
                         <i class="bi bi-circle"></i><span>Pemasukan Global (Sarah)</span>
                     </a>
                 </li>
-                
+
                 <li>
-                    <a href="<?= $_SESSION["username"] ?>.php?id_database=database_crossCheck&id_periode=<?= $cToday; ?>">
+                    <a
+                        href="<?= $_SESSION["username"] ?>.php?id_database=database_crossCheck&id_periode=<?= $cToday; ?>">
                         <i class="bi bi-circle"></i><span>Crosscheck Income</span>
                     </a>
                 </li>
@@ -1862,7 +1874,7 @@
                         <i class="bi bi-circle"></i><span>Grafik Program</span>
                     </a>
                 </li>
-                
+
                 <li>
                     <a href="<?= $_SESSION["username"] ?>.php?id_grafik=grafik_paudqu">
                         <i class="bi bi-circle"></i><span>Grafik PaudQu</span>
@@ -1925,7 +1937,7 @@
 
                 <?php } else { ?>
                 <?php } ?>
-                
+
                 <?php } elseif ($_GET["id_grafik"] == "grafik_paudqu") { ?>
 
                 <li>
@@ -2004,7 +2016,7 @@
                         <i class="bi bi-circle"></i><span>Grafik Program</span>
                     </a>
                 </li>
-                
+
                 <li>
                     <a href="<?= $_SESSION["username"] ?>.php?id_grafik=grafik_paudqu">
                         <i class="bi bi-circle"></i><span>Grafik PaudQu</span>
@@ -2075,7 +2087,7 @@
                         <i class="bi bi-circle"></i><span>Grafik Program</span>
                     </a>
                 </li>
-                
+
                 <li>
                     <a href="<?= $_SESSION["username"] ?>.php?id_grafik=grafik_paudqu">
                         <i class="bi bi-circle"></i><span>Grafik PaudQu</span>
@@ -2147,7 +2159,7 @@
                         <i class="bi bi-circle"></i><span>Grafik Program</span>
                     </a>
                 </li>
-                
+
                 <li>
                     <a href="<?= $_SESSION["username"] ?>.php?id_grafik=grafik_paudqu">
                         <i class="bi bi-circle"></i><span>Grafik PaudQu</span>
@@ -2218,7 +2230,7 @@
                         <i class="bi bi-circle"></i><span>Grafik Program</span>
                     </a>
                 </li>
-                
+
                 <li>
                     <a href="<?= $_SESSION["username"] ?>.php?id_grafik=grafik_paudqu">
                         <i class="bi bi-circle"></i><span>Grafik PaudQu</span>
@@ -2289,7 +2301,7 @@
                         <i class="bi bi-circle"></i><span>Grafik Program</span>
                     </a>
                 </li>
-                
+
                 <li>
                     <a href="<?= $_SESSION["username"] ?>.php?id_grafik=grafik_paudqu">
                         <i class="bi bi-circle"></i><span>Grafik PaudQu</span>
@@ -2360,7 +2372,7 @@
                         <i class="bi bi-circle"></i><span>Grafik Program</span>
                     </a>
                 </li>
-                
+
                 <li>
                     <a href="<?= $_SESSION["username"] ?>.php?id_grafik=grafik_paudqu">
                         <i class="bi bi-circle"></i><span>Grafik PaudQu</span>
@@ -2431,7 +2443,7 @@
                         <i class="bi bi-circle"></i><span>Grafik Program</span>
                     </a>
                 </li>
-                
+
                 <li>
                     <a href="<?= $_SESSION["username"] ?>.php?id_grafik=grafik_paudqu">
                         <i class="bi bi-circle"></i><span>Grafik PaudQu</span>
@@ -2498,7 +2510,7 @@
                         <i class="bi bi-circle"></i><span>Grafik Program</span>
                     </a>
                 </li>
-                
+
                 <li>
                     <a href="<?= $_SESSION["username"] ?>.php?id_grafik=grafik_paudqu">
                         <i class="bi bi-circle"></i><span>Grafik PaudQu</span>
@@ -2653,7 +2665,7 @@
                         <i class="bi bi-circle"></i><span>Grafik Program</span>
                     </a>
                 </li>
-                
+
                 <li>
                     <a href="<?= $_SESSION["username"] ?>.php?id_grafik=grafik_paudqu">
                         <i class="bi bi-circle"></i><span>Grafik PaudQu</span>
@@ -2764,7 +2776,7 @@
                         <i class="bi bi-circle"></i><span>Checklist Program</span>
                     </a>
                 </li>
-                
+
                 <li>
                     <a href="<?= $_SESSION["username"] ?>.php?id_checklist=checklist_pengajuanPaudqu">
                         <i class="bi bi-circle"></i><span>Checklist PaudQu</span>
@@ -2821,7 +2833,7 @@
 
             </ul>
         </li><!-- End Checklist Nav -->
-        
+
         <?php } elseif ($_GET["id_checklist"] == "checklist_pengajuanPaudqu" || $_GET["id_checklist"] == "checklist_verifikasiPaudqu" || $_GET["id_checklist"] == "checklist_laporanPaudqu") { ?>
         <li class="nav-item">
             <a class="nav-link" data-bs-target="#checklist-nav" data-bs-toggle="collapse" href="#">
@@ -2902,7 +2914,7 @@
                         <i class="bi bi-circle"></i><span>Checklist Program</span>
                     </a>
                 </li>
-                
+
                 <li>
                     <a href="<?= $_SESSION["username"] ?>.php?id_checklist=checklist_pengajuanPaudqu">
                         <i class="bi bi-circle"></i><span>Checklist PaudQu</span>
@@ -2971,7 +2983,7 @@
                         <i class="bi bi-circle"></i><span>Checklist Program</span>
                     </a>
                 </li>
-                
+
                 <li>
                     <a href="<?= $_SESSION["username"] ?>.php?id_checklist=checklist_pengajuanPaudqu">
                         <i class="bi bi-circle"></i><span>Checklist PaudQu</span>
@@ -3041,7 +3053,7 @@
                         <i class="bi bi-circle"></i><span>Checklist Program</span>
                     </a>
                 </li>
-                
+
                 <li>
                     <a href="<?= $_SESSION["username"] ?>.php?id_checklist=checklist_pengajuanPaudqu">
                         <i class="bi bi-circle"></i><span>Checklist PaudQu</span>
@@ -3111,7 +3123,7 @@
                         <i class="bi bi-circle"></i><span>Checklist Program</span>
                     </a>
                 </li>
-                
+
                 <li>
                     <a href="<?= $_SESSION["username"] ?>.php?id_checklist=checklist_pengajuanPaudqu">
                         <i class="bi bi-circle"></i><span>Checklist PaudQu</span>
@@ -3182,7 +3194,7 @@
                         <i class="bi bi-circle"></i><span>Checklist Program</span>
                     </a>
                 </li>
-                
+
                 <li>
                     <a href="<?= $_SESSION["username"] ?>.php?id_checklist=checklist_pengajuanPaudqu">
                         <i class="bi bi-circle"></i><span>Checklist PaudQu</span>
@@ -3253,7 +3265,7 @@
                         <i class="bi bi-circle"></i><span>Checklist Program</span>
                     </a>
                 </li>
-                
+
                 <li>
                     <a href="<?= $_SESSION["username"] ?>.php?id_checklist=checklist_pengajuanPaudqu">
                         <i class="bi bi-circle"></i><span>Checklist PaudQu</span>
@@ -3324,7 +3336,7 @@
                         <i class="bi bi-circle"></i><span>Checklist Program</span>
                     </a>
                 </li>
-                
+
                 <li>
                     <a href="<?= $_SESSION["username"] ?>.php?id_checklist=checklist_pengajuanPaudqu">
                         <i class="bi bi-circle"></i><span>Checklist PaudQu</span>
@@ -3394,7 +3406,7 @@
                         <i class="bi bi-circle"></i><span>Checklist Program</span>
                     </a>
                 </li>
-                
+
                 <li>
                     <a href="<?= $_SESSION["username"] ?>.php?id_checklist=checklist_pengajuanPaudqu">
                         <i class="bi bi-circle"></i><span>Checklist PaudQu</span>
@@ -3464,7 +3476,7 @@
                         <i class="bi bi-circle"></i><span>Checklist Program</span>
                     </a>
                 </li>
-                
+
                 <li>
                     <a href="<?= $_SESSION["username"] ?>.php?id_checklist=checklist_pengajuanPaudqu">
                         <i class="bi bi-circle"></i><span>Checklist PaudQu</span>
@@ -3542,7 +3554,7 @@
         <li class="nav-item">
             <a class="nav-link collapsed" href="<?= $_SESSION["username"] ?>.php?id_profil=dataPengurus">
                 <i class="bi bi-people"></i>
-                <span>Data Pengurus</span>
+                <span>Data Pengurus</span><span class="badge badge-danger badge-counter">New</span>
             </a>
         </li><!-- End data member Page Nav -->
 
@@ -3553,7 +3565,7 @@
             </a>
         </li>
 
-        <?php } elseif ($_GET["id_profil"] == "dataPengurus") { ?>
+        <?php } elseif ($_GET["id_profil"] == "dataPengurus" || $_GET["id_accountKey"] == true) { ?>
         <li class="nav-item">
             <a class="nav-link collapsed" href="<?= $_SESSION["username"] ?>.php?id_profil=myProfil">
                 <i class="bi bi-person"></i>
@@ -3564,7 +3576,7 @@
         <li class="nav-item">
             <a class="nav-link" href="<?= $_SESSION["username"] ?>.php?id_profil=dataPengurus">
                 <i class="bi bi-people"></i>
-                <span>Data Pengurus</span>
+                <span>Data Pengurus</span><span class="badge badge-danger badge-counter">New</span>
             </a>
         </li><!-- End data member Page Nav -->
 
@@ -3586,7 +3598,7 @@
         <li class="nav-item">
             <a class="nav-link collapsed" href="<?= $_SESSION["username"] ?>.php?id_profil=dataPengurus">
                 <i class="bi bi-people"></i>
-                <span>Data Pengurus</span>
+                <span>Data Pengurus</span><span class="badge badge-danger badge-counter">New</span>
             </a>
         </li><!-- End data member Page Nav -->
 
@@ -3608,7 +3620,7 @@
         <li class="nav-item">
             <a class="nav-link collapsed" href="<?= $_SESSION["username"] ?>.php?id_profil=dataPengurus">
                 <i class="bi bi-people"></i>
-                <span>Data Pengurus</span>
+                <span>Data Pengurus</span><span class="badge badge-danger badge-counter">New</span>
             </a>
         </li><!-- End data member Page Nav -->
 
@@ -3663,7 +3675,7 @@
 
         <!-- End Profile Page Nav -->
         <?php }?>
-        
+
         <?php if ($_SESSION["id_pengurus"] == "ketua_yayasan") { ?>
         <li class="nav-heading">Menu</li>
 
@@ -3700,7 +3712,7 @@
         <!-- End Eprogram Page Nav -->
 
         <?php } ?>
-        
+
     </ul>
 
 </aside><!-- End Sidebar-->

@@ -619,7 +619,8 @@ if ($_SESSION["id_pengurus"] == "ketua_yayasan" || $_SESSION["id_pengurus"] == "
                 <div class="ps-3">
                     <h6 data-bs-toggle="tooltip" data-bs-placement="right" data-bs-html="true"
                         title="Media Sosial : <?= number_format($hasil_incomeBulanan,0,"." , ".") ?> <br> Tanpa Resi : <?= number_format($hasil_resiBulanan,0,"." , ".") ?> <br> Cashback : <?= number_format($cashback_globalBulananan,0,"." , ".") ?>">
-                        Rp. <?= number_format($pemasukanYayasanBulanan,0,"." , ".") ?></h6>
+                        Rp. <?= number_format($pemasukanYayasanBulanan,0,"." , ".") ?> <i
+                            class="bi bi-question-diamond-fill"></i></h6>
                 </div>
             </div>
         </div>
@@ -639,7 +640,8 @@ if ($_SESSION["id_pengurus"] == "ketua_yayasan" || $_SESSION["id_pengurus"] == "
                 <div class="ps-3">
                     <h6 data-bs-toggle="tooltip" data-bs-placement="right" data-bs-html="true"
                         title="Media Sosial : <?= number_format($hasil_income1,0,"." , ".") ?> <br> Tanpa Resi : <?= number_format($hasil_resi1,0,"." , ".") ?>">
-                        Rp. <?= number_format($pemasukanYayasanWresi,0,"." , ".") ?></h6>
+                        Rp. <?= number_format($pemasukanYayasanWresi,0,"." , ".") ?> <i
+                            class="bi bi-question-diamond-fill"></i></h6>
                     <a
                         href="<?= $_SESSION["username"] ?>.php?id_database=database_pemasukanMedia&idMedia=mediaGlobal&id_periode=<?= $bln; ?>"><span
                             class="detail-bulanan">Lihat bulanan →</span>
@@ -663,7 +665,8 @@ if ($_SESSION["id_pengurus"] == "ketua_yayasan" || $_SESSION["id_pengurus"] == "
                 <div class="ps-3">
                     <h6 data-bs-toggle="tooltip" data-bs-placement="right" data-bs-html="true"
                         title="Media Sosial : <?= number_format($hasil_income1,0,"." , ".") ?> <br> Tanpa Resi : <?= number_format($hasil_resi1,0,"." , ".") ?> <br> Cashback : <?= number_format($cashback_global,0,"." , ".") ?>">
-                        Rp. <?= number_format($pemasukanYayasanGlobal,0,"." , ".") ?></h6>
+                        Rp. <?= number_format($pemasukanYayasanGlobal,0,"." , ".") ?> <i
+                            class="bi bi-question-diamond-fill"></i></h6>
                 </div>
             </div>
         </div>

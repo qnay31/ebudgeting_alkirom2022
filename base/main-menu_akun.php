@@ -1,42 +1,16 @@
 <?php
-
-$bulan      = date("Y-m-d");
-$bln       = substr($bulan, 5,-3);
-// die(var_dump($bln));
-$keyAccount = $_GET["id_accountKey"];
-$Account    = $_GET["id_akun"];
+$keyAccount = $_SESSION["keyAccount"] = $_GET["id_accountKey"];
+$periode    = $_SESSION["bulan"] = $_GET["id_bulan"];
+$_SESSION["idLaporan"] = $_GET["idLaporan"];
 $queryP     = mysqli_query($conn, "SELECT * FROM akun_pengurus WHERE id = '$keyAccount' ");
 $data       = mysqli_fetch_assoc($queryP);
 
-$queryAc    = mysqli_query($conn, "SELECT * FROM data_akun WHERE nama_akun = '$Account' AND pemegang = '$data[nama]' AND nomor_id = '$data[id]' ORDER BY `nama_akun` ASC ");
-$acMedia    = mysqli_fetch_assoc($queryAc);
-
-$i = 1;
-
-$inMediaBulanan = mysqli_query($conn, "SELECT * FROM income_media WHERE nama_akun = '$Account' AND nomor_id = '$keyAccount' AND pemegang = '$acMedia[pemegang]' AND status = 'OK' AND MONTH(tanggal_tf) = '$bln' ");
-
-while($data_inMediaBulanan = mysqli_fetch_array($inMediaBulanan))
-{
-    $i++;   
-    $d_inMediaBulanan= $data_inMediaBulanan['jumlah_tf'];
-    $total_inMediaBulanan[$i] = $d_inMediaBulanan;
-
-    $hasil_inMediaBulanan = array_sum($total_inMediaBulanan);
+if ($periode == "") {
+    $q  = mysqli_query($conn, "SELECT * FROM laporan_media WHERE nomor_id = '$keyAccount' ORDER BY `tgl_laporan` DESC");
+} else {
+    $q  = mysqli_query($conn, "SELECT * FROM laporan_media WHERE nomor_id = '$keyAccount' AND MONTH(tgl_laporan) = '$periode' ORDER BY `tgl_laporan` DESC");
 }
 
-$inMedia = mysqli_query($conn, "SELECT * FROM income_media WHERE nama_akun = '$Account' AND nomor_id = '$keyAccount' AND pemegang = '$acMedia[pemegang]' AND status = 'OK' ");
-
-while($data_inMedia = mysqli_fetch_array($inMedia))
-{
-    $i++;   
-    $d_inMedia= $data_inMedia['jumlah_tf'];
-    $total_inMedia[$i] = $d_inMedia;
-
-    $hasil_inMedia = array_sum($total_inMedia);
-}
-
-
-$q  = mysqli_query($conn, "SELECT * FROM laporan_media WHERE nama_akun = '$Account' AND nomor_id = '$keyAccount' AND pemegang = '$acMedia[pemegang]' AND MONTH(tgl_laporan) = '$bln' ORDER BY `tgl_laporan` DESC");
 
 ?>
 <main id="main" class="main">
@@ -46,7 +20,13 @@ $q  = mysqli_query($conn, "SELECT * FROM laporan_media WHERE nama_akun = '$Accou
 
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?= $_SESSION["username"] ?>.php">Home</a></li>
+                <li class="breadcrumb-item"><a href="<?= $_SESSION["username"] ?>.php">Dashboard</a></li>
+                <?php if ($_SESSION["id_pengurus"] == "ketua_yayasan") { ?>
+                <li class="breadcrumb-item"><a href="<?= $_SESSION["username"] ?>.php?id_profil=dataPengurus">Data
+                        Pengurus</a></li>
+                <?php } else { ?>
+                <li class="breadcrumb-item">Akun Media</li>
+                <?php } ?>
                 <li class="breadcrumb-item active"><?= ucwords($data["nama"]) ?></li>
             </ol>
         </nav>
@@ -54,15 +34,60 @@ $q  = mysqli_query($conn, "SELECT * FROM laporan_media WHERE nama_akun = '$Accou
 
     <section class="section dashboard">
         <div class="row">
-
             <!-- Left side columns -->
             <div class="col-lg-12">
                 <div class="row">
 
                     <?php include '../models/base_akun/sub_akun-cardList.php'; ?>
-
                     <div class="card">
-                        <?php include '../models/base_akun/sub_akun-lapAkun.php'; ?>
+                        <div class="card-body">
+                            <div class="tabNav">
+                                <!-- Bordered Tabs -->
+                                <ul class="nav nav-tabs nav-tabs-bordered">
+                                    <?php if ($_GET["idLaporan"] == "Income") { ?>
+                                    <li class="nav-item">
+                                        <a
+                                            href="<?= $_SESSION["username"] ?>.php?id_accountKey=<?= $keyAccount; ?>&id_bulan=<?= $periode; ?>&idLaporan=Akun"><button
+                                                class="nav-link">Laporan
+                                                Akun</button></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a
+                                            href="<?= $_SESSION["username"] ?>.php?id_accountKey=<?= $keyAccount; ?>&id_bulan=<?= $periode; ?>&idLaporan=Income">
+                                            <button class="nav-link active">Laporan
+                                                Income</button></a>
+
+                                    </li>
+
+                                    <?php } else { ?>
+                                    <li class="nav-item">
+                                        <a
+                                            href="<?= $_SESSION["username"] ?>.php?id_accountKey=<?= $keyAccount; ?>&id_bulan=<?= $periode; ?>&idLaporan=Akun"><button
+                                                class="nav-link active">Laporan
+                                                Akun</button></a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a
+                                            href="<?= $_SESSION["username"] ?>.php?id_accountKey=<?= $keyAccount; ?>&id_bulan=<?= $periode; ?>&idLaporan=Income">
+                                            <button class="nav-link">Laporan
+                                                Income</button></a>
+
+                                    </li>
+                                    <?php } ?>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="tab-content pt-2">
+                            <?php if ($_GET["idLaporan"] == "Income") { ?>
+                            <?php include '../models/base_akun/sub_akun-lapIncome.php'; ?>
+
+                            <?php } else { ?>
+                            <?php include '../models/base_akun/sub_akun-lapAkun.php'; ?>
+                            <?php } ?>
+                        </div>
                     </div>
                 </div>
             </div><!-- End Left side columns -->

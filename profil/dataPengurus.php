@@ -17,7 +17,7 @@ $kInc = mysqli_query($conn, "SELECT * FROM akun_pengurus WHERE id_pengurus = 'ke
 
 // facebook depok
 // manager
-$mFB_depok = mysqli_query($conn, "SELECT * FROM akun_pengurus WHERE username = 'facebook_depok' ");
+$mFB_depok = mysqli_query($conn, "SELECT * FROM akun_pengurus WHERE id_pengurus = 'manager_facebook' AND cabang = 'Depok'");
 // pengurus
 $AFB_depok = mysqli_query($conn, "SELECT * FROM akun_pengurus WHERE id_pengurus = 'facebook_depok' ORDER BY `nama` ASC ");
 $pengurus_depok = mysqli_num_rows($AFB_depok);
@@ -38,7 +38,7 @@ $akun_bogor = mysqli_num_rows($AFB_bogor2);
 
 // instagram
 // manager
-$mins = mysqli_query($conn, "SELECT * FROM akun_pengurus WHERE username = 'instagram' ");
+$mins = mysqli_query($conn, "SELECT * FROM akun_pengurus WHERE id_pengurus = 'manager_instagram' ");
 // pengurus
 $Ains = mysqli_query($conn, "SELECT * FROM akun_pengurus WHERE id_pengurus = 'instagram' ORDER BY `nama` ASC ");
 $pengurus_ins = mysqli_num_rows($Ains);

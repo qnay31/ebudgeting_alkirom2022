@@ -57,6 +57,41 @@
                             </div>
                         </div>
                     </div>
+                    <div class="incomeMedia">
+                        <div class="row">
+                            <div class="col-xxl-6 bulanan">
+                                <?php
+                                $bulan     = date("Y-m-d");
+                                $bln       = substr($bulan, 5,-3);
+                                $qIncomeBulanan = mysqli_query($conn, "SELECT pemegang, SUM(jumlah_tf) AS total_tf FROM income_media WHERE pemegang = '$data_AFB_bogor[nama]' AND MONTH(tanggal_tf) = '$bln' AND status = 'OK' GROUP BY pemegang ");
+
+                                $qIncome = mysqli_query($conn, "SELECT pemegang, SUM(jumlah_tf) AS total_tf FROM income_media WHERE pemegang = '$data_AFB_bogor[nama]' AND status = 'OK' GROUP BY pemegang "); ?>
+
+                                <?php
+                                $no = 1;
+                                while ($data = mysqli_fetch_array($qIncomeBulanan)) { 
+                                    ?>
+                                <a
+                                    href="<?= $_SESSION["username"] ?>.php?id_accountKey=<?= $data_AFB_bogor["id"] ?>&id_bulan=<?= $bln; ?>&idLaporan=Akun">
+                                    Bulan Ini: <?= number_format($data["total_tf"],0,"." , ".") ?></a>
+                                <?php } ?>
+                            </div>
+
+
+
+                            <div class="col-xxl-6 tahunan">
+                                <?php
+                                $no = 1;
+                                while ($data = mysqli_fetch_array($qIncome)) { 
+                                    ?>
+                                <a
+                                    href="<?= $_SESSION["username"] ?>.php?id_accountKey=<?= $data_AFB_bogor["id"] ?>&idLaporan=Akun">Per
+                                    Tahun : <?= number_format($data["total_tf"],0,"." , ".") ?></a>
+                                <?php } ?>
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
             </div><!-- End Card -->
             <?php } ?>

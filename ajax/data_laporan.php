@@ -138,7 +138,7 @@ $columns = array(
         'db'        => 'total_income',
         'dt'        => 14,
         'formatter' => function( $d, $row ) {
-            return number_format($d);
+            return number_format((float)$d);
         }
     )
 );

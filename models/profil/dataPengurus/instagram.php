@@ -66,7 +66,7 @@
 
                     <div class="incomeMedia">
                         <div class="row">
-                            <div class="col-xxl-6 bulanan">
+                            <div class="col-6 bulanan">
                                 <?php
                                 $bulan     = date("Y-m-d");
                                 $bln       = substr($bulan, 5,-3);
@@ -86,7 +86,7 @@
 
 
 
-                            <div class="col-xxl-6 tahunan">
+                            <div class="col-6 tahunan">
                                 <?php
                                 $no = 1;
                                 while ($data = mysqli_fetch_array($qIncome)) { 

@@ -1,0 +1,416 @@
+/*HP*/
+@media (max-width: 767.98px) {
+
+    .form-control,
+    .input-group-text,
+    .form-text,
+    .form-select,
+    .button .btn-primary,
+    .button .btn-secondary,
+    .button-global .btn-primary,
+    .button-global .btn-success,
+    .table-responsive,
+    .table-responsive .btn-primary,
+    .table-responsive .btn-danger,
+    .table-responsive .btn-success,
+    .modal-footer .btn-secondary,
+    .buttons-excel,
+    .buttons-collection,
+    .incomeMedia .bulanan,
+    .incomeMedia .tahunan,
+    .profile .nav-item,
+    .dashboard .nav-item,
+    .saranBalasan,
+    .revenue-card .akun,
+    .customers-card .akun,
+    .select2-search__field::placeholder,
+    .select2-results__option,
+    .select2-selection__choice,
+    .select2-search.select2-search--inline,
+    #akunMedia .btn-danger,
+    #form-pengajuan .list-group,
+    #profile-overview .col-lg-9,
+    #profile-edit .btn-primary,
+    #profile-change-password .btn-primary {
+        font-size: 12px;
+    }
+
+    #form-pengajuan nav ul {
+        font-size: 11px;
+    }
+
+    .footer .copyright {
+        font-size: 12px;
+    }
+
+    #form-pengajuan #form {
+        padding: 0 1em 1em 1em;
+    }
+
+    #divImageMediaPreview img {
+        max-width: 100px;
+    }
+
+    .dashboard .info-card h6,
+    .card1 .card-title {
+        font-size: 16px;
+    }
+
+    .kwitansi-box .uangTransfer {
+        font-size: 2em;
+    }
+
+    .kwitansi-box .keterangan,
+    .kwitansi-box .detail-donatur,
+    .kwitansi-box .dukungan {
+        font-size: 12px;
+    }
+
+    .kwitansi-box .detailDonasi {
+        font-size: 1.3em;
+    }
+
+    .kwitansi-box .powered {
+        font-size: 8px;
+    }
+
+    .kwitansi-box .badge.bg-success {
+        font-size: 10px;
+    }
+}
+
+/*DESKTOP*/
+@media (min-width: 992px) {
+    #form-pengajuan #form {
+        padding: 0 3em 3em 3em;
+    }
+
+    .form-control,
+    .input-group-text,
+    #form-pengajuan .list-group,
+    .form-text,
+    .form-select,
+    .button .btn-primary,
+    .button .btn-secondary,
+    .button-global .btn-primary,
+    .button-global .btn-success,
+    .table-responsive,
+    .saranBalasan,
+    .table-responsive .btn-primary,
+    .table-responsive .btn-danger,
+    .table-responsive .btn-success,
+    .modal-footer .btn-secondary,
+    .buttons-excel,
+    .buttons-collection,
+    .incomeMedia .bulanan,
+    .incomeMedia .tahunan,
+    .profile .nav-item,
+    .dashboard .nav-item,
+    .revenue-card .akun,
+    .customers-card .akun,
+    .select2-search__field::placeholder,
+    .select2-results__option,
+    .select2-selection__choice,
+    .select2-search.select2-search--inline,
+    #akunMedia .btn-danger,
+    #profile-overview .col-lg-9,
+    #profile-edit .btn-primary,
+    #profile-change-password .btn-primary {
+        font-size: 14px !important;
+    }
+
+    #divImageMediaPreview img {
+        padding: 8px;
+        max-width: 150px;
+    }
+
+    .dashboard .info-card h6,
+    .card1 .card-title {
+        font-size: 16px;
+    }
+
+    .kwitansi-box .uangTransfer {
+        font-size: 2em;
+    }
+
+    .kwitansi-box .keterangan,
+    .kwitansi-box .detail-donatur,
+    .kwitansi-box .dukungan {
+        font-size: 14px;
+    }
+
+    .kwitansi-box .detailDonasi {
+        font-size: 1.4em;
+    }
+
+    .kwitansi-box .powered {
+        font-size: 11px;
+    }
+
+    .kwitansi-box .badge.bg-success {
+        font-size: 12px;
+    }
+}
+
+/* pad */
+@media (min-width:576px) {
+    #form-pengajuan #form {
+        padding: 0 2em 2em 2em;
+    }
+
+    .form-control,
+    .input-group-text,
+    #form-pengajuan .list-group,
+    .form-text,
+    .form-select,
+    .button .btn-primary,
+    .button .btn-secondary,
+    .button-global .btn-success,
+    .button-global .btn-primary,
+    .table-responsive,
+    .table-responsive .btn-primary,
+    .table-responsive .btn-danger,
+    .table-responsive .btn-success,
+    .modal-footer .btn-secondary,
+    .buttons-excel,
+    .saranBalasan,
+    .incomeMedia .bulanan,
+    .incomeMedia .tahunan,
+    .buttons-collection,
+    .profile .nav-item,
+    .dashboard .nav-item,
+    .revenue-card .akun,
+    .customers-card .akun,
+    .select2-search__field::placeholder,
+    .select2-results__option,
+    .select2-selection__choice,
+    .select2-search.select2-search--inline,
+    #akunMedia .btn-danger,
+    #profile-overview .col-lg-9,
+    #profile-edit .btn-primary,
+    #profile-change-password .btn-primary {
+        font-size: 14px;
+    }
+
+    #divImageMediaPreview img {
+        padding: 8px;
+        max-width: 150px;
+    }
+
+    .dashboard .info-card h6,
+    .card1 .card-title {
+        font-size: 16px;
+    }
+
+    .kwitansi-box .uangTransfer {
+        font-size: 1.8em;
+    }
+
+    .kwitansi-box .keterangan,
+    .kwitansi-box .detail-donatur,
+    .kwitansi-box .dukungan {
+        font-size: 14px;
+    }
+
+    .kwitansi-box .detailDonasi {
+        font-size: 1.3em;
+    }
+
+    .kwitansi-box .powered {
+        font-size: 11px;
+    }
+
+    .kwitansi-box .badge.bg-success {
+        font-size: 12px;
+    }
+}
+
+
+@media (min-width:1200px) {
+    #form-pengajuan #form {
+        padding: 0 3em 3em 3em;
+    }
+
+    #divImageMediaPreview img {
+        padding: 8px;
+        max-width: 150px;
+    }
+
+
+}
+
+.dt-button-collection .dropdown-menu .dropdown-item:hover {
+    background-color: rgb(105, 162, 247);
+}
+
+.pw span {
+    position: absolute;
+    height: 25px;
+    display: inline-grid;
+    align-items: end;
+    z-index: 99;
+    right: 25px;
+}
+
+.go-corner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    overflow: hidden;
+    top: 0;
+    right: 0;
+    background-color: #00838d;
+    border-radius: 0 4px 0 32px;
+}
+
+.go-arrow {
+    margin-top: -4px;
+    margin-right: -4px;
+    color: white;
+    font-family: courier, sans;
+}
+
+.card1 {
+    display: block;
+    position: relative;
+    border-radius: 4px;
+    text-decoration: none;
+    z-index: 0;
+    overflow: hidden;
+    color: #012970;
+}
+
+.card1 a {
+    text-decoration: none;
+    color: #012970;
+}
+
+.kwitansi-box {
+    background-color: #006939;
+}
+
+.kwitansi-box .detailDonasi {
+    text-align: center;
+}
+
+.kwitansi-box .logo-image {
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 15px;
+}
+
+.kwitansi-box .logo-image img {
+    background-color: white;
+    height: 6em;
+    width: 6em;
+    border-radius: 5em;
+}
+
+.kwitansi-box .box {
+    padding: 1.5em 1.5em;
+}
+
+.kwitansi-box .box-white {
+    background-color: white;
+    padding: 2em;
+    border-radius: 10px;
+}
+
+.kwitansi-box .uangTransfer {
+    text-align: center;
+    font-weight: bold;
+    padding: .5em 0;
+}
+
+.kwitansi-box .keterangan,
+.kwitansi-box .dukungan {
+    text-align: center;
+}
+
+.kwitansi-box .detail-donatur {
+    display: grid;
+}
+
+.kwitansi-box .detail-donatur table td {
+    text-align: end;
+}
+
+.kwitansi-box .powered {
+    text-align: center;
+    padding-top: 5em;
+    font-weight: bold;
+}
+
+.detail-bulanan {
+    font-size: .9em;
+    color: black;
+    text-decoration: underline !important;
+    cursor: pointer;
+}
+
+.incomeMedia a {
+    text-decoration: underline;
+}
+
+.incomeMedia {
+    padding: 0 1.2em;
+}
+
+.incomeMedia .tahunan {
+    text-align: right;
+}
+
+.saranMasukan {
+    padding: 0 14px;
+    width: 100%;
+}
+
+.textName {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 220px;
+}
+
+.editLaporanSaran {
+    display: flex;
+    justify-content: space-around;
+    text-decoration: underline;
+}
+
+.notification-item.saranBalasan {
+    background-color: #eff2fa;
+}
+
+.box-warning {
+    background-color: #eae9e9;
+    color: red;
+    font-size: 0.8em;
+    text-align: justify;
+    font-weight: 800;
+    padding: 1em;
+}
+
+.button-option {
+    display: flex;
+    justify-content: center;
+}
+
+.button-confirm,
+.button-edit {
+    text-align: center;
+}
+
+.detail-info {
+    white-space: nowrap;
+    font-size: .8em;
+}
+
+.removeRow {
+    background-color: #FF6347;
+    color: #FFFFFF;
+}

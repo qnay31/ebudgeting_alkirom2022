@@ -1,0 +1,165 @@
+<div class="card-body">
+    <h5 class="card-title">FORM LAPORAN</h5>
+    <?php if($id_unik == $id && $data["status"] == "OK"){ ?>
+    <div id="form">
+        <form action="" method="post" enctype="multipart/form-data" onsubmit="return validasi_input2(this)">
+            <div class="mb-3">
+                <div class="form-text mb-2">
+                    Data Anggaran
+                </div>
+                <input type="hidden" name="link" value="<?= $_SESSION["id_pengurus"] ?>">
+                <input type="hidden" name="id_unik" value="<?= $id ?>">
+
+                <div class="input-group mb-1">
+                    <span class="input-group-text" id="basic-addon1"><b>Dari</b></span>
+                    <input type="text" class="form-control" name="program" value="<?= $data["logistik"] ?>" readonly>
+                </div>
+
+                <div class="input-group mb-1">
+                    <span class="input-group-text" id="basic-addon1"><b>Tgl diajukan</b></span>
+                    <input type="text" class="form-control"
+                        value="<?= date('d-m-Y', strtotime($data["tgl_pengajuan"])); ?>" readonly>
+                </div>
+
+                <div class="input-group mb-1">
+                    <span class="input-group-text" id="basic-addon1"><b>Rencana</b></span>
+                    <input type="text" class="form-control" name="deskripsi" value="<?= ucwords($data["deskripsi"]) ?>"
+                        readonly>
+                </div>
+
+                <div class="input-group mb-1">
+                    <span class="input-group-text" id="basic-addon1"><b>Dana anggaran</b></span>
+                    <input type="text" class="form-control"
+                        value="Rp. <?= number_format($data["dana_anggaran"],0,"." , ".") ?>" readonly>
+                </div>
+            </div>
+            <div class="mb-3">
+                <div id="disabledSelect" class="form-text mb-2">
+                    Tanggal Laporan
+                </div>
+                <input type="date" class="form-control" name="tanggal_laporan">
+            </div>
+            <div class="mb-3">
+                <div id="disabledSelect" class="form-text mb-2">
+                    Deskripsi Pemakaian
+                </div>
+                <input type="text" class="form-control" name="deskripsi_laporan" placeholder="rincian pemakaian"
+                    id="alpabet" style="text-transform: capitalize;" autocomplete="off">
+                <!-- <div id="drag-drop-area"></div> -->
+            </div>
+
+            <div id="disabledSelect" class="form-text mb-2">
+                Dana Terpakai
+            </div>
+            <div class="input-group mb-4">
+                <span class="input-group-text" id="basic-addon1"><b>Rp</b></span>
+                <input type="text" class="form-control" name="dana_laporan" id="rupiah" maxlength="11"
+                    placeholder="Nominal" onkeypress="return hanyaAngka(event)" autocomplete="off">
+            </div>
+
+            <div id="disabledSelect" class="form-text mb-2">
+                Lampirkan Bukti
+            </div>
+
+            <div class="file-drop-area">
+                <span class="choose-file-button">Pilih Gambar</span>
+                <span class="file-message">or drag and drop files here</span>
+                <input type="file" name="gambar[]" class="file-input" accept=".jpg,.jpeg,.png" multiple required
+                    oninvalid="this.setCustomValidity('Lampirkan Foto')" oninput="this.setCustomValidity('')">
+            </div>
+            <div id="divImageMediaPreview"> </div>
+
+            <div class="button">
+                <input type="submit" name="input_logistik" class="btn btn-primary w-100" value="Laporkan">
+            </div>
+        </form>
+    </div>
+    <?php } else { ?>
+    <div class="table-responsive">
+        <div class="text-center">
+            <label for=""><b style="color: black;">Tabel Laporan Logistik</b>
+                <hr>
+            </label>
+        </div>
+        <table id="tabel-data_laporan" class="table table-striped table-bordered nowrap">
+            <thead>
+                <tr style="text-align: center;">
+                    <th scope="col">No</th>
+                    <th scope="col">Logistik</th>
+                    <th scope="col">Dilaporkan</th>
+                    <th scope="col">Tgl Pengajuan</th>
+                    <th scope="col">Perencanaan</th>
+                    <th scope="col">Anggaran</th>
+                    <th scope="col">Tgl laporan</th>
+                    <th scope="col">Pemakaian</th>
+                    <th scope="col">Menu</th>
+                    <th scope="col">Terpakai</th>
+                    <th scope="col">Cashback</th>
+                    <th scope="col">Resi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                $no = 1;
+                while ($r = $q2->fetch_assoc()) {
+                $bln       = substr($r['tgl_pemakaian'], 5,-3);
+                $anggaran = $r['dana_anggaran'];
+                $terpakai = $r['dana_terpakai'];
+                $sisa = $anggaran - $terpakai;
+                ?>
+                <tr>
+                    <td style="text-align: center;"><?= $no++ ?></td>
+                    <td style="text-align: center;"><?= ucwords($r['logistik']) ?></td>
+                    <td style="text-align: center;"><?= ucwords($r['posisi']) ?></td>
+                    <td style="text-align: center;">
+                        <?= date('d-m-Y', strtotime($r['tgl_pengajuan'])); ?></td>
+                    <td><?= ucwords($r['deskripsi']) ?></td>
+                    <td>Rp. <?= number_format($anggaran,0,"." , ".") ?></td>
+                    <td style="text-align: center;">
+                        <?= date('d-m-Y', strtotime($r['tgl_pemakaian'])); ?></td>
+                    <td><?= ucwords($r['deskripsi_pemakaian']) ?></td>
+                    <td style="text-align: center;"><a class="btn btn-primary"
+                            href="../admin/<?= $_SESSION["username"] ?>.php?id_forms=edit_laporan&id_dataManagement=logistik&id_unik=<?= $r['id'] ?>&id_p=<?= $bln ?>"
+                            onclick="return confirm('Yakin laporan ini mau diedit?!')">Edit</a> || <a
+                            class="btn btn-danger"
+                            href="../models/forms/hapus_laporan/hapus_lapLogistik.php?id_unik=<?= $r['id'] ?>&id_p=<?= $bln ?>"
+                            onclick="return confirm('Yakin anggaran ini mau dihapus?!')">Hapus</a>
+
+                    </td>
+                    <td>Rp. <?= number_format($terpakai,0,"." , ".") ?></td>
+                    <td>Rp. <?= number_format($sisa,0,"." , ".") ?></td>
+                    <td style="text-align: center;"><input type="button" name="view" value="Lihat"
+                            data-id="<?= $r['id']  ?>" class="btn btn-success btn-xs view_data_logistik">
+                    </td>
+                </tr>
+                <?php } ?>
+            </tbody>
+            <tfoot>
+                <tr style="text-align: center;">
+                    <th colspan="5">Total</th>
+                    <th></th>
+                    <th colspan="3">Total</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </tfoot>
+        </table>
+        <!-- Modal -->
+        <div id="dataModal_logistik" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Bukti Kwitansi</h4>
+                    </div>
+                    <div class="modal-body" id="detail_user_logistik">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php } ?>
+</div>

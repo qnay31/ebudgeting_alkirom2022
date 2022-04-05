@@ -114,7 +114,7 @@ if(isset($_POST['ubah_password']) ){
                 <div class="card">
                     <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
                         <img src="../assets/img/icons/<?= $profil ?>" alt="Profile" class="rounded-circle">
-                        <h2><?= $nama ?></h2>
+                        <h2><?= ucwords($nama) ?></h2>
                         <h3><?= $_SESSION["posisi"] ?> <?= $_SESSION["cabang"] ?></h3>
                     </div>
                 </div>

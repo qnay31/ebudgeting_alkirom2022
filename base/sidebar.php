@@ -79,9 +79,10 @@
         <?php if (
             $_SESSION["id_pengurus"] == "ketua_yayasan" ||
             $_SESSION["id_pengurus"] == "kepala_income" ||
-            $_SESSION["id_pengurus"] == "manager_facebook" ||
+            $_SESSION["username"] == "facebook_depok" ||
+            $_SESSION["username"] == "facebook_bogor" ||
             $_SESSION["id_pengurus"] == "kepala_cabang" ||
-            $_SESSION["id_pengurus"] == "manager_instagram"
+            $_SESSION["username"] == "instagram"
             ) { ?>
         <?php if ($_GET["idTeam"] == "teamMedia" || $_GET["idTeam"] == "changeMedia") { ?>
         <li class="nav-item">

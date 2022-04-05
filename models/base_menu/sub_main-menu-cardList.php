@@ -500,8 +500,9 @@ if ($_SESSION["id_pengurus"] == "ketua_yayasan" || $_SESSION["id_pengurus"] == "
     $bln       = substr($bulan, 5,-3);
     $i = 1;
     
-    if ($_SESSION["username"] == "admin_facebook" || $_SESSION["username"] == "sekretaris_facebook" || $_SESSION["username"] == "facebook_pusat") {
-        $incBulanan = mysqli_query($conn, "SELECT * FROM income_media WHERE cabang = '$_SESSION[cabang]' AND id_pengurus = 'facebook_depok' AND status = 'OK' AND MONTH(tanggal_tf) = '$bln'");
+    if ($_SESSION["username"] == "admin_facebook") {
+        $incBulanan = mysqli_query($conn, "SELECT data_akun.id_pengurus, data_akun.nama_akun, data_akun.team, income_media.jumlah_tf, income_media.pemegang 
+        FROM data_akun JOIN income_media ON income_media.nama_akun = data_akun.nama_akun WHERE data_akun.team = 'Facebook Taman' AND MONTH(tanggal_tf)= '$bln' AND income_media.status = 'OK'");
         while($data_incBulanan = mysqli_fetch_array($incBulanan))
         {
             $i++;   
@@ -512,7 +513,8 @@ if ($_SESSION["id_pengurus"] == "ketua_yayasan" || $_SESSION["id_pengurus"] == "
             // die(var_dump($hasil_incomeBulanan));
         }
         
-        $inc = mysqli_query($conn, "SELECT * FROM income_media WHERE cabang = '$_SESSION[cabang]' AND id_pengurus = 'facebook_depok' AND status = 'OK'");
+        $inc = mysqli_query($conn, "SELECT data_akun.id_pengurus, data_akun.nama_akun, data_akun.team, income_media.jumlah_tf, income_media.pemegang 
+        FROM data_akun JOIN income_media ON income_media.nama_akun = data_akun.nama_akun WHERE data_akun.team = 'Facebook Taman' AND income_media.status = 'OK'");
         while($data_inc = mysqli_fetch_array($inc))
         {
             $i++;   
@@ -521,9 +523,10 @@ if ($_SESSION["id_pengurus"] == "ketua_yayasan" || $_SESSION["id_pengurus"] == "
 
             $hasil_income = array_sum($total_income);
         }
-        
-    } elseif ($_SESSION["username"] == "instagram_taman" || $_SESSION["username"] == "instagram_bojong" || $_SESSION["username"] == "instagram_meruyung") {
-        $incBulanan = mysqli_query($conn, "SELECT * FROM income_media WHERE cabang = '$_SESSION[cabang]' AND id_pengurus = 'instagram' AND status = 'OK' AND MONTH(tanggal_tf) = '$bln'");
+
+    } elseif ($_SESSION["username"] == "facebook_pusat") {
+        $incBulanan = mysqli_query($conn, "SELECT data_akun.id_pengurus, data_akun.nama_akun, data_akun.team, income_media.jumlah_tf, income_media.pemegang 
+        FROM data_akun JOIN income_media ON income_media.nama_akun = data_akun.nama_akun WHERE data_akun.team = 'Facebook Pusat' AND MONTH(tanggal_tf)= '$bln' AND income_media.status = 'OK'");
         while($data_incBulanan = mysqli_fetch_array($incBulanan))
         {
             $i++;   
@@ -534,7 +537,8 @@ if ($_SESSION["id_pengurus"] == "ketua_yayasan" || $_SESSION["id_pengurus"] == "
             // die(var_dump($hasil_incomeBulanan));
         }
         
-        $inc = mysqli_query($conn, "SELECT * FROM income_media WHERE cabang = '$_SESSION[cabang]' AND id_pengurus = 'instagram' AND status = 'OK'");
+        $inc = mysqli_query($conn, "SELECT data_akun.id_pengurus, data_akun.nama_akun, data_akun.team, income_media.jumlah_tf, income_media.pemegang 
+        FROM data_akun JOIN income_media ON income_media.nama_akun = data_akun.nama_akun WHERE data_akun.team = 'Facebook Pusat' AND income_media.status = 'OK'");
         while($data_inc = mysqli_fetch_array($inc))
         {
             $i++;   
@@ -544,6 +548,78 @@ if ($_SESSION["id_pengurus"] == "ketua_yayasan" || $_SESSION["id_pengurus"] == "
             $hasil_income = array_sum($total_income);
         }
 
+    } elseif ($_SESSION["username"] == "instagram_taman") {
+        $incBulanan = mysqli_query($conn, "SELECT data_akun.id_pengurus, data_akun.nama_akun, data_akun.team, income_media.jumlah_tf, income_media.pemegang 
+        FROM data_akun JOIN income_media ON income_media.nama_akun = data_akun.nama_akun WHERE data_akun.team = 'Instagram Taman' AND MONTH(tanggal_tf)= '$bln' AND income_media.status = 'OK'");
+        while($data_incBulanan = mysqli_fetch_array($incBulanan))
+        {
+            $i++;   
+            $d_incomeBulanan = $data_incBulanan['jumlah_tf'];
+            $total_incomeBulanan[$i] = $d_incomeBulanan;
+
+            $hasil_incomeBulanan = array_sum($total_incomeBulanan);
+            // die(var_dump($hasil_incomeBulanan));
+        }
+        
+        $inc = mysqli_query($conn, "SELECT data_akun.id_pengurus, data_akun.nama_akun, data_akun.team, income_media.jumlah_tf, income_media.pemegang 
+        FROM data_akun JOIN income_media ON income_media.nama_akun = data_akun.nama_akun WHERE data_akun.team = 'Instagram Taman' AND income_media.status = 'OK'");
+        while($data_inc = mysqli_fetch_array($inc))
+        {
+            $i++;   
+            $d_income = $data_inc['jumlah_tf'];
+            $total_income[$i] = $d_income;
+
+            $hasil_income = array_sum($total_income);
+        }
+    
+    } elseif ($_SESSION["username"] == "instagram_bojong") {
+        $incBulanan = mysqli_query($conn, "SELECT data_akun.id_pengurus, data_akun.nama_akun, data_akun.team, income_media.jumlah_tf, income_media.pemegang 
+        FROM data_akun JOIN income_media ON income_media.nama_akun = data_akun.nama_akun WHERE data_akun.team = 'Instagram Bojong' AND MONTH(tanggal_tf)= '$bln' AND income_media.status = 'OK'");
+        while($data_incBulanan = mysqli_fetch_array($incBulanan))
+        {
+            $i++;   
+            $d_incomeBulanan = $data_incBulanan['jumlah_tf'];
+            $total_incomeBulanan[$i] = $d_incomeBulanan;
+
+            $hasil_incomeBulanan = array_sum($total_incomeBulanan);
+            // die(var_dump($hasil_incomeBulanan));
+        }
+        
+        $inc = mysqli_query($conn, "SELECT data_akun.id_pengurus, data_akun.nama_akun, data_akun.team, income_media.jumlah_tf, income_media.pemegang 
+        FROM data_akun JOIN income_media ON income_media.nama_akun = data_akun.nama_akun WHERE data_akun.team = 'Instagram Bojong' AND income_media.status = 'OK'");
+        while($data_inc = mysqli_fetch_array($inc))
+        {
+            $i++;   
+            $d_income = $data_inc['jumlah_tf'];
+            $total_income[$i] = $d_income;
+
+            $hasil_income = array_sum($total_income);
+        }
+
+    } elseif ($_SESSION["username"] == "instagram_meruyung") {
+        $incBulanan = mysqli_query($conn, "SELECT data_akun.id_pengurus, data_akun.nama_akun, data_akun.team, income_media.jumlah_tf, income_media.pemegang 
+        FROM data_akun JOIN income_media ON income_media.nama_akun = data_akun.nama_akun WHERE data_akun.team = 'Instagram Meruyung' AND MONTH(tanggal_tf)= '$bln' AND income_media.status = 'OK'");
+        while($data_incBulanan = mysqli_fetch_array($incBulanan))
+        {
+            $i++;   
+            $d_incomeBulanan = $data_incBulanan['jumlah_tf'];
+            $total_incomeBulanan[$i] = $d_incomeBulanan;
+
+            $hasil_incomeBulanan = array_sum($total_incomeBulanan);
+            // die(var_dump($hasil_incomeBulanan));
+        }
+        
+        $inc = mysqli_query($conn, "SELECT data_akun.id_pengurus, data_akun.nama_akun, data_akun.team, income_media.jumlah_tf, income_media.pemegang 
+        FROM data_akun JOIN income_media ON income_media.nama_akun = data_akun.nama_akun WHERE data_akun.team = 'Instagram Meruyung' AND income_media.status = 'OK'");
+        while($data_inc = mysqli_fetch_array($inc))
+        {
+            $i++;   
+            $d_income = $data_inc['jumlah_tf'];
+            $total_income[$i] = $d_income;
+
+            $hasil_income = array_sum($total_income);
+        }
+        
     } else {
         $incBulanan = mysqli_query($conn, "SELECT * FROM income_media WHERE cabang = '$_SESSION[cabang]' AND id_pengurus = '$_SESSION[username]' AND status = 'OK' AND MONTH(tanggal_tf) = '$bln'");
         while($data_incBulanan = mysqli_fetch_array($incBulanan))
@@ -596,12 +672,6 @@ if ($_SESSION["id_pengurus"] == "ketua_yayasan" || $_SESSION["id_pengurus"] == "
 
     }
 }
-
-    
-    
-    // die(var_dump($total_income));
-    // die(var_dump($query));
-
 
 ?>
 

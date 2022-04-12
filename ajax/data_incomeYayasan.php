@@ -24,7 +24,7 @@ $table = 'income_media';
 // Table's primary key
 $primaryKey = 'id';
 
-if ($_SESSION["id_pengurus"] == "facebook_depok" || $_SESSION["id_pengurus"] == "facebook_bogor" || $_SESSION["id_pengurus"] == "instagram") {
+if ($_SESSION["id_pengurus"] == "facebook_depok" || $_SESSION["id_pengurus"] == "facebook_bogor" || $_SESSION["id_pengurus"] == "instagram" || $_SESSION["id_pengurus"] == "facebook") {
     $where = "nomor_id = '$_SESSION[id]' AND status = 'OK' ORDER BY pemegang ASC, `tanggal_tf` DESC";
 
 } elseif ($_SESSION["id_pengurus"] == "kepala_cabang" || $_SESSION["username"] == "facebook_bogor") {

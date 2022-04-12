@@ -315,6 +315,11 @@ $income = str_replace(' ', '', $anggar);
 $ip = get_client_ip();
 $date = date("Y-m-d H:i:s");
 
+if ($link == "facebook") {
+$result = mysqli_query($conn, "INSERT INTO income_media VALUES('', 'facebook_depok', '$id', '$_SESSION[nama]',
+'$akun', '$_SESSION[cabang]', '$namaDonatur', '$tanggal', '$jam', '$bank', '$income', 'Menunggu Verifikasi')");
+
+} else {
 $result = mysqli_query($conn, "INSERT INTO income_media VALUES('', '$link', '$id', '$_SESSION[nama]',
 '$akun', '$_SESSION[cabang]', '$namaDonatur', '$tanggal', '$jam', '$bank', '$income', 'Menunggu Verifikasi')");
 
@@ -323,6 +328,7 @@ $today = date('d-m-Y', strtotime($tanggal));
 // input data ke database
 $result2 = mysqli_query($conn, "INSERT INTO 2022_log_aktivity VALUES('', '$_SESSION[nama]', '$_SESSION[posisi]', '$ip',
 '$date', '$_SESSION[nama] Divisi $_SESSION[posisi] Telah Menginput income akun $akun tanggal $today')");
+}
 
 // die(var_dump($simpan));
 return mysqli_affected_rows($conn);
@@ -356,9 +362,11 @@ alert('Tidak ada data yang diubah');
 return false;
 }
 } else {
+
 $today = date('d-m-Y', strtotime($tanggal));
 $result2 = mysqli_query($conn, "INSERT INTO 2022_log_aktivity VALUES('', '$_SESSION[nama]', '$_SESSION[posisi]', '$ip',
 '$date', '$_SESSION[nama] Divisi $_SESSION[posisi] Telah Mengubah income akun $akun pada tanggal $today')");
+
 }
 
 // die(var_dump($program));
@@ -1830,6 +1838,16 @@ $pemegang = $dataTeam["pemegang"];
 $posisi = $dataTeam["posisi"];
 $dataTeam = $dataTeam["team"];
 
+if ($dataTeam == "") {
+} else {
+if ($dataTeam !== $team) {
+echo "<script>
+alert('Data tim sudah ada, harap pilih $dataTeam');
+</script>";
+
+return false;
+}
+}
 $result = mysqli_query($conn,
 "UPDATE data_akun SET
 `team` = '$team'

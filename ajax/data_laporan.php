@@ -40,7 +40,10 @@ if ($_SESSION["id_pengurus"] == "manager_facebook" || $_SESSION["id_pengurus"] =
 
 } elseif ($_SESSION["id_pengurus"] == "kepala_cabang") {
     $where = "id_pengurus = 'facebook_bogor' ORDER BY `tgl_laporan` DESC";
-
+    
+} elseif ($_SESSION["id_pengurus"] == "facebook") {
+    $where = "pemegang = '$_SESSION[nama]' ORDER BY `tgl_laporan` DESC";
+    
 } else {
     $bulan      = date("Y-m-d");
     $bln        = substr($bulan, 5,-3);
@@ -93,14 +96,14 @@ $columns = array(
         }
     ),
     array(
-        'db'        => 'alamat',
+        'db'        => 'insya_allah',
         'dt'        => 8,
         'formatter' => function( $d, $row ) {
             return number_format($d);
         }
     ),
     array(
-        'db'        => 'insya_allah',
+        'db'        => 'alamat',
         'dt'        => 9,
         'formatter' => function( $d, $row ) {
             return number_format($d);
@@ -150,8 +153,8 @@ $sql_details = array(
     'db'   => 'eb_v1',
     'host' => 'localhost'
 );
- 
- 
+
+
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * If you just want to use the basic configuration for DataTables with PHP
  * server-side, there is no need to edit below this line.

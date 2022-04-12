@@ -1,14 +1,24 @@
 <?php
 
-$q  = mysqli_query($conn, "SELECT * FROM income_media WHERE id_pengurus = '$_SESSION[id_pengurus]' AND nomor_id = '$_SESSION[id]' ORDER BY `tanggal_tf` DESC, jam_tf DESC");
+if ($_SESSION["username"] == "cadangan") {
+    $q  = mysqli_query($conn, "SELECT * FROM income_media WHERE id_pengurus = 'facebook_depok' AND nomor_id = '$_SESSION[id]' ORDER BY `tanggal_tf` DESC, jam_tf DESC");
 
-$q2  = mysqli_query($conn, "SELECT * FROM income_media WHERE id_pengurus = '$_SESSION[id_pengurus]' AND nomor_id = '$_SESSION[id]' AND status = 'Menunggu Verifikasi' ORDER BY `tanggal_tf` DESC, jam_tf DESC");
-$s = $q2->num_rows;
+    $q2  = mysqli_query($conn, "SELECT * FROM income_media WHERE id_pengurus = 'facebook_depok' AND nomor_id = '$_SESSION[id]' AND status = 'Menunggu Verifikasi' ORDER BY `tanggal_tf` DESC, jam_tf DESC");
+    $s = $q2->num_rows;
 
-$q3  = mysqli_query($conn, "SELECT * FROM income_media WHERE id_pengurus = '$_SESSION[id_pengurus]' AND nomor_id = '$_SESSION[id]' AND status = 'OK' ORDER BY `tanggal_tf` DESC, jam_tf DESC");
+    $q3  = mysqli_query($conn, "SELECT * FROM income_media WHERE id_pengurus = 'facebook_depok' AND nomor_id = '$_SESSION[id]' AND status = 'OK' ORDER BY `tanggal_tf` DESC, jam_tf DESC");
+
+} else {
+    $q  = mysqli_query($conn, "SELECT * FROM income_media WHERE id_pengurus = '$_SESSION[id_pengurus]' AND nomor_id = '$_SESSION[id]' ORDER BY `tanggal_tf` DESC, jam_tf DESC");
+
+    $q2  = mysqli_query($conn, "SELECT * FROM income_media WHERE id_pengurus = '$_SESSION[id_pengurus]' AND nomor_id = '$_SESSION[id]' AND status = 'Menunggu Verifikasi' ORDER BY `tanggal_tf` DESC, jam_tf DESC");
+    $s = $q2->num_rows;
+
+    $q3  = mysqli_query($conn, "SELECT * FROM income_media WHERE id_pengurus = '$_SESSION[id_pengurus]' AND nomor_id = '$_SESSION[id]' AND status = 'OK' ORDER BY `tanggal_tf` DESC, jam_tf DESC");
+}
 
 
-// die(var_dump($s));
+// die(var_dump($_SESSION['id_pengurus']));
 ?>
 
 <main id="main" class="main">

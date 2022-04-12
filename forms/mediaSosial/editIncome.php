@@ -3,12 +3,22 @@
 $unik     = $_GET["id_unik"];
 $periode  = $_GET["id_p"]; 
 
-$q  = mysqli_query($conn, "SELECT * FROM income_media WHERE id_pengurus = '$_SESSION[id_pengurus]' AND nomor_id = '$_SESSION[id]' ORDER BY `tanggal_tf` DESC");
-$s = $q->num_rows;
-// die(var_dump($s));
+if ($_SESSION["id_pengurus"] == "facebook") {
+    $q  = mysqli_query($conn, "SELECT * FROM income_media WHERE id_pengurus = 'facebook_depok' AND nomor_id = '$_SESSION[id]' ORDER BY `tanggal_tf` DESC");
+    $s = $q->num_rows;
+    // die(var_dump($s));
 
-$q3  = mysqli_query($conn, "SELECT * FROM income_media WHERE id_pengurus = '$_SESSION[id_pengurus]' AND nomor_id = '$_SESSION[id]' AND status = 'Menunggu Verifikasi' AND id = '$unik' AND MONTH(tanggal_tf) = '$periode' ORDER BY `tanggal_tf` DESC");
-$data   = mysqli_fetch_assoc($q3);
+    $q3  = mysqli_query($conn, "SELECT * FROM income_media WHERE id_pengurus = 'facebook_depok' AND nomor_id = '$_SESSION[id]' AND status = 'Menunggu Verifikasi' AND id = '$unik' AND MONTH(tanggal_tf) = '$periode' ORDER BY `tanggal_tf` DESC");
+    $data   = mysqli_fetch_assoc($q3);
+
+} else {
+    $q  = mysqli_query($conn, "SELECT * FROM income_media WHERE id_pengurus = '$_SESSION[id_pengurus]' AND nomor_id = '$_SESSION[id]' ORDER BY `tanggal_tf` DESC");
+    $s = $q->num_rows;
+    // die(var_dump($s));
+
+    $q3  = mysqli_query($conn, "SELECT * FROM income_media WHERE id_pengurus = '$_SESSION[id_pengurus]' AND nomor_id = '$_SESSION[id]' AND status = 'Menunggu Verifikasi' AND id = '$unik' AND MONTH(tanggal_tf) = '$periode' ORDER BY `tanggal_tf` DESC");
+    $data   = mysqli_fetch_assoc($q3);
+}
 
 if (isset($_POST["input"]) ) {
     $link = $_SESSION["username"];

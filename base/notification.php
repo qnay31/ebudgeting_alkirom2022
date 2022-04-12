@@ -166,6 +166,7 @@ if (isset($_POST["balasSaran"]) ) {
 <?php if ($_SESSION["id_pengurus"] == "ketua_yayasan" || $_SESSION["id_pengurus"] == "admin_web") { ?>
 <?php }  elseif ($_SESSION["id_pengurus"] == "facebook_depok") { ?>
 <?php }  elseif ($_SESSION["id_pengurus"] == "facebook_bogor") { ?>
+<?php }  elseif ($_SESSION["id_pengurus"] == "facebook") { ?>
 <?php }  elseif ($_SESSION["id_pengurus"] == "instagram") { ?>
 <?php } elseif ($_SESSION["id_pengurus"] == "manager_facebook" || $_SESSION["id_pengurus"] == "manager_instagram") { ?>
 <?php }  elseif ($_SESSION["id_pengurus"] == "kepala_pengajuan") { ?>
@@ -200,7 +201,7 @@ if (isset($_POST["balasSaran"]) ) {
             </li>
         </a>
         <?php } ?>
-        
+
         <?php if ($paud > 0) { ?>
         <li>
             <hr class="dropdown-divider">
@@ -428,7 +429,7 @@ if (isset($_POST["balasSaran"]) ) {
             </li>
         </a>
         <?php } ?>
-        
+
         <?php if ($paud > 0) { ?>
         <li>
             <hr class="dropdown-divider">
@@ -573,7 +574,7 @@ if (isset($_POST["balasSaran"]) ) {
             </li>
         </a>
         <?php } ?>
-        
+
         <?php if ($paud2 > 0) { ?>
         <li>
             <hr class="dropdown-divider">
@@ -852,7 +853,7 @@ if (isset($_POST["balasSaran"]) ) {
 <!-- End Notification Nav -->
 <?php } ?>
 
-<?php if ($_SESSION["id_pengurus"] == "kepala_income" || $_SESSION["id_pengurus"] == "kepala_cabang" || $_SESSION["id_pengurus"] == "admin_web") { ?>
+<?php if ($_SESSION["id_pengurus"] == "kepala_income" || $_SESSION["id_pengurus"] == "facebook" || $_SESSION["id_pengurus"] == "kepala_cabang" || $_SESSION["id_pengurus"] == "admin_web") { ?>
 <?php } elseif ($_SESSION["id_pengurus"] == "kepala_pengajuan" || $_SESSION["id_pengurus"] == "ketua_yayasan") { ?>
 <?php } elseif ($_SESSION["id_pengurus"] == "management_keuangan") { ?>
 <?php } elseif ($_SESSION["id_pengurus"] == "facebook_depok" || $_SESSION["id_pengurus"] == "facebook_bogor" || $_SESSION["id_pengurus"] == "instagram") { ?>

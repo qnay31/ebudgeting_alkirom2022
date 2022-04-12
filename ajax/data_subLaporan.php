@@ -31,15 +31,21 @@ if ($_SESSION["id_pengurus"] == "manager_facebook" || $_SESSION["id_pengurus"] =
         } else {
             $where = "MONTH(tgl_laporan) = '$_SESSION[bulan]' AND nomor_id = '$_SESSION[keyAccount]' AND id_pengurus = 'facebook_depok' ORDER BY `tgl_laporan` DESC";
         }
+
+    } elseif ($_SESSION["username"] == "instagram_taman" || $_SESSION["username"] == "instagram_bojong" || $_SESSION["username"] == "instagram_meruyung") {
+        if ($_SESSION["bulan"] == "") {
+            $where = "nomor_id = '$_SESSION[keyAccount]' AND id_pengurus = 'instagram' ORDER BY `tgl_laporan` DESC";
+        } else {
+            $where = "MONTH(tgl_laporan) = '$_SESSION[bulan]' AND nomor_id = '$_SESSION[keyAccount]' AND id_pengurus = 'instagram' ORDER BY `tgl_laporan` DESC";
+        }
+
     } else {
-        
         if ($_SESSION["bulan"] == "") {
             $where = "nomor_id = '$_SESSION[keyAccount]' AND id_pengurus = '$_SESSION[username]' ORDER BY `tgl_laporan` DESC";
 
         } else {
             $where = "MONTH(tgl_laporan) = '$_SESSION[bulan]' AND nomor_id = '$_SESSION[keyAccount]' AND id_pengurus = '$_SESSION[username]' ORDER BY `tgl_laporan` DESC";
         }
-        
     }
 
 } elseif ($_SESSION["id_pengurus"] == "ketua_yayasan") {
@@ -91,14 +97,14 @@ $columns = array(
         }
     ),
     array(
-        'db'        => 'alamat',
+        'db'        => 'insya_allah',
         'dt'        => 8,
         'formatter' => function( $d, $row ) {
             return number_format($d);
         }
     ),
     array(
-        'db'        => 'insya_allah',
+        'db'        => 'alamat',
         'dt'        => 9,
         'formatter' => function( $d, $row ) {
             return number_format($d);

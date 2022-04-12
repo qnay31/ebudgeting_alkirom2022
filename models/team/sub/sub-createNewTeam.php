@@ -24,21 +24,14 @@
                 oninvalid="this.setCustomValidity('Daftar tim tidak boleh kosong')" oninput="this.setCustomValidity('')"
                 multiple>
                 <?php
-                    $fetchData = mysqli_query($conn, "SELECT * FROM akun_pengurus WHERE id_pengurus LIKE 'facebook%' OR id_pengurus LIKE 'instagram%' ORDER BY `posisi` ASC, nama ASC");
+                    $fetchData = mysqli_query($conn, "SELECT * FROM data_akun WHERE team = '' GROUP BY pemegang ORDER BY `posisi` ASC, pemegang ASC");
                 ?>
                 <?php
                     while ($data = mysqli_fetch_array($fetchData)) { 
-                        $nama = strtolower($data['nama']) ?>
-                <?php
-                    $qTeam = mysqli_query($conn, "SELECT * FROM data_akun WHERE pemegang = '$data[nama]'");
-                    $dTeam = mysqli_fetch_assoc($qTeam);
-
-                ?>
-                <?php if ($dTeam["team"] == "") { ?>
-                <option value="<?= $data['nama'];?>">
+                        $nama = strtolower($data['pemegang']) ?>
+                <option value="<?= $data['pemegang'];?>">
                     <?= ucwords($nama) ?> - <?= $data['posisi']; ?>
                 </option>
-                <?php } ?>
 
                 <?php } ?>
             </select>

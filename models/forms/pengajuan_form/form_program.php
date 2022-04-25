@@ -24,12 +24,14 @@
                 <option value="Program Pesantren Yatim">Pesantren Yatim</option>
                 <option value="Gaji Kepala Sekolah">Gaji Kepala Sekolah</option>
                 <option value="Gaji Penjemput">Gaji Penjemput</option>
+                <option value="Zakat Fitrah">Zakat Fitrah</option>
+                <option value="Hampers">Hampers</option>
             </select>
             <?php } else { ?>
             <span class="input-group-text" id="basic-addon1">Kategori</span>
             <input type="text" class="form-control" name="program" value="<?= $judul ?>" readonly>
             <?php } ?>
-            
+
         </div>
 
         <div class="form-group mb-3">
@@ -46,7 +48,7 @@
             <?php } else { ?>
             <input type="text" class="form-control" name="cabang" value="Depok" readonly>
             <?php } ?>
-            
+
         </div>
 
         <div class="form-group mb-3">

@@ -222,7 +222,8 @@ if ($key_admin == "akunEbudget") {
                     <td><?= ucwords($r['posisi']) ?></td>
                     <td style="text-align: center;">
                         <?= ucwords($r['cabang']) ?>
-                        <a href="../models/base_admin/switchLaporan.php?id_unik=<?= $r['id'] ?>&idSwitch=cabang&id_kategori=program">
+                        <a
+                            href="../models/base_admin/switchLaporan.php?id_unik=<?= $r['id'] ?>&idSwitch=cabang&id_kategori=program">
                             <?php if ($r['cabang'] == "Depok") { ?>
                             <i class="bi bi-arrow-left-right" data-bs-toggle="tooltip" data-bs-placement="top"
                                 title="ganti" onclick="return confirm('Ganti Cabang ke Bogor?!')"></i>
@@ -286,7 +287,8 @@ if ($key_admin == "akunEbudget") {
                             data-bs-target="#hapus_<?= $r["id"] ?>"><i class="bi bi-trash" data-bs-toggle="tooltip"
                                 data-bs-placement="top" title="Hapus Laporan"></i></a>&nbsp;|
 
-                        <a href="../models/base_admin/switchLaporan.php?id_unik=<?= $r['id'] ?>&idSwitch=laporan&id_kategori=program">
+                        <a
+                            href="../models/base_admin/switchLaporan.php?id_unik=<?= $r['id'] ?>&idSwitch=laporan&id_kategori=program">
                             <i class="bi bi-arrow-left-right" data-bs-toggle="tooltip" data-bs-placement="top"
                                 title="ganti" onclick="return confirm('Ubah status laporan?!')"></i>
                         </a>
@@ -430,7 +432,7 @@ if ($key_admin == "akunEbudget") {
                                 data-bs-toggle="tooltip" data-bs-placement="top" title="Hapus Anggaran"></i></a>
                         <?php } ?>
                     </td>
-                    
+
                     <?php include '../modal/logistik/edit_logistik.php'; ?>
 
                     <?php if ($r["laporan"] == "Terverifikasi") { ?>
@@ -709,7 +711,7 @@ if ($key_admin == "akunEbudget") {
                 </tr>
             </tfoot>
         </table>
-        
+
         <?php } elseif ($key_admin == "income_media") { ?>
         <table id="tabel-data_databaseIncomeMedia2" class="table table-bordered">
             <thead>
@@ -807,7 +809,7 @@ if ($key_admin == "akunEbudget") {
                 </tr>
             </tfoot>
         </table>
-        
+
         <?php } elseif ($key_admin == "logActivity") { ?>
         <table id="tabel-adminLog" class="table table-striped table-bordered nowrap">
             <thead>

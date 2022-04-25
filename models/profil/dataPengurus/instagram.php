@@ -5,7 +5,7 @@
                 $no = 1;
                 while ($data_mins = $mins->fetch_assoc()) { ?>
             <!-- Card -->
-            <div class="col-xxl-4 col-md-4">
+            <div class="col-xxl-3 col-md-6">
                 <div class="card info-card customers-card">
                     <div class="card-body bg">
                         <h5 class="card-title">

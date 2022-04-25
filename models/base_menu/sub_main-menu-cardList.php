@@ -325,45 +325,232 @@ if ($_SESSION["id_pengurus"] == "ketua_yayasan" || $_SESSION["id_pengurus"] == "
     $terpakai_globalBulanan = $hasil_terpakaiBulanan+$hasil_terpakaiBulanan2+$hasil_terpakaiBulanan3+$hasil_terpakaiBulanan4+$hasil_terpakaiBulanan5+$hasil_terpakaiBulanan6+$hasil_terpakaiBulanan7+$hasil_terpakaiBulanan8+$hasil_terpakaiBulanan9;
 
     $cashback_globalBulananan = $anggaran_globalBulanan-$terpakai_globalBulanan;
+    
     // PEMASUKAN
-
     // media sosial
-    $incBulanan = mysqli_query($conn, "SELECT * FROM 2022_data_income WHERE bulan = '$bulanan'");
-    while($data_incBulanan = mysqli_fetch_array($incBulanan))
-    {
-        $i++;   
-        $d_incomeBulanan = $data_incBulanan['income_global'];
-        $total_incomeBulanan[$i] = $d_incomeBulanan;
+    if ($_SESSION["id_pengurus"] == "ketua_yayasan") {
+        $incBulanan = mysqli_query($conn, "SELECT * FROM income_media WHERE MONTH(tanggal_tf) = '$bln' AND status = 'OK'");
+        while($data_incBulanan = mysqli_fetch_array($incBulanan))
+        {
+            $i++;   
+            $d_incomeBulanan = $data_incBulanan['jumlah_tf'];
+            $total_incomeBulanan[$i] = $d_incomeBulanan;
+            $hasil_incomeBulanan = array_sum($total_incomeBulanan);
+        }
 
-        $hasil_incomeBulanan = array_sum($total_incomeBulanan);
+        $incB = mysqli_query($conn, "SELECT * FROM 2022_data_income WHERE bulan = '$bulanan'");
+        while($data_incB = mysqli_fetch_array($inc1))
+        {
+            $i++;   
+            $d_resiB = $data_incB['income_tanpaResi'];
+            $total_resiB[$i] = $d_resiB;
 
-        $d_resiBulanan = $data_incBulanan['income_tanpaResi'];
-        $total_resiBulanan[$i] = $d_resiBulanan;
+            $hasil_resiB = array_sum($total_resiB);
+        }
 
-        $hasil_resiBulanan = array_sum($total_resiBulanan);
-        // die(var_dump($d_resiBulanan));
+        $inc = mysqli_query($conn, "SELECT * FROM income_media WHERE status = 'OK'");
+        while($data_inc = mysqli_fetch_array($inc))
+        {
+            $i++;   
+            $d_income = $data_inc['jumlah_tf'];
+            $total_income[$i] = $d_income;
+            $hasil_income = array_sum($total_income);
+        }
+
+        $inc1 = mysqli_query($conn, "SELECT * FROM 2022_data_income");
+        while($data_inc1 = mysqli_fetch_array($inc1))
+        {
+            $i++;   
+            $d_resi1 = $data_inc1['income_tanpaResi'];
+            $total_resi1[$i] = $d_resi1;
+
+            $hasil_resi1 = array_sum($total_resi1);
+        }
+
+        $incFbPB = mysqli_query($conn, "SELECT data_akun.id_pengurus, data_akun.nama_akun, data_akun.team, income_media.jumlah_tf, income_media.pemegang 
+        FROM data_akun JOIN income_media ON income_media.nama_akun = data_akun.nama_akun WHERE data_akun.team = 'Facebook Pusat' AND MONTH(tanggal_tf)= '$bln' AND income_media.status = 'OK'");
+        while($data_incFbPB = mysqli_fetch_array($incFbPB))
+        {
+            $i++;   
+            $d_incomeFbPB = $data_incFbPB['jumlah_tf'];
+            $total_incomeFbPB[$i] = $d_incomeFbPB;
+
+            $hasil_incomeFbPB = array_sum($total_incomeFbPB);
+        }
+        
+        $incFbP = mysqli_query($conn, "SELECT data_akun.id_pengurus, data_akun.nama_akun, data_akun.team, income_media.jumlah_tf, income_media.pemegang 
+        FROM data_akun JOIN income_media ON income_media.nama_akun = data_akun.nama_akun WHERE data_akun.team = 'Facebook Pusat' AND income_media.status = 'OK'");
+        while($data_incFbP = mysqli_fetch_array($incFbP))
+        {
+            $i++;   
+            $d_incomeFbP = $data_incFbP['jumlah_tf'];
+            $total_incomeFbP[$i] = $d_incomeFbP;
+
+            $hasil_incomeFbP = array_sum($total_incomeFbP);
+        }
+
+        $incFbTB = mysqli_query($conn, "SELECT data_akun.id_pengurus, data_akun.nama_akun, data_akun.team, income_media.jumlah_tf, income_media.pemegang 
+        FROM data_akun JOIN income_media ON income_media.nama_akun = data_akun.nama_akun WHERE data_akun.team = 'Facebook Taman' AND MONTH(tanggal_tf)= '$bln' AND income_media.status = 'OK'");
+        while($data_incFbTB = mysqli_fetch_array($incFbTB))
+        {
+            $i++;   
+            $d_incomeFbTB = $data_incFbTB['jumlah_tf'];
+            $total_incomeFbTB[$i] = $d_incomeFbTB;
+
+            $hasil_incomeFbTB = array_sum($total_incomeFbTB);
+            // die(var_dump($hasil_incomeBulanan));
+        }
+        
+        $incFbT = mysqli_query($conn, "SELECT data_akun.id_pengurus, data_akun.nama_akun, data_akun.team, income_media.jumlah_tf, income_media.pemegang 
+        FROM data_akun JOIN income_media ON income_media.nama_akun = data_akun.nama_akun WHERE data_akun.team = 'Facebook Taman' AND income_media.status = 'OK'");
+        while($data_incFbT = mysqli_fetch_array($incFbT))
+        {
+            $i++;   
+            $d_incomeFbT = $data_incFbT['jumlah_tf'];
+            $total_incomeFbT[$i] = $d_incomeFbT;
+
+            $hasil_incomeFbT = array_sum($total_incomeFbT);
+        }
+
+        $incFbBB = mysqli_query($conn, "SELECT data_akun.id_pengurus, data_akun.nama_akun, data_akun.team, income_media.jumlah_tf, income_media.pemegang 
+        FROM data_akun JOIN income_media ON income_media.nama_akun = data_akun.nama_akun WHERE data_akun.team = 'Facebook Bogor' AND MONTH(tanggal_tf)= '$bln' AND income_media.status = 'OK'");
+        while($data_incFbBB = mysqli_fetch_array($incFbBB))
+        {
+            $i++;   
+            $d_incomeFbBB = $data_incFbBB['jumlah_tf'];
+            $total_incomeFbBB[$i] = $d_incomeFbBB;
+
+            $hasil_incomeFbBB = array_sum($total_incomeFbBB);
+            // die(var_dump($hasil_incomeBulanan));
+        }
+        
+        $incFbB = mysqli_query($conn, "SELECT data_akun.id_pengurus, data_akun.nama_akun, data_akun.team, income_media.jumlah_tf, income_media.pemegang 
+        FROM data_akun JOIN income_media ON income_media.nama_akun = data_akun.nama_akun WHERE data_akun.team = 'Facebook Bogor' AND income_media.status = 'OK'");
+        while($data_incFbB = mysqli_fetch_array($incFbB))
+        {
+            $i++;   
+            $d_incomeFbB = $data_incFbB['jumlah_tf'];
+            $total_incomeFbB[$i] = $d_incomeFbB;
+
+            $hasil_incomeFbB = array_sum($total_incomeFbB);
+        }
+
+        $incIgMB = mysqli_query($conn, "SELECT data_akun.id_pengurus, data_akun.nama_akun, data_akun.team, income_media.jumlah_tf, income_media.pemegang 
+        FROM data_akun JOIN income_media ON income_media.nama_akun = data_akun.nama_akun WHERE data_akun.team = 'Instagram Meruyung' AND MONTH(tanggal_tf)= '$bln' AND income_media.status = 'OK'");
+        while($data_incIgMB = mysqli_fetch_array($incIgMB))
+        {
+            $i++;   
+            $d_incomeIgMB = $data_incIgMB['jumlah_tf'];
+            $total_incomeIgMB[$i] = $d_incomeIgMB;
+
+            $hasil_incomeIgMB = array_sum($total_incomeIgMB);
+            // die(var_dump($hasil_incomeBulanan));
+        }
+        
+        
+        $incIgM = mysqli_query($conn, "SELECT data_akun.id_pengurus, data_akun.nama_akun, data_akun.team, income_media.jumlah_tf, income_media.pemegang 
+        FROM data_akun JOIN income_media ON income_media.nama_akun = data_akun.nama_akun WHERE data_akun.team = 'Instagram Meruyung' AND income_media.status = 'OK'");
+        while($data_incIgM = mysqli_fetch_array($incIgM))
+        {
+            $i++;   
+            $d_incomeIgM = $data_incIgM['jumlah_tf'];
+            $total_incomeIgM[$i] = $d_incomeIgM;
+
+            $hasil_incomeIgM = array_sum($total_incomeIgM);
+        }
+
+        $incIgBB = mysqli_query($conn, "SELECT data_akun.id_pengurus, data_akun.nama_akun, data_akun.team, income_media.jumlah_tf, income_media.pemegang 
+        FROM data_akun JOIN income_media ON income_media.nama_akun = data_akun.nama_akun WHERE data_akun.team = 'Instagram Bojong' AND MONTH(tanggal_tf)= '$bln' AND income_media.status = 'OK'");
+        while($data_incIgBB = mysqli_fetch_array($incIgBB))
+        {
+            $i++;   
+            $d_incomeIgBB = $data_incIgBB['jumlah_tf'];
+            $total_incomeIgBB[$i] = $d_incomeIgBB;
+
+            $hasil_incomeIgBB = array_sum($total_incomeIgBB);
+            // die(var_dump($hasil_incomeBulanan));
+        }
+        
+        $incIgB = mysqli_query($conn, "SELECT data_akun.id_pengurus, data_akun.nama_akun, data_akun.team, income_media.jumlah_tf, income_media.pemegang 
+        FROM data_akun JOIN income_media ON income_media.nama_akun = data_akun.nama_akun WHERE data_akun.team = 'Instagram Bojong' AND income_media.status = 'OK'");
+        while($data_incIgB = mysqli_fetch_array($incIgB))
+        {
+            $i++;   
+            $d_incomeIgB = $data_incIgB['jumlah_tf'];
+            $total_incomeIgB[$i] = $d_incomeIgB;
+
+            $hasil_incomeIgB = array_sum($total_incomeIgB);
+        }
+
+        $incIgTB = mysqli_query($conn, "SELECT data_akun.id_pengurus, data_akun.nama_akun, data_akun.team, income_media.jumlah_tf, income_media.pemegang 
+        FROM data_akun JOIN income_media ON income_media.nama_akun = data_akun.nama_akun WHERE data_akun.team = 'Instagram Taman' AND MONTH(tanggal_tf)= '$bln' AND income_media.status = 'OK'");
+        while($data_incIgTB = mysqli_fetch_array($incIgTB))
+        {
+            $i++;   
+            $d_incomeIgTB = $data_incIgTB['jumlah_tf'];
+            $total_incomeIgTB[$i] = $d_incomeIgTB;
+
+            $hasil_incomeIgTB = array_sum($total_incomeIgTB);
+            // die(var_dump($hasil_incomeBulanan));
+        }
+        
+        $incIgT = mysqli_query($conn, "SELECT data_akun.id_pengurus, data_akun.nama_akun, data_akun.team, income_media.jumlah_tf, income_media.pemegang 
+        FROM data_akun JOIN income_media ON income_media.nama_akun = data_akun.nama_akun WHERE data_akun.team = 'Instagram Taman' AND income_media.status = 'OK'");
+        while($data_incIgT = mysqli_fetch_array($incIgT))
+        {
+            $i++;   
+            $d_incomeIgT = $data_incIgT['jumlah_tf'];
+            $total_incomeIgT[$i] = $d_incomeIgT;
+
+            $hasil_incomeIgT = array_sum($total_incomeIgT);
+        }
+
+        $pemasukanMedia     = $hasil_incomeBulanan+$hasil_resiB;
+
+        $pemasukanYayasanBulanan = $hasil_incomeBulanan+$hasil_resiB;+$cashback_globalBulananan;
+
+        // tahun
+        $pemasukanMediaT = $hasil_income+$hasil_resi1;
+        $pemasukanYayasanGlobal = $pemasukanMediaT+$cashback_global;
+        
+    } else {
+        $incBulanan = mysqli_query($conn, "SELECT * FROM 2022_data_income WHERE bulan = '$bulanan'");
+        while($data_incBulanan = mysqli_fetch_array($incBulanan))
+        {
+            $i++;   
+            $d_incomeBulanan = $data_incBulanan['income_global'];
+            $total_incomeBulanan[$i] = $d_incomeBulanan;
+
+            $hasil_incomeBulanan = array_sum($total_incomeBulanan);
+
+            $d_resiBulanan = $data_incBulanan['income_tanpaResi'];
+            $total_resiBulanan[$i] = $d_resiBulanan;
+
+            $hasil_resiBulanan = array_sum($total_resiBulanan);
+            // die(var_dump($d_resiBulanan));
+        }
+
+        $inc1 = mysqli_query($conn, "SELECT * FROM 2022_data_income");
+        while($data_inc1 = mysqli_fetch_array($inc1))
+        {
+            $i++;   
+            $d_income1 = $data_inc1['income_global'];
+            $total_income1[$i] = $d_income1;
+
+            $hasil_income1 = array_sum($total_income1);
+
+            $d_resi1 = $data_inc1['income_tanpaResi'];
+            $total_resi1[$i] = $d_resi1;
+
+            $hasil_resi1 = array_sum($total_resi1);
+        }
+
+        $pemasukanYayasanBulanan = $hasil_incomeBulanan + $hasil_resiBulanan+$cashback_globalBulananan;
+
+        // tahun
+        $pemasukanYayasanWresi = $hasil_income1+$hasil_resi1;
+        $pemasukanYayasanGlobal = $hasil_income1+$hasil_resi1+$cashback_global;
     }
-
-    $inc1 = mysqli_query($conn, "SELECT * FROM 2022_data_income");
-    while($data_inc1 = mysqli_fetch_array($inc1))
-    {
-        $i++;   
-        $d_income1 = $data_inc1['income_global'];
-        $total_income1[$i] = $d_income1;
-
-        $hasil_income1 = array_sum($total_income1);
-
-        $d_resi1 = $data_inc1['income_tanpaResi'];
-        $total_resi1[$i] = $d_resi1;
-
-        $hasil_resi1 = array_sum($total_resi1);
-    }
-
-    $pemasukanYayasanBulanan = $hasil_incomeBulanan + $hasil_resiBulanan+$cashback_globalBulananan;
-
-    // tahun
-    $pemasukanYayasanWresi = $hasil_income1+$hasil_resi1;
-    $pemasukanYayasanGlobal = $hasil_income1+$hasil_resi1+$cashback_global;
     
 } elseif ($_SESSION["id_pengurus"] == "kepala_cabang") {
     // program
@@ -676,6 +863,8 @@ if ($_SESSION["id_pengurus"] == "ketua_yayasan" || $_SESSION["id_pengurus"] == "
 ?>
 
 <?php if ($_SESSION["id_pengurus"] == "ketua_yayasan" || $_SESSION["id_pengurus"] == "management_keuangan") { ?>
+<?php if ($_SESSION["id_pengurus"] == "ketua_yayasan") { ?>
+<?php } else { ?>
 <!-- Card -->
 <div class="col-xxl-4 col-md-4">
     <div class="card info-card customers-card">
@@ -689,8 +878,8 @@ if ($_SESSION["id_pengurus"] == "ketua_yayasan" || $_SESSION["id_pengurus"] == "
                 <div class="ps-3">
                     <h6 data-bs-toggle="tooltip" data-bs-placement="right" data-bs-html="true"
                         title="Media Sosial : <?= number_format($hasil_incomeBulanan,0,"." , ".") ?> <br> Tanpa Resi : <?= number_format($hasil_resiBulanan,0,"." , ".") ?> <br> Cashback : <?= number_format($cashback_globalBulananan,0,"." , ".") ?>">
-                        Rp. <?= number_format($pemasukanYayasanBulanan,0,"." , ".") ?> <i
-                            class="bi bi-question-diamond-fill"></i></h6>
+                        Rp. <?= number_format($pemasukanYayasanBulanan,0,"." , ".") ?> <i class="bi bi-info-circle"></i>
+                    </h6>
                 </div>
             </div>
         </div>
@@ -710,8 +899,8 @@ if ($_SESSION["id_pengurus"] == "ketua_yayasan" || $_SESSION["id_pengurus"] == "
                 <div class="ps-3">
                     <h6 data-bs-toggle="tooltip" data-bs-placement="right" data-bs-html="true"
                         title="Media Sosial : <?= number_format($hasil_income1,0,"." , ".") ?> <br> Tanpa Resi : <?= number_format($hasil_resi1,0,"." , ".") ?>">
-                        Rp. <?= number_format($pemasukanYayasanWresi,0,"." , ".") ?> <i
-                            class="bi bi-question-diamond-fill"></i></h6>
+                        Rp. <?= number_format($pemasukanYayasanWresi,0,"." , ".") ?> <i class="bi bi-info-circle"></i>
+                    </h6>
                     <a
                         href="<?= $_SESSION["username"] ?>.php?id_database=database_pemasukanMedia&idMedia=mediaGlobal&id_periode=<?= $bln; ?>"><span
                             class="detail-bulanan">Lihat bulanan →</span>
@@ -735,14 +924,15 @@ if ($_SESSION["id_pengurus"] == "ketua_yayasan" || $_SESSION["id_pengurus"] == "
                 <div class="ps-3">
                     <h6 data-bs-toggle="tooltip" data-bs-placement="right" data-bs-html="true"
                         title="Media Sosial : <?= number_format($hasil_income1,0,"." , ".") ?> <br> Tanpa Resi : <?= number_format($hasil_resi1,0,"." , ".") ?> <br> Cashback : <?= number_format($cashback_global,0,"." , ".") ?>">
-                        Rp. <?= number_format($pemasukanYayasanGlobal,0,"." , ".") ?> <i
-                            class="bi bi-question-diamond-fill"></i></h6>
+                        Rp. <?= number_format($pemasukanYayasanGlobal,0,"." , ".") ?> <i class="bi bi-info-circle"></i>
+                    </h6>
                 </div>
             </div>
         </div>
     </div>
 </div><!-- End Card -->
 
+<?php } ?>
 <!-- Card -->
 <div class="col-xxl-12">
     <div class="splide" id="splide">
@@ -1041,20 +1231,37 @@ if ($_SESSION["id_pengurus"] == "ketua_yayasan" || $_SESSION["id_pengurus"] == "
     </div>
 </div>
 
-<div class="col-xxl-4 col-md-4">
+<div class="col-xxl-6 col-md-6">
     <div class="card info-card sales-card">
         <div class="card-body">
-            <h5 class="card-title">Anggaran <span>| Bulan Ini</span>
+            <h5 class="card-title">Kegiatan Yayasan <span>| Bulan Ini</span>
+                <a
+                    href="<?= $_SESSION["username"] ?>.php?id_database=database_global&id_ebudget=globalData&id_periode=<?= $bln; ?>">
+                    <i class="bi bi-folder-symlink-fill text-primary" data-bs-toggle="tooltip" data-bs-placement="right"
+                        title="Lihat detail bulan ini">
+                        <i class="text-danger">New !</i>
+                    </i>
+                </a>
             </h5>
             <div class="d-flex align-items-center">
                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                    <i class="bi bi-graph-up"></i>
+                    <i class="bi bi-receipt-cutoff"></i>
                 </div>
                 <div class="ps-3">
-                    <h6>Rp. <?= number_format($anggaran_globalBulanan,0,"." , ".") ?></h6>
-                    <a
-                        href="<?= $_SESSION["username"] ?>.php?id_database=database_global&id_ebudget=globalData&id_periode=<?= $bln; ?>"><span
-                            class="detail-bulanan">Lihat bulanan →</span></a>
+                    <h6>Rp.
+                        <?= number_format($anggaran_globalBulanan,0,"." , ".") ?> <i
+                            class="bi bi-info-circle text-black" data-bs-toggle="tooltip" data-bs-placement="right"
+                            title="Anggaran"></i>
+                    </h6>
+                    <h6 class="text-danger">Rp.
+                        <?= number_format($terpakai_globalBulanan,0,"." , ".") ?>- <i
+                            class="bi bi-info-circle text-black" data-bs-toggle="tooltip" data-bs-placement="right"
+                            title="Terpakai"></i></h6>
+                    <h6 class="text-success">Rp.
+                        <?= number_format($cashback_globalBulananan,0,"." , ".") ?> <i
+                            class="bi bi-info-circle text-black" data-bs-toggle="tooltip" data-bs-placement="right"
+                            title="Cashback"></i>
+                    </h6>
                 </div>
             </div>
         </div>
@@ -1062,67 +1269,51 @@ if ($_SESSION["id_pengurus"] == "ketua_yayasan" || $_SESSION["id_pengurus"] == "
 </div><!-- End Card -->
 
 <!-- Card -->
-<div class="col-xxl-4 col-md-4">
-    <div class="card info-card revenue-card">
-        <div class="card-body">
-            <h5 class="card-title">Terpakai <span>| Bulan Ini</span></h5>
-            <div class="d-flex align-items-center">
-                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                    <i class="bi bi-graph-down"></i>
-                </div>
-                <div class="ps-3">
-                    <h6>Rp. <?= number_format($terpakai_globalBulanan,0,"." , ".") ?></h6>
-                </div>
-            </div>
-        </div>
-    </div>
-</div><!-- End Card -->
-
-<!-- Card -->
-<div class="col-xxl-4 col-md-4">
-    <div class="card info-card customers-card">
-        <div class="card-body">
-            <h5 class="card-title">Cashback <span>| Bulan Ini</span></h5>
-            <div class="d-flex align-items-center">
-                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                    <i class="bi bi-cash-coin"></i>
-                </div>
-                <div class="ps-3">
-                    <h6>Rp. <?= number_format($cashback_globalBulananan,0,"." , ".") ?></h6>
-                </div>
-            </div>
-        </div>
-    </div>
-</div><!-- End Card -->
-
-<!-- Card -->
-<div class="col-xxl-4 col-md-4">
+<div class="col-xxl-6 col-md-6">
     <div class="card info-card sales-card">
         <div class="card-body">
-            <h5 class="card-title">Anggaran <span>| Global</span></h5>
+            <h5 class="card-title">Kegiatan Yayasan <span>| Global</span></h5>
             <div class="d-flex align-items-center">
                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                    <i class="bi bi-graph-up"></i>
+                    <i class="bi bi-receipt-cutoff"></i>
                 </div>
                 <div class="ps-3">
-                    <h6>Rp. <?= number_format($anggaran_global,0,"." , ".") ?></h6>
+                    <h6>Rp.
+                        <?= number_format($anggaran_global,0,"." , ".") ?> <i class="bi bi-info-circle text-black"
+                            data-bs-toggle="tooltip" data-bs-placement="right" title="Anggaran"></i>
+                    </h6>
+                    <h6 class="text-danger">Rp.
+                        <?= number_format($terpakai_global,0,"." , ".") ?>- <i class="bi bi-info-circle text-black"
+                            data-bs-toggle="tooltip" data-bs-placement="right" title="Terpakai"></i></h6>
+                    <h6 class="text-success">Rp.
+                        <?= number_format($cashback_global,0,"." , ".") ?> <i class="bi bi-info-circle text-black"
+                            data-bs-toggle="tooltip" data-bs-placement="right" title="Cashback"></i>
+                    </h6>
                 </div>
             </div>
         </div>
     </div>
 </div><!-- End Card -->
 
+<?php if ($_SESSION["id_pengurus"] == "ketua_yayasan") { ?>
 <!-- Card -->
 <div class="col-xxl-4 col-md-4">
-    <div class="card info-card revenue-card">
+    <div class="card info-card customers-card">
         <div class="card-body">
-            <h5 class="card-title">Terpakai <span>| Global</span></h5>
+            <h5 class="card-title">Pemasukan Media <span>| <?= $bulanan; ?></span></h5>
             <div class="d-flex align-items-center">
                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                    <i class="bi bi-graph-down"></i>
+                    <i class="bi bi-cash-coin"></i>
                 </div>
                 <div class="ps-3">
-                    <h6>Rp. <?= number_format($terpakai_global,0,"." , ".") ?></h6>
+                    <h6>Rp.
+                        <?= number_format($pemasukanMedia,0,"." , ".") ?> <i class="bi bi-info-circle text-black"
+                            data-bs-toggle="tooltip" data-bs-placement="right" data-bs-html="true"
+                            title="FB Pusat : <?= number_format($hasil_incomeFbPB,0,".","."); ?> <br>FB Taman: <?= number_format($hasil_incomeFbTB,0,".","."); ?> <br>FB Bogor : <?= number_format($hasil_incomeFbBB,0,".","."); ?> <br>IG Meruyung : <?= number_format($hasil_incomeIgMB,0,".","."); ?> <br> IG Bojong : <?= number_format($hasil_incomeIgBB,0,".","."); ?> <br> IG Taman : <?= number_format($hasil_incomeIgTB,0,".","."); ?> <br>Non Resi : <?= number_format($hasil_resiB,0,".","."); ?>"></i>
+                    </h6>
+                    <a href="<?= $_SESSION["username"] ?>.php?idTeam=teamMedia"><span class="detail-bulanan">Lihat
+                            detail →</span>
+                    </a>
                 </div>
             </div>
         </div>
@@ -1133,18 +1324,109 @@ if ($_SESSION["id_pengurus"] == "ketua_yayasan" || $_SESSION["id_pengurus"] == "
 <div class="col-xxl-4 col-md-4">
     <div class="card info-card customers-card">
         <div class="card-body">
-            <h5 class="card-title">Cashback <span>| Global</span></h5>
+            <h5 class="card-title">Pemasukan Cashback <span>| <?= $bulanan; ?></span></h5>
             <div class="d-flex align-items-center">
                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                     <i class="bi bi-cash-coin"></i>
                 </div>
                 <div class="ps-3">
-                    <h6>Rp. <?= number_format($cashback_global,0,"." , ".") ?></h6>
+                    <h6>Rp.
+                        <?= number_format($cashback_globalBulananan,0,"." , ".") ?> <i
+                            class="bi bi-info-circle text-black" data-bs-toggle="tooltip" data-bs-placement="right"
+                            title="Cashback Kegiatan Yayasan"></i>
+                    </h6>
                 </div>
             </div>
         </div>
     </div>
 </div><!-- End Card -->
+
+<!-- Card -->
+<div class="col-xxl-4 col-md-4">
+    <div class="card info-card customers-card">
+        <div class="card-body">
+            <h5 class="card-title">Pemasukan Global <span>| <?= $bulanan; ?></span></h5>
+            <div class="d-flex align-items-center">
+                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                    <i class="bi bi-cash-coin"></i>
+                </div>
+                <div class="ps-3">
+                    <h6>Rp.
+                        <?= number_format($pemasukanYayasanBulanan,0,"." , ".") ?> <i
+                            class="bi bi-info-circle text-black" data-bs-toggle="tooltip" data-bs-placement="right"
+                            title="Total dari pemasukan media + cashback"></i>
+                    </h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!-- End Card -->
+
+<!-- Card -->
+<div class="col-xxl-4 col-md-4">
+    <div class="card info-card customers-card">
+        <div class="card-body">
+            <h5 class="card-title">Pemasukan Tahunan <span>| Media</span></h5>
+            <div class="d-flex align-items-center">
+                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                    <i class="bi bi-cash-coin"></i>
+                </div>
+                <div class="ps-3">
+                    <h6>Rp.
+                        <?= number_format($pemasukanMediaT,0,"." , ".") ?> <i class="bi bi-info-circle text-black"
+                            data-bs-toggle="tooltip" data-bs-placement="right" data-bs-html="true"
+                            title="FB Pusat : <?= number_format($hasil_incomeFbP,0,".","."); ?> <br>FB Taman: <?= number_format($hasil_incomeFbT,0,".","."); ?> <br>FB Bogor : <?= number_format($hasil_incomeFbB,0,".","."); ?> <br>IG Meruyung : <?= number_format($hasil_incomeIgM,0,".","."); ?> <br> IG Bojong : <?= number_format($hasil_incomeIgB,0,".","."); ?> <br> IG Taman : <?= number_format($hasil_incomeIgT,0,".","."); ?> <br>Non Resi : <?= number_format($hasil_resi1,0,".","."); ?>"></i>
+                    </h6>
+                    <a href="<?= $_SESSION["username"] ?>.php?idTeam=teamMedia"><span class="detail-bulanan">Lihat
+                            detail →</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!-- End Card -->
+
+<!-- Card -->
+<div class="col-xxl-4 col-md-4">
+    <div class="card info-card customers-card">
+        <div class="card-body">
+            <h5 class="card-title">Pemasukan Tahunan <span>| Cashback</span></h5>
+            <div class="d-flex align-items-center">
+                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                    <i class="bi bi-cash-coin"></i>
+                </div>
+                <div class="ps-3">
+                    <h6>Rp.
+                        <?= number_format($cashback_global,0,"." , ".") ?> <i class="bi bi-info-circle text-black"
+                            data-bs-toggle="tooltip" data-bs-placement="right" title="Cashback Kegiatan Yayasan"></i>
+                    </h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!-- End Card -->
+
+<!-- Card -->
+<div class="col-xxl-4 col-md-4">
+    <div class="card info-card customers-card">
+        <div class="card-body">
+            <h5 class="card-title">Pemasukan Tahunan <span>| Global</span></h5>
+            <div class="d-flex align-items-center">
+                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                    <i class="bi bi-cash-coin"></i>
+                </div>
+                <div class="ps-3">
+                    <h6>Rp.
+                        <?= number_format($pemasukanYayasanGlobal,0,"." , ".") ?> <i
+                            class="bi bi-info-circle text-black" data-bs-toggle="tooltip" data-bs-placement="right"
+                            title="Total dari pemasukan media + cashback"></i>
+                    </h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!-- End Card -->
+<?php } ?>
 
 <?php } elseif ($_SESSION["id_pengurus"] == "kepala_pengajuan") { ?>
 <!-- Card -->
@@ -1445,20 +1727,37 @@ if ($_SESSION["id_pengurus"] == "ketua_yayasan" || $_SESSION["id_pengurus"] == "
     </div>
 </div>
 
-<div class="col-xxl-4 col-md-4">
+<div class="col-xxl-6 col-md-6">
     <div class="card info-card sales-card">
         <div class="card-body">
-            <h5 class="card-title">Anggaran <span>| Bulan Ini</span>
+            <h5 class="card-title">Kegiatan Yayasan <span>| Bulan Ini</span>
+                <a
+                    href="<?= $_SESSION["username"] ?>.php?id_database=database_global&id_ebudget=globalData&id_periode=<?= $bln; ?>">
+                    <i class="bi bi-folder-symlink-fill text-primary" data-bs-toggle="tooltip" data-bs-placement="right"
+                        title="Lihat detail bulan ini">
+                        <i class="text-danger">New !</i>
+                    </i>
+                </a>
             </h5>
             <div class="d-flex align-items-center">
                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                    <i class="bi bi-graph-up"></i>
+                    <i class="bi bi-receipt-cutoff"></i>
                 </div>
                 <div class="ps-3">
-                    <h6>Rp. <?= number_format($anggaran_globalBulanan,0,"." , ".") ?></h6>
-                    <a
-                        href="<?= $_SESSION["username"] ?>.php?id_database=database_global&id_ebudget=globalData&id_periode=<?= $bln; ?>"><span
-                            class="detail-bulanan">Lihat bulanan →</span></a>
+                    <h6>Rp.
+                        <?= number_format($anggaran_globalBulanan,0,"." , ".") ?> <i
+                            class="bi bi-info-circle text-black" data-bs-toggle="tooltip" data-bs-placement="right"
+                            title="Anggaran"></i>
+                    </h6>
+                    <h6 class="text-danger">Rp.
+                        <?= number_format($terpakai_globalBulanan,0,"." , ".") ?>- <i
+                            class="bi bi-info-circle text-black" data-bs-toggle="tooltip" data-bs-placement="right"
+                            title="Terpakai"></i></h6>
+                    <h6 class="text-success">Rp.
+                        <?= number_format($cashback_globalBulananan,0,"." , ".") ?> <i
+                            class="bi bi-info-circle text-black" data-bs-toggle="tooltip" data-bs-placement="right"
+                            title="Cashback"></i>
+                    </h6>
                 </div>
             </div>
         </div>
@@ -1466,91 +1765,31 @@ if ($_SESSION["id_pengurus"] == "ketua_yayasan" || $_SESSION["id_pengurus"] == "
 </div><!-- End Card -->
 
 <!-- Card -->
-<div class="col-xxl-4 col-md-4">
-    <div class="card info-card revenue-card">
-        <div class="card-body">
-            <h5 class="card-title">Terpakai <span>| Bulan Ini</span></h5>
-            <div class="d-flex align-items-center">
-                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                    <i class="bi bi-graph-down"></i>
-                </div>
-                <div class="ps-3">
-                    <h6>Rp. <?= number_format($terpakai_globalBulanan,0,"." , ".") ?></h6>
-                </div>
-            </div>
-        </div>
-    </div>
-</div><!-- End Card -->
-
-<!-- Card -->
-<div class="col-xxl-4 col-md-4">
-    <div class="card info-card customers-card">
-        <div class="card-body">
-            <h5 class="card-title">Cashback <span>| Bulan Ini</span></h5>
-            <div class="d-flex align-items-center">
-                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                    <i class="bi bi-cash-coin"></i>
-                </div>
-                <div class="ps-3">
-                    <h6>Rp. <?= number_format($cashback_globalBulananan,0,"." , ".") ?></h6>
-                </div>
-            </div>
-        </div>
-    </div>
-</div><!-- End Card -->
-
-<!-- Card -->
-<div class="col-xxl-4 col-md-4">
+<div class="col-xxl-6 col-md-6">
     <div class="card info-card sales-card">
         <div class="card-body">
-            <h5 class="card-title">Anggaran <span>| Global</span></h5>
-
+            <h5 class="card-title">Kegiatan Yayasan <span>| Global</span></h5>
             <div class="d-flex align-items-center">
                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                    <i class="bi bi-graph-up"></i>
+                    <i class="bi bi-receipt-cutoff"></i>
                 </div>
                 <div class="ps-3">
-                    <h6>Rp. <?= number_format($anggaran_global,0,"." , ".") ?></h6>
+                    <h6>Rp.
+                        <?= number_format($anggaran_global,0,"." , ".") ?> <i class="bi bi-info-circle text-black"
+                            data-bs-toggle="tooltip" data-bs-placement="right" title="Anggaran"></i>
+                    </h6>
+                    <h6 class="text-danger">Rp.
+                        <?= number_format($terpakai_global,0,"." , ".") ?>- <i class="bi bi-info-circle text-black"
+                            data-bs-toggle="tooltip" data-bs-placement="right" title="Terpakai"></i></h6>
+                    <h6 class="text-success">Rp.
+                        <?= number_format($cashback_global,0,"." , ".") ?> <i class="bi bi-info-circle text-black"
+                            data-bs-toggle="tooltip" data-bs-placement="right" title="Cashback"></i>
+                    </h6>
                 </div>
             </div>
         </div>
     </div>
 </div><!-- End Card -->
-
-<!-- Card -->
-<div class="col-xxl-4 col-md-4">
-    <div class="card info-card revenue-card">
-        <div class="card-body">
-            <h5 class="card-title">Terpakai <span>| Global</span></h5>
-            <div class="d-flex align-items-center">
-                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                    <i class="bi bi-graph-down"></i>
-                </div>
-                <div class="ps-3">
-                    <h6>Rp. <?= number_format($terpakai_global,0,"." , ".") ?></h6>
-                </div>
-            </div>
-        </div>
-    </div>
-</div><!-- End Card -->
-
-<!-- Card -->
-<div class="col-xxl-4 col-md-4">
-    <div class="card info-card customers-card">
-        <div class="card-body">
-            <h5 class="card-title">Cashback <span>| Global</span></h5>
-            <div class="d-flex align-items-center">
-                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                    <i class="bi bi-cash-coin"></i>
-                </div>
-                <div class="ps-3">
-                    <h6>Rp. <?= number_format($cashback_global,0,"." , ".") ?></h6>
-                </div>
-            </div>
-        </div>
-    </div>
-</div><!-- End Card -->
-
 
 <?php } elseif ($_SESSION["id_pengurus"] == "kepala_cabang") { ?>
 <!-- Card -->

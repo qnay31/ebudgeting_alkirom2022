@@ -50,13 +50,15 @@
                         <?php if ($_GET["id_dataManagement"] == "paudqu") { ?>
                         <a class="btn btn-success"
                             href="<?= $_SESSION["username"] ?>.php?id_forms=forms_laporan&id_dataManagement=paudqu&id_unik=<?= $r['id'] ?>&id_p=<?= $bln ?>"
-                            onclick="return confirm('Semua tugas selesai, siap laporkan !!')">Laporan</a>
+                            onclick="return confirm('Semua tugas selesai, siap laporkan !!')"><i
+                                class="bi bi-box-arrow-right text-white"></i></a>
                         <?php } else { ?>
                         <a class="btn btn-success"
                             href="<?= $_SESSION["username"] ?>.php?id_forms=forms_laporan&id_dataManagement=program&id_unik=<?= $r['id'] ?>&id_p=<?= $bln ?>"
-                            onclick="return confirm('Semua tugas selesai, siap laporkan !!')">Laporan</a>
+                            onclick="return confirm('Semua tugas selesai, siap laporkan !!')"><i
+                                class="bi bi-report text-white"></i></a>
                         <?php } ?>
-                        
+
                     </td>
                     <?php } elseif ($r['status_b'] == "OK") { ?>
                     <td style=" text-align: center;">
@@ -80,7 +82,7 @@
                             href="../models/forms/hapus_pengajuan/hapus_program.php?id_unik=<?= $r['id'] ?>&id_p=<?= $bln ?>"
                             onclick="return confirm('Yakin anggaran ini mau dihapus?!')">Hapus</a>
                         <?php } ?>
-                        
+
                     </td>
                     <?php } ?>
                     <td>Rp. <?= number_format($r['dana_anggaran'],0,"." , ".") ?></td>

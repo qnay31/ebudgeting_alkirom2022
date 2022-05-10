@@ -687,7 +687,7 @@ if ($_SESSION["id_pengurus"] == "ketua_yayasan" || $_SESSION["id_pengurus"] == "
     $bln       = substr($bulan, 5,-3);
     $i = 1;
     
-    if ($_SESSION["username"] == "admin_facebook") {
+    if ($_SESSION["username"] == "facebook_taman") {
         $incBulanan = mysqli_query($conn, "SELECT data_akun.id_pengurus, data_akun.nama_akun, data_akun.team, income_media.jumlah_tf, income_media.pemegang 
         FROM data_akun JOIN income_media ON income_media.nama_akun = data_akun.nama_akun WHERE data_akun.team = 'Facebook Taman' AND MONTH(tanggal_tf)= '$bln' AND income_media.status = 'OK'");
         while($data_incBulanan = mysqli_fetch_array($incBulanan))
@@ -726,6 +726,30 @@ if ($_SESSION["id_pengurus"] == "ketua_yayasan" || $_SESSION["id_pengurus"] == "
         
         $inc = mysqli_query($conn, "SELECT data_akun.id_pengurus, data_akun.nama_akun, data_akun.team, income_media.jumlah_tf, income_media.pemegang 
         FROM data_akun JOIN income_media ON income_media.nama_akun = data_akun.nama_akun WHERE data_akun.team = 'Facebook Pusat' AND income_media.status = 'OK'");
+        while($data_inc = mysqli_fetch_array($inc))
+        {
+            $i++;   
+            $d_income = $data_inc['jumlah_tf'];
+            $total_income[$i] = $d_income;
+
+            $hasil_income = array_sum($total_income);
+        }
+
+    } elseif ($_SESSION["username"] == "admin_facebook") {
+        $incBulanan = mysqli_query($conn, "SELECT data_akun.id_pengurus, data_akun.nama_akun, data_akun.team, income_media.jumlah_tf, income_media.pemegang 
+        FROM data_akun JOIN income_media ON income_media.nama_akun = data_akun.nama_akun WHERE data_akun.team = 'Facebook Taman II' AND MONTH(tanggal_tf)= '$bln' AND income_media.status = 'OK'");
+        while($data_incBulanan = mysqli_fetch_array($incBulanan))
+        {
+            $i++;   
+            $d_incomeBulanan = $data_incBulanan['jumlah_tf'];
+            $total_incomeBulanan[$i] = $d_incomeBulanan;
+
+            $hasil_incomeBulanan = array_sum($total_incomeBulanan);
+            // die(var_dump($hasil_incomeBulanan));
+        }
+        
+        $inc = mysqli_query($conn, "SELECT data_akun.id_pengurus, data_akun.nama_akun, data_akun.team, income_media.jumlah_tf, income_media.pemegang 
+        FROM data_akun JOIN income_media ON income_media.nama_akun = data_akun.nama_akun WHERE data_akun.team = 'Facebook Taman II' AND income_media.status = 'OK'");
         while($data_inc = mysqli_fetch_array($inc))
         {
             $i++;   

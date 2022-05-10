@@ -48,6 +48,29 @@
 
     }
 
+    // fb taman II
+    $qftIIBulan   = mysqli_query($conn, "SELECT data_akun.id_pengurus, data_akun.nama_akun, data_akun.team, income_media.jumlah_tf 
+    FROM data_akun JOIN income_media ON income_media.nama_akun = data_akun.nama_akun WHERE data_akun.team = 'Facebook Taman II' AND MONTH(tanggal_tf)= '$bln' AND income_media.status = 'OK'");
+
+    while ($iftIIBulan = mysqli_fetch_array($qftIIBulan)) {
+        $i++;
+        $incftIIBulan      = $iftIIBulan["jumlah_tf"];
+        $totftIIBulan[$i]  = $incftIIBulan;
+        $hiftIIBulan       = array_sum($totftIIBulan);
+
+    }
+
+    $qftII   = mysqli_query($conn, "SELECT data_akun.id_pengurus, data_akun.nama_akun, data_akun.team, income_media.jumlah_tf 
+    FROM data_akun JOIN income_media ON income_media.nama_akun = data_akun.nama_akun WHERE data_akun.team = 'Facebook Taman II' AND income_media.status = 'OK'");
+
+    while ($iftII = mysqli_fetch_array($qftII)) {
+        $i++;
+        $incftII      = $iftII["jumlah_tf"];
+        $totftII[$i]  = $incftII;
+        $hiftII       = array_sum($totftII);
+
+    }
+
     // fb bogor
     $qfbBulan   = mysqli_query($conn, "SELECT data_akun.id_pengurus, data_akun.nama_akun, data_akun.team, income_media.jumlah_tf 
     FROM data_akun JOIN income_media ON income_media.nama_akun = data_akun.nama_akun WHERE data_akun.team = 'Facebook Bogor' AND MONTH(tanggal_tf)= '$bln' AND income_media.status = 'OK'");
@@ -141,11 +164,11 @@
 
 <div class="row pt-4">
     <?php if ($_SESSION["username"] == "facebook_depok") { ?>
-    <div class="col-xxl-6 col-md-6">
+    <div class="col-xxl-4 col-md-4">
         <div class="card info-card customers-card">
             <div class="card-body">
                 <h5 class="card-title">
-                    Facebook Pusat
+                    Facebook Pusat/NANI
                 </h5>
 
                 <div class="d-flex align-items-center">
@@ -154,11 +177,10 @@
                     </div>
                     <div class="ps-3">
                         <h6 data-bs-toggle="tooltip" data-bs-placement="right" title="<?= $sBulan; ?>">
-                            Rp. <?= number_format($hifpBulan, 0,"." , "."); ?> <i
-                                class="bi bi-question-diamond-fill"></i>
+                            Rp. <?= number_format($hifpBulan, 0,"." , "."); ?> <i class="bi bi-info-circle"></i>
                         </h6>
                         <h6 data-bs-toggle="tooltip" data-bs-placement="right" title="Tahunan">
-                            Rp. <?= number_format($hifp, 0,"." , "."); ?> <i class="bi bi-question-diamond-fill"></i>
+                            Rp. <?= number_format($hifp, 0,"." , "."); ?> <i class="bi bi-info-circle"></i>
                         </h6>
                     </div>
                 </div>
@@ -166,11 +188,11 @@
         </div>
     </div>
 
-    <div class="col-xxl-6 col-md-6">
+    <div class="col-xxl-4 col-md-4">
         <div class="card info-card customers-card">
             <div class="card-body">
                 <h5 class="card-title">
-                    Facebook Taman
+                    Facebook Taman/RENAL
                 </h5>
 
                 <div class="d-flex align-items-center">
@@ -179,11 +201,34 @@
                     </div>
                     <div class="ps-3">
                         <h6 data-bs-toggle="tooltip" data-bs-placement="right" title="<?= $sBulan; ?>">
-                            Rp. <?= number_format($hiftBulan, 0,"." , "."); ?> <i
-                                class="bi bi-question-diamond-fill"></i>
+                            Rp. <?= number_format($hiftBulan, 0,"." , "."); ?> <i class="bi bi-info-circle"></i>
                         </h6>
                         <h6 data-bs-toggle="tooltip" data-bs-placement="right" title="Tahunan">
-                            Rp. <?= number_format($hift, 0,"." , "."); ?> <i class="bi bi-question-diamond-fill"></i>
+                            Rp. <?= number_format($hift, 0,"." , "."); ?> <i class="bi bi-info-circle"></i>
+                        </h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xxl-4 col-md-4">
+        <div class="card info-card customers-card">
+            <div class="card-body">
+                <h5 class="card-title">
+                    Facebook Taman II/RIZKA
+                </h5>
+
+                <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                        <i class="bi bi-credit-card"></i>
+                    </div>
+                    <div class="ps-3">
+                        <h6 data-bs-toggle="tooltip" data-bs-placement="right" title="<?= $sBulan; ?>">
+                            Rp. <?= number_format($hiftIIBulan, 0,"." , "."); ?> <i class="bi bi-info-circle"></i>
+                        </h6>
+                        <h6 data-bs-toggle="tooltip" data-bs-placement="right" title="Tahunan">
+                            Rp. <?= number_format($hiftII, 0,"." , "."); ?> <i class="bi bi-info-circle"></i>
                         </h6>
                     </div>
                 </div>
@@ -205,11 +250,10 @@
                     </div>
                     <div class="ps-3">
                         <h6 data-bs-toggle="tooltip" data-bs-placement="right" title="<?= $sBulan; ?>">
-                            Rp. <?= number_format($hifbBulan, 0,"." , "."); ?> <i
-                                class="bi bi-question-diamond-fill"></i>
+                            Rp. <?= number_format($hifbBulan, 0,"." , "."); ?> <i class="bi bi-info-circle"></i>
                         </h6>
                         <h6 data-bs-toggle="tooltip" data-bs-placement="right" title="Tahunan">
-                            Rp. <?= number_format($hifb, 0,"." , "."); ?> <i class="bi bi-question-diamond-fill"></i>
+                            Rp. <?= number_format($hifb, 0,"." , "."); ?> <i class="bi bi-info-circle"></i>
                         </h6>
                     </div>
                 </div>
@@ -231,11 +275,10 @@
                     </div>
                     <div class="ps-3">
                         <h6 data-bs-toggle="tooltip" data-bs-placement="right" title="<?= $sBulan; ?>">
-                            Rp. <?= number_format($hiibBulan, 0,"." , "."); ?> <i
-                                class="bi bi-question-diamond-fill"></i>
+                            Rp. <?= number_format($hiibBulan, 0,"." , "."); ?> <i class="bi bi-info-circle"></i>
                         </h6>
                         <h6 data-bs-toggle="tooltip" data-bs-placement="right" title="Tahunan">
-                            Rp. <?= number_format($hiib, 0,"." , "."); ?> <i class="bi bi-question-diamond-fill"></i>
+                            Rp. <?= number_format($hiib, 0,"." , "."); ?> <i class="bi bi-info-circle"></i>
                         </h6>
                     </div>
                 </div>
@@ -256,11 +299,10 @@
                     </div>
                     <div class="ps-3">
                         <h6 data-bs-toggle="tooltip" data-bs-placement="right" title="<?= $sBulan; ?>">
-                            Rp. <?= number_format($hiitBulan, 0,"." , "."); ?> <i
-                                class="bi bi-question-diamond-fill"></i>
+                            Rp. <?= number_format($hiitBulan, 0,"." , "."); ?> <i class="bi bi-info-circle"></i>
                         </h6>
                         <h6 data-bs-toggle="tooltip" data-bs-placement="right" title="Tahunan">
-                            Rp. <?= number_format($hiit, 0,"." , "."); ?> <i class="bi bi-question-diamond-fill"></i>
+                            Rp. <?= number_format($hiit, 0,"." , "."); ?> <i class="bi bi-info-circle"></i>
                         </h6>
                     </div>
                 </div>
@@ -281,11 +323,10 @@
                     </div>
                     <div class="ps-3">
                         <h6 data-bs-toggle="tooltip" data-bs-placement="right" title="<?= $sBulan; ?>">
-                            Rp. <?= number_format($hiimBulan, 0,"." , "."); ?> <i
-                                class="bi bi-question-diamond-fill"></i>
+                            Rp. <?= number_format($hiimBulan, 0,"." , "."); ?> <i class="bi bi-info-circle"></i>
                         </h6>
                         <h6 data-bs-toggle="tooltip" data-bs-placement="right" title="Tahunan">
-                            Rp. <?= number_format($hiim, 0,"." , "."); ?> <i class="bi bi-question-diamond-fill"></i>
+                            Rp. <?= number_format($hiim, 0,"." , "."); ?> <i class="bi bi-info-circle"></i>
                         </h6>
                     </div>
                 </div>
@@ -298,7 +339,7 @@
         <div class="card info-card customers-card">
             <div class="card-body">
                 <h5 class="card-title">
-                    Facebook Pusat
+                    Facebook Pusat/NANI
                 </h5>
 
                 <div class="d-flex align-items-center">
@@ -307,11 +348,10 @@
                     </div>
                     <div class="ps-3">
                         <h6 data-bs-toggle="tooltip" data-bs-placement="right" title="<?= $sBulan; ?>">
-                            Rp. <?= number_format($hifpBulan, 0,"." , "."); ?> <i
-                                class="bi bi-question-diamond-fill"></i>
+                            Rp. <?= number_format($hifpBulan, 0,"." , "."); ?> <i class="bi bi-info-circle"></i>
                         </h6>
                         <h6 data-bs-toggle="tooltip" data-bs-placement="right" title="Tahunan">
-                            Rp. <?= number_format($hifp, 0,"." , "."); ?> <i class="bi bi-question-diamond-fill"></i>
+                            Rp. <?= number_format($hifp, 0,"." , "."); ?> <i class="bi bi-info-circle"></i>
                         </h6>
                     </div>
                 </div>
@@ -323,7 +363,7 @@
         <div class="card info-card customers-card">
             <div class="card-body">
                 <h5 class="card-title">
-                    Facebook Taman
+                    Facebook Taman/RENAL
                 </h5>
 
                 <div class="d-flex align-items-center">
@@ -332,11 +372,10 @@
                     </div>
                     <div class="ps-3">
                         <h6 data-bs-toggle="tooltip" data-bs-placement="right" title="<?= $sBulan; ?>">
-                            Rp. <?= number_format($hiftBulan, 0,"." , "."); ?> <i
-                                class="bi bi-question-diamond-fill"></i>
+                            Rp. <?= number_format($hiftBulan, 0,"." , "."); ?> <i class="bi bi-info-circle"></i>
                         </h6>
                         <h6 data-bs-toggle="tooltip" data-bs-placement="right" title="Tahunan">
-                            Rp. <?= number_format($hift, 0,"." , "."); ?> <i class="bi bi-question-diamond-fill"></i>
+                            Rp. <?= number_format($hift, 0,"." , "."); ?> <i class="bi bi-info-circle"></i>
                         </h6>
                     </div>
                 </div>
@@ -348,7 +387,7 @@
         <div class="card info-card customers-card">
             <div class="card-body">
                 <h5 class="card-title">
-                    Facebook Bogor
+                    Facebook Taman II/RIZKA
                 </h5>
 
                 <div class="d-flex align-items-center">
@@ -357,11 +396,10 @@
                     </div>
                     <div class="ps-3">
                         <h6 data-bs-toggle="tooltip" data-bs-placement="right" title="<?= $sBulan; ?>">
-                            Rp. <?= number_format($hifbBulan, 0,"." , "."); ?> <i
-                                class="bi bi-question-diamond-fill"></i>
+                            Rp. <?= number_format($hiftIIBulan, 0,"." , "."); ?> <i class="bi bi-info-circle"></i>
                         </h6>
                         <h6 data-bs-toggle="tooltip" data-bs-placement="right" title="Tahunan">
-                            Rp. <?= number_format($hifb, 0,"." , "."); ?> <i class="bi bi-question-diamond-fill"></i>
+                            Rp. <?= number_format($hiftII, 0,"." , "."); ?> <i class="bi bi-info-circle"></i>
                         </h6>
                     </div>
                 </div>
@@ -373,7 +411,7 @@
         <div class="card info-card customers-card">
             <div class="card-body">
                 <h5 class="card-title">
-                    Instagram Bojong
+                    Facebook Bogor/OMI
                 </h5>
 
                 <div class="d-flex align-items-center">
@@ -382,11 +420,10 @@
                     </div>
                     <div class="ps-3">
                         <h6 data-bs-toggle="tooltip" data-bs-placement="right" title="<?= $sBulan; ?>">
-                            Rp. <?= number_format($hiibBulan, 0,"." , "."); ?> <i
-                                class="bi bi-question-diamond-fill"></i>
+                            Rp. <?= number_format($hifbBulan, 0,"." , "."); ?> <i class="bi bi-info-circle"></i>
                         </h6>
                         <h6 data-bs-toggle="tooltip" data-bs-placement="right" title="Tahunan">
-                            Rp. <?= number_format($hiib, 0,"." , "."); ?> <i class="bi bi-question-diamond-fill"></i>
+                            Rp. <?= number_format($hifb, 0,"." , "."); ?> <i class="bi bi-info-circle"></i>
                         </h6>
                     </div>
                 </div>
@@ -398,7 +435,7 @@
         <div class="card info-card customers-card">
             <div class="card-body">
                 <h5 class="card-title">
-                    Instagram Taman
+                    Instagram Bojong/FAHMI
                 </h5>
 
                 <div class="d-flex align-items-center">
@@ -407,11 +444,10 @@
                     </div>
                     <div class="ps-3">
                         <h6 data-bs-toggle="tooltip" data-bs-placement="right" title="<?= $sBulan; ?>">
-                            Rp. <?= number_format($hiitBulan, 0,"." , "."); ?> <i
-                                class="bi bi-question-diamond-fill"></i>
+                            Rp. <?= number_format($hiibBulan, 0,"." , "."); ?> <i class="bi bi-info-circle"></i>
                         </h6>
                         <h6 data-bs-toggle="tooltip" data-bs-placement="right" title="Tahunan">
-                            Rp. <?= number_format($hiit, 0,"." , "."); ?> <i class="bi bi-question-diamond-fill"></i>
+                            Rp. <?= number_format($hiib, 0,"." , "."); ?> <i class="bi bi-info-circle"></i>
                         </h6>
                     </div>
                 </div>
@@ -423,7 +459,7 @@
         <div class="card info-card customers-card">
             <div class="card-body">
                 <h5 class="card-title">
-                    Instagram Meruyung
+                    Instagram Taman/IDHAM
                 </h5>
 
                 <div class="d-flex align-items-center">
@@ -432,11 +468,34 @@
                     </div>
                     <div class="ps-3">
                         <h6 data-bs-toggle="tooltip" data-bs-placement="right" title="<?= $sBulan; ?>">
-                            Rp. <?= number_format($hiimBulan, 0,"." , "."); ?> <i
-                                class="bi bi-question-diamond-fill"></i>
+                            Rp. <?= number_format($hiitBulan, 0,"." , "."); ?> <i class="bi bi-info-circle"></i>
                         </h6>
                         <h6 data-bs-toggle="tooltip" data-bs-placement="right" title="Tahunan">
-                            Rp. <?= number_format($hiim, 0,"." , "."); ?> <i class="bi bi-question-diamond-fill"></i>
+                            Rp. <?= number_format($hiit, 0,"." , "."); ?> <i class="bi bi-info-circle"></i>
+                        </h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xxl-4 col-md-4">
+        <div class="card info-card customers-card">
+            <div class="card-body">
+                <h5 class="card-title">
+                    Instagram Meruyung/PUJI
+                </h5>
+
+                <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                        <i class="bi bi-credit-card"></i>
+                    </div>
+                    <div class="ps-3">
+                        <h6 data-bs-toggle="tooltip" data-bs-placement="right" title="<?= $sBulan; ?>">
+                            Rp. <?= number_format($hiimBulan, 0,"." , "."); ?> <i class="bi bi-info-circle"></i>
+                        </h6>
+                        <h6 data-bs-toggle="tooltip" data-bs-placement="right" title="Tahunan">
+                            Rp. <?= number_format($hiim, 0,"." , "."); ?> <i class="bi bi-info-circle"></i>
                         </h6>
                     </div>
                 </div>

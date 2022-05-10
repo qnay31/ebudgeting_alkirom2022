@@ -25,7 +25,7 @@ $table = 'laporan_media';
 $primaryKey = 'id';
 
 if ($_SESSION["id_pengurus"] == "manager_facebook" || $_SESSION["id_pengurus"] == "manager_instagram") {
-    if ($_SESSION["username"] == "admin_facebook" || $_SESSION["username"] == "sekretaris_facebook" || $_SESSION["username"] == "facebook_pusat") {
+    if ($_SESSION["username"] == "admin_facebook" || $_SESSION["username"] == "facebook_taman" || $_SESSION["username"] == "facebook_pusat") {
         $where = "id_pengurus = 'facebook_depok' ORDER BY `tgl_laporan` DESC";
     
     } elseif ($_SESSION["username"] == "instagram_taman" || $_SESSION["username"] == "instagram_bojong" || $_SESSION["username"] == "instagram_meruyung") {

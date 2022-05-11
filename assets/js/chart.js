@@ -69,7 +69,7 @@ $.getJSON(
                     yAxes: [{
                         ticks: {
                             min: 0,
-                            max: 500000000,
+                            max: 700000000,
                             maxTicksLimit: 10,
                             callback: function (value, index, values) {
                                 if (parseInt(value) > 999) {
@@ -3033,7 +3033,7 @@ $.getJSON(
                     yAxes: [{
                         ticks: {
                             min: 0,
-                            max: 500000000,
+                            max: 700000000,
                             maxTicksLimit: 10,
                             callback: function (value, index, values) {
                                 if (parseInt(value) > 999) {
@@ -5302,7 +5302,7 @@ $.getJSON(
                     yAxes: [{
                         ticks: {
                             min: 0,
-                            max: 1000000000,
+                            max: 1400000000,
                             maxTicksLimit: 10,
                             callback: function (value, index, values) {
                                 if (parseInt(value) > 999) {

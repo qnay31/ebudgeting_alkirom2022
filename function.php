@@ -1730,7 +1730,7 @@ $qTeamAkun = mysqli_query($conn, "SELECT * FROM data_akun WHERE nomor_id = '$cha
 team = '$team'");
 $nTeamAkun = $qTeamAkun -> num_rows;
 // die(var_dump($nAkunName));
-if ($nAkunName === 1 && $nTeamAkun > 0) {
+if ($nAkunName === 1) {
 // update_target
 $update = mysqli_query($conn, "UPDATE `income_media` SET
 nomor_id = '$changeID',

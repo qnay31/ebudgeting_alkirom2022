@@ -140,7 +140,8 @@ if ($_GET["idCabang"] == "") {
         "UPDATE data_akun SET
             `id_pengurus`   ='facebook_depok',
             `cabang`        ='Depok',
-            `posisi`        ='Facebook Depok'
+            `posisi`        ='Facebook Depok',
+            `team`          =''
             WHERE nomor_id  = '$unik' AND nama_akun = '$namaAkun';
         ");
 
@@ -163,7 +164,8 @@ if ($_GET["idCabang"] == "") {
         "UPDATE data_akun SET
                 `id_pengurus`   ='facebook_bogor',
                 `cabang`        ='Bogor',
-                `posisi`        ='Facebook Bogor'
+                `posisi`        ='Facebook Bogor',
+                `team`          =''
                 WHERE nomor_id  = '$unik' AND nama_akun = '$namaAkun';
             ");
         
@@ -185,7 +187,8 @@ if ($_GET["idCabang"] == "") {
             "UPDATE data_akun SET
                 `id_pengurus`   ='instagram',
                 `cabang`        ='Depok',
-                `posisi`        ='Instagram'
+                `posisi`        ='Instagram',
+                `team`          =''
                 WHERE nomor_id  = '$unik' AND nama_akun = '$namaAkun';
             ");
         

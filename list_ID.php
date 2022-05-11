@@ -1,5 +1,6 @@
 <?php
 include "function.php";
+error_reporting(0);
 if (isset($_POST['namaChange'])) {
     $nama   = $_POST["namaChange"];
     $qID    = mysqli_query($conn, "SELECT * FROM akun_pengurus WHERE nama = '$nama'");
@@ -16,7 +17,12 @@ if (isset($_POST['namaChange'])) {
         ID dan tim pengurus
     </div>
     <input type="text" class="form-control" value="<?= $dID["id"]; ?>" readonly="">
+    <?php if ($dTeam["team"] == "") { ?>
+    <input type="text" class="form-control mt-1" value="Belum Ada Team" readonly="">
+
+    <?php } else { ?>
     <input type="text" class="form-control mt-1" value="Team <?= $dTeam["team"]; ?>" readonly="">
+    <?php } ?>
 </div>
 <?php } ?>
 

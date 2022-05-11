@@ -74,13 +74,14 @@ $query  = mysqli_query($conn, "SELECT * FROM akun_pengurus WHERE id_pengurus LIK
                                 oninvalid="this.setCustomValidity('ID pengurus tidak boleh kosong')"
                                 oninput="this.setCustomValidity('')">
                         </div>
-                        
+
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon1">Team</span>
                             <select class="form-select" name="team" aria-label="Default select example" required
                                 oninvalid="this.setCustomValidity('Tim tidak boleh kosong')"
                                 oninput="this.setCustomValidity('')">
                                 <option selected value="">- Pilih Salah Satu Team - </option>
+                                <option value="">Tidak Ada Team</option>
                                 <option value="Facebook Pusat">Team Facebook Pusat</option>
                                 <option value="Facebook Taman">Team Facebook Taman</option>
                                 <option value="Instagram Bojong">Team Instagram Bojong</option>

@@ -3692,7 +3692,7 @@
 
         <li class="nav-item"></i>
             <a class="nav-link collapsed"
-                href="https://ebudgeting.dompetdonasi.com/redirect.php?toAction=Ebudgeting&user=<?= $_SESSION["id_pengurus"] ?>"
+                href="https://localhost/dypa_ebudget/redirect.php?toAction=Ebudgeting&user=<?= $_SESSION["id_pengurus"] ?>"
                 target="_blank">
                 <i class="bi bi-stack"></i><span class="badge badge-danger badge-counter">New</span>
                 <span>DYPA Ebudgeting</span>

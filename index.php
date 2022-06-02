@@ -168,6 +168,9 @@ if(isset($_GET['pesan'])){
                                         <?php endif ?>
                                         <input type="submit" name="login" class="btn btn-success btn-user btn-block"
                                             value="MASUK">
+                                        <div class="text-right">
+                                            <a class="small" href="forget-password.php">Lupa Sandi</a>
+                                        </div>
                                     </form>
                                     <hr>
                                     <div class="text-center">

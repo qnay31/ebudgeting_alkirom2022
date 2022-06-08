@@ -84,7 +84,7 @@
 
         // fb bogor
         $qfbBulan   = mysqli_query($conn, "SELECT data_akun.id_pengurus, data_akun.nama_akun, data_akun.team, income_media.jumlah_tf 
-        FROM data_akun JOIN income_media ON income_media.nama_akun = data_akun.nama_akun WHERE data_akun.team = 'Facebook Bogor' AND MONTH(tanggal_tf)= '$bln' AND income_media.status = 'OK'");
+        FROM data_akun JOIN income_media ON income_media.nama_akun = data_akun.nama_akun WHERE data_akun.team = 'Facebook Bojong' AND MONTH(tanggal_tf)= '$bln' AND income_media.status = 'OK'");
 
         while ($ifbBulan = mysqli_fetch_array($qfbBulan)) {
             $i++;
@@ -95,7 +95,7 @@
         }
 
         $qfb   = mysqli_query($conn, "SELECT data_akun.id_pengurus, data_akun.nama_akun, data_akun.team, income_media.jumlah_tf 
-        FROM data_akun JOIN income_media ON income_media.nama_akun = data_akun.nama_akun WHERE data_akun.team = 'Facebook Bogor' AND income_media.status = 'OK'");
+        FROM data_akun JOIN income_media ON income_media.nama_akun = data_akun.nama_akun WHERE data_akun.team = 'Facebook Bojong' AND income_media.status = 'OK'");
 
         while ($ifb = mysqli_fetch_array($qfb)) {
             $i++;
@@ -240,7 +240,7 @@
 
         // fb bogor
         $qfbBulan   = mysqli_query($conn, "SELECT data_akun.id_pengurus, data_akun.nama_akun, data_akun.team, income_media.jumlah_tf 
-        FROM data_akun JOIN income_media ON income_media.nama_akun = data_akun.nama_akun WHERE data_akun.team = 'Facebook Bogor' AND MONTH(tanggal_tf)= '$bln' AND income_media.status = 'OK'");
+        FROM data_akun JOIN income_media ON income_media.nama_akun = data_akun.nama_akun WHERE data_akun.team = 'Facebook Bojong' AND MONTH(tanggal_tf)= '$bln' AND income_media.status = 'OK'");
 
         while ($ifbBulan = mysqli_fetch_array($qfbBulan)) {
             $i++;
@@ -251,7 +251,7 @@
         }
 
         $qfb   = mysqli_query($conn, "SELECT data_akun.id_pengurus, data_akun.nama_akun, data_akun.team, income_media.jumlah_tf 
-        FROM data_akun JOIN income_media ON income_media.nama_akun = data_akun.nama_akun WHERE data_akun.team = 'Facebook Bogor' AND income_media.status = 'OK'");
+        FROM data_akun JOIN income_media ON income_media.nama_akun = data_akun.nama_akun WHERE data_akun.team = 'Facebook Bojong' AND income_media.status = 'OK'");
 
         while ($ifb = mysqli_fetch_array($qfb)) {
             $i++;
@@ -336,38 +336,12 @@
     include 'teamPeriode.php';
 ?>
     <?php if ($_SESSION["username"] == "facebook_depok") { ?>
-    <div class="col-xxl-4 col-md-4">
-        <div class="card info-card customers-card">
-            <div class="card-body">
-                <h5 class="card-title">
-                    Facebook Pusat/NANI
-                </h5>
-
-                <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                        <i class="bi bi-credit-card"></i>
-                    </div>
-                    <div class="ps-3">
-                        <h6 data-bs-toggle="tooltip" data-bs-placement="right" title="<?= $sBulan; ?>">
-                            Rp. <?= number_format($hifpBulan, 0,"." , "."); ?> <i class="bi bi-info-circle"></i>
-                        </h6>
-                        <?php if ($_GET["id_periode"] == "") { ?>
-                        <h6 data-bs-toggle="tooltip" data-bs-placement="right" title="Tahunan">
-                            Rp. <?= number_format($hifp, 0,"." , "."); ?> <i class="bi bi-info-circle"></i>
-                        </h6>
-
-                        <?php } ?>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <div class="col-xxl-4 col-md-4">
         <div class="card info-card customers-card">
             <div class="card-body">
                 <h5 class="card-title">
-                    Facebook Taman/RENAL
+                    Facebook I/RENAL
                 </h5>
 
                 <div class="d-flex align-items-center">
@@ -394,7 +368,34 @@
         <div class="card info-card customers-card">
             <div class="card-body">
                 <h5 class="card-title">
-                    Facebook Taman II/RIZKA
+                    Facebook II/NANI
+                </h5>
+
+                <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                        <i class="bi bi-credit-card"></i>
+                    </div>
+                    <div class="ps-3">
+                        <h6 data-bs-toggle="tooltip" data-bs-placement="right" title="<?= $sBulan; ?>">
+                            Rp. <?= number_format($hifpBulan, 0,"." , "."); ?> <i class="bi bi-info-circle"></i>
+                        </h6>
+                        <?php if ($_GET["id_periode"] == "") { ?>
+                        <h6 data-bs-toggle="tooltip" data-bs-placement="right" title="Tahunan">
+                            Rp. <?= number_format($hifp, 0,"." , "."); ?> <i class="bi bi-info-circle"></i>
+                        </h6>
+
+                        <?php } ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xxl-4 col-md-4">
+        <div class="card info-card customers-card">
+            <div class="card-body">
+                <h5 class="card-title">
+                    Facebook III/RIZKA
                 </h5>
 
                 <div class="d-flex align-items-center">
@@ -528,38 +529,11 @@
     </div>
 
     <?php } else { ?>
-    <div class="col-xxl-4 col-md-4">
+    <div class="col-xxl-6 col-md-6">
         <div class="card info-card customers-card">
             <div class="card-body">
                 <h5 class="card-title">
-                    Facebook Pusat/NANI
-                </h5>
-
-                <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                        <i class="bi bi-credit-card"></i>
-                    </div>
-                    <div class="ps-3">
-                        <h6 data-bs-toggle="tooltip" data-bs-placement="right" title="<?= $sBulan; ?>">
-                            Rp. <?= number_format($hifpBulan, 0,"." , "."); ?> <i class="bi bi-info-circle"></i>
-                        </h6>
-                        <?php if ($_GET["id_periode"] == "") { ?>
-                        <h6 data-bs-toggle="tooltip" data-bs-placement="right" title="Tahunan">
-                            Rp. <?= number_format($hifp, 0,"." , "."); ?> <i class="bi bi-info-circle"></i>
-                        </h6>
-
-                        <?php } ?>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-xxl-4 col-md-4">
-        <div class="card info-card customers-card">
-            <div class="card-body">
-                <h5 class="card-title">
-                    Facebook Taman/RENAL
+                    Facebook I/RENAL
                 </h5>
 
                 <div class="d-flex align-items-center">
@@ -582,11 +556,38 @@
         </div>
     </div>
 
-    <div class="col-xxl-4 col-md-4">
+    <div class="col-xxl-6 col-md-6">
         <div class="card info-card customers-card">
             <div class="card-body">
                 <h5 class="card-title">
-                    Facebook Taman II/RIZKA
+                    Facebook II/NANI
+                </h5>
+
+                <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                        <i class="bi bi-credit-card"></i>
+                    </div>
+                    <div class="ps-3">
+                        <h6 data-bs-toggle="tooltip" data-bs-placement="right" title="<?= $sBulan; ?>">
+                            Rp. <?= number_format($hifpBulan, 0,"." , "."); ?> <i class="bi bi-info-circle"></i>
+                        </h6>
+                        <?php if ($_GET["id_periode"] == "") { ?>
+                        <h6 data-bs-toggle="tooltip" data-bs-placement="right" title="Tahunan">
+                            Rp. <?= number_format($hifp, 0,"." , "."); ?> <i class="bi bi-info-circle"></i>
+                        </h6>
+
+                        <?php } ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xxl-6 col-md-6">
+        <div class="card info-card customers-card">
+            <div class="card-body">
+                <h5 class="card-title">
+                    Facebook III/RIZKA
                 </h5>
 
                 <div class="d-flex align-items-center">
@@ -609,11 +610,11 @@
         </div>
     </div>
 
-    <div class="col-xxl-4 col-md-4">
+    <div class="col-xxl-6 col-md-6">
         <div class="card info-card customers-card">
             <div class="card-body">
                 <h5 class="card-title">
-                    Facebook Bogor/OMI
+                    Facebook IV/DWI
                 </h5>
 
                 <div class="d-flex align-items-center">
@@ -694,7 +695,7 @@
         <div class="card info-card customers-card">
             <div class="card-body">
                 <h5 class="card-title">
-                    Instagram Meruyung/PUJI
+                    Instagram Meruyung/ALDI
                 </h5>
 
                 <div class="d-flex align-items-center">

@@ -12,6 +12,11 @@
                     <th scope="col">Akun</th>
                     <th scope="col">Tgl Laporan</th>
                     <th scope="col">Periode</th>
+                    <th scope="col">Keterangan</th>
+                    <th scope="col">Total Teman</th>
+                    <th scope="col">Add Pertemanan</th>
+                    <th scope="col">Teman Baru</th>
+                    <th scope="col">Hapus Teman</th>
                     <th scope="col">Total Serangan</th>
                     <th scope="col">Respon</th>
                     <th scope="col">Minta Norek</th>
@@ -28,7 +33,10 @@
             </tbody>
             <tfoot>
                 <tr style="text-align: center;">
-                    <th colspan="6">Total</th>
+                    <th colspan="8">Total</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
                     <th></th>
                     <th></th>
                     <th></th>

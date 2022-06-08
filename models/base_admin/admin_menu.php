@@ -745,7 +745,7 @@ if ($key_admin == "akunEbudget") {
                 <tr style="text-align: center;">
                     <th scope="col">No</th>
                     <th scope="col">Pengurus</th>
-                    <th scope="col">Menu</th>
+                    <th scope="col">Keterangan</th>
                     <th scope="col">Akun</th>
                     <th scope="col">Tgl Laporan</th>
                     <th scope="col">Periode</th>
@@ -761,38 +761,7 @@ if ($key_admin == "akunEbudget") {
                 </tr>
             </thead>
             <tbody>
-                <?php
-                    $no = 1;
-                    while ($r = $q->fetch_assoc()) {
-                        $convert   = convertDateDBtoIndo($r['tgl_laporan']);
-                        $bulan     = substr($convert, 2);
-                ?>
-                <tr>
-                    <td style="text-align: center;"><?= $no++ ?></td>
-                    <td><?= ucwords($r['pemegang']) ?></td>
-                    <td style="text-align: center;">
-                        <a href=""><i class="bi bi-pencil" data-bs-toggle="tooltip" data-bs-placement="top"
-                                title="Edit"></i></a>&nbsp;|&nbsp;
-                        <a href=""><i class="bi bi-trash" data-bs-toggle="tooltip" data-bs-placement="top"
-                                title="Hapus"></i></a>
-                    </td>
-                    <td><?= ucwords($r['nama_akun']) ?></td>
-                    <td style="text-align: center;">
-                        <?= date('d-m-Y', strtotime($r['tgl_laporan'])); ?></td>
-                    <td style=" text-align: center;">
-                        <?= $bulan ?>
-                    </td>
-                    <td style="text-align: center;"><?= number_format($r['totalSerangan'],0,"." , ".") ?></td>
-                    <td style="text-align: center;"><?= number_format($r['respon'],0,"." , ".") ?></td>
-                    <td style="text-align: center;"><?= number_format($r['minta_norek'],0,"." , ".") ?></td>
-                    <td style="text-align: center;"><?= number_format($r['alamat'],0,"." , ".") ?></td>
-                    <td style="text-align: center;"><?= number_format($r['insya_allah'],0,"." , ".") ?></td>
-                    <td style="text-align: center;"><?= number_format($r['belumbisa_bantu'],0,"." , ".") ?></td>
-                    <td style="text-align: center;"><?= number_format($r['tidak_respon'],0,"." , ".") ?></td>
-                    <td style="text-align: center;"><?= number_format($r['donatur'],0,"." , ".") ?></td>
-                    <td><?= number_format($r['total_income']) ?></td>
-                </tr>
-                <?php } ?>
+
             </tbody>
             <tfoot>
                 <tr style="text-align: center;">

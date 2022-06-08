@@ -11,10 +11,10 @@
                 <option value="Facebook Pusat">Team Facebook Pusat</option>
                 <option value="Facebook Taman">Team Facebook Taman</option>
                 <option value="Facebook Taman II">Team Facebook Taman II</option>
-                <option value="Instagram Bojong">Team Instagram Bojong</option>
-                <option value="Instagram Taman">Team Instagram Taman</option>
+                <option value="Facebook Bojong">Team Facebook Bojong</option>
                 <option value="Instagram Meruyung">Team Instagram Meruyung</option>
-                <option value="Facebook Bogor">Team Facebook Bogor</option>
+                <option value="Instagram Taman">Team Instagram Taman</option>
+                <option value="Instagram Bojong">Team Instagram Bojong</option>
             </select>
         </div>
         <div class="form-group mb-3">

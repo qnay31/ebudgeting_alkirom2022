@@ -8,6 +8,9 @@ if ($_SESSION["username"] == "facebook_taman") {
 } elseif ($_SESSION["username"] == "facebook_pusat") {
     $pengurus   = mysqli_query($conn, "SELECT * FROM data_akun WHERE id_pengurus = 'facebook_depok' AND team = 'Facebook Pusat' GROUP BY pemegang ORDER BY `pemegang` ASC");
 
+} elseif ($_SESSION["username"] == "facebook_bojong") {
+    $pengurus   = mysqli_query($conn, "SELECT * FROM data_akun WHERE id_pengurus = 'facebook_depok' AND team = 'Facebook Bojong' GROUP BY pemegang ORDER BY `pemegang` ASC");
+
 } elseif ($_SESSION["username"] == "instagram_taman") {
     $pengurus   = mysqli_query($conn, "SELECT * FROM data_akun WHERE id_pengurus = 'instagram' AND team = 'Instagram Taman' GROUP BY pemegang ORDER BY `pemegang` ASC");
 
@@ -45,6 +48,7 @@ $nPengurus  = $pengurus->num_rows;
                         $_SESSION["username"] == "admin_facebook" ||
                         $_SESSION["username"] == "facebook_taman" ||
                         $_SESSION["username"] == "facebook_pusat" ||
+                        $_SESSION["username"] == "facebook_bojong" ||
                         $_SESSION["username"] == "instagram_taman" ||
                         $_SESSION["username"] == "instagram_bojong" ||
                         $_SESSION["username"] == "instagram_meruyung"
@@ -71,6 +75,9 @@ $nPengurus  = $pengurus->num_rows;
 
                                         } elseif ($_SESSION["username"] == "facebook_pusat") {
                                             $query   = mysqli_query($conn, "SELECT * FROM data_akun WHERE pemegang = '$data[pemegang]' AND team = 'Facebook Pusat' ORDER BY `nama_akun` ASC ");
+
+                                        } elseif ($_SESSION["username"] == "facebook_bojong") {
+                                            $query   = mysqli_query($conn, "SELECT * FROM data_akun WHERE pemegang = '$data[pemegang]' AND team = 'Facebook Bojong' ORDER BY `nama_akun` ASC ");
                                             
                                         } else {
                                             $query   = mysqli_query($conn, "SELECT * FROM data_akun WHERE pemegang = '$data[pemegang]' ORDER BY `nama_akun` ASC ");

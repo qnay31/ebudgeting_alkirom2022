@@ -2,20 +2,38 @@
 if ($_GET["id_database"] == "database_program") {
     if ($_SESSION["id_pengurus"] == "ketua_yayasan" || $_SESSION["id_pengurus"] == "kepala_pengajuan" || $_SESSION["id_pengurus"] == "management_keuangan") {
 
-        if ($_GET["id_periode"] == "") {
-            $q  = mysqli_query($conn, "SELECT * FROM 2022_program WHERE laporan = 'Terverifikasi' ORDER BY `tgl_pengajuan` DESC");
-            $pProgram = "Global";
-            
+        if ($_GET["yatim"] == "binaan") {
+            if ($_GET["id_periode"] == "") {
+                $q  = mysqli_query($conn, "SELECT * FROM 2022_program WHERE laporan = 'Terverifikasi' AND yatim = 'Yatim Binaan' ORDER BY `tgl_pengajuan` DESC");
+                $pProgram = "Global";
+                
+            } else {
+                $periode = $_GET["id_periode"];
+                $q  = mysqli_query($conn, "SELECT * FROM 2022_program WHERE laporan = 'Terverifikasi' AND yatim = 'Yatim Binaan' AND MONTH(tgl_pemakaian) = '$periode' ORDER BY `tgl_pengajuan` DESC");
+    
+                $q2  = mysqli_query($conn, "SELECT * FROM 2022_program WHERE laporan = 'Terverifikasi' AND yatim = 'Yatim Binaan' AND MONTH(tgl_pemakaian) = '$periode' ORDER BY `tgl_pengajuan` DESC");
+                
+                $data = mysqli_fetch_assoc($q);
+                $convert   = convertDateDBtoIndo($data['tgl_pemakaian']);
+                $pProgram     = substr($convert, 2, -5);
+                // die(var_dump($q));
+            }
         } else {
-            $periode = $_GET["id_periode"];
-            $q  = mysqli_query($conn, "SELECT * FROM 2022_program WHERE laporan = 'Terverifikasi' AND MONTH(tgl_pemakaian) = '$periode' ORDER BY `tgl_pengajuan` DESC");
-
-            $q2  = mysqli_query($conn, "SELECT * FROM 2022_program WHERE laporan = 'Terverifikasi' AND MONTH(tgl_pemakaian) = '$periode' ORDER BY `tgl_pengajuan` DESC");
-            
-            $data = mysqli_fetch_assoc($q);
-            $convert   = convertDateDBtoIndo($data['tgl_pemakaian']);
-            $pProgram     = substr($convert, 2, -5);
-            // die(var_dump($q));
+            if ($_GET["id_periode"] == "") {
+                $q  = mysqli_query($conn, "SELECT * FROM 2022_program WHERE laporan = 'Terverifikasi' AND yatim = 'Yatim Luar Binaan' ORDER BY `tgl_pengajuan` DESC");
+                $pProgram = "Global";
+                
+            } else {
+                $periode = $_GET["id_periode"];
+                $q  = mysqli_query($conn, "SELECT * FROM 2022_program WHERE laporan = 'Terverifikasi' AND yatim = 'Yatim Luar Binaan' AND MONTH(tgl_pemakaian) = '$periode' ORDER BY `tgl_pengajuan` DESC");
+    
+                $q2  = mysqli_query($conn, "SELECT * FROM 2022_program WHERE laporan = 'Terverifikasi' AND yatim = 'Yatim Luar Binaan' AND MONTH(tgl_pemakaian) = '$periode' ORDER BY `tgl_pengajuan` DESC");
+                
+                $data = mysqli_fetch_assoc($q);
+                $convert   = convertDateDBtoIndo($data['tgl_pemakaian']);
+                $pProgram     = substr($convert, 2, -5);
+                // die(var_dump($q));
+            }
         }
     
     } else {
@@ -79,12 +97,16 @@ if ($_GET["id_database"] == "database_program") {
             <!-- Left side columns pengajuan-->
             <div class="col-lg-12" id="form-pengajuan">
 
+                <?php if ($_GET["id_database"] == "database_program" && $_GET["yatim"] == "") { ?>
+
+                <?php } else { ?>
                 <!-- periode -->
                 <div class="col-12">
                     <div class="card">
                         <?php include '../models/database/sub-periode.php'; ?>
                     </div>
                 </div>
+                <?php } ?>
 
                 <!-- Laporan  -->
                 <div class="col-12">

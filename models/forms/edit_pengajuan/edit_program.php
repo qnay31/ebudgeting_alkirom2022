@@ -29,7 +29,7 @@
             <span class="input-group-text" id="basic-addon1">Kategori</span>
             <input type="text" class="form-control" name="program" value="<?= $judul ?>" readonly>
             <?php } ?>
-            
+
         </div>
 
         <div class="form-group mb-3">
@@ -43,11 +43,27 @@
                 <option value="Bogor">Bogor</option>
                 <option value="Depok">Depok</option>
             </select>
+
             <?php } else { ?>
             <input type="text" class="form-control" name="cabang" value="Depok" readonly>
             <?php } ?>
-            
+
         </div>
+
+        <?php if ($_GET["id_dataManagement"] == "program") { ?>
+        <div class="form-group mb-3">
+            <div class="form-text mb-2">
+                Yatim
+            </div>
+            <select class="form-select" aria-label="Default select example" name="yatim" required
+                oninvalid="this.setCustomValidity('Pilih salah satu cabang')" oninput="this.setCustomValidity('')">
+                <option selected value="<?= $data["yatim"] ?>"><?= $data["yatim"] ?></option>
+                <option value="Yatim Binaan">Binaan</option>
+                <option value="Yatim Luar Binaan">Luar Binaan</option>
+            </select>
+
+        </div>
+        <?php } ?>
 
         <div class="form-group mb-3">
             <div class="form-text mb-2">
@@ -66,7 +82,7 @@
             <input type="text" class="form-control" name="deskripsi" placeholder="perencanaan paudqu-elzamzam"
                 id="alpabet" style="text-transform: capitalize;" value="<?= $data["deskripsi"] ?>" autocomplete="off">
             <?php } ?>
-            
+
         </div>
 
         <div class="form-text mb-2">

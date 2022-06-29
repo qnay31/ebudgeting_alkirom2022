@@ -34,20 +34,25 @@
 
         </div>
 
+        <?php if ($_GET["id_dataManagement"] == "program") { ?>
+        <div class="form-group mb-3">
+            <div class="form-text mb-2">
+                Yatim
+            </div>
+            <select class="form-select" name="yatim" aria-label="Default select example" required
+                oninvalid="this.setCustomValidity('Pilih salah satu yatim')" oninput="this.setCustomValidity('')">
+                <option selected value="">Pilih Salah Satu Yatim</option>
+                <option value="Yatim Binaan">Binaan</option>
+                <option value="Yatim Luar Binaan">Luar Binaan</option>
+            </select>
+        </div>
+        <?php } ?>
+
         <div class="form-group mb-3">
             <div class="form-text mb-2">
                 Cabang
             </div>
-            <?php if ($_GET["id_dataManagement"] == "program") { ?>
-            <select class="form-select" aria-label="Default select example" name="cabang" required
-                oninvalid="this.setCustomValidity('Pilih salah satu cabang')" oninput="this.setCustomValidity('')">
-                <option selected value="">Pilih Salah Satu Cabang</option>
-                <option value="Bogor">Bogor</option>
-                <option value="Depok">Depok</option>
-            </select>
-            <?php } else { ?>
             <input type="text" class="form-control" name="cabang" value="Depok" readonly>
-            <?php } ?>
 
         </div>
 

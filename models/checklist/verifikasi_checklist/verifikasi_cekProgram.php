@@ -2,7 +2,7 @@
     <h5 class="card-title">CHECKLIST VERIFIKASI</h5>
     <div class="table-responsive">
         <div class="text-center">
-            <?php if ($_GET["id_checklist"] == "checklist_pengajuan") { ?>
+            <?php if ($_GET["id_checklist"] == "checklist_verifikasi") { ?>
             <label for=""><b style="color: black;">Pengajuan Program</b>
                 <hr>
             </label>
@@ -11,19 +11,20 @@
                 <hr>
             </label>
             <?php } ?>
-            
+
         </div>
         <table id="tabel-data_verifikasi" class="table table-bordered">
             <thead>
                 <tr style="text-align: center;">
                     <th scope="col">No</th>
-                    <?php if ($_GET["id_checklist"] == "checklist_pengajuan") { ?>
+                    <?php if ($_GET["id_checklist"] == "checklist_verifikasi") { ?>
                     <th scope="col">Program</th>
+                    <th scope="col">Yatim</th>
 
                     <?php } else { ?>
                     <th scope="col">Kategori</th>
-                    <?php } ?>
                     <th scope="col">Diajukan Oleh</th>
+                    <?php } ?>
                     <th scope="col">Cabang</th>
                     <th scope="col">Tgl Pengajuan</th>
                     <th scope="col">Perencanaan</th>
@@ -42,7 +43,14 @@
                 <tr>
                     <td style="text-align: center;"><?= $no++ ?></td>
                     <td><?= ucwords($r['program']) ?></td>
-                    <td><?= ucwords($r['posisi']) ?></td>
+                    <td>
+                        <?php if ($_GET["id_checklist"] == "checklist_verifikasi") { ?>
+                        <?= $r["yatim"]; ?>
+
+                        <?php } else { ?>
+                        <?= ucwords($r['posisi']) ?>
+                        <?php } ?>
+                    </td>
                     <td style="text-align: center;"><?= ucwords($r['cabang']) ?></td>
                     <td style="text-align: center;">
                         <?= date('d-m-Y', strtotime($r['tgl_pengajuan'])); ?></td>

@@ -15,6 +15,13 @@
                     <input type="text" class="form-control" name="program" value="<?= $data["program"] ?>" readonly>
                 </div>
 
+                <?php if ($_GET["id_dataManagement"] == "program") { ?>
+                <div class="input-group mb-1">
+                    <span class="input-group-text" id="basic-addon1"><b>Yatim</b></span>
+                    <input type="text" class="form-control" name="yatim" value="<?= $data["yatim"] ?>" readonly>
+                </div>
+                <?php } ?>
+
                 <div class="input-group mb-1">
                     <span class="input-group-text" id="basic-addon1"><b>Cabang</b></span>
                     <input type="text" class="form-control" value="<?= $data["cabang"] ?>" readonly>
@@ -92,7 +99,7 @@
                 <hr>
             </label>
             <?php } ?>
-            
+
         </div>
         <table id="tabel-data_laporan" class="table table-striped table-bordered nowrap">
             <thead>
@@ -140,18 +147,22 @@
                         <?php if ($_GET["id_dataManagement"] == "paudqu") { ?>
                         <a class="btn btn-primary"
                             href="../admin/<?= $_SESSION["username"] ?>.php?id_forms=edit_laporan&id_dataManagement=paudqu&id_unik=<?= $r['id'] ?>&id_p=<?= $bln ?>"
-                            onclick="return confirm('Yakin laporan ini mau diedit?!')">Edit</a> ||
+                            onclick="return confirm('Yakin laporan ini mau diedit?!')"><i
+                                class="bi bi-pencil text-white"></i></a> ||
                         <a class="btn btn-danger"
                             href="../models/forms/hapus_laporan/hapus_lapPaudqu.php?id_unik=<?= $r['id'] ?>&id_p=<?= $bln ?>"
-                            onclick="return confirm('Yakin anggaran ini mau dihapus?!')">Hapus</a>
+                            onclick="return confirm('Yakin anggaran ini mau dihapus?!')"><i
+                                class="bi bi-trash text-white"></i></a>
 
                         <?php } else { ?>
                         <a class="btn btn-primary"
                             href="../admin/<?= $_SESSION["username"] ?>.php?id_forms=edit_laporan&id_dataManagement=program&id_unik=<?= $r['id'] ?>&id_p=<?= $bln ?>"
-                            onclick="return confirm('Yakin laporan ini mau diedit?!')">Edit</a> ||
+                            onclick="return confirm('Yakin laporan ini mau diedit?!')"><i
+                                class="bi bi-pencil text-white"></i></a> ||
                         <a class="btn btn-danger"
                             href="../models/forms/hapus_laporan/hapus_lapProgram.php?id_unik=<?= $r['id'] ?>&id_p=<?= $bln ?>"
-                            onclick="return confirm('Yakin anggaran ini mau dihapus?!')">Hapus</a>
+                            onclick="return confirm('Yakin anggaran ini mau dihapus?!')"><i
+                                class="bi bi-trash text-white"></i></a>
                         <?php } ?>
 
                     </td>

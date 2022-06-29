@@ -19,12 +19,13 @@
                     <th scope="col">No</th>
                     <?php if ($_GET["id_checklist"] == "checklist_laporan") { ?>
                     <th scope="col">Program</th>
+                    <th scope="col">Yatim</th>
 
                     <?php } else { ?>
                     <th scope="col">Kategori</th>
-                    <?php } ?>
-                    
                     <th scope="col">Dilaporkan</th>
+                    <?php } ?>
+
                     <th scope="col">Cabang</th>
                     <th scope="col">Tgl Pengajuan</th>
                     <th scope="col">Perencanaan</th>
@@ -49,7 +50,12 @@
                 <tr>
                     <td style="text-align: center;"><?= $no++ ?></td>
                     <td><?= ucwords($r['program']) ?></td>
+                    <?php if ($_GET["id_checklist"] == "checklist_laporan") { ?>
+                    <td><?= ucwords($r['yatim']) ?></td>
+
+                    <?php } else { ?>
                     <td><?= ucwords($r['posisi']) ?></td>
+                    <?php } ?>
                     <td style="text-align: center;"><?= ucwords($r['cabang']) ?></td>
                     <td style="text-align: center;">
                         <?= date('d-m-Y', strtotime($r['tgl_pengajuan'])); ?></td>
@@ -62,12 +68,14 @@
                         <?php if ($_GET["id_checklist"] == "checklist_laporan") { ?>
                         <a class="btn btn-success"
                             href="../verif/laporan/lapProgram.php?id_unik=<?= $r['id'] ?>&id_p=<?= $bln ?>"
-                            onclick="return confirm('Laporan sudah selesai dan sudah yakin??!')">Konfirmasi</a>
+                            onclick="return confirm('Laporan sudah selesai dan sudah yakin??!')"><i
+                                class="bi bi-check2-all text-white"></i></a>
 
                         <?php } else { ?>
                         <a class="btn btn-success"
                             href="../verif/laporan/lapPaudqu.php?id_unik=<?= $r['id'] ?>&id_p=<?= $bln ?>"
-                            onclick="return confirm('Laporan sudah selesai dan sudah yakin??!')">Konfirmasi</a>
+                            onclick="return confirm('Laporan sudah selesai dan sudah yakin??!')"><i
+                                class="bi bi-check2-all text-white"></i></a>
                         <?php } ?>
                     </td>
                     <td>Rp. <?= number_format($terpakai,0,"." , ".") ?></td>

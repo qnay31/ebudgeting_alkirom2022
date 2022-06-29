@@ -189,7 +189,7 @@ if ($key_admin == "akunEbudget") {
                 <tr style="text-align: center;">
                     <th scope="col">No</th>
                     <th scope="col">Program</th>
-                    <th scope="col">Dilaporkan</th>
+                    <th scope="col">Yatim</th>
                     <th scope="col">Cabang</th>
                     <th scope="col">Periode</th>
                     <th scope="col">Tgl Pengajuan</th>
@@ -219,7 +219,19 @@ if ($key_admin == "akunEbudget") {
                 <tr>
                     <td style="text-align: center;"><?= $no++ ?></td>
                     <td><?= ucwords($r['program']) ?></td>
-                    <td><?= ucwords($r['posisi']) ?></td>
+                    <td>
+                        <?= ucwords($r['yatim']) ?>
+                        <a href="../models/base_admin/switchYatim.php?id_unik=<?= $r['id'] ?>">
+                            <?php if ($r['yatim'] == "Yatim Binaan") { ?>
+                            <i class="bi bi-arrow-left-right" data-bs-toggle="tooltip" data-bs-placement="top"
+                                title="ganti" onclick="return confirm('Pindahkan ke Yatim Luar Binaan?!')"></i>
+
+                            <?php } else { ?>
+                            <i class="bi bi-arrow-left-right" data-bs-toggle="tooltip" data-bs-placement="top"
+                                title="ganti" onclick="return confirm('Pindahkan ke Yatim Binaan?!')"></i>
+                            <?php } ?>
+                        </a>
+                    </td>
                     <td style="text-align: center;">
                         <?= ucwords($r['cabang']) ?>
                         <a

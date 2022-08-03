@@ -17,7 +17,7 @@
 
                 <?php if ($_GET["id_dataManagement"] == "program") { ?>
                 <div class="input-group mb-1">
-                    <span class="input-group-text" id="basic-addon1"><b>Yatim</b></span>
+                    <span class="input-group-text" id="basic-addon1"><b>Kategori</b></span>
                     <input type="text" class="form-control" name="yatim" value="<?= $data["yatim"] ?>" readonly>
                 </div>
                 <?php } ?>
@@ -107,11 +107,11 @@
                     <th scope="col">No</th>
                     <?php if ($_GET["id_dataManagement"] == "program") { ?>
                     <th scope="col">Program</th>
-
+                    <th scope="col">Kategori</th>
                     <?php } else { ?>
                     <th scope="col">Kategori</th>
+                    <th scope="col">Diajukan Oleh</th>
                     <?php } ?>
-                    <th scope="col">Dilaporkan</th>
                     <th scope="col">Tgl Pengajuan</th>
                     <th scope="col">Perencanaan</th>
                     <th scope="col">Anggaran</th>
@@ -135,7 +135,12 @@
                 <tr>
                     <td style="text-align: center;"><?= $no++ ?></td>
                     <td style="text-align: center;"><?= ucwords($r['program']) ?></td>
+                    <?php if ($_GET["id_dataManagement"] == "program") { ?>
+                    <td style="text-align: center;"><?= ucwords($r['yatim']) ?></td>
+
+                    <?php } else { ?>
                     <td style="text-align: center;"><?= ucwords($r['posisi']) ?></td>
+                    <?php } ?>
                     <td style="text-align: center;">
                         <?= date('d-m-Y', strtotime($r['tgl_pengajuan'])); ?></td>
                     <td><?= ucwords($r['deskripsi']) ?></td>

@@ -9,7 +9,7 @@
             <input type="hidden" name="posisi" value="<?= $_SESSION["posisi"] ?>">
             <?php if ($_GET["id_dataManagement"] == "program") { ?>
             <span class="input-group-text" id="basic-addon1">Program</span>
-            <select class="form-select" name="program" aria-label="Default select example">
+            <select class="form-select" name="program" aria-label="Default select example" id="menuProgram">
                 <option selected value="">Pilih Salah Satu Program</option>
                 <option value="Program Pendidikan Yatim">Pendidikan Yatim</option>
                 <option value="Program Kesehatan Yatim">Kesehatan Yatim</option>
@@ -22,9 +22,9 @@
                 <option value="Program Makan Sehat Yatim">Makan Sehat Yatim</option>
                 <option value="Program Sembako Yatim">Sembako Yatim</option>
                 <option value="Program Pesantren Yatim">Pesantren Yatim</option>
-                <option value="Gaji Kepala Sekolah">Gaji Kepala Sekolah</option>
-                <option value="Gaji Penjemput">Gaji Penjemput</option>
-                <option value="Zakat Fitrah">Zakat Fitrah</option>
+                <option value="Program Kamis Ceria">Kamis Ceria</option>
+                <option value="Program Asrama Yatim">Asrama Yatim</option>
+                <!--<option value="Zakat Fitrah">Zakat Fitrah</option>-->
                 <option value="Hampers">Hampers</option>
             </select>
             <?php } else { ?>
@@ -35,16 +35,7 @@
         </div>
 
         <?php if ($_GET["id_dataManagement"] == "program") { ?>
-        <div class="form-group mb-3">
-            <div class="form-text mb-2">
-                Yatim
-            </div>
-            <select class="form-select" name="yatim" aria-label="Default select example" required
-                oninvalid="this.setCustomValidity('Pilih salah satu yatim')" oninput="this.setCustomValidity('')">
-                <option selected value="">Pilih Salah Satu Yatim</option>
-                <option value="Yatim Binaan">Binaan</option>
-                <option value="Yatim Luar Binaan">Luar Binaan</option>
-            </select>
+        <div class="form-group mb-3" id="listProgram">
         </div>
         <?php } ?>
 

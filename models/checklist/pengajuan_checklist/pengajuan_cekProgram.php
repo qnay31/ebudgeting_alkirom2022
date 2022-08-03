@@ -19,7 +19,7 @@
                     <th scope="col">No</th>
                     <?php if ($_GET["id_checklist"] == "checklist_pengajuan") { ?>
                     <th scope="col">Program</th>
-                    <th scope="col">Yatim</th>
+                    <th scope="col">Kategori</th>
                     <?php } else { ?>
                     <th scope="col">Kategori</th>
                     <th scope="col">Diajukan Oleh</th>

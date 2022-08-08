@@ -69,6 +69,7 @@ $ip     = get_client_ip();
         $_SESSION["password"]     = $row["password"];
         $_SESSION["posisi"]       = $row["posisi"];
 
+        setcookie('idUser', $_SESSION['id_pengurus'], time() + (10 * 365 * 24 * 60 * 60) );
         setcookie('login', $_SESSION['username'], time() + (10 * 365 * 24 * 60 * 60) );
         // die(var_dump($data));
 

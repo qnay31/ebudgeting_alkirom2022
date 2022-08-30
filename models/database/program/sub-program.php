@@ -5,20 +5,27 @@
         <?php if ($_GET["yatim"] == "") { ?>
         <div class="media-select">
             <span class="yatim">
-                <a class="btn" href="<?= $_SESSION["username"] ?>.php?id_database=database_program&yatim=binaan">Yatim
+                <a class="btn bg-success"
+                    href="<?= $_SESSION["username"] ?>.php?id_database=database_program&yatim=binaan">Yatim
                     Binaan</a>
             </span>
 
             <span class="yatim">
-                <a class="btn"
+                <a class="btn bg-primary"
                     href="<?= $_SESSION["username"] ?>.php?id_database=database_program&yatim=luarBinaan">Luar
                     Binaan</a>
             </span>
 
             <span class="yatim">
-                <a class="btn"
+                <a class="btn bg-secondary"
                     href="<?= $_SESSION["username"] ?>.php?id_database=database_program&yatim=asramaYatim">Asrama
                     Yatim</a>
+            </span>
+
+            <span class="yatim">
+                <a class="btn bg-danger"
+                    href="<?= $_SESSION["username"] ?>.php?id_database=database_program&yatim=santunanBulanan">Santunan
+                    Bulanan</a>
             </span>
         </div>
 
@@ -26,15 +33,21 @@
         <?php if ($_GET["yatim"] == "binaan") { ?>
         <div class="media-select">
             <span class="yatim">
-                <a class="btn"
+                <a class="btn bg-primary"
                     href="<?= $_SESSION["username"] ?>.php?id_database=database_program&yatim=luarBinaan">Luar
                     Binaan</a>
             </span>
 
             <span class="yatim">
-                <a class="btn"
+                <a class="btn bg-secondary"
                     href="<?= $_SESSION["username"] ?>.php?id_database=database_program&yatim=asramaYatim">Asrama
                     Yatim</a>
+            </span>
+
+            <span class="yatim">
+                <a class="btn bg-danger"
+                    href="<?= $_SESSION["username"] ?>.php?id_database=database_program&yatim=santunanBulanan">Santunan
+                    Bulanan</a>
             </span>
 
         </div>
@@ -44,29 +57,65 @@
         <?php } elseif ($_GET["yatim"] == "luarBinaan") { ?>
         <div class="media-select">
             <span class="yatim">
-                <a class="btn" href="<?= $_SESSION["username"] ?>.php?id_database=database_program&yatim=binaan">Yatim
+                <a class="btn bg-success"
+                    href="<?= $_SESSION["username"] ?>.php?id_database=database_program&yatim=binaan">Yatim
                     Binaan</a>
             </span>
 
             <span class="yatim">
-                <a class="btn"
+                <a class="btn bg-secondary"
                     href="<?= $_SESSION["username"] ?>.php?id_database=database_program&yatim=asramaYatim">Asrama
                     Yatim</a>
+            </span>
+
+            <span class="yatim">
+                <a class="btn bg-danger"
+                    href="<?= $_SESSION["username"] ?>.php?id_database=database_program&yatim=santunanBulanan">Santunan
+                    Bulanan</a>
             </span>
         </div>
         <h5 class="card-title text-center">Laporan Program <?= $pProgram; ?> Luar Binaan</h5>
 
-        <?php } else { ?>
+        <?php } elseif ($_GET["yatim"] == "santunanBulanan") { ?>
         <div class="media-select">
             <span class="yatim">
-                <a class="btn" href="<?= $_SESSION["username"] ?>.php?id_database=database_program&yatim=binaan">Yatim
+                <a class="btn bg-success"
+                    href="<?= $_SESSION["username"] ?>.php?id_database=database_program&yatim=binaan">Yatim
                     Binaan</a>
             </span>
 
             <span class="yatim">
-                <a class="btn"
+                <a class="btn bg-primary"
                     href="<?= $_SESSION["username"] ?>.php?id_database=database_program&yatim=luarBinaan">Luar
                     Binaan</a>
+            </span>
+
+            <span class="yatim">
+                <a class="btn bg-secondary"
+                    href="<?= $_SESSION["username"] ?>.php?id_database=database_program&yatim=asramaYatim">Asrama
+                    Yatim</a>
+            </span>
+        </div>
+        <h5 class="card-title text-center">Laporan Program <?= $pProgram; ?> Santunan Bulanan </h5>
+
+        <?php } else { ?>
+        <div class="media-select">
+            <span class="yatim">
+                <a class="btn bg-success"
+                    href="<?= $_SESSION["username"] ?>.php?id_database=database_program&yatim=binaan">Yatim
+                    Binaan</a>
+            </span>
+
+            <span class="yatim">
+                <a class="btn bg-primary"
+                    href="<?= $_SESSION["username"] ?>.php?id_database=database_program&yatim=luarBinaan">Luar
+                    Binaan</a>
+            </span>
+
+            <span class="yatim">
+                <a class="btn bg-danger"
+                    href="<?= $_SESSION["username"] ?>.php?id_database=database_program&yatim=santunanBulanan">Santunan
+                    Bulanan</a>
             </span>
         </div>
         <h5 class="card-title text-center">Laporan Program <?= $pProgram; ?> Asrama Yatim</h5>

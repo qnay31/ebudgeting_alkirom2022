@@ -36,6 +36,24 @@ if ($_GET["id_database"] == "database_program") {
                 // die(var_dump($q));
             }
 
+        
+        } elseif ($_GET["yatim"] == "santunanBulanan") {
+            if ($_GET["id_periode"] == "") {
+                $q  = mysqli_query($conn, "SELECT * FROM 2022_program WHERE laporan = 'Terverifikasi' AND yatim = 'Santunan Bulanan' ORDER BY `tgl_pengajuan` DESC");
+                $pProgram = "Global";
+                
+            } else {
+                $periode = $_GET["id_periode"];
+                $q  = mysqli_query($conn, "SELECT * FROM 2022_program WHERE laporan = 'Terverifikasi' AND yatim = 'Santunan Bulanan' AND MONTH(tgl_pemakaian) = '$periode' ORDER BY `tgl_pengajuan` DESC");
+    
+                $q2  = mysqli_query($conn, "SELECT * FROM 2022_program WHERE laporan = 'Terverifikasi' AND yatim = 'Santunan Bulanan' AND MONTH(tgl_pemakaian) = '$periode' ORDER BY `tgl_pengajuan` DESC");
+                
+                $data = mysqli_fetch_assoc($q2);
+                $convert   = convertDateDBtoIndo($data['tgl_pemakaian']);
+                $pProgram     = substr($convert, 2, -5);
+                // die(var_dump($q));
+            }
+
         } else {
             if ($_GET["id_periode"] == "") {
                 $q  = mysqli_query($conn, "SELECT * FROM 2022_program WHERE laporan = 'Terverifikasi' AND program = 'Program Asrama Yatim' ORDER BY `tgl_pengajuan` DESC");

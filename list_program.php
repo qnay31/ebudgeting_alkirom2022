@@ -20,6 +20,9 @@ if (isset($_POST['menuProgram'])) {
     </select>
 </div>
 
+<?php } elseif ($program == "Program Santunan Bulanan") { ?>
+<input type="hidden" name="yatim" value="Santunan Bulanan">
+
 <?php } else { ?>
 <div class="form-group mb-3">
     <div class="form-text mb-2">

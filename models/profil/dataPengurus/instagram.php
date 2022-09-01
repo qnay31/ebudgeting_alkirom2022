@@ -79,7 +79,7 @@
                                 while ($data = mysqli_fetch_array($qIncomeBulanan)) { 
                                     ?>
                                 <a
-                                    href="<?= $_SESSION["username"] ?>.php?id_accountKey=<?= $data_Ains["id"] ?>&id_bulan=<?= $bln; ?>&idLaporan=Akun">
+                                    href="<?= $_SESSION["username"] ?>.php?id_accountKey=<?= $data_Ains["id"] ?>&id_bulan=<?= $bln; ?>&idLaporan=Akun&mediaLaporan=instagram">
                                     Bulan Ini: <?= number_format($data["total_tf"],0,"." , ".") ?></a>
                                 <?php } ?>
                             </div>
@@ -92,7 +92,7 @@
                                 while ($data = mysqli_fetch_array($qIncome)) { 
                                     ?>
                                 <a
-                                    href="<?= $_SESSION["username"] ?>.php?id_accountKey=<?= $data_Ains["id"] ?>&idLaporan=Akun">Per
+                                    href="<?= $_SESSION["username"] ?>.php?id_accountKey=<?= $data_Ains["id"] ?>&idLaporan=Akun&mediaLaporan=instagram">Per
                                     Tahun : <?= number_format($data["total_tf"],0,"." , ".") ?></a>
                                 <?php } ?>
                             </div>

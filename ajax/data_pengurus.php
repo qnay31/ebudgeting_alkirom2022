@@ -79,7 +79,23 @@ if ($_SESSION["id_pengurus"] == "kepala_income") {
         array( 'db' => 'pemegang', 'dt' => 1 ),
         array( 'db' => 'cabang',  'dt' => 2 ),
         array( 'db' => 'posisi',  'dt' => 3 ),
-        array( 'db' => 'team', 'dt' => 4 ),
+        array( 
+            'db'        => 'team',
+            'dt'        => 4,
+            'formatter' => function($d, $row) {
+                return $d == "Facebook Taman" ? "Facebook I" : (
+                        $d == "Facebook Pusat" ? "Facebook II" : (
+                            $d == "Facebook Taman II" ? "Facebook III" : (
+                                $d == "Facebook Bojong" ? "Facebook IV" : (
+                                    $d == "Instagram Taman" ? "Instagram A" : (
+                                        $d == "Instagram Bojong" ? "Instagram B" : "Instagram C"
+                                    )
+                                )
+                            )
+                        )
+                );
+            }
+        ),
         array( 'db' => 'nomor_id', 'dt' => 5 ),
     );
 
@@ -99,7 +115,23 @@ if ($_SESSION["id_pengurus"] == "kepala_income") {
         array( 'db' => 'pemegang', 'dt' => 1 ),
         array( 'db' => 'cabang',  'dt' => 2 ),
         array( 'db' => 'posisi',  'dt' => 3 ),
-        array( 'db' => 'team','dt' => 4)
+        array( 
+            'db'        => 'team',
+            'dt'        => 4,
+            'formatter' => function($d, $row) {
+                return $d == "Facebook Taman" ? "Facebook I" : (
+                        $d == "Facebook Pusat" ? "Facebook II" : (
+                            $d == "Facebook Taman II" ? "Facebook III" : (
+                                $d == "Facebook Bojong" ? "Facebook IV" : (
+                                    $d == "Instagram Taman" ? "Instagram A" : (
+                                        $d == "Instagram Bojong" ? "Instagram B" : "Instagram C"
+                                    )
+                                )
+                            )
+                        )
+                );
+            }
+        )
     );
 }
 

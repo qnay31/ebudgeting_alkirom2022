@@ -149,6 +149,7 @@
 
     <?php } else { ?>
     <ul class="nav nav-tabs nav-tabs-bordered">
+        <?php if ($_GET["id_database"] == "database_crossCheck" || $_GET["id_database"] == "database_incomeTim") { ?>
         <?php if ($_GET["id_database"] == "database_crossCheck") { ?>
         <li class="nav-item">
             <?php if ($_GET["id_periode"] == "") { ?>
@@ -161,6 +162,7 @@
 
             <?php } ?>
         </li>
+        <?php } ?>
 
         <li class="nav-item">
             <?php if ($_GET["id_periode"] == "01") { ?>

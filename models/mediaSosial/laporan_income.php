@@ -27,6 +27,7 @@
                                 </div>
                                 <input type="hidden" name="id" value="<?= $_SESSION["id"] ?>">
                                 <input type="hidden" name="link" value="<?= $_SESSION["id_pengurus"] ?>">
+                                <input type="hidden" name="team" value="<?= $team ?>">
                                 <input type="text" class="form-control" name="nama" value="<?= $_SESSION["nama"] ?>"
                                     readonly>
                             </div>
@@ -35,7 +36,7 @@
                                 <span class="input-group-text" id="basic-addon1">Akun</span>
                                 <select class="form-select" name="akun" aria-label="Default select example" required
                                     oninvalid="this.setCustomValidity('Pilih salah satu akun')"
-                                    oninput="this.setCustomValidity('')">
+                                    oninput="this.setCustomValidity('')" id="akun">
                                     <option selected value="">- Pilih Salah Satu Akun -</option>
                                     <?php
                                         while ($data = mysqli_fetch_array($query)) { ?>
@@ -56,6 +57,28 @@
                                     oninput="this.setCustomValidity('')">
                             </div>
 
+                            <?php if ($_SESSION["id_pengurus"] == "instagram") { ?>
+                            <div class="form-group" id="teman"></div>
+
+                            <?php } else { ?>
+
+                            <div class="form-group mb-3 keteranganTeman">
+                                <div class="form-text mb-2">
+                                    Keterangan Teman
+                                </div>
+                                <select class="form-select" name="kTeman" aria-label="Default select example" required
+                                    oninvalid="this.setCustomValidity('Pilih salah satu keterangan')"
+                                    oninput="this.setCustomValidity('')" id="kTeman">
+                                    <option selected value="">- Pilih Salah Satu Keterangan -</option>
+                                    <option value="Tambah Teman">Tambah Teman</option>
+                                    <option value="Hapus Teman">Hapus Teman</option>
+                                </select>
+                            </div>
+
+                            <div class="input-group" id="keterangan">
+                            </div>
+                            <?php } ?>
+
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1"><b>Total Serangan</b></span>
                                 <input type="text" class="form-control" name="totalSerangan" id="rupiah" maxlength="11"
@@ -75,7 +98,7 @@
 
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1"><b>Respon</b></span>
-                                <input type="text" class="form-control" name="respon" id="rupiah3" maxlength="11"
+                                <input type="text" class="form-control admin_rp" name="respon" maxlength="11"
                                     placeholder="Total Respon" onkeypress="return hanyaAngka(event)" autocomplete="off"
                                     required oninvalid="this.setCustomValidity('Jumlah respon harus diisi')"
                                     oninput="this.setCustomValidity('')">
@@ -83,7 +106,7 @@
 
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1"><b>Menanyakan Alamat</b></span>
-                                <input type="text" class="form-control" name="alamat" id="rupiah4" maxlength="11"
+                                <input type="text" class="form-control admin_rp" name="alamat" maxlength="11"
                                     placeholder="Total Nanya Alamat" onkeypress="return hanyaAngka(event)"
                                     autocomplete="off" required
                                     oninvalid="this.setCustomValidity('Jumlah alamat harus diisi')"
@@ -92,7 +115,7 @@
 
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1"><b>Insya Allah</b></span>
-                                <input type="text" class="form-control" name="insya_allah" id="rupiah5" maxlength="11"
+                                <input type="text" class="form-control admin_rp" name="insya_allah" maxlength="11"
                                     placeholder="Total Insya Allah" onkeypress="return hanyaAngka(event)"
                                     autocomplete="off" required
                                     oninvalid="this.setCustomValidity('Jumlah insya allah harus diisi')"
@@ -101,7 +124,7 @@
 
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1"><b>Minta Norek</b></span>
-                                <input type="text" class="form-control" name="norek" id="rupiah6" maxlength="11"
+                                <input type="text" class="form-control admin_rp" name="norek" maxlength="11"
                                     placeholder="Total Minta Norek" onkeypress="return hanyaAngka(event)"
                                     autocomplete="off" required
                                     oninvalid="this.setCustomValidity('Jumlah minta norek harus diisi')"
@@ -110,7 +133,7 @@
 
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1"><b>Belum Bisa Bantu</b></span>
-                                <input type="text" class="form-control" name="bbBantu" id="rupiah7" maxlength="11"
+                                <input type="text" class="form-control admin_rp" name="bbBantu" maxlength="11"
                                     placeholder="Total Belum Bisa Bantu" onkeypress="return hanyaAngka(event)"
                                     autocomplete="off" required
                                     oninvalid="this.setCustomValidity('Jumlah belum bisa bantu harus diisi')"
@@ -119,7 +142,7 @@
 
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1"><b>Tidak Respon</b></span>
-                                <input type="text" class="form-control" name="tRespon" id="rupiah8" maxlength="11"
+                                <input type="text" class="form-control admin_rp" name="tRespon" maxlength="11"
                                     placeholder="Total Tidak Respon" onkeypress="return hanyaAngka(event)"
                                     autocomplete="off" required
                                     oninvalid="this.setCustomValidity('Jumlah tidak respon harus diisi')"
@@ -128,7 +151,7 @@
 
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1"><b>Total Income (Rp)</b></span>
-                                <input type="text" class="form-control" name="income" id="rupiah9" maxlength="11"
+                                <input type="text" class="form-control admin_rp" name="income" maxlength="11"
                                     placeholder="Total Income" onkeypress="return hanyaAngka(event)" autocomplete="off"
                                     required oninvalid="this.setCustomValidity('Total income harus diisi')"
                                     oninput="this.setCustomValidity('')">
@@ -164,12 +187,25 @@
                     <th scope="col">Akun</th>
                     <th scope="col">Tgl Laporan</th>
                     <th scope="col">Menu</th>
+                    <th scope="col">Keterangan</th>
+                    <?php if ($_SESSION["id_pengurus"] == "instagram") { ?>
+                    <th scope="col">Total Pengikut</th>
+                    <th scope="col">Total Mengikuti</th>
+                    <th scope="col">Pengikut Terbaru</th>
+                    <th scope="col">Mengikuti terbaru</th>
+
+                    <?php } else { ?>
+                    <th scope="col">Total Teman</th>
+                    <th scope="col">Add Pertemanan</th>
+                    <th scope="col">Teman Baru</th>
+                    <th scope="col">Hapus Teman</th>
+                    <?php } ?>
                     <th scope="col">Total Serangan</th>
                     <th scope="col">Respon</th>
                     <th scope="col">Minta Norek</th>
                     <th scope="col">Tanya Alamat</th>
                     <th scope="col">Insya Allah</th>
-                    <th scope="col">B. Bisa Bantu</th>
+                    <th scope="col">Belum Bisa</th>
                     <th scope="col">Tidak Respon</th>
                     <th scope="col">Donatur</th>
                     <th scope="col">Total Income</th>
@@ -191,11 +227,18 @@
                     <td style=" text-align: center;">
                         <a class="btn btn-primary"
                             href="../admin/<?= $_SESSION["username"] ?>.php?id_forms=edit_laporanMedia&id_unik=<?= $r['id'] ?>&id_p=<?= $bln ?>"
-                            onclick="return confirm('Laporan ini mau diedit?!')">Edit</a> ||
+                            onclick="return confirm('Laporan ini mau diedit?!')"><i
+                                class="bi bi-pencil-square text-white"></i></a> ||
                         <a class="btn btn-danger"
                             href="../models/mediaSosial/hapus_laporan.php?id_hapus=<?= $r["nama_akun"] ?>&id_unik=<?= $r['id'] ?>&id_p=<?= $bln ?>"
-                            onclick="return confirm('Yakin Laporan <?= $r[nama_akun] ?> ini mau dihapus?!')">Hapus</a>
+                            onclick="return confirm('Yakin Laporan <?= $r[nama_akun] ?> ini mau dihapus?!')"><i
+                                class="bi bi-trash text-white"></i></a>
                     </td>
+                    <td style="text-align: center;"><?= ucwords($r['keterangan']) ?></td>
+                    <td style="text-align: center;"><?= number_format($r['jumlahTeman'],0,"." , ".") ?></td>
+                    <td style="text-align: center;"><?= number_format($r['jumlahAdd'],0,"." , ".") ?></td>
+                    <td style="text-align: center;"><?= number_format($r['temanBaru'],0,"." , ".") ?></td>
+                    <td style="text-align: center;"><?= number_format($r['hapusTeman'],0,"." , ".") ?></td>
                     <td style="text-align: center;"><?= number_format($r['totalSerangan'],0,"." , ".") ?></td>
                     <td style="text-align: center;"><?= number_format($r['respon'],0,"." , ".") ?></td>
                     <td style="text-align: center;"><?= number_format($r['minta_norek'],0,"." , ".") ?></td>
@@ -209,8 +252,11 @@
                 <?php } ?>
             </tbody>
             <tfoot>
+                <?php if ($_SESSION["id_pengurus"] == "instagram") { ?>
                 <tr style="text-align: center;">
-                    <th colspan="6">Total</th>
+                    <th colspan="9">Total</th>
+                    <th></th>
+                    <th></th>
                     <th></th>
                     <th></th>
                     <th></th>
@@ -221,6 +267,24 @@
                     <th></th>
                     <th></th>
                 </tr>
+
+                <?php } else { ?>
+                <tr style="text-align: center;">
+                    <th colspan="8">Total</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <?php } ?>
             </tfoot>
         </table>
     </div>

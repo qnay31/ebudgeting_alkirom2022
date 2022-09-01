@@ -13,7 +13,7 @@
         <h5 class="card-title text-center">Tidak ada data</h5>
         <?php } ?>
         <?php } ?>
-        
+
         <?php if ($nInCheck > 0) { ?>
         <table id="tabel-data_databaseCrossCheck" class="table table-bordered">
             <thead>

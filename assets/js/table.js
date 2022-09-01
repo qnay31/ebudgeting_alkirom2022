@@ -50,8 +50,6 @@ $(document).ready(function () {
                 return ca[i].replace(name, '');
     }
 
-    console.log(readCookie("login"));
-
     $('.chk_boxes1').click(function () {
         if ($(this).is(':checked')) {
             $(this).closest('tr').addClass('removeRow');
@@ -196,12 +194,13 @@ $(document).ready(function () {
         })
     })
 
-    $(".maintenance").click(function () {
+    $(".maintenance").click(function (e) {
         Swal.fire({
             type: 'error',
-            title: 'Oops...',
-            text: 'Masih tahap pengembangan!'
+            title: 'Maintenance',
+            text: 'Mohon tunggu dalam 30 Menit'
         });
+        e.preventDefault();
     });
 
     function Capitalize(str) {
@@ -375,13 +374,13 @@ $(document).ready(function () {
             width: '15%',
             targets: 2
         }, {
-            width: '20%',
+            width: '30%',
             targets: 5
         }, {
             width: '10%',
             targets: 6
         }, {
-            width: '20%',
+            width: '10%',
             targets: 7
         }, {
             width: '15%',
@@ -2668,548 +2667,1223 @@ $(document).ready(function () {
         }
     });
 
-    $('#tabel-data_lapMedia').DataTable({
-        "scrollX": true,
-        "lengthMenu": [
-            [10, 25, 50, 100, -1],
-            [10, 25, 50, 100, "All"]
-        ],
-        dom: 'Plfrtip',
-        columnDefs: [{
-            width: 150,
-            targets: [1, 3, 5, 14]
-        }, {
-            width: 100,
-            targets: [2, 4]
-        }, {
-            searchPanes: {
-                show: true,
-                initCollapsed: true
-            },
-            targets: [3, 4]
-        }, {
-            searchPanes: {
-                show: false,
-            },
-            targets: [1, 2, 5, 6, 7, 8, , 9, 10, 11, 12, 13, 14]
-        }],
-        "footerCallback": function (row, data, start, end, display) {
-            var api = this.api(),
-                data;
+    if (readCookie("idUser") == "instagram") {
+        $('#tabel-data_lapMedia').DataTable({
+            fixedHeader: true,
+            "scrollX": true,
+            "lengthMenu": [
+                [10, 25, 50, 100, -1],
+                [10, 25, 50, 100, "All"]
+            ],
+            dom: 'Plfrtip',
+            columnDefs: [{
+                width: 150,
+                targets: [1, 3, 5, 19]
+            }, {
+                width: 100,
+                targets: [2, 4]
+            }, {
+                searchPanes: {
+                    show: true,
+                    initCollapsed: true
+                },
+                targets: [3, 4]
+            }, {
+                searchPanes: {
+                    show: false,
+                },
+                targets: [1, 2, 5, 6, 7, 8, , 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+            }],
+            "footerCallback": function (row, data, start, end, display) {
+                var api = this.api(),
+                    data;
 
-            // Remove the formatting to get integer data for summation
-            var intVal = function (i) {
-                return typeof i === 'string' ?
-                    i.replace(/[\Rp,.]/g, '') * 1 :
-                    typeof i === 'number' ?
-                    i : 0;
-            };
+                // Remove the formatting to get integer data for summation
+                var intVal = function (i) {
+                    return typeof i === 'string' ?
+                        i.replace(/[\Rp,.]/g, '') * 1 :
+                        typeof i === 'number' ?
+                        i : 0;
+                };
 
-            // Total over this page
-            pageTotal = api
-                .column(6, {
-                    page: 'current'
-                })
-                .data()
-                .reduce(function (a, b) {
-                    return intVal(a) + intVal(b);
-                }, 0);
+                // Total over this page
+                pageTotal = api
+                    .column(9, {
+                        page: 'current'
+                    })
+                    .data()
+                    .reduce(function (a, b) {
+                        return intVal(a) + intVal(b);
+                    }, 0);
 
-            var number_string = pageTotal.toString(),
-                sisa = number_string.length % 3,
-                rupiah = number_string.substr(0, sisa),
-                ribuan = number_string.substr(sisa).match(/\d{3}/g);
+                var number_string = pageTotal.toString(),
+                    sisa = number_string.length % 3,
+                    rupiah = number_string.substr(0, sisa),
+                    ribuan = number_string.substr(sisa).match(/\d{3}/g);
 
-            if (ribuan) {
-                separator = sisa ? '.' : '';
-                rupiah += separator + ribuan.join('.');
+                if (ribuan) {
+                    separator = sisa ? '.' : '';
+                    rupiah += separator + ribuan.join('.');
+                }
+
+                // Update footer
+                $(api.column(9).footer()).html(
+                    rupiah + ''
+                );
+
+                // Total over this page
+                pageTotal = api
+                    .column(10, {
+                        page: 'current'
+                    })
+                    .data()
+                    .reduce(function (a, b) {
+                        return intVal(a) + intVal(b);
+                    }, 0);
+
+                var number_string = pageTotal.toString(),
+                    sisa = number_string.length % 3,
+                    rupiah = number_string.substr(0, sisa),
+                    ribuan = number_string.substr(sisa).match(/\d{3}/g);
+
+                if (ribuan) {
+                    separator = sisa ? '.' : '';
+                    rupiah += separator + ribuan.join('.');
+                }
+
+                // Update footer
+                $(api.column(10).footer()).html(
+                    rupiah + ''
+                );
+
+                // Total over this page
+                pageTotal = api
+                    .column(11, {
+                        page: 'current'
+                    })
+                    .data()
+                    .reduce(function (a, b) {
+                        return intVal(a) + intVal(b);
+                    }, 0);
+
+                var number_string = pageTotal.toString(),
+                    sisa = number_string.length % 3,
+                    rupiah = number_string.substr(0, sisa),
+                    ribuan = number_string.substr(sisa).match(/\d{3}/g);
+
+                if (ribuan) {
+                    separator = sisa ? '.' : '';
+                    rupiah += separator + ribuan.join('.');
+                }
+                // Update footer
+                $(api.column(11).footer()).html(
+                    rupiah + ''
+                );
+
+                // Total over this page
+                pageTotal = api
+                    .column(12, {
+                        page: 'current'
+                    })
+                    .data()
+                    .reduce(function (a, b) {
+                        return intVal(a) + intVal(b);
+                    }, 0);
+
+                var number_string = pageTotal.toString(),
+                    sisa = number_string.length % 3,
+                    rupiah = number_string.substr(0, sisa),
+                    ribuan = number_string.substr(sisa).match(/\d{3}/g);
+
+                if (ribuan) {
+                    separator = sisa ? '.' : '';
+                    rupiah += separator + ribuan.join('.');
+                }
+                // Update footer
+                $(api.column(12).footer()).html(
+                    rupiah + ''
+                );
+
+                // Total over this page
+                pageTotal = api
+                    .column(13, {
+                        page: 'current'
+                    })
+                    .data()
+                    .reduce(function (a, b) {
+                        return intVal(a) + intVal(b);
+                    }, 0);
+
+                var number_string = pageTotal.toString(),
+                    sisa = number_string.length % 3,
+                    rupiah = number_string.substr(0, sisa),
+                    ribuan = number_string.substr(sisa).match(/\d{3}/g);
+
+                if (ribuan) {
+                    separator = sisa ? '.' : '';
+                    rupiah += separator + ribuan.join('.');
+                }
+                // Update footer
+                $(api.column(13).footer()).html(
+                    rupiah + ''
+                );
+
+                // Total over this page
+                pageTotal = api
+                    .column(14, {
+                        page: 'current'
+                    })
+                    .data()
+                    .reduce(function (a, b) {
+                        return intVal(a) + intVal(b);
+                    }, 0);
+
+                var number_string = pageTotal.toString(),
+                    sisa = number_string.length % 3,
+                    rupiah = number_string.substr(0, sisa),
+                    ribuan = number_string.substr(sisa).match(/\d{3}/g);
+
+                if (ribuan) {
+                    separator = sisa ? '.' : '';
+                    rupiah += separator + ribuan.join('.');
+                }
+                // Update footer
+                $(api.column(14).footer()).html(
+                    rupiah + ''
+                );
+
+                // Total over this page
+                pageTotal = api
+                    .column(15, {
+                        page: 'current'
+                    })
+                    .data()
+                    .reduce(function (a, b) {
+                        return intVal(a) + intVal(b);
+                    }, 0);
+
+                var number_string = pageTotal.toString(),
+                    sisa = number_string.length % 3,
+                    rupiah = number_string.substr(0, sisa),
+                    ribuan = number_string.substr(sisa).match(/\d{3}/g);
+
+                if (ribuan) {
+                    separator = sisa ? '.' : '';
+                    rupiah += separator + ribuan.join('.');
+                }
+                // Update footer
+                $(api.column(15).footer()).html(
+                    rupiah + ''
+                );
+
+                // Total over this page
+                pageTotal = api
+                    .column(16, {
+                        page: 'current'
+                    })
+                    .data()
+                    .reduce(function (a, b) {
+                        return intVal(a) + intVal(b);
+                    }, 0);
+
+                var number_string = pageTotal.toString(),
+                    sisa = number_string.length % 3,
+                    rupiah = number_string.substr(0, sisa),
+                    ribuan = number_string.substr(sisa).match(/\d{3}/g);
+
+                if (ribuan) {
+                    separator = sisa ? '.' : '';
+                    rupiah += separator + ribuan.join('.');
+                }
+                // Update footer
+                $(api.column(16).footer()).html(
+                    rupiah + ''
+                );
+
+                // Total over this page
+                pageTotal = api
+                    .column(17, {
+                        page: 'current'
+                    })
+                    .data()
+                    .reduce(function (a, b) {
+                        return intVal(a) + intVal(b);
+                    }, 0);
+
+                var number_string = pageTotal.toString(),
+                    sisa = number_string.length % 3,
+                    rupiah = number_string.substr(0, sisa),
+                    ribuan = number_string.substr(sisa).match(/\d{3}/g);
+
+                if (ribuan) {
+                    separator = sisa ? '.' : '';
+                    rupiah += separator + ribuan.join('.');
+                }
+                // Update footer
+                $(api.column(17).footer()).html(
+                    rupiah + ''
+                );
+
+                // Total over this page
+                pageTotal = api
+                    .column(18, {
+                        page: 'current'
+                    })
+                    .data()
+                    .reduce(function (a, b) {
+                        return intVal(a) + intVal(b);
+                    }, 0);
+
+                var number_string = pageTotal.toString(),
+                    sisa = number_string.length % 3,
+                    rupiah = number_string.substr(0, sisa),
+                    ribuan = number_string.substr(sisa).match(/\d{3}/g);
+
+                if (ribuan) {
+                    separator = sisa ? '.' : '';
+                    rupiah += separator + ribuan.join('.');
+                }
+                // Update footer
+                $(api.column(18).footer()).html(
+                    rupiah + ''
+                );
+
+                // Total over this page
+                pageTotal = api
+                    .column(19, {
+                        page: 'current'
+                    })
+                    .data()
+                    .reduce(function (a, b) {
+                        return intVal(a) + intVal(b);
+                    }, 0);
+
+                var number_string = pageTotal.toString(),
+                    sisa = number_string.length % 3,
+                    rupiah = number_string.substr(0, sisa),
+                    ribuan = number_string.substr(sisa).match(/\d{3}/g);
+
+                if (ribuan) {
+                    separator = sisa ? '.' : '';
+                    rupiah += separator + ribuan.join('.');
+                }
+                // Update footer
+                $(api.column(19).footer()).html(
+                    rupiah + ''
+                );
+
             }
-            // Update footer
-            $(api.column(6).footer()).html(
-                rupiah + ''
-            );
+        });
+    } else {
+        $('#tabel-data_lapMedia').DataTable({
+            fixedHeader: true,
+            "scrollX": true,
+            "lengthMenu": [
+                [10, 25, 50, 100, -1],
+                [10, 25, 50, 100, "All"]
+            ],
+            dom: 'Plfrtip',
+            columnDefs: [{
+                width: 150,
+                targets: [1, 3, 5, 19]
+            }, {
+                width: 100,
+                targets: [2, 4]
+            }, {
+                searchPanes: {
+                    show: true,
+                    initCollapsed: true
+                },
+                targets: [3, 4]
+            }, {
+                searchPanes: {
+                    show: false,
+                },
+                targets: [1, 2, 5, 6, 7, 8, , 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+            }],
+            "footerCallback": function (row, data, start, end, display) {
+                var api = this.api(),
+                    data;
 
-            // Total over this page
-            pageTotal = api
-                .column(7, {
-                    page: 'current'
-                })
-                .data()
-                .reduce(function (a, b) {
-                    return intVal(a) + intVal(b);
-                }, 0);
+                // Remove the formatting to get integer data for summation
+                var intVal = function (i) {
+                    return typeof i === 'string' ?
+                        i.replace(/[\Rp,.]/g, '') * 1 :
+                        typeof i === 'number' ?
+                        i : 0;
+                };
 
-            var number_string = pageTotal.toString(),
-                sisa = number_string.length % 3,
-                rupiah = number_string.substr(0, sisa),
-                ribuan = number_string.substr(sisa).match(/\d{3}/g);
+                // Total over this page
+                pageTotal = api
+                    .column(8, {
+                        page: 'current'
+                    })
+                    .data()
+                    .reduce(function (a, b) {
+                        return intVal(a) + intVal(b);
+                    }, 0);
 
-            if (ribuan) {
-                separator = sisa ? '.' : '';
-                rupiah += separator + ribuan.join('.');
+                var number_string = pageTotal.toString(),
+                    sisa = number_string.length % 3,
+                    rupiah = number_string.substr(0, sisa),
+                    ribuan = number_string.substr(sisa).match(/\d{3}/g);
+
+                if (ribuan) {
+                    separator = sisa ? '.' : '';
+                    rupiah += separator + ribuan.join('.');
+                }
+                // Update footer
+                $(api.column(8).footer()).html(
+                    rupiah + ''
+                );
+
+                // Total over this page
+                pageTotal = api
+                    .column(9, {
+                        page: 'current'
+                    })
+                    .data()
+                    .reduce(function (a, b) {
+                        return intVal(a) + intVal(b);
+                    }, 0);
+
+                var number_string = pageTotal.toString(),
+                    sisa = number_string.length % 3,
+                    rupiah = number_string.substr(0, sisa),
+                    ribuan = number_string.substr(sisa).match(/\d{3}/g);
+
+                if (ribuan) {
+                    separator = sisa ? '.' : '';
+                    rupiah += separator + ribuan.join('.');
+                }
+
+                // Update footer
+                $(api.column(9).footer()).html(
+                    rupiah + ''
+                );
+
+                // Total over this page
+                pageTotal = api
+                    .column(10, {
+                        page: 'current'
+                    })
+                    .data()
+                    .reduce(function (a, b) {
+                        return intVal(a) + intVal(b);
+                    }, 0);
+
+                var number_string = pageTotal.toString(),
+                    number = number_string.substr(1),
+                    sisa = number.length % 3,
+                    rupiah = number.substr(0, sisa),
+                    ribuan = number.substr(sisa).match(/\d{3}/g);
+                if (ribuan) {
+                    separator = sisa ? '.' : '';
+                    rupiah += separator + ribuan.join('.');
+                }
+
+                // Update footer
+                $(api.column(10).footer()).html(
+                    '-' + rupiah + ''
+                );
+
+                // Total over this page
+                pageTotal = api
+                    .column(11, {
+                        page: 'current'
+                    })
+                    .data()
+                    .reduce(function (a, b) {
+                        return intVal(a) + intVal(b);
+                    }, 0);
+
+                var number_string = pageTotal.toString(),
+                    sisa = number_string.length % 3,
+                    rupiah = number_string.substr(0, sisa),
+                    ribuan = number_string.substr(sisa).match(/\d{3}/g);
+
+                if (ribuan) {
+                    separator = sisa ? '.' : '';
+                    rupiah += separator + ribuan.join('.');
+                }
+                // Update footer
+                $(api.column(11).footer()).html(
+                    rupiah + ''
+                );
+
+                // Total over this page
+                pageTotal = api
+                    .column(12, {
+                        page: 'current'
+                    })
+                    .data()
+                    .reduce(function (a, b) {
+                        return intVal(a) + intVal(b);
+                    }, 0);
+
+                var number_string = pageTotal.toString(),
+                    sisa = number_string.length % 3,
+                    rupiah = number_string.substr(0, sisa),
+                    ribuan = number_string.substr(sisa).match(/\d{3}/g);
+
+                if (ribuan) {
+                    separator = sisa ? '.' : '';
+                    rupiah += separator + ribuan.join('.');
+                }
+                // Update footer
+                $(api.column(12).footer()).html(
+                    rupiah + ''
+                );
+
+                // Total over this page
+                pageTotal = api
+                    .column(13, {
+                        page: 'current'
+                    })
+                    .data()
+                    .reduce(function (a, b) {
+                        return intVal(a) + intVal(b);
+                    }, 0);
+
+                var number_string = pageTotal.toString(),
+                    sisa = number_string.length % 3,
+                    rupiah = number_string.substr(0, sisa),
+                    ribuan = number_string.substr(sisa).match(/\d{3}/g);
+
+                if (ribuan) {
+                    separator = sisa ? '.' : '';
+                    rupiah += separator + ribuan.join('.');
+                }
+                // Update footer
+                $(api.column(13).footer()).html(
+                    rupiah + ''
+                );
+
+                // Total over this page
+                pageTotal = api
+                    .column(14, {
+                        page: 'current'
+                    })
+                    .data()
+                    .reduce(function (a, b) {
+                        return intVal(a) + intVal(b);
+                    }, 0);
+
+                var number_string = pageTotal.toString(),
+                    sisa = number_string.length % 3,
+                    rupiah = number_string.substr(0, sisa),
+                    ribuan = number_string.substr(sisa).match(/\d{3}/g);
+
+                if (ribuan) {
+                    separator = sisa ? '.' : '';
+                    rupiah += separator + ribuan.join('.');
+                }
+                // Update footer
+                $(api.column(14).footer()).html(
+                    rupiah + ''
+                );
+
+                // Total over this page
+                pageTotal = api
+                    .column(15, {
+                        page: 'current'
+                    })
+                    .data()
+                    .reduce(function (a, b) {
+                        return intVal(a) + intVal(b);
+                    }, 0);
+
+                var number_string = pageTotal.toString(),
+                    sisa = number_string.length % 3,
+                    rupiah = number_string.substr(0, sisa),
+                    ribuan = number_string.substr(sisa).match(/\d{3}/g);
+
+                if (ribuan) {
+                    separator = sisa ? '.' : '';
+                    rupiah += separator + ribuan.join('.');
+                }
+                // Update footer
+                $(api.column(15).footer()).html(
+                    rupiah + ''
+                );
+
+                // Total over this page
+                pageTotal = api
+                    .column(16, {
+                        page: 'current'
+                    })
+                    .data()
+                    .reduce(function (a, b) {
+                        return intVal(a) + intVal(b);
+                    }, 0);
+
+                var number_string = pageTotal.toString(),
+                    sisa = number_string.length % 3,
+                    rupiah = number_string.substr(0, sisa),
+                    ribuan = number_string.substr(sisa).match(/\d{3}/g);
+
+                if (ribuan) {
+                    separator = sisa ? '.' : '';
+                    rupiah += separator + ribuan.join('.');
+                }
+                // Update footer
+                $(api.column(16).footer()).html(
+                    rupiah + ''
+                );
+
+                // Total over this page
+                pageTotal = api
+                    .column(17, {
+                        page: 'current'
+                    })
+                    .data()
+                    .reduce(function (a, b) {
+                        return intVal(a) + intVal(b);
+                    }, 0);
+
+                var number_string = pageTotal.toString(),
+                    sisa = number_string.length % 3,
+                    rupiah = number_string.substr(0, sisa),
+                    ribuan = number_string.substr(sisa).match(/\d{3}/g);
+
+                if (ribuan) {
+                    separator = sisa ? '.' : '';
+                    rupiah += separator + ribuan.join('.');
+                }
+                // Update footer
+                $(api.column(17).footer()).html(
+                    rupiah + ''
+                );
+
+                // Total over this page
+                pageTotal = api
+                    .column(18, {
+                        page: 'current'
+                    })
+                    .data()
+                    .reduce(function (a, b) {
+                        return intVal(a) + intVal(b);
+                    }, 0);
+
+                var number_string = pageTotal.toString(),
+                    sisa = number_string.length % 3,
+                    rupiah = number_string.substr(0, sisa),
+                    ribuan = number_string.substr(sisa).match(/\d{3}/g);
+
+                if (ribuan) {
+                    separator = sisa ? '.' : '';
+                    rupiah += separator + ribuan.join('.');
+                }
+                // Update footer
+                $(api.column(18).footer()).html(
+                    rupiah + ''
+                );
+
+                // Total over this page
+                pageTotal = api
+                    .column(19, {
+                        page: 'current'
+                    })
+                    .data()
+                    .reduce(function (a, b) {
+                        return intVal(a) + intVal(b);
+                    }, 0);
+
+                var number_string = pageTotal.toString(),
+                    sisa = number_string.length % 3,
+                    rupiah = number_string.substr(0, sisa),
+                    ribuan = number_string.substr(sisa).match(/\d{3}/g);
+
+                if (ribuan) {
+                    separator = sisa ? '.' : '';
+                    rupiah += separator + ribuan.join('.');
+                }
+                // Update footer
+                $(api.column(19).footer()).html(
+                    rupiah + ''
+                );
+
             }
-            // Update footer
-            $(api.column(7).footer()).html(
-                rupiah + ''
-            );
+        });
+    }
 
-            // Total over this page
-            pageTotal = api
-                .column(8, {
-                    page: 'current'
-                })
-                .data()
-                .reduce(function (a, b) {
-                    return intVal(a) + intVal(b);
-                }, 0);
+    if (readCookie("login") == "admin_web") {
+        $('#tabel-database_lapMedia').DataTable({
+            "processing": true,
+            "serverSide": false,
+            "ajax": "../ajax/data_laporan.php",
+            "deferRender": true,
+            "scrollX": true,
+            "lengthMenu": [
+                [10, 25, 50, 100, -1],
+                [10, 25, 50, 100, "All"]
+            ],
+            dom: 'PBlfrtip',
+            buttons: [{
+                    extend: 'excelHtml5',
+                    footer: true
 
-            var number_string = pageTotal.toString(),
-                sisa = number_string.length % 3,
-                rupiah = number_string.substr(0, sisa),
-                ribuan = number_string.substr(sisa).match(/\d{3}/g);
+                },
+                'colvis'
+            ],
+            columnDefs: [{
+                "targets": 0,
+                "render": function (data) {
+                    var btn = "<center><a href=\"../models/base_admin/hapus_laporan.php?id_unik=" + data + "\" onclick=\"return confirm('Sudah yakin dihapus')\" class=\"btn btn-danger btn-xs\"><i class=\"bi bi-trash\"></i></a></center>"
+                    return btn;
+                }
+            }, {
+                targets: 1,
+                "render": function (data) {
+                    return Capitalize(data);
+                }
+            }, {
+                targets: 4,
+                "render": function (data) {
+                    return "<center>" + data + "</center>";
+                }
+            }, {
+                width: 150,
+                targets: [1, 3, 5, 14]
+            }, {
+                width: 100,
+                targets: [2, 4]
+            }, {
+                width: 50,
+                targets: 11,
+            }, {
+                searchPanes: {
+                    show: true,
+                    initCollapsed: true,
+                    orderable: false
+                },
+                targets: [1, 3, 4, 2, 5]
+            }, {
+                searchPanes: {
+                    show: false,
+                },
+                targets: [6, 7, 8, , 9, 10, 11, 12, 13, 14]
+            }],
+            "footerCallback": function (row, data, start, end, display) {
+                var api = this.api(),
+                    data;
 
-            if (ribuan) {
-                separator = sisa ? '.' : '';
-                rupiah += separator + ribuan.join('.');
+                // Remove the formatting to get integer data for summation
+                var intVal = function (i) {
+                    return typeof i === 'string' ?
+                        i.replace(/[\Rp,.]/g, '') * 1 :
+                        typeof i === 'number' ?
+                        i : 0;
+                };
+
+                // Total over this page
+                pageTotal = api
+                    .column(6, {
+                        page: 'current'
+                    })
+                    .data()
+                    .reduce(function (a, b) {
+                        return intVal(a) + intVal(b);
+                    }, 0);
+
+                var number_string = pageTotal.toString(),
+                    sisa = number_string.length % 3,
+                    rupiah = number_string.substr(0, sisa),
+                    ribuan = number_string.substr(sisa).match(/\d{3}/g);
+
+                if (ribuan) {
+                    separator = sisa ? '.' : '';
+                    rupiah += separator + ribuan.join('.');
+                }
+                // Update footer
+                $(api.column(6).footer()).html(
+                    rupiah + ''
+                );
+
+                // Total over this page
+                pageTotal = api
+                    .column(7, {
+                        page: 'current'
+                    })
+                    .data()
+                    .reduce(function (a, b) {
+                        return intVal(a) + intVal(b);
+                    }, 0);
+
+                var number_string = pageTotal.toString(),
+                    sisa = number_string.length % 3,
+                    rupiah = number_string.substr(0, sisa),
+                    ribuan = number_string.substr(sisa).match(/\d{3}/g);
+
+                if (ribuan) {
+                    separator = sisa ? '.' : '';
+                    rupiah += separator + ribuan.join('.');
+                }
+                // Update footer
+                $(api.column(7).footer()).html(
+                    rupiah + ''
+                );
+
+                // Total over this page
+                pageTotal = api
+                    .column(8, {
+                        page: 'current'
+                    })
+                    .data()
+                    .reduce(function (a, b) {
+                        return intVal(a) + intVal(b);
+                    }, 0);
+
+                var number_string = pageTotal.toString(),
+                    sisa = number_string.length % 3,
+                    rupiah = number_string.substr(0, sisa),
+                    ribuan = number_string.substr(sisa).match(/\d{3}/g);
+
+                if (ribuan) {
+                    separator = sisa ? '.' : '';
+                    rupiah += separator + ribuan.join('.');
+                }
+                // Update footer
+                $(api.column(8).footer()).html(
+                    rupiah + ''
+                );
+
+                // Total over this page
+                pageTotal = api
+                    .column(9, {
+                        page: 'current'
+                    })
+                    .data()
+                    .reduce(function (a, b) {
+                        return intVal(a) + intVal(b);
+                    }, 0);
+
+                var number_string = pageTotal.toString(),
+                    sisa = number_string.length % 3,
+                    rupiah = number_string.substr(0, sisa),
+                    ribuan = number_string.substr(sisa).match(/\d{3}/g);
+
+                if (ribuan) {
+                    separator = sisa ? '.' : '';
+                    rupiah += separator + ribuan.join('.');
+                }
+                // Update footer
+                $(api.column(9).footer()).html(
+                    rupiah + ''
+                );
+
+                // Total over this page
+                pageTotal = api
+                    .column(10, {
+                        page: 'current'
+                    })
+                    .data()
+                    .reduce(function (a, b) {
+                        return intVal(a) + intVal(b);
+                    }, 0);
+
+                var number_string = pageTotal.toString(),
+                    number = number_string.substr(1),
+                    sisa = number.length % 3,
+                    rupiah = number.substr(0, sisa),
+                    ribuan = number.substr(sisa).match(/\d{3}/g);
+                if (ribuan) {
+                    separator = sisa ? '.' : '';
+                    rupiah += separator + ribuan.join('.');
+                }
+
+                // Update footer
+                $(api.column(10).footer()).html(
+                    '-' + rupiah + ''
+                );
+
+                // Total over this page
+                pageTotal = api
+                    .column(11, {
+                        page: 'current'
+                    })
+                    .data()
+                    .reduce(function (a, b) {
+                        return intVal(a) + intVal(b);
+                    }, 0);
+
+                var number_string = pageTotal.toString(),
+                    sisa = number_string.length % 3,
+                    rupiah = number_string.substr(0, sisa),
+                    ribuan = number_string.substr(sisa).match(/\d{3}/g);
+
+                if (ribuan) {
+                    separator = sisa ? '.' : '';
+                    rupiah += separator + ribuan.join('.');
+                }
+                // Update footer
+                $(api.column(11).footer()).html(
+                    rupiah + ''
+                );
+
+                // Total over this page
+                pageTotal = api
+                    .column(12, {
+                        page: 'current'
+                    })
+                    .data()
+                    .reduce(function (a, b) {
+                        return intVal(a) + intVal(b);
+                    }, 0);
+
+                var number_string = pageTotal.toString(),
+                    sisa = number_string.length % 3,
+                    rupiah = number_string.substr(0, sisa),
+                    ribuan = number_string.substr(sisa).match(/\d{3}/g);
+
+                if (ribuan) {
+                    separator = sisa ? '.' : '';
+                    rupiah += separator + ribuan.join('.');
+                }
+                // Update footer
+                $(api.column(12).footer()).html(
+                    rupiah + ''
+                );
+
+                // Total over this page
+                pageTotal = api
+                    .column(13, {
+                        page: 'current'
+                    })
+                    .data()
+                    .reduce(function (a, b) {
+                        return intVal(a) + intVal(b);
+                    }, 0);
+
+                var number_string = pageTotal.toString(),
+                    sisa = number_string.length % 3,
+                    rupiah = number_string.substr(0, sisa),
+                    ribuan = number_string.substr(sisa).match(/\d{3}/g);
+
+                if (ribuan) {
+                    separator = sisa ? '.' : '';
+                    rupiah += separator + ribuan.join('.');
+                }
+                // Update footer
+                $(api.column(13).footer()).html(
+                    rupiah + ''
+                );
+
+                // Total over this page
+                pageTotal = api
+                    .column(14, {
+                        page: 'current'
+                    })
+                    .data()
+                    .reduce(function (a, b) {
+                        return intVal(a) + intVal(b);
+                    }, 0);
+
+                var number_string = pageTotal.toString(),
+                    sisa = number_string.length % 3,
+                    rupiah = number_string.substr(0, sisa),
+                    ribuan = number_string.substr(sisa).match(/\d{3}/g);
+
+                if (ribuan) {
+                    separator = sisa ? '.' : '';
+                    rupiah += separator + ribuan.join('.');
+                }
+                // Update footer
+                $(api.column(14).footer()).html(
+                    'Rp. ' + rupiah + ''
+                );
+
             }
-            // Update footer
-            $(api.column(8).footer()).html(
-                rupiah + ''
-            );
+        });
+    } else {
+        $('#tabel-database_lapMedia').DataTable({
+            "processing": true,
+            "serverSide": false,
+            "ajax": "../ajax/data_laporan.php",
+            "deferRender": true,
+            "scrollX": true,
+            "lengthMenu": [
+                [10, 25, 50, 100, -1],
+                [10, 25, 50, 100, "All"]
+            ],
+            dom: 'PBlfrtip',
+            buttons: [{
+                    extend: 'excelHtml5',
+                    footer: true
 
-            // Total over this page
-            pageTotal = api
-                .column(9, {
-                    page: 'current'
-                })
-                .data()
-                .reduce(function (a, b) {
-                    return intVal(a) + intVal(b);
-                }, 0);
+                },
+                'colvis'
+            ],
+            columnDefs: [{
+                "targets": 0,
+                "render": function (data, type, row, meta) {
+                    var no = meta.row + meta.settings._iDisplayStart + 1
+                    return "<center>" + no + "</center>";
+                }
+            }, {
+                targets: 1,
+                "render": function (data) {
+                    return Capitalize(data);
+                }
+            }, {
+                targets: 4,
+                "render": function (data) {
+                    return "<center>" + data + "</center>";
+                }
+            }, {
+                width: 150,
+                targets: [1, 3, 5, 14]
+            }, {
+                width: 100,
+                targets: [2, 4]
+            }, {
+                width: 50,
+                targets: 11,
+            }, {
+                searchPanes: {
+                    show: true,
+                    initCollapsed: true,
+                    orderable: false
+                },
+                targets: [1, 3, 4, 2, 5]
+            }, {
+                searchPanes: {
+                    show: false,
+                },
+                targets: [6, 7, 8, , 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+            }],
+            "footerCallback": function (row, data, start, end, display) {
+                var api = this.api(),
+                    data;
 
-            var number_string = pageTotal.toString(),
-                sisa = number_string.length % 3,
-                rupiah = number_string.substr(0, sisa),
-                ribuan = number_string.substr(sisa).match(/\d{3}/g);
+                // Remove the formatting to get integer data for summation
+                var intVal = function (i) {
+                    return typeof i === 'string' ?
+                        i.replace(/[\Rp,.]/g, '') * 1 :
+                        typeof i === 'number' ?
+                        i : 0;
+                };
 
-            if (ribuan) {
-                separator = sisa ? '.' : '';
-                rupiah += separator + ribuan.join('.');
+                // Total over this page
+                pageTotal = api
+                    .column(6, {
+                        page: 'current'
+                    })
+                    .data()
+                    .reduce(function (a, b) {
+                        return intVal(a) + intVal(b);
+                    }, 0);
+
+                var number_string = pageTotal.toString(),
+                    sisa = number_string.length % 3,
+                    rupiah = number_string.substr(0, sisa),
+                    ribuan = number_string.substr(sisa).match(/\d{3}/g);
+
+                if (ribuan) {
+                    separator = sisa ? '.' : '';
+                    rupiah += separator + ribuan.join('.');
+                }
+                // Update footer
+                $(api.column(6).footer()).html(
+                    rupiah + ''
+                );
+
+                // Total over this page
+                pageTotal = api
+                    .column(7, {
+                        page: 'current'
+                    })
+                    .data()
+                    .reduce(function (a, b) {
+                        return intVal(a) + intVal(b);
+                    }, 0);
+
+                var number_string = pageTotal.toString(),
+                    sisa = number_string.length % 3,
+                    rupiah = number_string.substr(0, sisa),
+                    ribuan = number_string.substr(sisa).match(/\d{3}/g);
+
+                if (ribuan) {
+                    separator = sisa ? '.' : '';
+                    rupiah += separator + ribuan.join('.');
+                }
+                // Update footer
+                $(api.column(7).footer()).html(
+                    rupiah + ''
+                );
+
+                // Total over this page
+                pageTotal = api
+                    .column(8, {
+                        page: 'current'
+                    })
+                    .data()
+                    .reduce(function (a, b) {
+                        return intVal(a) + intVal(b);
+                    }, 0);
+
+                var number_string = pageTotal.toString(),
+                    sisa = number_string.length % 3,
+                    rupiah = number_string.substr(0, sisa),
+                    ribuan = number_string.substr(sisa).match(/\d{3}/g);
+
+                if (ribuan) {
+                    separator = sisa ? '.' : '';
+                    rupiah += separator + ribuan.join('.');
+                }
+                // Update footer
+                $(api.column(8).footer()).html(
+                    rupiah + ''
+                );
+
+                // Total over this page
+                pageTotal = api
+                    .column(9, {
+                        page: 'current'
+                    })
+                    .data()
+                    .reduce(function (a, b) {
+                        return intVal(a) + intVal(b);
+                    }, 0);
+
+                var number_string = pageTotal.toString(),
+                    sisa = number_string.length % 3,
+                    rupiah = number_string.substr(0, sisa),
+                    ribuan = number_string.substr(sisa).match(/\d{3}/g);
+
+                if (ribuan) {
+                    separator = sisa ? '.' : '';
+                    rupiah += separator + ribuan.join('.');
+                }
+                // Update footer
+                $(api.column(9).footer()).html(
+                    rupiah + ''
+                );
+
+                // Total over this page
+                pageTotal = api
+                    .column(10, {
+                        page: 'current'
+                    })
+                    .data()
+                    .reduce(function (a, b) {
+                        return intVal(a) + intVal(b);
+                    }, 0);
+
+                var number_string = pageTotal.toString(),
+                    number = number_string.substr(1),
+                    sisa = number.length % 3,
+                    rupiah = number.substr(0, sisa),
+                    ribuan = number.substr(sisa).match(/\d{3}/g);
+                if (ribuan) {
+                    separator = sisa ? '.' : '';
+                    rupiah += separator + ribuan.join('.');
+                }
+
+                // Update footer
+                $(api.column(10).footer()).html(
+                    '-' + rupiah + ''
+                );
+
+                // Total over this page
+                pageTotal = api
+                    .column(11, {
+                        page: 'current'
+                    })
+                    .data()
+                    .reduce(function (a, b) {
+                        return intVal(a) + intVal(b);
+                    }, 0);
+
+                var number_string = pageTotal.toString(),
+                    sisa = number_string.length % 3,
+                    rupiah = number_string.substr(0, sisa),
+                    ribuan = number_string.substr(sisa).match(/\d{3}/g);
+
+                if (ribuan) {
+                    separator = sisa ? '.' : '';
+                    rupiah += separator + ribuan.join('.');
+                }
+                // Update footer
+                $(api.column(11).footer()).html(
+                    rupiah + ''
+                );
+
+                // Total over this page
+                pageTotal = api
+                    .column(12, {
+                        page: 'current'
+                    })
+                    .data()
+                    .reduce(function (a, b) {
+                        return intVal(a) + intVal(b);
+                    }, 0);
+
+                var number_string = pageTotal.toString(),
+                    sisa = number_string.length % 3,
+                    rupiah = number_string.substr(0, sisa),
+                    ribuan = number_string.substr(sisa).match(/\d{3}/g);
+
+                if (ribuan) {
+                    separator = sisa ? '.' : '';
+                    rupiah += separator + ribuan.join('.');
+                }
+                // Update footer
+                $(api.column(12).footer()).html(
+                    rupiah + ''
+                );
+
+                // Total over this page
+                pageTotal = api
+                    .column(13, {
+                        page: 'current'
+                    })
+                    .data()
+                    .reduce(function (a, b) {
+                        return intVal(a) + intVal(b);
+                    }, 0);
+
+                var number_string = pageTotal.toString(),
+                    sisa = number_string.length % 3,
+                    rupiah = number_string.substr(0, sisa),
+                    ribuan = number_string.substr(sisa).match(/\d{3}/g);
+
+                if (ribuan) {
+                    separator = sisa ? '.' : '';
+                    rupiah += separator + ribuan.join('.');
+                }
+                // Update footer
+                $(api.column(13).footer()).html(
+                    rupiah + ''
+                );
+
+                // Total over this page
+                pageTotal = api
+                    .column(14, {
+                        page: 'current'
+                    })
+                    .data()
+                    .reduce(function (a, b) {
+                        return intVal(a) + intVal(b);
+                    }, 0);
+
+                var number_string = pageTotal.toString(),
+                    sisa = number_string.length % 3,
+                    rupiah = number_string.substr(0, sisa),
+                    ribuan = number_string.substr(sisa).match(/\d{3}/g);
+
+                if (ribuan) {
+                    separator = sisa ? '.' : '';
+                    rupiah += separator + ribuan.join('.');
+                }
+                // Update footer
+                $(api.column(14).footer()).html(
+                    'Rp. ' + rupiah + ''
+                );
+
             }
-            // Update footer
-            $(api.column(9).footer()).html(
-                rupiah + ''
-            );
-
-            // Total over this page
-            pageTotal = api
-                .column(10, {
-                    page: 'current'
-                })
-                .data()
-                .reduce(function (a, b) {
-                    return intVal(a) + intVal(b);
-                }, 0);
-
-            var number_string = pageTotal.toString(),
-                sisa = number_string.length % 3,
-                rupiah = number_string.substr(0, sisa),
-                ribuan = number_string.substr(sisa).match(/\d{3}/g);
-
-            if (ribuan) {
-                separator = sisa ? '.' : '';
-                rupiah += separator + ribuan.join('.');
-            }
-            // Update footer
-            $(api.column(10).footer()).html(
-                rupiah + ''
-            );
-
-            // Total over this page
-            pageTotal = api
-                .column(11, {
-                    page: 'current'
-                })
-                .data()
-                .reduce(function (a, b) {
-                    return intVal(a) + intVal(b);
-                }, 0);
-
-            var number_string = pageTotal.toString(),
-                sisa = number_string.length % 3,
-                rupiah = number_string.substr(0, sisa),
-                ribuan = number_string.substr(sisa).match(/\d{3}/g);
-
-            if (ribuan) {
-                separator = sisa ? '.' : '';
-                rupiah += separator + ribuan.join('.');
-            }
-            // Update footer
-            $(api.column(11).footer()).html(
-                rupiah + ''
-            );
-
-            // Total over this page
-            pageTotal = api
-                .column(12, {
-                    page: 'current'
-                })
-                .data()
-                .reduce(function (a, b) {
-                    return intVal(a) + intVal(b);
-                }, 0);
-
-            var number_string = pageTotal.toString(),
-                sisa = number_string.length % 3,
-                rupiah = number_string.substr(0, sisa),
-                ribuan = number_string.substr(sisa).match(/\d{3}/g);
-
-            if (ribuan) {
-                separator = sisa ? '.' : '';
-                rupiah += separator + ribuan.join('.');
-            }
-            // Update footer
-            $(api.column(12).footer()).html(
-                rupiah + ''
-            );
-
-            // Total over this page
-            pageTotal = api
-                .column(13, {
-                    page: 'current'
-                })
-                .data()
-                .reduce(function (a, b) {
-                    return intVal(a) + intVal(b);
-                }, 0);
-
-            var number_string = pageTotal.toString(),
-                sisa = number_string.length % 3,
-                rupiah = number_string.substr(0, sisa),
-                ribuan = number_string.substr(sisa).match(/\d{3}/g);
-
-            if (ribuan) {
-                separator = sisa ? '.' : '';
-                rupiah += separator + ribuan.join('.');
-            }
-            // Update footer
-            $(api.column(13).footer()).html(
-                rupiah + ''
-            );
-
-            // Total over this page
-            pageTotal = api
-                .column(14, {
-                    page: 'current'
-                })
-                .data()
-                .reduce(function (a, b) {
-                    return intVal(a) + intVal(b);
-                }, 0);
-
-            var number_string = pageTotal.toString(),
-                sisa = number_string.length % 3,
-                rupiah = number_string.substr(0, sisa),
-                ribuan = number_string.substr(sisa).match(/\d{3}/g);
-
-            if (ribuan) {
-                separator = sisa ? '.' : '';
-                rupiah += separator + ribuan.join('.');
-            }
-            // Update footer
-            $(api.column(14).footer()).html(
-                'Rp. ' + rupiah + ''
-            );
-
-        }
-    });
-
-    $('#tabel-database_lapMedia').DataTable({
-        "processing": true,
-        "serverSide": false,
-        "ajax": "../ajax/data_laporan.php",
-        "deferRender": true,
-        "scrollX": true,
-        "lengthMenu": [
-            [10, 25, 50, 100, -1],
-            [10, 25, 50, 100, "All"]
-        ],
-        dom: 'PBlfrtip',
-        buttons: [{
-                extend: 'excelHtml5',
-                footer: true
-
-            },
-            'colvis'
-        ],
-        columnDefs: [{
-            "targets": 0,
-            "render": function (data, type, row, meta) {
-                var no = meta.row + meta.settings._iDisplayStart + 1
-                return "<center>" + no + "</center>";
-            }
-        }, {
-            targets: 1,
-            "render": function (data) {
-                return Capitalize(data);
-            }
-        }, {
-            targets: 4,
-            "render": function (data) {
-                return "<center>" + data + "</center>";
-            }
-        }, {
-            width: 150,
-            targets: [1, 3, 5, 14]
-        }, {
-            width: 100,
-            targets: [2, 4]
-        }, {
-            width: 50,
-            targets: 11,
-        }, {
-            searchPanes: {
-                show: true,
-                initCollapsed: true,
-                orderable: false
-            },
-            targets: [1, 3, 4, 2, 5]
-        }, {
-            searchPanes: {
-                show: false,
-            },
-            targets: [6, 7, 8, , 9, 10, 11, 12, 13, 14]
-        }],
-        "footerCallback": function (row, data, start, end, display) {
-            var api = this.api(),
-                data;
-
-            // Remove the formatting to get integer data for summation
-            var intVal = function (i) {
-                return typeof i === 'string' ?
-                    i.replace(/[\Rp,.]/g, '') * 1 :
-                    typeof i === 'number' ?
-                    i : 0;
-            };
-
-            // Total over this page
-            pageTotal = api
-                .column(6, {
-                    page: 'current'
-                })
-                .data()
-                .reduce(function (a, b) {
-                    return intVal(a) + intVal(b);
-                }, 0);
-
-            var number_string = pageTotal.toString(),
-                sisa = number_string.length % 3,
-                rupiah = number_string.substr(0, sisa),
-                ribuan = number_string.substr(sisa).match(/\d{3}/g);
-
-            if (ribuan) {
-                separator = sisa ? '.' : '';
-                rupiah += separator + ribuan.join('.');
-            }
-            // Update footer
-            $(api.column(6).footer()).html(
-                rupiah + ''
-            );
-
-            // Total over this page
-            pageTotal = api
-                .column(7, {
-                    page: 'current'
-                })
-                .data()
-                .reduce(function (a, b) {
-                    return intVal(a) + intVal(b);
-                }, 0);
-
-            var number_string = pageTotal.toString(),
-                sisa = number_string.length % 3,
-                rupiah = number_string.substr(0, sisa),
-                ribuan = number_string.substr(sisa).match(/\d{3}/g);
-
-            if (ribuan) {
-                separator = sisa ? '.' : '';
-                rupiah += separator + ribuan.join('.');
-            }
-            // Update footer
-            $(api.column(7).footer()).html(
-                rupiah + ''
-            );
-
-            // Total over this page
-            pageTotal = api
-                .column(8, {
-                    page: 'current'
-                })
-                .data()
-                .reduce(function (a, b) {
-                    return intVal(a) + intVal(b);
-                }, 0);
-
-            var number_string = pageTotal.toString(),
-                sisa = number_string.length % 3,
-                rupiah = number_string.substr(0, sisa),
-                ribuan = number_string.substr(sisa).match(/\d{3}/g);
-
-            if (ribuan) {
-                separator = sisa ? '.' : '';
-                rupiah += separator + ribuan.join('.');
-            }
-            // Update footer
-            $(api.column(8).footer()).html(
-                rupiah + ''
-            );
-
-            // Total over this page
-            pageTotal = api
-                .column(9, {
-                    page: 'current'
-                })
-                .data()
-                .reduce(function (a, b) {
-                    return intVal(a) + intVal(b);
-                }, 0);
-
-            var number_string = pageTotal.toString(),
-                sisa = number_string.length % 3,
-                rupiah = number_string.substr(0, sisa),
-                ribuan = number_string.substr(sisa).match(/\d{3}/g);
-
-            if (ribuan) {
-                separator = sisa ? '.' : '';
-                rupiah += separator + ribuan.join('.');
-            }
-            // Update footer
-            $(api.column(9).footer()).html(
-                rupiah + ''
-            );
-
-            // Total over this page
-            pageTotal = api
-                .column(10, {
-                    page: 'current'
-                })
-                .data()
-                .reduce(function (a, b) {
-                    return intVal(a) + intVal(b);
-                }, 0);
-
-            var number_string = pageTotal.toString(),
-                sisa = number_string.length % 3,
-                rupiah = number_string.substr(0, sisa),
-                ribuan = number_string.substr(sisa).match(/\d{3}/g);
-
-            if (ribuan) {
-                separator = sisa ? '.' : '';
-                rupiah += separator + ribuan.join('.');
-            }
-            // Update footer
-            $(api.column(10).footer()).html(
-                rupiah + ''
-            );
-
-            // Total over this page
-            pageTotal = api
-                .column(11, {
-                    page: 'current'
-                })
-                .data()
-                .reduce(function (a, b) {
-                    return intVal(a) + intVal(b);
-                }, 0);
-
-            var number_string = pageTotal.toString(),
-                sisa = number_string.length % 3,
-                rupiah = number_string.substr(0, sisa),
-                ribuan = number_string.substr(sisa).match(/\d{3}/g);
-
-            if (ribuan) {
-                separator = sisa ? '.' : '';
-                rupiah += separator + ribuan.join('.');
-            }
-            // Update footer
-            $(api.column(11).footer()).html(
-                rupiah + ''
-            );
-
-            // Total over this page
-            pageTotal = api
-                .column(12, {
-                    page: 'current'
-                })
-                .data()
-                .reduce(function (a, b) {
-                    return intVal(a) + intVal(b);
-                }, 0);
-
-            var number_string = pageTotal.toString(),
-                sisa = number_string.length % 3,
-                rupiah = number_string.substr(0, sisa),
-                ribuan = number_string.substr(sisa).match(/\d{3}/g);
-
-            if (ribuan) {
-                separator = sisa ? '.' : '';
-                rupiah += separator + ribuan.join('.');
-            }
-            // Update footer
-            $(api.column(12).footer()).html(
-                rupiah + ''
-            );
-
-            // Total over this page
-            pageTotal = api
-                .column(13, {
-                    page: 'current'
-                })
-                .data()
-                .reduce(function (a, b) {
-                    return intVal(a) + intVal(b);
-                }, 0);
-
-            var number_string = pageTotal.toString(),
-                sisa = number_string.length % 3,
-                rupiah = number_string.substr(0, sisa),
-                ribuan = number_string.substr(sisa).match(/\d{3}/g);
-
-            if (ribuan) {
-                separator = sisa ? '.' : '';
-                rupiah += separator + ribuan.join('.');
-            }
-            // Update footer
-            $(api.column(13).footer()).html(
-                rupiah + ''
-            );
-
-            // Total over this page
-            pageTotal = api
-                .column(14, {
-                    page: 'current'
-                })
-                .data()
-                .reduce(function (a, b) {
-                    return intVal(a) + intVal(b);
-                }, 0);
-
-            var number_string = pageTotal.toString(),
-                sisa = number_string.length % 3,
-                rupiah = number_string.substr(0, sisa),
-                ribuan = number_string.substr(sisa).match(/\d{3}/g);
-
-            if (ribuan) {
-                separator = sisa ? '.' : '';
-                rupiah += separator + ribuan.join('.');
-            }
-            // Update footer
-            $(api.column(14).footer()).html(
-                'Rp. ' + rupiah + ''
-            );
-
-        }
-    });
+        });
+    }
 
     $('#tabel-detailMedia').DataTable({
         "scrollX": true,
@@ -3616,7 +4290,7 @@ $(document).ready(function () {
     });
 
     var collapsedGroups = {};
-
+    var collapsedGroups2 = {};
     var table = $('#tabel-data_databaseIncomeMedia').DataTable({
         "scrollX": true,
         "scrollCollapse": true,
@@ -3629,12 +4303,126 @@ $(document).ready(function () {
         ],
         dom: 'PBlfrtip',
         buttons: [{
-                extend: 'excelHtml5',
-                footer: true
+            extend: 'excelHtml5',
+            'footer': true,
+            exportOptions: {
+                customizeData: function (d) {
 
-            },
-            'colvis'
-        ],
+                    var columns = table.columns().count();
+                    var body = d.body;
+                    var rowData = table.rows().data().toArray();
+                    var grouped_array_index = rowData[1][9];
+
+
+                    if (!(grouped_array_index == undefined)) { //don't run grouping logic if rows aren't grouped
+
+                        var row_data_array = table.rows().data();
+                        var iColspan = columns;
+                        var sLastGroup = "";
+                        var no_of_splices = 0;
+                        var ageArray = [];
+
+                        for (var i = 0, row_length = row_data_array.length; i < row_length; i++)
+
+                        {
+
+                            var sGroup = row_data_array[i][1];
+
+                            var age = row_data_array[i][9];
+                            if (sGroup !== sLastGroup) {
+                                // console.log(sGroup);
+
+                                ageArray = [];
+                                //
+                                var table_data = [];
+
+                                for (var $column_index = 0; $column_index < iColspan; $column_index++) {
+
+                                    if ($column_index === 0) {
+
+                                        table_data[$column_index] = sGroup;
+
+                                    } else {
+                                        table_data[$column_index] = '';
+                                    }
+                                }
+
+                                body.splice(i + no_of_splices, 0, table_data);
+                                no_of_splices++;
+                                sLastGroup = sGroup;
+                            }
+
+                            if (sGroup == '') {
+
+                                var intVal = function (i) {
+                                    return typeof i === 'string' ?
+                                        i.replace(/[\Rp,.]/g, '') * 1 :
+                                        typeof i === 'number' ?
+                                        i : 0;
+                                };
+
+                                var ageParse = intVal(age)
+                                ageArray.push(parseInt(ageParse));
+                                var sum_ages = ageArray.reduce(function (a, b) {
+                                    return a + b;
+                                }, 0);
+
+                                bilangan = sum_ages;
+
+                                var number_string = bilangan.toString(),
+                                    sisa = number_string.length % 3,
+                                    rupiah = number_string.substr(0, sisa),
+                                    ribuan = number_string.substr(sisa).match(/\d{3}/g);
+
+                                if (ribuan) {
+                                    separator = sisa ? '.' : '';
+                                    rupiah += separator + ribuan.join('.');
+                                }
+
+                                for (var $column_index = 0; $column_index < iColspan; $column_index++) {
+                                    if ($column_index === 1) {
+                                        table_data[$column_index] = 'Rp. ' + rupiah;
+                                    }
+                                }
+
+                            } else {
+                                var intVal = function (i) {
+                                    return typeof i === 'string' ?
+                                        i.replace(/[\Rp,.]/g, '') * 1 :
+                                        typeof i === 'number' ?
+                                        i : 0;
+                                };
+
+                                var ageParse = intVal(age)
+                                ageArray.push(parseInt(ageParse));
+                                var sum_ages = ageArray.reduce(function (a, b) {
+                                    return a + b;
+                                }, 0);
+
+                                bilangan = sum_ages;
+
+                                var number_string = bilangan.toString(),
+                                    sisa = number_string.length % 3,
+                                    rupiah = number_string.substr(0, sisa),
+                                    ribuan = number_string.substr(sisa).match(/\d{3}/g);
+
+                                if (ribuan) {
+                                    separator = sisa ? '.' : '';
+                                    rupiah += separator + ribuan.join('.');
+                                }
+
+                                for (var $column_index = 0; $column_index < iColspan; $column_index++) {
+                                    if ($column_index === 1) {
+                                        table_data[$column_index] = 'Rp. ' + rupiah;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+        }],
         order: [
             [1, 'asc']
         ],
@@ -3743,6 +4531,14 @@ $(document).ready(function () {
                     i : 0;
             };
 
+            // Total over all pages
+            total = api
+                .column(9)
+                .data()
+                .reduce(function (a, b) {
+                    return intVal(a) + intVal(b);
+                }, 0);
+
             // Total over this page
             pageTotal = api
                 .column(9, {
@@ -3752,6 +4548,16 @@ $(document).ready(function () {
                 .reduce(function (a, b) {
                     return intVal(a) + intVal(b);
                 }, 0);
+
+            var number_string2 = total.toString(),
+                sisa2 = number_string2.length % 3,
+                rupiah2 = number_string2.substr(0, sisa2),
+                ribuan2 = number_string2.substr(sisa2).match(/\d{3}/g);
+
+            if (ribuan2) {
+                separator2 = sisa2 ? '.' : '';
+                rupiah2 += separator2 + ribuan2.join('.');
+            }
 
             var number_string = pageTotal.toString(),
                 sisa = number_string.length % 3,
@@ -3764,16 +4570,310 @@ $(document).ready(function () {
             }
             // Update footer
             $(api.column(9).footer()).html(
-                'Rp. ' + rupiah + ''
+                'Rp. ' + rupiah + '<br> (Total : Rp. ' + rupiah2 + ')'
             );
 
         }
     });
 
-    $('#tabel-data_databaseIncomeMedia tbody').on('click', 'tr.group-end', function () {
+    var table2 = $('#tabel-data_databaseTimIncome').DataTable({
+        "scrollX": true,
+        "scrollCollapse": true,
+        "processing": true,
+        "serverSide": false,
+        "ajax": "../ajax/data_incomeTim.php",
+        "lengthMenu": [
+            [10, 25, 50, 100, -1],
+            [10, 25, 50, 100, "All"]
+        ],
+        dom: 'PBlfrtip',
+        buttons: [{
+            extend: 'excelHtml5',
+            'footer': true,
+            exportOptions: {
+                customizeData: function (d) {
+
+                    var columns = table2.columns().count();
+                    var body = d.body;
+                    var rowData = table2.rows().data().toArray();
+                    console.log(rowData);
+                    var grouped_array_index = rowData[1][9];
+
+
+                    if (!(grouped_array_index == undefined)) { //don't run grouping logic if rows aren't grouped
+
+                        var row_data_array = table2.rows().data();
+                        var iColspan = columns;
+                        var sLastGroup = "";
+                        var no_of_splices = 0;
+                        var ageArray = [];
+
+                        for (var i = 0, row_length = row_data_array.length; i < row_length; i++)
+
+                        {
+
+                            var sGroup = row_data_array[i][1];
+
+                            var age = row_data_array[i][9];
+                            if (sGroup !== sLastGroup) {
+                                // console.log(sGroup);
+
+                                ageArray = [];
+                                //
+                                var table_data = [];
+
+                                for (var $column_index = 0; $column_index < iColspan; $column_index++) {
+
+                                    if ($column_index === 0) {
+
+                                        table_data[$column_index] = sGroup;
+
+                                    } else {
+                                        table_data[$column_index] = '';
+                                    }
+                                }
+
+                                body.splice(i + no_of_splices, 0, table_data);
+                                no_of_splices++;
+                                sLastGroup = sGroup;
+
+
+                            }
+
+                            if (sGroup == '') {
+
+                                var intVal = function (i) {
+                                    return typeof i === 'string' ?
+                                        i.replace(/[\Rp,.]/g, '') * 1 :
+                                        typeof i === 'number' ?
+                                        i : 0;
+                                };
+
+                                var ageParse = intVal(age)
+                                ageArray.push(parseInt(ageParse));
+                                var sum_ages = ageArray.reduce(function (a, b) {
+                                    return a + b;
+                                }, 0);
+
+                                bilangan = sum_ages;
+
+                                var number_string = bilangan.toString(),
+                                    sisa = number_string.length % 3,
+                                    rupiah = number_string.substr(0, sisa),
+                                    ribuan = number_string.substr(sisa).match(/\d{3}/g);
+
+                                if (ribuan) {
+                                    separator = sisa ? '.' : '';
+                                    rupiah += separator + ribuan.join('.');
+                                }
+
+                                for (var $column_index = 0; $column_index < iColspan; $column_index++) {
+                                    if ($column_index === 1) {
+                                        table_data[$column_index] = 'Rp. ' + rupiah;
+                                    }
+                                }
+
+                            } else {
+                                var intVal = function (i) {
+                                    return typeof i === 'string' ?
+                                        i.replace(/[\Rp,.]/g, '') * 1 :
+                                        typeof i === 'number' ?
+                                        i : 0;
+                                };
+
+                                var ageParse = intVal(age)
+                                ageArray.push(parseInt(ageParse));
+                                var sum_ages = ageArray.reduce(function (a, b) {
+                                    return a + b;
+                                }, 0);
+
+                                bilangan = sum_ages;
+
+                                var number_string = bilangan.toString(),
+                                    sisa = number_string.length % 3,
+                                    rupiah = number_string.substr(0, sisa),
+                                    ribuan = number_string.substr(sisa).match(/\d{3}/g);
+
+                                if (ribuan) {
+                                    separator = sisa ? '.' : '';
+                                    rupiah += separator + ribuan.join('.');
+                                }
+
+                                for (var $column_index = 0; $column_index < iColspan; $column_index++) {
+                                    if ($column_index === 1) {
+                                        table_data[$column_index] = 'Rp. ' + rupiah;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+        }],
+
+        order: [
+            [1, 'asc']
+        ],
+        rowGroup: {
+            // Uses the 'row group' plugin
+            dataSrc: 1,
+            startRender: null,
+            endRender: function (rows, group) {
+                var collapsed = !!collapsedGroups[group];
+
+                rows.nodes().each(function (r) {
+                    r.style.display = collapsed ? 'none' : '';
+                });
+
+                var intVal = function (i) {
+                    return typeof i === 'string' ?
+                        i.replace(/[\Rp,.]/g, '') * 1 :
+                        typeof i === 'number' ?
+                        i : 0;
+                };
+
+                var salary = rows
+                    .data()
+                    .pluck(9)
+                    .reduce(function (a, b) {
+                        return intVal(a) + intVal(b);
+                    }, 0);
+                salary = $.fn.dataTable.render.number('.', '', 0).display(salary);
+
+
+                // Add category name to the <tr>. NOTE: Hardcoded colspan
+                return $('<tr/>')
+                    .append('<td> </td>')
+                    .append('<td colspan="8">' + group + ' (' + rows.count() + ') ' + '/ Income: ' + ' ' + salary + '</td>')
+                    .append('<td> ' + salary + ' </td>')
+                    .attr('data-name', group)
+                    .toggleClass('collapsed', collapsed);
+            }
+        },
+        searchPanes: {
+            orderable: false
+        },
+        columnDefs: [{
+            "targets": 0,
+            "render": function (data, type, row, meta) {
+                var no = meta.row + meta.settings._iDisplayStart + 1
+                return "<center>" + no + "</center>";
+            }
+        }, {
+            width: 150,
+            targets: 1,
+            "render": function (data) {
+                return Capitalize(data);
+            }
+        }, {
+            width: 200,
+            targets: 2
+        }, {
+            width: 200,
+            targets: 3,
+            "render": function (data) {
+                return Capitalize(data);
+            }
+        }, {
+            width: 100,
+            targets: 4
+        }, {
+            width: 150,
+            targets: 5
+        }, {
+            width: 200,
+            targets: 6,
+            "render": function (data) {
+                return Capitalize(data);
+            }
+        }, {
+            width: 150,
+            targets: 7
+        }, {
+            width: 100,
+            targets: 8
+        }, {
+            width: 150,
+            targets: 9
+        }, {
+            searchPanes: {
+                show: true,
+                initCollapsed: true
+            },
+            targets: [1, 2, 3, 5, 6, 7, 8]
+        }, {
+            searchPanes: {
+                show: false
+            },
+            targets: [4, 9]
+        }],
+        "footerCallback": function (row, data, start, end, display) {
+            var api = this.api(),
+                data;
+
+            // Remove the formatting to get integer data for summation
+            var intVal = function (i) {
+                return typeof i === 'string' ?
+                    i.replace(/[\Rp,.]/g, '') * 1 :
+                    typeof i === 'number' ?
+                    i : 0;
+            };
+
+            // Total over all pages
+            total = api
+                .column(9)
+                .data()
+                .reduce(function (a, b) {
+                    return intVal(a) + intVal(b);
+                }, 0);
+
+            // Total over this page
+            pageTotal = api
+                .column(9, {
+                    page: 'current'
+                })
+                .data()
+                .reduce(function (a, b) {
+                    return intVal(a) + intVal(b);
+                }, 0);
+
+            var number_string2 = total.toString(),
+                sisa2 = number_string2.length % 3,
+                rupiah2 = number_string2.substr(0, sisa2),
+                ribuan2 = number_string2.substr(sisa2).match(/\d{3}/g);
+
+            if (ribuan2) {
+                separator2 = sisa2 ? '.' : '';
+                rupiah2 += separator2 + ribuan2.join('.');
+            }
+
+            var number_string = pageTotal.toString(),
+                sisa = number_string.length % 3,
+                rupiah = number_string.substr(0, sisa),
+                ribuan = number_string.substr(sisa).match(/\d{3}/g);
+
+            if (ribuan) {
+                separator = sisa ? '.' : '';
+                rupiah += separator + ribuan.join('.');
+            }
+
+            // Update footer
+            $(api.column(9).footer()).html(
+                'Rp. ' + rupiah + '<br> (Total : Rp. ' + rupiah2 + ')'
+            );
+
+        }
+    });
+
+    $('.table-income tbody').on('click', 'tr.group-end', function () {
         var name = $(this).data('name');
         collapsedGroups[name] = !collapsedGroups[name];
         table.draw(false);
+
+        var name2 = $(this).data('name');
+        collapsedGroups2[name2] = !collapsedGroups2[name2];
+        table2.draw(false);
     });
 
     // data global tahunan
@@ -4210,140 +5310,87 @@ $(document).ready(function () {
         }
     });
 
-    $("#tabel-subLaporanMedia").DataTable({
-        processing: true,
-        serverSide: false,
-        ajax: "../ajax/data_subLaporan.php",
-        deferRender: true,
-        scrollX: true,
-        lengthMenu: [
+    $('#tabel-subLaporanMedia').DataTable({
+        "processing": true,
+        "serverSide": false,
+        "ajax": "../ajax/data_subLaporan.php",
+        "deferRender": true,
+        "scrollX": true,
+        "lengthMenu": [
             [10, 25, 50, 100, -1],
-            [10, 25, 50, 100, "All"],
+            [10, 25, 50, 100, "All"]
         ],
-        dom: "PBlfrtip",
+        dom: 'PBlfrtip',
         buttons: [{
-                extend: "excelHtml5",
-                footer: true,
+                extend: 'excelHtml5',
+                footer: true
+
             },
-            "colvis",
+            'colvis'
         ],
         columnDefs: [{
-                targets: 0,
-                render: function (data, type, row, meta) {
-                    var no = meta.row + meta.settings._iDisplayStart + 1;
-                    return "<center>" + no + "</center>";
-                },
+            "targets": 0,
+            "render": function (data, type, row, meta) {
+                var no = meta.row + meta.settings._iDisplayStart + 1
+                return "<center>" + no + "</center>";
+            }
+        }, {
+            targets: 1,
+            "render": function (data) {
+                return Capitalize(data);
+            }
+        }, {
+            width: 200,
+            targets: 3,
+            "render": function (data) {
+                return Capitalize(data);
+            }
+        }, {
+            targets: 4,
+            "render": function (data) {
+                return "<center>" + data + "</center>";
+            }
+        }, {
+            width: 150,
+            targets: [1, 5, 19]
+        }, {
+            width: 100,
+            targets: [2, 4]
+        }, {
+            width: 50,
+            targets: 11,
+        }, {
+            searchPanes: {
+                show: true,
+                initCollapsed: true,
+                orderable: false
             },
-            {
-                targets: 1,
-                render: function (data) {
-                    return Capitalize(data);
-                },
+            targets: [1, 3, 4, 2, 5]
+        }, {
+            searchPanes: {
+                show: false,
             },
-            {
-                width: 200,
-                targets: 3,
-                render: function (data) {
-                    return Capitalize(data);
-                },
-            },
-            {
-                targets: 4,
-                render: function (data) {
-                    return "<center>" + data + "</center>";
-                },
-            },
-            {
-                width: 150,
-                targets: [1, 5],
-            },
-            {
-                width: 100,
-                targets: [2, 4],
-            },
-            {
-                width: 50,
-                targets: 11,
-            },
-            {
-                searchPanes: {
-                    show: true,
-                    initCollapsed: true,
-                    orderable: false,
-                },
-                targets: [1, 3, 4, 2, 5],
-            },
-            {
-                searchPanes: {
-                    show: false,
-                },
-                targets: [6, 7, 8, , 9, 10, 11, 12, 13, 14],
-                render: function (data) {
-                    return "<center>" + data + "</center>";
-                },
-            },
-        ],
-        footerCallback: function (row, data, start, end, display) {
+            targets: [6, 7, 8, , 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19],
+            "render": function (data) {
+                return "<center>" + data + "</center>";
+            }
+        }],
+        "footerCallback": function (row, data, start, end, display) {
             var api = this.api(),
                 data;
 
             // Remove the formatting to get integer data for summation
             var intVal = function (i) {
-                return typeof i === "string" ?
-                    i.replace(/[\Rp,.]/g, "") * 1 :
-                    typeof i === "number" ?
-                    i :
-                    0;
+                return typeof i === 'string' ?
+                    i.replace(/[\Rp,.]/g, '') * 1 :
+                    typeof i === 'number' ?
+                    i : 0;
             };
 
             // Total over this page
             pageTotal = api
-                .column(6, {
-                    page: "current",
-                })
-                .data()
-                .reduce(function (a, b) {
-                    return intVal(a) + intVal(b);
-                }, 0);
-
-            var number_string = pageTotal.toString(),
-                sisa = number_string.length % 3,
-                rupiah = number_string.substr(0, sisa),
-                ribuan = number_string.substr(sisa).match(/\d{3}/g);
-
-            if (ribuan) {
-                separator = sisa ? "." : "";
-                rupiah += separator + ribuan.join(".");
-            }
-            // Update footer
-            $(api.column(6).footer()).html(rupiah + "");
-
-            // Total over this page
-            pageTotal = api
-                .column(7, {
-                    page: "current",
-                })
-                .data()
-                .reduce(function (a, b) {
-                    return intVal(a) + intVal(b);
-                }, 0);
-
-            var number_string = pageTotal.toString(),
-                sisa = number_string.length % 3,
-                rupiah = number_string.substr(0, sisa),
-                ribuan = number_string.substr(sisa).match(/\d{3}/g);
-
-            if (ribuan) {
-                separator = sisa ? "." : "";
-                rupiah += separator + ribuan.join(".");
-            }
-            // Update footer
-            $(api.column(7).footer()).html(rupiah + "");
-
-            // Total over this page
-            pageTotal = api
                 .column(8, {
-                    page: "current",
+                    page: 'current'
                 })
                 .data()
                 .reduce(function (a, b) {
@@ -4356,16 +5403,18 @@ $(document).ready(function () {
                 ribuan = number_string.substr(sisa).match(/\d{3}/g);
 
             if (ribuan) {
-                separator = sisa ? "." : "";
-                rupiah += separator + ribuan.join(".");
+                separator = sisa ? '.' : '';
+                rupiah += separator + ribuan.join('.');
             }
             // Update footer
-            $(api.column(8).footer()).html(rupiah + "");
+            $(api.column(8).footer()).html(
+                rupiah + ''
+            );
 
             // Total over this page
             pageTotal = api
                 .column(9, {
-                    page: "current",
+                    page: 'current'
                 })
                 .data()
                 .reduce(function (a, b) {
@@ -4378,17 +5427,19 @@ $(document).ready(function () {
                 ribuan = number_string.substr(sisa).match(/\d{3}/g);
 
             if (ribuan) {
-                separator = sisa ? "." : "";
-                rupiah += separator + ribuan.join(".");
+                separator = sisa ? '.' : '';
+                rupiah += separator + ribuan.join('.');
             }
 
             // Update footer
-            $(api.column(9).footer()).html(rupiah + "");
+            $(api.column(9).footer()).html(
+                rupiah + ''
+            );
 
             // Total over this page
             pageTotal = api
                 .column(10, {
-                    page: "current",
+                    page: 'current'
                 })
                 .data()
                 .reduce(function (a, b) {
@@ -4396,21 +5447,24 @@ $(document).ready(function () {
                 }, 0);
 
             var number_string = pageTotal.toString(),
-                sisa = number_string.length % 3,
-                rupiah = number_string.substr(0, sisa),
-                ribuan = number_string.substr(sisa).match(/\d{3}/g);
-
+                number = number_string.substr(1),
+                sisa = number.length % 3,
+                rupiah = number.substr(0, sisa),
+                ribuan = number.substr(sisa).match(/\d{3}/g);
             if (ribuan) {
-                separator = sisa ? "." : "";
-                rupiah += separator + ribuan.join(".");
+                separator = sisa ? '.' : '';
+                rupiah += separator + ribuan.join('.');
             }
+
             // Update footer
-            $(api.column(10).footer()).html(rupiah + "");
+            $(api.column(10).footer()).html(
+                '-' + rupiah + ''
+            );
 
             // Total over this page
             pageTotal = api
                 .column(11, {
-                    page: "current",
+                    page: 'current'
                 })
                 .data()
                 .reduce(function (a, b) {
@@ -4423,16 +5477,18 @@ $(document).ready(function () {
                 ribuan = number_string.substr(sisa).match(/\d{3}/g);
 
             if (ribuan) {
-                separator = sisa ? "." : "";
-                rupiah += separator + ribuan.join(".");
+                separator = sisa ? '.' : '';
+                rupiah += separator + ribuan.join('.');
             }
             // Update footer
-            $(api.column(11).footer()).html(rupiah + "");
+            $(api.column(11).footer()).html(
+                rupiah + ''
+            );
 
             // Total over this page
             pageTotal = api
                 .column(12, {
-                    page: "current",
+                    page: 'current'
                 })
                 .data()
                 .reduce(function (a, b) {
@@ -4445,16 +5501,18 @@ $(document).ready(function () {
                 ribuan = number_string.substr(sisa).match(/\d{3}/g);
 
             if (ribuan) {
-                separator = sisa ? "." : "";
-                rupiah += separator + ribuan.join(".");
+                separator = sisa ? '.' : '';
+                rupiah += separator + ribuan.join('.');
             }
             // Update footer
-            $(api.column(12).footer()).html(rupiah + "");
+            $(api.column(12).footer()).html(
+                rupiah + ''
+            );
 
             // Total over this page
             pageTotal = api
                 .column(13, {
-                    page: "current",
+                    page: 'current'
                 })
                 .data()
                 .reduce(function (a, b) {
@@ -4467,16 +5525,18 @@ $(document).ready(function () {
                 ribuan = number_string.substr(sisa).match(/\d{3}/g);
 
             if (ribuan) {
-                separator = sisa ? "." : "";
-                rupiah += separator + ribuan.join(".");
+                separator = sisa ? '.' : '';
+                rupiah += separator + ribuan.join('.');
             }
             // Update footer
-            $(api.column(13).footer()).html(rupiah + "");
+            $(api.column(13).footer()).html(
+                rupiah + ''
+            );
 
             // Total over this page
             pageTotal = api
                 .column(14, {
-                    page: "current",
+                    page: 'current'
                 })
                 .data()
                 .reduce(function (a, b) {
@@ -4489,12 +5549,135 @@ $(document).ready(function () {
                 ribuan = number_string.substr(sisa).match(/\d{3}/g);
 
             if (ribuan) {
-                separator = sisa ? "." : "";
-                rupiah += separator + ribuan.join(".");
+                separator = sisa ? '.' : '';
+                rupiah += separator + ribuan.join('.');
             }
             // Update footer
-            $(api.column(14).footer()).html(rupiah + "");
-        },
+            $(api.column(14).footer()).html(
+                rupiah + ''
+            );
+
+            // Total over this page
+            pageTotal = api
+                .column(15, {
+                    page: 'current'
+                })
+                .data()
+                .reduce(function (a, b) {
+                    return intVal(a) + intVal(b);
+                }, 0);
+
+            var number_string = pageTotal.toString(),
+                sisa = number_string.length % 3,
+                rupiah = number_string.substr(0, sisa),
+                ribuan = number_string.substr(sisa).match(/\d{3}/g);
+
+            if (ribuan) {
+                separator = sisa ? '.' : '';
+                rupiah += separator + ribuan.join('.');
+            }
+            // Update footer
+            $(api.column(15).footer()).html(
+                rupiah + ''
+            );
+
+            // Total over this page
+            pageTotal = api
+                .column(16, {
+                    page: 'current'
+                })
+                .data()
+                .reduce(function (a, b) {
+                    return intVal(a) + intVal(b);
+                }, 0);
+
+            var number_string = pageTotal.toString(),
+                sisa = number_string.length % 3,
+                rupiah = number_string.substr(0, sisa),
+                ribuan = number_string.substr(sisa).match(/\d{3}/g);
+
+            if (ribuan) {
+                separator = sisa ? '.' : '';
+                rupiah += separator + ribuan.join('.');
+            }
+            // Update footer
+            $(api.column(16).footer()).html(
+                rupiah + ''
+            );
+
+            // Total over this page
+            pageTotal = api
+                .column(17, {
+                    page: 'current'
+                })
+                .data()
+                .reduce(function (a, b) {
+                    return intVal(a) + intVal(b);
+                }, 0);
+
+            var number_string = pageTotal.toString(),
+                sisa = number_string.length % 3,
+                rupiah = number_string.substr(0, sisa),
+                ribuan = number_string.substr(sisa).match(/\d{3}/g);
+
+            if (ribuan) {
+                separator = sisa ? '.' : '';
+                rupiah += separator + ribuan.join('.');
+            }
+            // Update footer
+            $(api.column(17).footer()).html(
+                rupiah + ''
+            );
+
+            // Total over this page
+            pageTotal = api
+                .column(18, {
+                    page: 'current'
+                })
+                .data()
+                .reduce(function (a, b) {
+                    return intVal(a) + intVal(b);
+                }, 0);
+
+            var number_string = pageTotal.toString(),
+                sisa = number_string.length % 3,
+                rupiah = number_string.substr(0, sisa),
+                ribuan = number_string.substr(sisa).match(/\d{3}/g);
+
+            if (ribuan) {
+                separator = sisa ? '.' : '';
+                rupiah += separator + ribuan.join('.');
+            }
+            // Update footer
+            $(api.column(18).footer()).html(
+                rupiah + ''
+            );
+
+            // Total over this page
+            pageTotal = api
+                .column(19, {
+                    page: 'current'
+                })
+                .data()
+                .reduce(function (a, b) {
+                    return intVal(a) + intVal(b);
+                }, 0);
+
+            var number_string = pageTotal.toString(),
+                sisa = number_string.length % 3,
+                rupiah = number_string.substr(0, sisa),
+                ribuan = number_string.substr(sisa).match(/\d{3}/g);
+
+            if (ribuan) {
+                separator = sisa ? '.' : '';
+                rupiah += separator + ribuan.join('.');
+            }
+            // Update footer
+            $(api.column(19).footer()).html(
+                rupiah + ''
+            );
+
+        }
     });
 
     $("#tabel-subIncomeMedia").DataTable({

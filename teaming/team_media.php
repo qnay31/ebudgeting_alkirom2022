@@ -16,6 +16,22 @@ if (isset($_POST["createTeam"]) ) {
 
 }
 
+if (isset($_POST["createListTeam"]) ) {
+    $link = $_SESSION["username"];
+    if(createListTeam($_POST) > 0 ) {
+        echo "<script>
+                alert('Tim Berhasil dibuat');
+                document.location.href = '$link.php?idTeam=listMedia';
+            </script>";
+            
+    } 
+        else {
+        echo mysqli_error($conn);
+    }
+
+
+}
+
 ?>
 
 <main id="main" class="main">

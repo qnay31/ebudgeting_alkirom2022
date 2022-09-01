@@ -8,13 +8,13 @@
             <select class="form-select" name="team" aria-label="Default select example" required
                 oninvalid="this.setCustomValidity('Tim tidak boleh kosong')" oninput="this.setCustomValidity('')">
                 <option selected value="">- Pilih Salah Satu Team - </option>
-                <option value="Facebook Pusat">Team Facebook Pusat</option>
-                <option value="Facebook Taman">Team Facebook Taman</option>
-                <option value="Facebook Taman II">Team Facebook Taman II</option>
-                <option value="Facebook Bojong">Team Facebook Bojong</option>
-                <option value="Instagram Meruyung">Team Instagram Meruyung</option>
-                <option value="Instagram Taman">Team Instagram Taman</option>
-                <option value="Instagram Bojong">Team Instagram Bojong</option>
+                <option value="Facebook Taman">Team Facebook Taman/I</option>
+                <option value="Facebook Pusat">Team Facebook Pusat/II</option>
+                <option value="Facebook Taman II">Team Facebook Taman II/III</option>
+                <option value="Facebook Bojong">Team Facebook Bojong/IV</option>
+                <option value="Instagram Taman">Team Instagram A</option>
+                <option value="Instagram Bojong">Team Instagram B</option>
+                <option value="Instagram Meruyung">Team Instagram C</option>
             </select>
         </div>
         <div class="form-group mb-3">

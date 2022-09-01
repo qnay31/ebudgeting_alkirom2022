@@ -10,6 +10,23 @@
             <a class="nav-link" href="<?= $_SESSION["username"] ?>.php?idTeam=changeMedia">Ubah Tim</a>
         </li>
 
+        <li class="nav-item">
+            <a class="nav-link" href="<?= $_SESSION["username"] ?>.php?idTeam=listMedia">List Income Tim</a>
+        </li>
+
+        <?php } elseif ($_GET["idTeam"] == "listMedia") { ?>
+        <li class="nav-item">
+            <a class="nav-link" href="<?= $_SESSION["username"] ?>.php?idTeam=teamMedia">Buat Tim</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="<?= $_SESSION["username"] ?>.php?idTeam=changeMedia">Ubah Tim</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link active" href="<?= $_SESSION["username"] ?>.php?idTeam=listMedia">List Income Tim</a>
+        </li>
+
         <?php } else { ?>
         <li class="nav-item">
             <a class="nav-link" href="<?= $_SESSION["username"] ?>.php?idTeam=teamMedia">Buat Tim</a>
@@ -17,6 +34,10 @@
 
         <li class="nav-item">
             <a class="nav-link active" href="<?= $_SESSION["username"] ?>.php?idTeam=changeMedia">Ubah Tim</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="<?= $_SESSION["username"] ?>.php?idTeam=listMedia">List Income Tim</a>
         </li>
         <?php } ?>
     </ul>
@@ -48,6 +69,8 @@
         <?php if ($_GET["idTeam"] == "teamMedia") { ?>
         <?php include '../models/team/sub/sub-createNewTeam.php' ?>
 
+        <?php } elseif ($_GET["idTeam"] == "listMedia") { ?>
+        <?php include '../models/team/sub/sub-listTeam.php' ?>
 
         <?php } else { ?>
         <?php include '../models/team/sub/sub-changeNewTeam.php'; ?>

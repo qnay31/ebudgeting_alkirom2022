@@ -81,9 +81,9 @@ include 'base/header.php'
     <?php
         include 'database/program.php';
     ?>
-    
+
     <!-- team media -->
-    <?php } elseif ($_GET["idTeam"] == "teamMedia" || $_GET["idTeam"] == "changeMedia") { ?>
+    <?php } elseif ($_GET["idTeam"] == "teamMedia" || $_GET["idTeam"] == "changeMedia" || $_GET["idTeam"] == "listMedia") { ?>
     <?php
         include 'teaming/team_media.php';
     ?>
@@ -123,11 +123,17 @@ include 'base/header.php'
     <?php
         include 'database/harianPemasukan.php';
     ?>
-    
+
     <!-- database crosscheck pemasukan media sosial harian-->
     <?php } elseif ($_GET["id_database"] == "database_crossCheck") { ?>
     <?php
         include 'database/crossCheck.php';
+    ?>
+
+    <!-- database income tim media sosial harian-->
+    <?php } elseif ($_GET["id_database"] == "database_incomeTim") { ?>
+    <?php
+        include 'database/incomeTeam.php';
     ?>
 
     <!-- database edit income media sosial -->
@@ -212,7 +218,6 @@ include 'base/header.php'
     <?php } elseif ($_GET["id_forms"] == "forms_laporanIncome") { ?>
     <?php
         include 'forms/mediaSosial/laporan_income.php';
-
     ?>
 
     <!-- form edit laporan -->
@@ -232,7 +237,7 @@ include 'base/header.php'
     <?php
         include 'checklist/check_pengajuan.php';
     ?>
-    
+
     <!-- checklist pengajuan Paudqu-->
     <?php } elseif ($_GET["id_checklist"] == "checklist_pengajuanPaudqu") { ?>
     <?php
@@ -292,7 +297,7 @@ include 'base/header.php'
     <?php
         include 'checklist/check_verifikasi.php';
     ?>
-    
+
     <!-- checklist verifikasi paudqu -->
     <?php } elseif ($_GET["id_checklist"] == "checklist_verifikasiPaudqu") { ?>
     <?php
@@ -394,7 +399,7 @@ include 'base/header.php'
     <?php
         include 'grafik/program.php';
     ?>
-    
+
     <!-- grafik paudqu -->
     <?php } elseif ($_GET["id_grafik"] == "grafik_paudqu") { ?>
     <?php
@@ -450,7 +455,7 @@ include 'base/header.php'
     <?php } ?>
 
     <?php } ?>
-    
+
     <?php include 'modal/maintenance.php'; ?>
     <?php include 'modal/kritikSaran.php'; ?>
 

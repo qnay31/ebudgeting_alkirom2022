@@ -17,6 +17,7 @@ if (isset($_POST['menuProgram'])) {
         <option value="Uang Makan">Uang Makan</option>
         <option value="Laundry">Laundry</option>
         <option value="Santunan">Santunan</option>
+        <option value="Tabungan Yatim">Tabungan Yatim</option>
     </select>
 </div>
 

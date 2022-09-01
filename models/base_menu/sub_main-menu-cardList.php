@@ -1355,7 +1355,7 @@ if ($_SESSION["id_pengurus"] == "ketua_yayasan" || $_SESSION["id_pengurus"] == "
                     <h6>Rp.
                         <?= number_format($pemasukanMedia,0,"." , ".") ?> <i class="bi bi-info-circle text-black"
                             data-bs-toggle="tooltip" data-bs-placement="right" data-bs-html="true"
-                            title="FB Pusat : <?= number_format($hasil_incomeFbPB,0,".","."); ?> <br>FB Taman: <?= number_format($hasil_incomeFbTB,0,".","."); ?> <br>FB Bogor : <?= number_format($hasil_incomeFbBB,0,".","."); ?> <br>IG Meruyung : <?= number_format($hasil_incomeIgMB,0,".","."); ?> <br> IG Bojong : <?= number_format($hasil_incomeIgBB,0,".","."); ?> <br> IG Taman : <?= number_format($hasil_incomeIgTB,0,".","."); ?> <br>Non Resi : <?= number_format($hasil_resiB,0,".","."); ?>"></i>
+                            title="FB Pusat : <?= number_format($hasil_incomeFbPB,0,".","."); ?> <br>FB Taman: <?= number_format($hasil_incomeFbTB,0,".","."); ?> <br>IG Meruyung : <?= number_format($hasil_incomeIgMB,0,".","."); ?> <br> IG Bojong : <?= number_format($hasil_incomeIgBB,0,".","."); ?> <br> IG Taman : <?= number_format($hasil_incomeIgTB,0,".","."); ?> <br>Non Resi : <?= number_format($hasil_resiB,0,".","."); ?>"></i>
                     </h6>
                     <a href="<?= $_SESSION["username"] ?>.php?idTeam=teamMedia"><span class="detail-bulanan">Lihat
                             detail →</span>
@@ -1421,7 +1421,7 @@ if ($_SESSION["id_pengurus"] == "ketua_yayasan" || $_SESSION["id_pengurus"] == "
                     <h6>Rp.
                         <?= number_format($pemasukanMediaT,0,"." , ".") ?> <i class="bi bi-info-circle text-black"
                             data-bs-toggle="tooltip" data-bs-placement="right" data-bs-html="true"
-                            title="FB Pusat : <?= number_format($hasil_incomeFbP,0,".","."); ?> <br>FB Taman: <?= number_format($hasil_incomeFbT,0,".","."); ?> <br>FB Bogor : <?= number_format($hasil_incomeFbB,0,".","."); ?> <br>IG Meruyung : <?= number_format($hasil_incomeIgM,0,".","."); ?> <br> IG Bojong : <?= number_format($hasil_incomeIgB,0,".","."); ?> <br> IG Taman : <?= number_format($hasil_incomeIgT,0,".","."); ?> <br>Non Resi : <?= number_format($hasil_resi1,0,".","."); ?>"></i>
+                            title="FB Pusat : <?= number_format($hasil_incomeFbP,0,".","."); ?> <br>FB Taman: <?= number_format($hasil_incomeFbT,0,".","."); ?> <br>IG Meruyung : <?= number_format($hasil_incomeIgM,0,".","."); ?> <br> IG Bojong : <?= number_format($hasil_incomeIgB,0,".","."); ?> <br> IG Taman : <?= number_format($hasil_incomeIgT,0,".","."); ?> <br>Non Resi : <?= number_format($hasil_resi1,0,".","."); ?>"></i>
                     </h6>
                     <a href="<?= $_SESSION["username"] ?>.php?idTeam=teamMedia"><span class="detail-bulanan">Lihat
                             detail →</span>
@@ -1837,155 +1837,9 @@ if ($_SESSION["id_pengurus"] == "ketua_yayasan" || $_SESSION["id_pengurus"] == "
     </div>
 </div><!-- End Card -->
 
-<?php } elseif ($_SESSION["id_pengurus"] == "kepala_cabang") { ?>
-<!-- Card -->
-<div class="col-xxl-4 col-md-4">
-    <div class="card info-card sales-card">
-        <div class="card-body">
-            <h5 class="card-title">Anggaran <span>| Program</span></h5>
-            <div class="d-flex align-items-center">
-                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                    <i class="bi bi-graph-up"></i>
-                </div>
-                <div class="ps-3">
-                    <h6>Rp. <?= number_format($hasil_anggaran,0,"." , ".") ?></h6>
-                </div>
-            </div>
-        </div>
-    </div>
-</div><!-- End Card -->
-
-<!-- Card -->
-<div class="col-xxl-4 col-md-4">
-    <div class="card info-card revenue-card">
-        <div class="card-body">
-            <h5 class="card-title">Terpakai <span>| Program</span></h5>
-            <div class="d-flex align-items-center">
-                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                    <i class="bi bi-graph-down"></i>
-                </div>
-                <div class="ps-3">
-                    <h6>Rp. <?= number_format($hasil_terpakai,0,"." , ".") ?></h6>
-                </div>
-            </div>
-        </div>
-    </div>
-</div><!-- End Card -->
-
-<!-- Card -->
-<div class="col-xxl-4 col-xl-4">
-    <div class="card info-card customers-card">
-        <div class="card-body">
-            <h5 class="card-title">Cashback <span>| Program</span></h5>
-
-            <div class="d-flex align-items-center">
-                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                    <i class="bi bi-credit-card"></i>
-                </div>
-                <div class="ps-3">
-                    <h6>Rp. <?= number_format($cashback,0,"." , ".") ?></h6>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- End Card -->
-
-<!-- Card -->
-<div class="col-xxl-4 col-md-64">
-    <div class="card info-card sales-card">
-        <div class="card-body">
-            <h5 class="card-title">Anggaran <span>| Logistik</span></h5>
-            <div class="d-flex align-items-center">
-                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                    <i class="bi bi-graph-up"></i>
-                </div>
-                <div class="ps-3">
-                    <h6>Rp. <?= number_format($hasil_anggaran2,0,"." , ".") ?></h6>
-                </div>
-            </div>
-        </div>
-    </div>
-</div><!-- End Card -->
-
-<!-- Card -->
-<div class="col-xxl-4 col-md-64">
-    <div class="card info-card revenue-card">
-        <div class="card-body">
-            <h5 class="card-title">Terpakai <span>| Logistik</span></h5>
-            <div class="d-flex align-items-center">
-                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                    <i class="bi bi-graph-down"></i>
-                </div>
-                <div class="ps-3">
-                    <h6>Rp. <?= number_format($hasil_terpakai2,0,"." , ".") ?></h6>
-                </div>
-            </div>
-        </div>
-    </div>
-</div><!-- End Card -->
-
-<!-- Card -->
-<div class="col-xxl-4 col-xl-4">
-    <div class="card info-card customers-card">
-        <div class="card-body">
-            <h5 class="card-title">Cashback <span>| Logistik</span></h5>
-
-            <div class="d-flex align-items-center">
-                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                    <i class="bi bi-credit-card"></i>
-                </div>
-                <div class="ps-3">
-                    <h6>Rp. <?= number_format($cashback2,0,"." , ".") ?></h6>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- End Card -->
-
-<!-- Card -->
-<div class="col-xxl-6 col-md-6">
-    <div class="card info-card customers-card">
-        <div class="card-body">
-            <h5 class="card-title">Pemasukan Media <span>| Bulan Ini</span></h5>
-
-            <div class="d-flex align-items-center">
-                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                    <i class="bi bi-credit-card"></i>
-                </div>
-                <div class="ps-3">
-                    <h6>Rp. <?= number_format($hasil_incomeBulanan,0,"." , ".") ?></h6>
-                </div>
-            </div>
-        </div>
-    </div>
-</div><!-- End Card -->
-
-<!-- Card -->
-<div class="col-xxl-6 col-md-6">
-    <div class="card info-card customers-card">
-        <div class="card-body">
-            <h5 class="card-title">Pemasukan Media <span>| Per Tahum</span></h5>
-
-            <div class="d-flex align-items-center">
-                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                    <i class="bi bi-credit-card"></i>
-                </div>
-                <div class="ps-3">
-                    <h6>Rp. <?= number_format($hasil_income1,0,"." , ".") ?></h6>
-                    <a
-                        href="<?= $_SESSION["username"] ?>.php?id_database=database_pemasukanMedia&idMedia=fbBogor&id_periode=<?= $bln; ?>"><span
-                            class="detail-bulanan">Lihat bulanan →</span></a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div><!-- End Card -->
-
 <?php } elseif ($_SESSION["id_pengurus"] == "kepala_income") { ?>
 <!-- Card -->
-<div class="col-xxl-4 col-md-4">
+<div class="col-xxl-6 col-md-6">
     <div class="card info-card revenue-card">
         <div class="card-body">
             <h5 class="card-title">Facebook Depok <span>| Bulan Ini</h5>
@@ -2002,25 +1856,7 @@ if ($_SESSION["id_pengurus"] == "ketua_yayasan" || $_SESSION["id_pengurus"] == "
 </div>
 
 <!-- Card -->
-<div class="col-xxl-4 col-md-4">
-    <div class="card info-card revenue-card">
-        <div class="card-body">
-            <h5 class="card-title">Facebook Bogor <span>| Bulan Ini</span></h5>
-
-            <div class="d-flex align-items-center">
-                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                    <i class="bi bi-credit-card"></i>
-                </div>
-                <div class="ps-3">
-                    <h6>Rp. <?= number_format($hasil_incomeBulananFB_b,0,"." , ".") ?></h6>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Card -->
-<div class="col-xxl-4 col-md-4">
+<div class="col-xxl-6 col-md-6">
     <div class="card info-card revenue-card">
         <div class="card-body">
             <h5 class="card-title">Instagram <span>| Bulan Ini</h5>

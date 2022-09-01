@@ -11,6 +11,7 @@
             <span class="input-group-text" id="basic-addon1">Program</span>
             <select class="form-select" name="program" aria-label="Default select example" id="menuProgram">
                 <option selected value="">Pilih Salah Satu Program</option>
+                <option value="Program Santunan Bulanan">Santunan Bulanan</option>
                 <option value="Program Pendidikan Yatim">Pendidikan Yatim</option>
                 <option value="Program Kesehatan Yatim">Kesehatan Yatim</option>
                 <option value="Program Santunan Yatim">Santunan Yatim</option>

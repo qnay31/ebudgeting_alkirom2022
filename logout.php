@@ -12,6 +12,8 @@ $query = mysqli_query($conn, "INSERT INTO 2022_log_aktivity VALUES('', '$_SESSIO
 session_destroy();
 session_unset();
 
+setcookie('idUser', '', time() + (10 * 365 * 24 * 60 * 60) );
+
 setcookie('login', '', time() - (10 * 365 * 24 * 60 * 60));
 
 header("Location: index.php");

@@ -59,6 +59,7 @@
         <div class="input-group mb-3">
             <input type="hidden" name="id" value="<?= $_SESSION["id"] ?>">
             <input type="hidden" name="link" value="<?= $_SESSION["id_pengurus"] ?>">
+            <input type="hidden" name="team" value="<?= $team ?>">
             <span class="input-group-text" id="basic-addon1">Akun</span>
             <select class="form-select" name="akun" aria-label="Default select example" required
                 oninvalid="this.setCustomValidity('Pilih salah satu akun')" oninput="this.setCustomValidity('')">
@@ -68,7 +69,6 @@
                 <option value="<?php echo $data['nama_akun'];?>">
                     <?php echo ucwords($data['nama_akun']) ?>
                 </option>
-
                 <?php } ?>
             </select>
         </div>

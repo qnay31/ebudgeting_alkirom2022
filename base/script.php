@@ -15,7 +15,12 @@
     $_SESSION["id_pengurus"] == "manager_instagram" || 
     $_SESSION["id_pengurus"] == "facebook_depok" || 
     $_SESSION["id_pengurus"] == "facebook_bogor" || 
-    $_SESSION["id_pengurus"] == "instagram"
+    $_SESSION["id_pengurus"] == "instagram" ||
+    $_GET["idTeam"] == "teamMedia" || 
+    $_GET["idTeam"] == "changeMedia" || 
+    $_GET["idTeam"] == "listMedia" ||
+    $_GET["id_database"] == "database_harianMedia" ||
+    $_GET["id_database"] == "database_incomeTim"
     ) { ?>
 
 <?php } else { ?>

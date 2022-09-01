@@ -27,6 +27,9 @@
     .select2-results__option,
     .select2-selection__choice,
     .select2-search.select2-search--inline,
+    .media-select .facebook a,
+    .media-select .instagram a,
+    .media-select .yatim a,
     #akunMedia .btn-danger,
     #form-pengajuan .list-group,
     #profile-overview .col-lg-9,
@@ -112,6 +115,9 @@
     .select2-results__option,
     .select2-selection__choice,
     .select2-search.select2-search--inline,
+    .media-select .facebook a,
+    .media-select .instagram a,
+    .media-select .yatim a,
     #akunMedia .btn-danger,
     #profile-overview .col-lg-9,
     #profile-edit .btn-primary,
@@ -185,6 +191,9 @@
     .select2-results__option,
     .select2-selection__choice,
     .select2-search.select2-search--inline,
+    .media-select .facebook a,
+    .media-select .instagram a,
+    .media-select .yatim a,
     #akunMedia .btn-danger,
     #profile-overview .col-lg-9,
     #profile-edit .btn-primary,
@@ -413,4 +422,52 @@
 .removeRow {
     background-color: #FF6347;
     color: #FFFFFF;
+}
+
+.media-select .facebook a {
+    background: #4064ac;
+    color: white;
+}
+
+.media-select .instagram a {
+    background: #d6249f;
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+    color: white;
+}
+
+.media-select .yatim a {
+    color: white;
+}
+
+.detail-box .bg-hariIni {
+    background-color: #4154f1;
+}
+
+.detail-box .bg-arrow-right {
+    color: black;
+}
+
+.detail-box .kotak {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+}
+
+.detail-box .text-box {
+    margin-right: 10px;
+}
+
+.btn-back {
+    font-size: .8em;
+    text-decoration: underline;
+    color: grey;
+}
+
+.btn-back:hover {
+    color: grey;
+    text-decoration: underline;
+}
+
+.income-tim .table-responsive {
+    overflow: hidden;
 }

@@ -337,7 +337,7 @@
 ?>
     <?php if ($_SESSION["username"] == "facebook_depok") { ?>
 
-    <div class="col-xxl-4 col-md-4">
+    <div class="col-xxl-6 col-md-6">
         <div class="card info-card customers-card">
             <div class="card-body">
                 <h5 class="card-title">
@@ -364,7 +364,7 @@
         </div>
     </div>
 
-    <div class="col-xxl-4 col-md-4">
+    <div class="col-xxl-6 col-md-6">
         <div class="card info-card customers-card">
             <div class="card-body">
                 <h5 class="card-title">
@@ -391,7 +391,7 @@
         </div>
     </div>
 
-    <div class="col-xxl-4 col-md-4">
+    <div class="col-xxl-6 col-md-6">
         <div class="card info-card customers-card">
             <div class="card-body">
                 <h5 class="card-title">
@@ -418,12 +418,11 @@
         </div>
     </div>
 
-    <?php } elseif ($_SESSION["username"] == "facebook_bogor" || $_SESSION["id_pengurus"] == "kepala_cabang") { ?>
-    <div class="col-xxl-4 col-md-4">
+    <div class="col-xxl-6 col-md-6">
         <div class="card info-card customers-card">
             <div class="card-body">
                 <h5 class="card-title">
-                    Facebook Bogor
+                    Facebook IV/DWI
                 </h5>
 
                 <div class="d-flex align-items-center">
@@ -451,34 +450,7 @@
         <div class="card info-card customers-card">
             <div class="card-body">
                 <h5 class="card-title">
-                    Instagram Bojong
-                </h5>
-
-                <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                        <i class="bi bi-credit-card"></i>
-                    </div>
-                    <div class="ps-3">
-                        <h6 data-bs-toggle="tooltip" data-bs-placement="right" title="<?= $sBulan; ?>">
-                            Rp. <?= number_format($hiibBulan, 0,"." , "."); ?> <i class="bi bi-info-circle"></i>
-                        </h6>
-                        <?php if ($_GET["id_periode"] == "") { ?>
-                        <h6 data-bs-toggle="tooltip" data-bs-placement="right" title="Tahunan">
-                            Rp. <?= number_format($hiib, 0,"." , "."); ?> <i class="bi bi-info-circle"></i>
-                        </h6>
-
-                        <?php } ?>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-xxl-4 col-md-4">
-        <div class="card info-card customers-card">
-            <div class="card-body">
-                <h5 class="card-title">
-                    Instagram Taman
+                    Instagram A/IDHAM
                 </h5>
 
                 <div class="d-flex align-items-center">
@@ -505,7 +477,34 @@
         <div class="card info-card customers-card">
             <div class="card-body">
                 <h5 class="card-title">
-                    Instagram Meruyung
+                    Instagram B/FAHMI
+                </h5>
+
+                <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                        <i class="bi bi-credit-card"></i>
+                    </div>
+                    <div class="ps-3">
+                        <h6 data-bs-toggle="tooltip" data-bs-placement="right" title="<?= $sBulan; ?>">
+                            Rp. <?= number_format($hiibBulan, 0,"." , "."); ?> <i class="bi bi-info-circle"></i>
+                        </h6>
+                        <?php if ($_GET["id_periode"] == "") { ?>
+                        <h6 data-bs-toggle="tooltip" data-bs-placement="right" title="Tahunan">
+                            Rp. <?= number_format($hiib, 0,"." , "."); ?> <i class="bi bi-info-circle"></i>
+                        </h6>
+
+                        <?php } ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xxl-4 col-md-4">
+        <div class="card info-card customers-card">
+            <div class="card-body">
+                <h5 class="card-title">
+                    Instagram C/ALDI
                 </h5>
 
                 <div class="d-flex align-items-center">
@@ -641,34 +640,7 @@
         <div class="card info-card customers-card">
             <div class="card-body">
                 <h5 class="card-title">
-                    Instagram Bojong/FAHMI
-                </h5>
-
-                <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                        <i class="bi bi-credit-card"></i>
-                    </div>
-                    <div class="ps-3">
-                        <h6 data-bs-toggle="tooltip" data-bs-placement="right" title="<?= $sBulan; ?>">
-                            Rp. <?= number_format($hiibBulan, 0,"." , "."); ?> <i class="bi bi-info-circle"></i>
-                        </h6>
-                        <?php if ($_GET["id_periode"] == "") { ?>
-                        <h6 data-bs-toggle="tooltip" data-bs-placement="right" title="Tahunan">
-                            Rp. <?= number_format($hiib, 0,"." , "."); ?> <i class="bi bi-info-circle"></i>
-                        </h6>
-
-                        <?php } ?>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-xxl-4 col-md-4">
-        <div class="card info-card customers-card">
-            <div class="card-body">
-                <h5 class="card-title">
-                    Instagram Taman/IDHAM
+                    Instagram A/IDHAM
                 </h5>
 
                 <div class="d-flex align-items-center">
@@ -695,7 +667,34 @@
         <div class="card info-card customers-card">
             <div class="card-body">
                 <h5 class="card-title">
-                    Instagram Meruyung/ALDI
+                    Instagram B/FAHMI
+                </h5>
+
+                <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                        <i class="bi bi-credit-card"></i>
+                    </div>
+                    <div class="ps-3">
+                        <h6 data-bs-toggle="tooltip" data-bs-placement="right" title="<?= $sBulan; ?>">
+                            Rp. <?= number_format($hiibBulan, 0,"." , "."); ?> <i class="bi bi-info-circle"></i>
+                        </h6>
+                        <?php if ($_GET["id_periode"] == "") { ?>
+                        <h6 data-bs-toggle="tooltip" data-bs-placement="right" title="Tahunan">
+                            Rp. <?= number_format($hiib, 0,"." , "."); ?> <i class="bi bi-info-circle"></i>
+                        </h6>
+
+                        <?php } ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xxl-4 col-md-4">
+        <div class="card info-card customers-card">
+            <div class="card-body">
+                <h5 class="card-title">
+                    Instagram C/ALDI
                 </h5>
 
                 <div class="d-flex align-items-center">

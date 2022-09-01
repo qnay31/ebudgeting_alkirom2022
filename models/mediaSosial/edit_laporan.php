@@ -26,6 +26,48 @@
                 value="<?= $data["tgl_laporan"] ?>">
         </div>
 
+        <?php if ($data["keterangan"] == "") { ?>
+
+        <?php } else { ?>
+        <div class="input-group mb-2">
+            <span class="input-group-text" id="basic-addon1"><b>Teman Sebelumnya</b></span>
+            <input type="text" class="form-control admin_rp" name="dataTeman" value="<?= $dataOld; ?>" readonly>
+        </div>
+
+        <?php } ?>
+
+        <?php if ($data["keterangan"] == "") { ?>
+
+        <?php } else { ?>
+        <div class="form-group mb-3">
+            <div class="form-text mb-2">
+                Keterangan
+            </div>
+            <input type="text" class="form-control" name="kTeman" value="<?= $data["keterangan"] ?>" readonly>
+        </div>
+        <?php } ?>
+
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1"><b>Teman saat ini</b></span>
+            <input type="text" class="form-control admin_rp" name="dataTemanBaru" maxlength="11"
+                placeholder="Total Teman" onkeypress="return hanyaAngka(event)" autocomplete="off" required
+                oninvalid="this.setCustomValidity('Jumlah Teman harus diisi')" oninput="this.setCustomValidity('')"
+                value="<?= number_format($data["jumlahTeman"],0,"." , ".") ?>">
+        </div>
+
+        <?php if ($data["keterangan"] == "Tambah Teman") { ?>
+        <input type="hidden" name="kTeman" value="<?= $data["keterangan"]; ?>">
+        <div class="input-group mb-3 keteranganTeman">
+            <span class="input-group-text" id="basic-addon1"><b>Jumlah Add Pertemanan</b></span>
+            <input type="text" class="form-control admin_rp" name="temanAdd" maxlength="11"
+                placeholder="Total Add Pertemanan" onkeypress="return hanyaAngka(event)" autocomplete="off" required
+                oninvalid="this.setCustomValidity('Jumlah add pertemanan harus diisi')"
+                oninput="this.setCustomValidity('')" value="<?= number_format($data["jumlahAdd"],0,"." , ".") ?>">
+        </div>
+
+        <?php } else { ?>
+        <?php } ?>
+
         <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1"><b>Total Serangan</b></span>
             <input type="text" class="form-control" name="totalSerangan" id="rupiah" maxlength="11"

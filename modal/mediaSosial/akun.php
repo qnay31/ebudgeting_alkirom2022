@@ -17,7 +17,7 @@ $query  = mysqli_query($conn, "SELECT * FROM akun_pengurus WHERE id_pengurus LIK
                         <div class="input-group mb-3">
                             <input type="hidden" name="id" value="<?= $r["id"]  ?>">
                             <input type="hidden" name="link" value="<?= $r["id_pengurus"] ?>">
-                            <input type="hidden" name="posisi" value="<?= $r["posisi"] ?>">
+                            <input type="hidden" name="oldTeam" value="<?= $r["team"] ?>">
                         </div>
 
                         <div class="form-group mb-3">
@@ -29,9 +29,9 @@ $query  = mysqli_query($conn, "SELECT * FROM akun_pengurus WHERE id_pengurus LIK
 
                         <div class="form-group mb-3">
                             <div class="form-text mb-2">
-                                Posisi
+                                Team
                             </div>
-                            <input type="text" class="form-control" value="<?= $r["posisi"] ?>" readonly>
+                            <input type="text" class="form-control" value="<?= $r["team"] ?>" readonly>
                         </div>
 
                         <div class="form-group mb-3">
@@ -82,12 +82,17 @@ $query  = mysqli_query($conn, "SELECT * FROM akun_pengurus WHERE id_pengurus LIK
                                 oninput="this.setCustomValidity('')">
                                 <option selected value="">- Pilih Salah Satu Team - </option>
                                 <option value="">Tidak Ada Team</option>
+                                <?php if ($r["id_pengurus"] == "instagram") { ?>
+                                <option value="Instagram Meruyung">Team Instagram Meruyung</option>
+                                <option value="Instagram Taman">Team Instagram Taman</option>
+                                <option value="Instagram Bojong">Team Instagram Bojong</option>
+
+                                <?php } else { ?>
                                 <option value="Facebook Pusat">Team Facebook Pusat</option>
                                 <option value="Facebook Taman">Team Facebook Taman</option>
-                                <option value="Instagram Bojong">Team Instagram Bojong</option>
-                                <option value="Instagram Taman">Team Instagram Taman</option>
-                                <option value="Instagram Meruyung">Team Instagram Meruyung</option>
-                                <option value="Facebook Bogor">Team Facebook Bogor</option>
+                                <option value="Facebook Taman II">Team Facebook Taman II</option>
+                                <option value="Facebook Bojong">Team Facebook Bojong</option>
+                                <?php } ?>
                             </select>
                         </div>
 

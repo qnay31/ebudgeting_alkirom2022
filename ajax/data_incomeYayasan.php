@@ -27,17 +27,39 @@ $primaryKey = 'id';
 if ($_SESSION["id_pengurus"] == "facebook_depok" || $_SESSION["id_pengurus"] == "facebook_bogor" || $_SESSION["id_pengurus"] == "instagram" || $_SESSION["id_pengurus"] == "facebook") {
     $where = "nomor_id = '$_SESSION[id]' AND status = 'OK' ORDER BY pemegang ASC, `tanggal_tf` DESC";
 
-} elseif ($_SESSION["id_pengurus"] == "kepala_cabang" || $_SESSION["username"] == "facebook_bogor") {
-    $where = "cabang = '$_SESSION[cabang]' AND id_pengurus = 'facebook_bogor' AND status = 'OK' ORDER BY pemegang ASC, `tanggal_tf` DESC";
-
 } elseif ($_SESSION["id_pengurus"] == "manager_instagram") {
-    $where = "cabang = '$_SESSION[cabang]' AND id_pengurus = 'instagram' AND status = 'OK' ORDER BY pemegang ASC, `tanggal_tf` DESC";
+    if ($_SESSION["username"] == "instagram_taman") {
+        $where = "id_pengurus = 'instagram' AND team = 'Instagram Taman' AND status = 'OK' ORDER BY pemegang ASC, `tanggal_tf` DESC";
+
+    } elseif ($_SESSION["username"] == "instagram_bojong") {
+        $where = "id_pengurus = 'instagram' AND team = 'Instagram Bojong' AND status = 'OK' ORDER BY pemegang ASC, `tanggal_tf` DESC";
+
+    } elseif ($_SESSION["username"] == "instagram_meruyung") {
+        $where = "id_pengurus = 'instagram' AND team = 'Instagram Meruyung' AND status = 'OK' ORDER BY pemegang ASC, `tanggal_tf` DESC";
+
+    } else {
+        $where = "cabang = '$_SESSION[cabang]' AND id_pengurus = 'instagram' AND status = 'OK' ORDER BY pemegang ASC, `tanggal_tf` DESC";
+    }
 
 } elseif ($_SESSION["id_pengurus"] == "manager_facebook") {
-    $where = "cabang = '$_SESSION[cabang]' AND id_pengurus = 'facebook_depok' AND status = 'OK' ORDER BY pemegang ASC, `tanggal_tf` DESC";
+    if ($_SESSION["username"] == "facebook_taman") {
+        $where = "id_pengurus = 'facebook_depok' AND team = 'Facebook Taman' AND status = 'OK' ORDER BY pemegang ASC, `tanggal_tf` DESC";
+        
+    } elseif ($_SESSION["username"] == "admin_facebook") {
+        $where = "id_pengurus = 'facebook_depok' AND team = 'Facebook Taman II' AND status = 'OK' ORDER BY pemegang ASC, `tanggal_tf` DESC";
+
+    } elseif ($_SESSION["username"] == "facebook_pusat") {
+        $where = "id_pengurus = 'facebook_depok' AND team = 'Facebook Pusat' AND status = 'OK' ORDER BY pemegang ASC, `tanggal_tf` DESC";
+
+    } elseif ($_SESSION["username"] == "facebook_bojong") {
+        $where = "id_pengurus = 'facebook_depok' AND team = 'Facebook Bojong' AND status = 'OK' ORDER BY pemegang ASC, `tanggal_tf` DESC";
+
+    } else {
+        $where = "cabang = '$_SESSION[cabang]' AND id_pengurus = 'facebook_depok' AND status = 'OK' ORDER BY pemegang ASC, `tanggal_tf` DESC";
+    }   
 
 } else {
-    $where = "status = 'OK' ORDER BY pemegang ASC, `tanggal_tf` DESC";
+    $where = "status = 'OK' ORDER BY pemegang ASC, `tanggal_tf` DESC"; 
 }
 
 // Array of database columns which should be read and sent back to DataTables.
@@ -55,11 +77,23 @@ $columns = array(
     ),
     array( 'db' => 'pemegang', 'dt' => 1 ),
     array( 
-        'db'        => 'id_pengurus', 
+        'db'        => 'team', 
         'dt'        => 2,
         'formatter' => function( $d, $row ) {
-            return  $d == "facebook_depok" ? "Facebook Depok" :( 
-                    $d == "facebook_bogor" ? "Facebook Bogor" : "Instagram");
+            return  
+            $d == "Facebook Taman" ? "Facebook I" :(
+                $d == "Facebook Pusat" ? "Facebook II" : (
+                    $d == "Facebook Taman II" ? "Facebook III" : (
+                        $d == "Facebook Bojong" ? "Facebook IV" : (
+                            $d == "Instagram Taman" ? "Instagram A" : (
+                                $d == "Instagram Bojong" ? "Instagram B" : (
+                                    $d == "Instagram Meruyung" ? "Instagram C" : "Tidak Dalam Team"
+                                )
+                            )
+                        )
+                    )
+                )
+            );
         }
     ),
     array( 'db' => 'nama_akun',  'dt' => 3 ),

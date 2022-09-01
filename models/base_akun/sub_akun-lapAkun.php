@@ -13,10 +13,18 @@
                     <th scope="col">Tgl Laporan</th>
                     <th scope="col">Periode</th>
                     <th scope="col">Keterangan</th>
+                    <?php if ($_SESSION["id_pengurus"] == "manager_instagram" || $_GET["mediaLaporan"] == "instagram") { ?>
+                    <th scope="col">Total Pengikut</th>
+                    <th scope="col">Total Mengikuti</th>
+                    <th scope="col">Pengikut Terbaru</th>
+                    <th scope="col">Mengikuti terbaru</th>
+
+                    <?php } else { ?>
                     <th scope="col">Total Teman</th>
                     <th scope="col">Add Pertemanan</th>
                     <th scope="col">Teman Baru</th>
                     <th scope="col">Hapus Teman</th>
+                    <?php } ?>
                     <th scope="col">Total Serangan</th>
                     <th scope="col">Respon</th>
                     <th scope="col">Minta Norek</th>

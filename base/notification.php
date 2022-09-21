@@ -56,6 +56,13 @@ if ($_SESSION["id_pengurus"] == "management_keuangan") {
     $n_main2        = mysqli_query($conn, "SELECT * FROM 2022_maintenance WHERE laporan = 'Menunggu Verifikasi' ORDER BY `tgl_dibuat` DESC");
     $maintenance2   = $n_main2->num_rows;
 
+    // jasa
+    $n_jasa       = mysqli_query($conn, "SELECT * FROM 2022_jasa WHERE laporan = 'Belum Laporan' AND status = 'Pending' ORDER BY `tgl_dibuat` DESC");
+    $jasa    = $n_jasa->num_rows;
+
+    $n_jasa2        = mysqli_query($conn, "SELECT * FROM 2022_jasa WHERE laporan = 'Menunggu Verifikasi' ORDER BY `tgl_dibuat` DESC");
+    $jasa2   = $n_jasa2->num_rows;
+
     // income media sosial
     $n_inMedia      = mysqli_query($conn, "SELECT * FROM 2022_income WHERE status = 'Menunggu Verifikasi' ORDER BY `tgl_pemasukan` DESC");
     $incomeMedia    = $n_inMedia->num_rows;
@@ -112,6 +119,10 @@ if ($_SESSION["id_pengurus"] == "management_keuangan") {
     // operasional yayasan
     $n_oy         = mysqli_query($conn, "SELECT * FROM 2022_operasional_yayasan WHERE laporan = 'Belum Laporan' AND status = 'OK' ORDER BY `tgl_dibuat` DESC");
     $operasional_yayasan    = $n_oy->num_rows;
+
+    // jasa 
+    $n_jasa         = mysqli_query($conn, "SELECT * FROM 2022_jasa WHERE laporan = 'Belum Laporan' AND status = 'OK' ORDER BY `tgl_dibuat` DESC");
+    $jasa    = $n_jasa->num_rows;
 }
 
 if ($_SESSION["id_pengurus"] == "admin_web") {
@@ -173,16 +184,16 @@ if (isset($_POST["balasSaran"]) ) {
 <li class="nav-item dropdown">
     <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
         <i class="bi bi-bell"></i>
-        <?php if ($s+$logistik+$aset+$uang_makan+$gaji_karyawan+$anggaran_lain+$maintenance+$operasional_yayasan+$paud > 0) { ?>
+        <?php if ($s+$logistik+$aset+$uang_makan+$gaji_karyawan+$anggaran_lain+$maintenance+$operasional_yayasan+$paud+$jasa > 0) { ?>
         <span
-            class="badge bg-primary badge-number"><?= $s+$logistik+$aset+$uang_makan+$gaji_karyawan+$anggaran_lain+$maintenance+$operasional_yayasan+$paud ?></span>
+            class="badge bg-primary badge-number"><?= $s+$logistik+$aset+$uang_makan+$gaji_karyawan+$anggaran_lain+$maintenance+$operasional_yayasan+$paud+$jasa ?></span>
         <?php } ?>
     </a><!-- End Notification Icon -->
     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications ketua-yayasan">
-        <?php if ($s+$logistik+$aset+$uang_makan+$gaji_karyawan+$anggaran_lain+$maintenance+$operasional_yayasan+$paud > 0) { ?>
+        <?php if ($s+$logistik+$aset+$uang_makan+$gaji_karyawan+$anggaran_lain+$maintenance+$operasional_yayasan+$paud+$jasa > 0) { ?>
         <li class="dropdown-header">
             Kamu mempunyai
-            <?= $s+$logistik+$aset+$uang_makan+$gaji_karyawan+$anggaran_lain+$maintenance+$operasional_yayasan+$paud ?>
+            <?= $s+$logistik+$aset+$uang_makan+$gaji_karyawan+$anggaran_lain+$maintenance+$operasional_yayasan+$paud+$jasa ?>
             notifikasi baru
         </li>
 
@@ -330,6 +341,22 @@ if (isset($_POST["balasSaran"]) ) {
         </a>
         <?php } ?>
 
+        <?php if ($jasa > 0) { ?>
+        <li>
+            <hr class="dropdown-divider">
+        </li>
+        <a href="<?= $_SESSION["username"] ?>.php?id_forms=forms_verifikasi&id_dataManagement=jasa">
+            <li class="notification-item"><span class="badge badge-danger badge-counter">New</span>
+                <i class="bi bi-graph-up text-primary"></i>
+                <div>
+                    <h4>Pengajuan Jasa</h4>
+                    <p>Ada <?= $jasa ?> pengajuan perlu dilaporkan</p>
+                    <p><?= date("d-m-Y") ?></p>
+                </div>
+            </li>
+        </a>
+        <?php } ?>
+
         <?php } else { ?>
         <li class="dropdown-header">
             Tidak ada notifikasi terbaru
@@ -385,16 +412,16 @@ if (isset($_POST["balasSaran"]) ) {
 <li class="nav-item dropdown">
     <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
         <i class="bi bi-bell"></i>
-        <?php if ($s+$s2+$logistik+$logistik2+$aset+$aset2+$uang_makan+$uang_makan2+$gaji_karyawan+$gaji_karyawan2+$anggaran_lain+$anggaran_lain2+$maintenance+$maintenance2+$operasional_yayasan+$operasional_yayasan2+$incomeMedia+$incomeNonresi+$paud+$paud2 > 0) { ?>
+        <?php if ($s+$s2+$logistik+$logistik2+$aset+$aset2+$uang_makan+$uang_makan2+$gaji_karyawan+$gaji_karyawan2+$anggaran_lain+$anggaran_lain2+$maintenance+$maintenance2+$operasional_yayasan+$operasional_yayasan2+$incomeMedia+$incomeNonresi+$paud+$paud2+$jasa+$jasa2 > 0) { ?>
         <span
-            class="badge bg-primary badge-number"><?= $s+$s2+$logistik+$logistik2+$aset+$aset2+$uang_makan+$uang_makan2+$gaji_karyawan+$gaji_karyawan2+$anggaran_lain+$anggaran_lain2+$maintenance+$maintenance2+$incomeHumas+$operasional_yayasan+$operasional_yayasan2+$incomeMedia+$incomeNonresi+$paud+$paud2 ?></span>
+            class="badge bg-primary badge-number"><?= $s+$s2+$logistik+$logistik2+$aset+$aset2+$uang_makan+$uang_makan2+$gaji_karyawan+$gaji_karyawan2+$anggaran_lain+$anggaran_lain2+$maintenance+$maintenance2+$incomeHumas+$operasional_yayasan+$operasional_yayasan2+$incomeMedia+$incomeNonresi+$paud+$paud2+$jasa+$jasa2 ?></span>
         <?php } ?>
     </a><!-- End Notification Icon -->
     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications ketua-yayasan">
-        <?php if ($s+$s2+$logistik+$logistik2+$aset+$aset2+$uang_makan+$uang_makan2+$gaji_karyawan+$gaji_karyawan2+$anggaran_lain+$anggaran_lain2+$maintenance+$maintenance2+$operasional_yayasan+$operasional_yayasan2+$incomeMedia+$incomeNonresi+$paud+$paud2 > 0) { ?>
+        <?php if ($s+$s2+$logistik+$logistik2+$aset+$aset2+$uang_makan+$uang_makan2+$gaji_karyawan+$gaji_karyawan2+$anggaran_lain+$anggaran_lain2+$maintenance+$maintenance2+$operasional_yayasan+$operasional_yayasan2+$incomeMedia+$incomeNonresi+$paud+$paud2+$jasa+$jasa2 > 0) { ?>
         <li class="dropdown-header">
             Kamu mempunyai
-            <?= $s+$s2+$logistik+$logistik2+$aset+$aset2+$uang_makan+$uang_makan2+$gaji_karyawan+$gaji_karyawan2+$anggaran_lain+$anggaran_lain2+$maintenance+$maintenance2+$operasional_yayasan+$operasional_yayasan2+$incomeMedia+$incomeNonresi+$paud+$paud2 ?>
+            <?= $s+$s2+$logistik+$logistik2+$aset+$aset2+$uang_makan+$uang_makan2+$gaji_karyawan+$gaji_karyawan2+$anggaran_lain+$anggaran_lain2+$maintenance+$maintenance2+$operasional_yayasan+$operasional_yayasan2+$incomeMedia+$incomeNonresi+$paud+$paud2+$jasa+$jasa2 ?>
             notifikasi baru
         </li>
 
@@ -558,6 +585,22 @@ if (isset($_POST["balasSaran"]) ) {
         </a>
         <?php } ?>
 
+        <?php if ($jasa > 0) { ?>
+        <li>
+            <hr class="dropdown-divider">
+        </li>
+        <a href="<?= $_SESSION["username"] ?>.php?id_checklist=checklist_pengajuanJasa">
+            <li class="notification-item"><span class="badge badge-danger badge-counter">New</span>
+                <i class="bi bi-graph-up text-primary"></i>
+                <div>
+                    <h4>Pengajuan Jasa</h4>
+                    <p>Ada <?= $jasa ?> pengajuan perlu disetujui</p>
+                    <p><?= date("d-m-Y") ?></p>
+                </div>
+            </li>
+        </a>
+        <?php } ?>
+
         <?php if ($s2 > 0) { ?>
         <li>
             <hr class="dropdown-divider">
@@ -705,6 +748,23 @@ if (isset($_POST["balasSaran"]) ) {
                 <div>
                     <h4>Laporan Operasional</h4>
                     <p>Ada <?= $operasional_yayasan2 ?> laporan perlu disutujui</p>
+                    <p><?= date("d-m-Y") ?></p>
+                </div>
+            </li>
+        </a>
+        <?php } ?>
+
+        <?php if ($jasa2 > 0) { ?>
+        <li>
+            <hr class="dropdown-divider">
+        </li>
+
+        <a href="<?= $_SESSION["username"] ?>.php?id_checklist=checklist_laporanJasa">
+            <li class="notification-item"><span class="badge badge-danger badge-counter">New</span>
+                <i class="bi bi-graph-down text-success"></i>
+                <div>
+                    <h4>Laporan Jasa</h4>
+                    <p>Ada <?= $jasa2 ?> laporan perlu disutujui</p>
                     <p><?= date("d-m-Y") ?></p>
                 </div>
             </li>

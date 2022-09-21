@@ -24,6 +24,13 @@
                 <?php 
                 $id_management = "operasional_yayasan"; 
                 ?>
+
+                <?php } elseif ($_GET["id_checklist"] == "checklist_laporanJasa") { ?>
+                <b style="color: black;">Tabel Laporan Jasa</b>
+                <?php 
+                $id_management = "jasa"; 
+                ?>
+
                 <?php } else { ?>
                 <b style="color: black;">Tabel Laporan Biaya Lainnya</b>
                 <?php $id_management = "anggaran_lain"; ?>

@@ -153,9 +153,25 @@ if ($_SESSION["id_pengurus"] == "ketua_yayasan" || $_SESSION["id_pengurus"] == "
         $hasil_terpakai9 = array_sum($total_terpakai9);
     }
 
-    $anggaran_global = $hasil_anggaran+$hasil_anggaran2+$hasil_anggaran3+$hasil_anggaran4+$hasil_anggaran5+$hasil_anggaran6+$hasil_anggaran7+$hasil_anggaran8+$hasil_anggaran9;
+    $q10 = mysqli_query($conn, "SELECT * FROM 2022_data_jasa");
+    $sql10 = $q10;
+    while($r10 = mysqli_fetch_array($sql10))
+    {
+        $i++;   
+        $d_anggaran10 = $r10['anggaran_global'];
+        $total_anggaran10[$i] = $d_anggaran10;
 
-    $terpakai_global = $hasil_terpakai+$hasil_terpakai2+$hasil_terpakai3+$hasil_terpakai4+$hasil_terpakai5+$hasil_terpakai6+$hasil_terpakai7+$hasil_terpakai8+$hasil_terpakai9;
+        $hasil_anggaran10 = array_sum($total_anggaran10);
+
+        $d_terpakai10 = $r10['terpakai_global'];
+        $total_terpakai10[$i] = $d_terpakai10;
+
+        $hasil_terpakai10 = array_sum($total_terpakai10);
+    }
+
+    $anggaran_global = $hasil_anggaran+$hasil_anggaran2+$hasil_anggaran3+$hasil_anggaran4+$hasil_anggaran5+$hasil_anggaran6+$hasil_anggaran7+$hasil_anggaran8+$hasil_anggaran9+$hasil_anggaran10;
+
+    $terpakai_global = $hasil_terpakai+$hasil_terpakai2+$hasil_terpakai3+$hasil_terpakai4+$hasil_terpakai5+$hasil_terpakai6+$hasil_terpakai7+$hasil_terpakai8+$hasil_terpakai9+$hasil_terpakai10;
 
     $cashback_global = $anggaran_global-$terpakai_global;
     // die(var_dump($terpakai_global));
@@ -320,9 +336,26 @@ if ($_SESSION["id_pengurus"] == "ketua_yayasan" || $_SESSION["id_pengurus"] == "
         $cashbackBulanan9 = $hasil_anggaranBulanan9-$hasil_terpakaiBulanan9;
     }
 
-    $anggaran_globalBulanan = $hasil_anggaranBulanan+$hasil_anggaranBulanan2+$hasil_anggaranBulanan3+$hasil_anggaranBulanan4+$hasil_anggaranBulanan5+$hasil_anggaranBulanan6+$hasil_anggaranBulanan7+$hasil_anggaranBulanan8+$hasil_anggaranBulanan9;
+    $k10 = mysqli_query($conn, "SELECT * FROM 2022_data_jasa WHERE bulan = '$bulanan'");
+    $skl10 = $k10;
+    while($dBulanan10 = mysqli_fetch_array($skl10))
+    {
+        $i++;   
+        $d_anggaranBulanan10 = $dBulanan10['anggaran_global'];
+        $total_anggaranBulanan10[$i] = $d_anggaranBulanan10;
 
-    $terpakai_globalBulanan = $hasil_terpakaiBulanan+$hasil_terpakaiBulanan2+$hasil_terpakaiBulanan3+$hasil_terpakaiBulanan4+$hasil_terpakaiBulanan5+$hasil_terpakaiBulanan6+$hasil_terpakaiBulanan7+$hasil_terpakaiBulanan8+$hasil_terpakaiBulanan9;
+        $hasil_anggaranBulanan10 = array_sum($total_anggaranBulanan10);
+
+        $d_terpakaiBulanan10 = $dBulanan10['terpakai_global'];
+        $total_terpakaiBulanan10[$i] = $d_terpakaiBulanan10;
+
+        $hasil_terpakaiBulanan10 = array_sum($total_terpakaiBulanan10);
+        $cashbackBulanan10 = $hasil_anggaranBulanan10-$hasil_terpakaiBulanan10;
+    }
+
+    $anggaran_globalBulanan = $hasil_anggaranBulanan+$hasil_anggaranBulanan2+$hasil_anggaranBulanan3+$hasil_anggaranBulanan4+$hasil_anggaranBulanan5+$hasil_anggaranBulanan6+$hasil_anggaranBulanan7+$hasil_anggaranBulanan8+$hasil_anggaranBulanan9+$hasil_anggaranBulanan10;
+
+    $terpakai_globalBulanan = $hasil_terpakaiBulanan+$hasil_terpakaiBulanan2+$hasil_terpakaiBulanan3+$hasil_terpakaiBulanan4+$hasil_terpakaiBulanan5+$hasil_terpakaiBulanan6+$hasil_terpakaiBulanan7+$hasil_terpakaiBulanan8+$hasil_terpakaiBulanan9+$hasil_terpakaiBulanan10;
 
     $cashback_globalBulananan = $anggaran_globalBulanan-$terpakai_globalBulanan;
     
@@ -1272,6 +1305,38 @@ if ($_SESSION["id_pengurus"] == "ketua_yayasan" || $_SESSION["id_pengurus"] == "
                     </div>
                 </li>
 
+                <!-- jasa -->
+                <li class="splide__slide">
+                    <div class="card info-card sales-card">
+                        <div class="card-body">
+                            <h5 class="card-title">Jasa <span>| Bulan Ini</span>
+                                <a
+                                    href="<?= $_SESSION["username"] ?>.php?id_dataManagement=jasa&id_database=database_jasa&id_periode=<?= $bln; ?>">
+                                    <i class="bi bi-folder-symlink-fill text-primary" data-bs-toggle="tooltip"
+                                        data-bs-placement="right" title="Lihat detail laporan">
+                                        <i class="text-danger">New !</i>
+                                    </i>
+                                </a>
+                            </h5>
+                            <div class="d-flex align-items-center">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                    <i class="bi bi-arrow-down-up"></i>
+                                </div>
+                                <div class="ps-3">
+                                    <h6 data-bs-toggle="tooltip" data-bs-placement="right" title="Anggaran">Rp.
+                                        <?= number_format($hasil_anggaranBulanan10,0,"." , ".") ?></h6>
+                                    <h6 class="text-danger" data-bs-toggle="tooltip" data-bs-placement="right"
+                                        title="Terpakai">Rp.
+                                        <?= number_format($hasil_terpakaiBulanan10,0,"." , ".") ?> - </h6>
+                                    <h6 class="text-success" data-bs-toggle="tooltip" data-bs-placement="right"
+                                        title="Cashback">Rp.
+                                        <?= number_format($cashbackBulanan10,0,"." , ".") ?></h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
             </ul>
         </div>
     </div>
@@ -1762,6 +1827,38 @@ if ($_SESSION["id_pengurus"] == "ketua_yayasan" || $_SESSION["id_pengurus"] == "
                                     <h6 class="text-success" data-bs-toggle="tooltip" data-bs-placement="right"
                                         title="Cashback">Rp.
                                         <?= number_format($cashbackBulanan8,0,"." , ".") ?></h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- jasa -->
+                <li class="splide__slide">
+                    <div class="card info-card sales-card">
+                        <div class="card-body">
+                            <h5 class="card-title">Jasa <span>| Bulan Ini</span>
+                                <a
+                                    href="<?= $_SESSION["username"] ?>.php?id_dataManagement=jasa&id_database=database_jasa&id_periode=<?= $bln; ?>">
+                                    <i class="bi bi-folder-symlink-fill text-primary" data-bs-toggle="tooltip"
+                                        data-bs-placement="right" title="Lihat detail laporan">
+                                        <i class="text-danger">New !</i>
+                                    </i>
+                                </a>
+                            </h5>
+                            <div class="d-flex align-items-center">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                    <i class="bi bi-arrow-down-up"></i>
+                                </div>
+                                <div class="ps-3">
+                                    <h6 data-bs-toggle="tooltip" data-bs-placement="right" title="Anggaran">Rp.
+                                        <?= number_format($hasil_anggaranBulanan10,0,"." , ".") ?></h6>
+                                    <h6 class="text-danger" data-bs-toggle="tooltip" data-bs-placement="right"
+                                        title="Terpakai">Rp.
+                                        <?= number_format($hasil_terpakaiBulanan10,0,"." , ".") ?> - </h6>
+                                    <h6 class="text-success" data-bs-toggle="tooltip" data-bs-placement="right"
+                                        title="Cashback">Rp.
+                                        <?= number_format($cashbackBulanan10,0,"." , ".") ?></h6>
                                 </div>
                             </div>
                         </div>

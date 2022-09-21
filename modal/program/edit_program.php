@@ -18,6 +18,9 @@
                             <select class="form-select" name="program" aria-label="Default select example">
                                 <option selected value="<?= $r["program"] ?>"><?= $r["program"] ?>
                                 </option>
+                                <?php if ($r["yatim"] == "Yatim Binaan" || $r["yatim"] == "Yatim Luar Binaan") { ?>
+                                <option value="Program Pendidikan Yatim">Pendidikan Yatim</option>
+                                <option value="Program Kesehatan Yatim">Kesehatan Yatim</option>
                                 <option value="Program Santunan Yatim">Santunan Yatim</option>
                                 <option value="Program Uang Saku Yatim">Uang Saku Yatim</option>
                                 <option value="Program Ceria Yatim">Ceria Yatim</option>
@@ -27,9 +30,10 @@
                                 <option value="Program Makan Sehat Yatim">Makan Sehat Yatim</option>
                                 <option value="Program Sembako Yatim">Sembako Yatim</option>
                                 <option value="Program Pesantren Yatim">Pesantren Yatim</option>
-                                <option value="Gaji Kepala Sekolah">Gaji Kepala Sekolah</option>
-                                <option value="Gaji Penjemput">Gaji Penjemput</option>
-                                <option value="Operasional Program">Operasional Program</option>
+                                <option value="Program Kamis Ceria">Kamis Ceria</option>
+                                <!--<option value="Zakat Fitrah">Zakat Fitrah</option>-->
+                                <option value="Hampers">Hampers</option>
+                                <?php } ?>
                             </select>
                         </div>
 
@@ -39,6 +43,40 @@
                             </div>
                             <input type="text" class="form-control" name="cabang" value="<?= $r["cabang"] ?>" readonly>
                         </div>
+
+                        <?php if ($r["yatim"] == "Yatim Binaan" || $r["yatim"] == "Yatim Luar Binaan") { ?>
+                        <div class="form-group mb-3">
+                            <div class="form-text mb-2">
+                                Yatim
+                            </div>
+                            <select class="form-select" name="yatim" aria-label="Default select example" required
+                                oninvalid="this.setCustomValidity('Pilih salah satu yatim')"
+                                oninput="this.setCustomValidity('')">
+                                <option selected value="<?= $r["yatim"]; ?>"><?= $r["yatim"]; ?></option>
+                                <option value="Yatim Binaan">Binaan</option>
+                                <option value="Yatim Luar Binaan">Luar Binaan</option>
+                            </select>
+                        </div>
+
+                        <?php } elseif ($r["yatim"] == "Santunan Bulanan") { ?>
+                        <input type="hidden" name="yatim" value="Santunan Bulanan">
+
+                        <?php } else { ?>
+                        <div class="form-group mb-3">
+                            <div class="form-text mb-2">
+                                Sub Anggaran
+                            </div>
+                            <select class="form-select" name="yatim" aria-label="Default select example" required
+                                oninvalid="this.setCustomValidity('Pilih salah satu')"
+                                oninput="this.setCustomValidity('')">
+                                <option selected value="<?= $r["yatim"]; ?>"><?= $r["yatim"]; ?></option>
+                                <option value="Uang Saku">Uang Saku</option>
+                                <option value="Uang Makan">Uang Makan</option>
+                                <option value="Laundry">Laundry</option>
+                                <option value="Santunan">Santunan</option>
+                            </select>
+                        </div>
+                        <?php } ?>
 
                         <div class="form-group mb-3">
                             <div class="form-text mb-2">

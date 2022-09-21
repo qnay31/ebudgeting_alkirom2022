@@ -70,6 +70,9 @@
             </select>
         </div>
 
+        <?php } elseif ($data["yatim"] == "Santunan Bulanan") { ?>
+        <input type="hidden" name="yatim" value="Santunan Bulanan">
+
         <?php } else { ?>
         <div class="form-group mb-3">
             <div class="form-text mb-2">

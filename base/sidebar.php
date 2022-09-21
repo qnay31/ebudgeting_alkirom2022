@@ -137,6 +137,7 @@
             $_GET["id_database"] == "database_anggaran_lain" || 
             $_GET["id_database"] == "database_maintenance" || 
             $_GET["id_database"] == "database_operasional_yayasan" || 
+            $_GET["id_database"] == "database_jasa" || 
             $_GET["id_database"] == "database_pemasukanMedia" || 
             $_GET["id_database"] == "database_harianMedia" || 
             $_GET["id_database"] == "database_akunMedia" || 
@@ -235,6 +236,12 @@
                         </a>
                     </li>
 
+                    <li>
+                        <a href="<?= $_SESSION["username"] ?>.php?id_dataManagement=jasa&id_database=database_jasa">
+                            <i class="bi bi-circle"></i><span>Lap Global Jasa</span>
+                        </a>
+                    </li>
+
                     <?php if ($_SESSION["id_pengurus"] == "ketua_yayasan" || $_SESSION["id_pengurus"] == "management_keuangan") { ?>
                     <li>
                         <a href="<?= $_SESSION["username"] ?>.php?id_database=database_pemasukanMedia">
@@ -322,6 +329,12 @@
                         <a
                             href="<?= $_SESSION["username"] ?>.php?id_dataManagement=operasional_yayasan&id_database=database_operasional_yayasan">
                             <i class="bi bi-circle"></i><span>Lap Global Operasional</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="<?= $_SESSION["username"] ?>.php?id_dataManagement=jasa&id_database=database_jasa">
+                            <i class="bi bi-circle"></i><span>Lap Global Jasa</span>
                         </a>
                     </li>
 
@@ -415,6 +428,12 @@
                         </a>
                     </li>
 
+                    <li>
+                        <a href="<?= $_SESSION["username"] ?>.php?id_dataManagement=jasa&id_database=database_jasa">
+                            <i class="bi bi-circle"></i><span>Lap Global Jasa</span>
+                        </a>
+                    </li>
+
                     <?php if ($_SESSION["id_pengurus"] == "ketua_yayasan" || $_SESSION["id_pengurus"] == "management_keuangan") { ?>
                     <li>
                         <a href="<?= $_SESSION["username"] ?>.php?id_database=database_pemasukanMedia">
@@ -502,6 +521,12 @@
                         <a
                             href="<?= $_SESSION["username"] ?>.php?id_dataManagement=operasional_yayasan&id_database=database_operasional_yayasan">
                             <i class="bi bi-circle"></i><span>Lap Global Operasional</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="<?= $_SESSION["username"] ?>.php?id_dataManagement=jasa&id_database=database_jasa">
+                            <i class="bi bi-circle"></i><span>Lap Global Jasa</span>
                         </a>
                     </li>
 
@@ -595,6 +620,12 @@
                         </a>
                     </li>
 
+                    <li>
+                        <a href="<?= $_SESSION["username"] ?>.php?id_dataManagement=jasa&id_database=database_jasa">
+                            <i class="bi bi-circle"></i><span>Lap Global Jasa</span>
+                        </a>
+                    </li>
+
                     <?php if ($_SESSION["id_pengurus"] == "ketua_yayasan" || $_SESSION["id_pengurus"] == "management_keuangan") { ?>
                     <li>
                         <a href="<?= $_SESSION["username"] ?>.php?id_database=database_pemasukanMedia">
@@ -682,6 +713,12 @@
                         <a
                             href="<?= $_SESSION["username"] ?>.php?id_dataManagement=operasional_yayasan&id_database=database_operasional_yayasan">
                             <i class="bi bi-circle"></i><span>Lap Global Operasional</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="<?= $_SESSION["username"] ?>.php?id_dataManagement=jasa&id_database=database_jasa">
+                            <i class="bi bi-circle"></i><span>Lap Global Jasa</span>
                         </a>
                     </li>
 
@@ -775,6 +812,12 @@
                         </a>
                     </li>
 
+                    <li>
+                        <a href="<?= $_SESSION["username"] ?>.php?id_dataManagement=jasa&id_database=database_jasa">
+                            <i class="bi bi-circle"></i><span>Lap Global Jasa</span>
+                        </a>
+                    </li>
+
                     <?php if ($_SESSION["id_pengurus"] == "ketua_yayasan" || $_SESSION["id_pengurus"] == "management_keuangan") { ?>
                     <li>
                         <a href="<?= $_SESSION["username"] ?>.php?id_database=database_pemasukanMedia">
@@ -865,6 +908,12 @@
                         </a>
                     </li>
 
+                    <li>
+                        <a href="<?= $_SESSION["username"] ?>.php?id_dataManagement=jasa&id_database=database_jasa">
+                            <i class="bi bi-circle"></i><span>Lap Global Jasa</span>
+                        </a>
+                    </li>
+
                     <?php if ($_SESSION["id_pengurus"] == "ketua_yayasan" || $_SESSION["id_pengurus"] == "management_keuangan") { ?>
                     <li>
                         <a href="<?= $_SESSION["username"] ?>.php?id_database=database_pemasukanMedia">
@@ -952,6 +1001,109 @@
                         <a href="<?= $_SESSION["username"] ?>.php?id_dataManagement=operasional_yayasan&id_database=database_operasional_yayasan"
                             class="active">
                             <i class="bi bi-circle"></i><span>Lap Global Operasional</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="<?= $_SESSION["username"] ?>.php?id_dataManagement=jasa&id_database=database_jasa">
+                            <i class="bi bi-circle"></i><span>Lap Global Jasa</span>
+                        </a>
+                    </li>
+
+                    <?php if ($_SESSION["id_pengurus"] == "ketua_yayasan" || $_SESSION["id_pengurus"] == "management_keuangan") { ?>
+                    <li>
+                        <a href="<?= $_SESSION["username"] ?>.php?id_database=database_pemasukanMedia">
+                            <i class="bi bi-circle"></i><span>Lap Pemasukan Media</span>
+                        </a>
+                    </li>
+
+                    <?php } ?>
+
+                    <?php if ($_SESSION["id_pengurus"] == "ketua_yayasan") { ?>
+                    <li>
+                        <a href="<?= $_SESSION["username"] ?>.php?id_database=database_harianMedia">
+                            <i class="bi bi-circle"></i><span>Lap Pemasukan Akun</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="<?= $_SESSION["username"] ?>.php?id_database=database_akunMedia">
+                            <i class="bi bi-circle"></i><span>Laporan Akun</span>
+                        </a>
+                    </li>
+                    <?php } ?>
+
+                    <?php } elseif ($_GET["id_database"] == "database_jasa") { ?>
+                    <li>
+                        <a href="<?= $_SESSION["username"] ?>.php?id_database=database_global">
+                            <i class="bi bi-circle"></i><span>Lap Global Yayasan</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="<?= $_SESSION["username"] ?>.php?id_database=database_program">
+                            <i class="bi bi-circle"></i><span>Lap Global Program</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="<?= $_SESSION["username"] ?>.php?id_database=database_paudqu">
+                            <i class="bi bi-circle"></i><span>Lap Global PaudQu</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="<?= $_SESSION["username"] ?>.php?id_database=database_logistik">
+                            <i class="bi bi-circle"></i><span>Lap Global Logistik</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="<?= $_SESSION["username"] ?>.php?id_dataManagement=aset_yayasan&id_database=database_aset_yayasan">
+                            <i class="bi bi-circle"></i><span>Lap Global Aset</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="<?= $_SESSION["username"] ?>.php?id_dataManagement=uang_makan&id_database=database_uang_makan">
+                            <i class="bi bi-circle"></i><span>Lap Global Uang Makan</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="<?= $_SESSION["username"] ?>.php?id_dataManagement=gaji_karyawan&id_database=database_gaji_karyawan">
+                            <i class="bi bi-circle"></i><span>Lap Global Gaji Karyawan</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="<?= $_SESSION["username"] ?>.php?id_dataManagement=anggaran_lain&id_database=database_anggaran_lain">
+                            <i class="bi bi-circle"></i><span>Lap Global Biaya Lainnya</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="<?= $_SESSION["username"] ?>.php?id_dataManagement=maintenance&id_database=database_maintenance">
+                            <i class="bi bi-circle"></i><span>Lap Global Maintenance</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="<?= $_SESSION["username"] ?>.php?id_dataManagement=operasional_yayasan&id_database=database_operasional_yayasan">
+                            <i class=" bi bi-circle"></i><span>Lap Global Operasional</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="<?= $_SESSION["username"] ?>.php?id_dataManagement=jasa&id_database=database_jasa"
+                            class="active">
+                            <i class=" bi bi-circle"></i><span>Lap Global Jasa</span>
                         </a>
                     </li>
 
@@ -1046,6 +1198,12 @@
                     </li>
 
                     <li>
+                        <a href="<?= $_SESSION["username"] ?>.php?id_dataManagement=jasa&id_database=database_jasa">
+                            <i class="bi bi-circle"></i><span>Lap Global Jasa</span>
+                        </a>
+                    </li>
+
+                    <li>
                         <a href="<?= $_SESSION["username"] ?>.php?id_database=database_pemasukanMedia" class="active">
                             <i class="bi bi-circle"></i><span>Lap Pemasukan Media</span>
                         </a>
@@ -1134,6 +1292,12 @@
                     </li>
 
                     <li>
+                        <a href="<?= $_SESSION["username"] ?>.php?id_dataManagement=jasa&id_database=database_jasa">
+                            <i class="bi bi-circle"></i><span>Lap Global Jasa</span>
+                        </a>
+                    </li>
+
+                    <li>
                         <a href="<?= $_SESSION["username"] ?>.php?id_database=database_pemasukanMedia">
                             <i class="bi bi-circle"></i><span>Lap Pemasukan Media</span>
                         </a>
@@ -1216,6 +1380,12 @@
                         <a
                             href="<?= $_SESSION["username"] ?>.php?id_dataManagement=operasional_yayasan&id_database=database_operasional_yayasan">
                             <i class="bi bi-circle"></i><span>Lap Global Operasional</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="<?= $_SESSION["username"] ?>.php?id_dataManagement=jasa&id_database=database_jasa">
+                            <i class="bi bi-circle"></i><span>Lap Global Jasa</span>
                         </a>
                     </li>
 
@@ -1312,6 +1482,12 @@
                         <a
                             href="<?= $_SESSION["username"] ?>.php?id_dataManagement=operasional_yayasan&id_database=database_operasional_yayasan">
                             <i class="bi bi-circle"></i><span>Lap Global Operasional</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="<?= $_SESSION["username"] ?>.php?id_dataManagement=jasa&id_database=database_jasa">
+                            <i class="bi bi-circle"></i><span>Lap Global Jasa</span>
                         </a>
                     </li>
 
@@ -1797,6 +1973,12 @@
                     </a>
                 </li>
 
+                <li>
+                    <a href="<?= $_SESSION["username"] ?>.php?id_dataManagement=jasa&id_database=database_jasa">
+                        <i class="bi bi-circle"></i><span>Lap Global Jasa</span>
+                    </a>
+                </li>
+
                 <?php if ($_SESSION["id_pengurus"] == "ketua_yayasan" || $_SESSION["id_pengurus"] == "management_keuangan") { ?>
                 <li>
                     <a href="<?= $_SESSION["username"] ?>.php?id_database=database_pemasukanMedia">
@@ -2006,7 +2188,7 @@
 
         <!-- End Forms Nav -->
 
-        <?php if ($_GET["id_grafik"] == "grafik_program" || $_GET["id_grafik"] == "grafik_paudqu" || $_GET["id_grafik"] == "grafik_logistik" || $_GET["id_grafik"] == "grafik_aset_yayasan" || $_GET["id_grafik"] == "grafik_uang_makan" || $_GET["id_grafik"] == "grafik_gaji_karyawan" || $_GET["id_grafik"] == "grafik_anggaran_lain" || $_GET["id_grafik"] == "grafik_maintenance" || $_GET["id_grafik"] == "grafik_operasional_yayasan" || $_GET["id_grafik"] == "grafik_pemasukanMedia") { ?>
+        <?php if ($_GET["id_grafik"] == "grafik_program" || $_GET["id_grafik"] == "grafik_paudqu" || $_GET["id_grafik"] == "grafik_logistik" || $_GET["id_grafik"] == "grafik_aset_yayasan" || $_GET["id_grafik"] == "grafik_uang_makan" || $_GET["id_grafik"] == "grafik_gaji_karyawan" || $_GET["id_grafik"] == "grafik_anggaran_lain" || $_GET["id_grafik"] == "grafik_maintenance" || $_GET["id_grafik"] == "grafik_operasional_yayasan" || $_GET["id_grafik"] == "grafik_pemasukanMedia" || $_GET["id_grafik"] == "grafik_jasa") { ?>
         <li class="nav-item">
             <a class="nav-link" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
                 <i class="bi bi-bar-chart"></i><span>Grafik</span><i class="bi bi-chevron-down ms-auto"></i>
@@ -2071,6 +2253,12 @@
                     <a
                         href="<?= $_SESSION["username"] ?>.php?id_dataManagement=operasional_yayasan&id_grafik=grafik_operasional_yayasan">
                         <i class="bi bi-circle"></i><span>Grafik Operasional</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="<?= $_SESSION["username"] ?>.php?id_dataManagement=jasa&id_grafik=grafik_jasa">
+                        <i class="bi bi-circle"></i><span>Grafik Jasa</span>
                     </a>
                 </li>
 
@@ -2145,6 +2333,12 @@
                     </a>
                 </li>
 
+                <li>
+                    <a href="<?= $_SESSION["username"] ?>.php?id_dataManagement=jasa&id_grafik=grafik_jasa">
+                        <i class="bi bi-circle"></i><span>Grafik Jasa</span>
+                    </a>
+                </li>
+
                 <?php if ($_SESSION["id_pengurus"] == "ketua_yayasan" || $_SESSION["id_pengurus"] == "management_keuangan") { ?>
                 <li>
                     <a href="<?= $_SESSION["username"] ?>.php?id_grafik=grafik_pemasukanMedia">
@@ -2213,6 +2407,12 @@
                     <a
                         href="<?= $_SESSION["username"] ?>.php?id_dataManagement=operasional_yayasan&id_grafik=grafik_operasional_yayasan">
                         <i class="bi bi-circle"></i><span>Grafik Operasional</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="<?= $_SESSION["username"] ?>.php?id_dataManagement=jasa&id_grafik=grafik_jasa">
+                        <i class="bi bi-circle"></i><span>Grafik Jasa</span>
                     </a>
                 </li>
 
@@ -2288,6 +2488,12 @@
                     </a>
                 </li>
 
+                <li>
+                    <a href="<?= $_SESSION["username"] ?>.php?id_dataManagement=jasa&id_grafik=grafik_jasa">
+                        <i class="bi bi-circle"></i><span>Grafik Jasa</span>
+                    </a>
+                </li>
+
                 <?php if ($_SESSION["id_pengurus"] == "ketua_yayasan" || $_SESSION["id_pengurus"] == "management_keuangan") { ?>
                 <li>
                     <a href="<?= $_SESSION["username"] ?>.php?id_grafik=grafik_pemasukanMedia">
@@ -2356,6 +2562,12 @@
                     <a
                         href="<?= $_SESSION["username"] ?>.php?id_dataManagement=operasional_yayasan&id_grafik=grafik_operasional_yayasan">
                         <i class="bi bi-circle"></i><span>Grafik Operasional</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="<?= $_SESSION["username"] ?>.php?id_dataManagement=jasa&id_grafik=grafik_jasa">
+                        <i class="bi bi-circle"></i><span>Grafik Jasa</span>
                     </a>
                 </li>
 
@@ -2430,6 +2642,12 @@
                     </a>
                 </li>
 
+                <li>
+                    <a href="<?= $_SESSION["username"] ?>.php?id_dataManagement=jasa&id_grafik=grafik_jasa">
+                        <i class="bi bi-circle"></i><span>Grafik Jasa</span>
+                    </a>
+                </li>
+
                 <?php if ($_SESSION["id_pengurus"] == "ketua_yayasan" || $_SESSION["id_pengurus"] == "management_keuangan") { ?>
                 <li>
                     <a href="<?= $_SESSION["username"] ?>.php?id_grafik=grafik_pemasukanMedia">
@@ -2501,6 +2719,12 @@
                     </a>
                 </li>
 
+                <li>
+                    <a href="<?= $_SESSION["username"] ?>.php?id_dataManagement=jasa&id_grafik=grafik_jasa">
+                        <i class="bi bi-circle"></i><span>Grafik Jasa</span>
+                    </a>
+                </li>
+
                 <?php if ($_SESSION["id_pengurus"] == "ketua_yayasan" || $_SESSION["id_pengurus"] == "management_keuangan") { ?>
                 <li>
                     <a href="<?= $_SESSION["username"] ?>.php?id_grafik=grafik_pemasukanMedia">
@@ -2512,7 +2736,6 @@
                 <?php } ?>
 
                 <?php } elseif ($_GET["id_grafik"] == "grafik_operasional_yayasan") { ?>
-
                 <li>
                     <a href="<?= $_SESSION["username"] ?>.php?id_grafik=grafik_program">
                         <i class="bi bi-circle"></i><span>Grafik Program</span>
@@ -2572,6 +2795,12 @@
                     </a>
                 </li>
 
+                <li>
+                    <a href="<?= $_SESSION["username"] ?>.php?id_dataManagement=jasa&id_grafik=grafik_jasa">
+                        <i class="bi bi-circle"></i><span>Grafik Jasa</span>
+                    </a>
+                </li>
+
                 <?php if ($_SESSION["id_pengurus"] == "ketua_yayasan" || $_SESSION["id_pengurus"] == "management_keuangan") { ?>
                 <li>
                     <a href="<?= $_SESSION["username"] ?>.php?id_grafik=grafik_pemasukanMedia">
@@ -2580,6 +2809,82 @@
                 </li>
 
                 <?php } else { ?>
+                <?php } ?>
+
+                <?php } elseif ($_GET["id_grafik"] == "grafik_jasa") { ?>
+                <li>
+                    <a href="<?= $_SESSION["username"] ?>.php?id_grafik=grafik_program">
+                        <i class="bi bi-circle"></i><span>Grafik Program</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="<?= $_SESSION["username"] ?>.php?id_grafik=grafik_paudqu">
+                        <i class="bi bi-circle"></i><span>Grafik PaudQu</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="<?= $_SESSION["username"] ?>.php?id_grafik=grafik_logistik">
+                        <i class="bi bi-circle"></i><span>Grafik Logistik</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a
+                        href="<?= $_SESSION["username"] ?>.php?id_dataManagement=aset_yayasan&id_grafik=grafik_aset_yayasan">
+                        <i class="bi bi-circle"></i><span>Grafik Aset</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="<?= $_SESSION["username"] ?>.php?id_dataManagement=uang_makan&id_grafik=grafik_uang_makan">
+                        <i class="bi bi-circle"></i><span>Grafik Uang Makan</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a
+                        href="<?= $_SESSION["username"] ?>.php?id_dataManagement=gaji_karyawan&id_grafik=grafik_gaji_karyawan">
+                        <i class="bi bi-circle"></i><span>Grafik Gaji Karyawan</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a
+                        href="<?= $_SESSION["username"] ?>.php?id_dataManagement=anggaran_lain&id_grafik=grafik_anggaran_lain">
+                        <i class="bi bi-circle"></i><span>Grafik Biaya Lainnya</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a
+                        href="<?= $_SESSION["username"] ?>.php?id_dataManagement=maintenance&id_grafik=grafik_maintenance">
+                        <i class="bi bi-circle"></i><span>Grafik Maintenance</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a
+                        href="<?= $_SESSION["username"] ?>.php?id_dataManagement=operasional_yayasan&id_grafik=grafik_operasional_yayasan">
+                        <i class="bi bi-circle"></i><span>Grafik Operasional</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="<?= $_SESSION["username"] ?>.php?id_dataManagement=jasa&id_grafik=grafik_jasa"
+                        class="active">
+                        <i class="bi bi-circle"></i><span>Grafik Jasa</span>
+                    </a>
+                </li>
+
+                <?php if ($_SESSION["id_pengurus"] == "ketua_yayasan" || $_SESSION["id_pengurus"] == "management_keuangan") { ?>
+                <li>
+                    <a href="<?= $_SESSION["username"] ?>.php?id_grafik=grafik_pemasukanMedia">
+                        <i class="bi bi-circle"></i><span>Grafik Pemasukan Media</span>
+                    </a>
+                </li>
+
                 <?php } ?>
 
                 <?php } elseif ($_GET["id_grafik"] == "grafik_pemasukanMedia") { ?>
@@ -2640,6 +2945,12 @@
                     <a
                         href="<?= $_SESSION["username"] ?>.php?id_dataManagement=operasional_yayasan&id_grafik=grafik_operasional_yayasan">
                         <i class="bi bi-circle"></i><span>Grafik Operasional</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="<?= $_SESSION["username"] ?>.php?id_dataManagement=jasa&id_grafik=grafik_jasa">
+                        <i class="bi bi-circle"></i><span>Grafik Jasa</span>
                     </a>
                 </li>
 
@@ -2707,6 +3018,12 @@
                     <a
                         href="<?= $_SESSION["username"] ?>.php?id_dataManagement=operasional_yayasan&id_grafik=grafik_operasional_yayasan">
                         <i class="bi bi-circle"></i><span>Grafik Operasional</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="<?= $_SESSION["username"] ?>.php?id_dataManagement=jasa&id_grafik=grafik_jasa">
+                        <i class="bi bi-circle"></i><span>Grafik Jasa</span>
                     </a>
                 </li>
 
@@ -2862,6 +3179,12 @@
                     <a
                         href="<?= $_SESSION["username"] ?>.php?id_dataManagement=operasional_yayasan&id_grafik=grafik_operasional_yayasan">
                         <i class="bi bi-circle"></i><span>Grafik Operasional</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="<?= $_SESSION["username"] ?>.php?id_dataManagement=jasa&id_grafik=grafik_jasa">
+                        <i class="bi bi-circle"></i><span>Grafik Jasa</span>
                     </a>
                 </li>
 

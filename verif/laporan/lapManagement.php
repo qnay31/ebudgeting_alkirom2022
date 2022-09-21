@@ -212,6 +212,14 @@ if ($id_verif == "aset_yayasan") {
             WHERE bulan = '$bulan' ");   
         }
     }
+
+} elseif ($id_verif == "jasa") {   
+    if (mysqli_fetch_assoc($c_query)) {
+        mysqli_query($conn, "UPDATE `2022_data_$id_verif` SET 
+        `anggaran_global`               ='$hasil_anggaran',
+        `terpakai_global`               ='$hasil_terpakai'
+        WHERE bulan = '$bulan' ");
+    }
     
 } else {
     if ($id_pengurus == 'kepala_pengajuan' && $cabang == 'Depok') {
@@ -268,6 +276,12 @@ if ($update == false ) {
         document.location.href = '../../admin/$_SESSION[username].php?id_checklist=checklist_laporanOperasional';
         </script>";
 
+    } elseif ($id_verif == "jasa") {
+        echo "<script>
+        alert('Data Tidak Berhasil Dikonfirmasi');
+        document.location.href = '../../admin/$_SESSION[username].php?id_checklist=checklist_laporanJasa';
+        </script>";
+
     } else {
         echo "<script>
         alert('Data Tidak Berhasil Dikonfirmasi');
@@ -302,6 +316,12 @@ if ($update == false ) {
         echo "<script>
         alert('Data Laporan Berhasil Dikonfirmasi');
         document.location.href = '../../admin/$_SESSION[username].php?id_checklist=checklist_laporanOperasional';
+        </script>";
+
+    } elseif ($id_verif == "jasa") {
+        echo "<script>
+        alert('Data Laporan Berhasil Dikonfirmasi');
+        document.location.href = '../../admin/$_SESSION[username].php?id_checklist=checklist_laporanJasa';
         </script>";
 
     } else {

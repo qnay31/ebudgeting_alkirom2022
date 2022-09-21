@@ -36,6 +36,8 @@
             </div>
         </div>
     </div>
+    <?php } elseif ($id_management == "jasa") { ?>
+
     <?php } else { ?>
     <div class="row">
         <div class="col-xl-12 col-md-12">
@@ -92,6 +94,8 @@
             </div>
         </div>
     </div>
+    <?php } elseif ($id_management == "jasa") { ?>
+
     <?php } else { ?>
     <div class="row">
         <div class="col-xl-6 col-md-12">

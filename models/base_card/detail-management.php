@@ -133,6 +133,31 @@ if ($id_management == "aset_yayasan") {
         </div>
     </div><!-- End Card -->
 
+    <?php if ($id_management == "jasa") { ?>
+    <!-- Card -->
+    <div class="col-xxl-12 col-md-12">
+        <div class="card info-card customers-card">
+            <div class="card-body">
+                <h5 class="card-title"><?= ucwords($judul) ?> </h5>
+
+                <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                        <i class="bi bi-credit-card"></i>
+                    </div>
+                    <div class="ps-3">
+                        <h6 data-bs-toggle="tooltip" data-bs-placement="right" title="Anggaran">Rp.
+                            <?= number_format($hasil_anggaran3,0,"." , ".") ?></h6>
+                        <h6 class="text-danger" data-bs-toggle="tooltip" data-bs-placement="right" title="Terpakai">Rp.
+                            <?= number_format($hasil_terpakai3,0,"." , ".") ?> - </h6>
+                        <h6 class="text-success" data-bs-toggle="tooltip" data-bs-placement="right" title="Cashback">Rp.
+                            <?= number_format($cashback3,0,"." , ".") ?></h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- End Card -->
+
+    <?php } else { ?>
     <!-- Card -->
     <div class="col-xxl-4 col-md-4">
         <div class="card info-card customers-card">
@@ -219,5 +244,6 @@ if ($id_management == "aset_yayasan") {
         </div>
     </div>
     <!-- End Card -->
+    <?php } ?>
 
 </div>

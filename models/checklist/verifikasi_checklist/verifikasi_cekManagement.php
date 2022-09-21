@@ -18,6 +18,9 @@
                 <?php } elseif ($_GET["id_checklist"] == "checklist_verifikasiOperasional") { ?>
                 <b style="color: black;">Verifikasi Operasional</b>
 
+                <?php } elseif ($_GET["id_checklist"] == "checklist_verifikasiJasa") { ?>
+                <b style="color: black;">Verifikasi Jasa</b>
+
                 <?php } else { ?>
                 <b style="color: black;">Verifikasi Biaya Lainnya</b>
                 <?php } ?>

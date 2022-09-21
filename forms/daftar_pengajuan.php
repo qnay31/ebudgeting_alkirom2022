@@ -39,6 +39,8 @@
                                 class="list-group-item list-group-item-action">Operasional</a>
                             <a href="<?= $_SESSION["username"] ?>.php?id_forms=forms_pengajuan&id_dataManagement=paudqu"
                                 class="list-group-item list-group-item-action">PaudQu El-ZamZam</a>
+                            <a href="<?= $_SESSION["username"] ?>.php?id_forms=forms_pengajuan&id_dataManagement=jasa"
+                                class="list-group-item list-group-item-action">Pembayaran Jasa</a>
                         </div>
 
                     </div>

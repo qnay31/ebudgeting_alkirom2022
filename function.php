@@ -1394,6 +1394,9 @@ $uploadsDir = '../assets/img/laporan/maintenance/';
 } elseif ($id_management == "operasional_yayasan") {
 $uploadsDir = '../assets/img/laporan/operasional_yayasan/';
 
+} elseif ($id_management == "jasa") {
+$uploadsDir = '../assets/img/laporan/jasa/';
+
 } else {
 $uploadsDir = '../assets/img/laporan/anggaran_lain/';
 }

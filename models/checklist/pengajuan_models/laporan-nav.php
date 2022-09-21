@@ -24,7 +24,7 @@
                 <?php } ?>
             </a>
         </li>
-        
+
         <?php } elseif ($_GET["id_checklist"] == "checklist_pengajuanPaudqu" || $_GET["id_checklist"] == "checklist_verifikasiPaudqu" || $_GET["id_checklist"] == "checklist_laporanPaudqu") { ?>
         <li>
             <a href="<?= $_SESSION["username"] ?>.php?id_checklist=checklist_pengajuanPaudqu">Pengajuan
@@ -194,6 +194,31 @@
 
         <li>
             <a class="active" href="<?= $_SESSION["username"] ?>.php?id_checklist=checklist_laporanOperasional">Laporan
+                <?php if ($s3 > 0) { ?>
+                <span class="badge badge-danger badge-counter"><?= $s3 ?></span>
+                <?php } ?>
+            </a>
+        </li>
+
+        <?php } elseif ($_GET["id_checklist"] == "checklist_pengajuanJasa" || $_GET["id_checklist"] == "checklist_verifikasiJasa" || $_GET["id_checklist"] == "checklist_laporanJasa") { ?>
+        <li>
+            <a href="<?= $_SESSION["username"] ?>.php?id_checklist=checklist_pengajuanJasa">Pengajuan
+                <?php if ($s > 0) { ?>
+                <span class="badge badge-danger badge-counter"><?= $s ?></span>
+                <?php } ?>
+            </a>
+        </li>
+
+        <li>
+            <a href="<?= $_SESSION["username"] ?>.php?id_checklist=checklist_verifikasiJasa">Verifikasi
+                <?php if ($s2 > 0) { ?>
+                <span class="badge badge-danger badge-counter"><?= $s2 ?></span>
+                <?php } ?>
+            </a>
+        </li>
+
+        <li>
+            <a class="active" href="<?= $_SESSION["username"] ?>.php?id_checklist=checklist_laporanJasa">Laporan
                 <?php if ($s3 > 0) { ?>
                 <span class="badge badge-danger badge-counter"><?= $s3 ?></span>
                 <?php } ?>

@@ -35,6 +35,9 @@ if ($_SESSION["id_pengurus"] == "ketua_yayasan" || $_SESSION["id_pengurus"] == "
     } elseif ($id_management == "paudqu") {
         $judul = "PaudQu El-ZamZam";
 
+    } elseif ($id_management == "jasa") {
+        $judul = "Pembayaran Jasa";
+
     } else {
         $judul = "Biaya Lainnya";
     }
@@ -280,8 +283,14 @@ include 'base/header.php'
         include 'checklist/check_pengajuan.php';
     ?>
 
-    <!-- checklist pengajuan Maintenance -->
+    <!-- checklist pengajuan Operasional -->
     <?php } elseif ($_GET["id_checklist"] == "checklist_pengajuanOperasional") { ?>
+    <?php
+        include 'checklist/check_pengajuan.php';
+    ?>
+
+    <!-- checklist pengajuan Jasa -->
+    <?php } elseif ($_GET["id_checklist"] == "checklist_pengajuanJasa") { ?>
     <?php
         include 'checklist/check_pengajuan.php';
     ?>
@@ -346,6 +355,12 @@ include 'base/header.php'
         include 'checklist/check_verifikasi.php';
     ?>
 
+    <!-- checklist verifikasi Jasa -->
+    <?php } elseif ($_GET["id_checklist"] == "checklist_verifikasiJasa") { ?>
+    <?php
+        include 'checklist/check_verifikasi.php';
+    ?>
+
     <!-- checklist laporan -->
     <?php } elseif ($_GET["id_checklist"] == "checklist_laporan" || $_GET["id_checklist"] == "checklist_laporanPaudqu") { ?>
     <?php
@@ -390,6 +405,12 @@ include 'base/header.php'
 
     <!-- checklist verifikasi Operasional -->
     <?php } elseif ($_GET["id_checklist"] == "checklist_laporanOperasional") { ?>
+    <?php
+        include 'checklist/check_laporan.php';
+    ?>
+
+    <!-- checklist verifikasi Jasa -->
+    <?php } elseif ($_GET["id_checklist"] == "checklist_laporanJasa") { ?>
     <?php
         include 'checklist/check_laporan.php';
     ?>

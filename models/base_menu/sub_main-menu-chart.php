@@ -104,7 +104,8 @@
     <div class="card">
         <div class="card-body">
             <h5 class="card-title">Grafik <span>/Gaji Karyawan</span>
-                <a href="<?= $_SESSION["username"] ?>.php?id_dataManagement=gaji_karyawan&id_grafik=grafik_gaji_karyawan">
+                <a
+                    href="<?= $_SESSION["username"] ?>.php?id_dataManagement=gaji_karyawan&id_grafik=grafik_gaji_karyawan">
                     <i class="bi bi-folder-symlink-fill text-primary" data-bs-toggle="tooltip" data-bs-placement="right"
                         title="Lihat detail laporan">
                     </i>
@@ -124,7 +125,8 @@
     <div class="card">
         <div class="card-body">
             <h5 class="card-title">Grafik <span>/Biaya Lainnya</span>
-                <a href="<?= $_SESSION["username"] ?>.php?id_dataManagement=anggaran_lain&id_grafik=grafik_anggaran_lain">
+                <a
+                    href="<?= $_SESSION["username"] ?>.php?id_dataManagement=anggaran_lain&id_grafik=grafik_anggaran_lain">
                     <i class="bi bi-folder-symlink-fill text-primary" data-bs-toggle="tooltip" data-bs-placement="right"
                         title="Lihat detail laporan">
                     </i>
@@ -164,7 +166,8 @@
     <div class="card">
         <div class="card-body">
             <h5 class="card-title">Grafik <span>/Operasional Yayasan</span>
-                <a href="<?= $_SESSION["username"] ?>.php?id_dataManagement=operasional_yayasan&id_grafik=grafik_operasional_yayasan">
+                <a
+                    href="<?= $_SESSION["username"] ?>.php?id_dataManagement=operasional_yayasan&id_grafik=grafik_operasional_yayasan">
                     <i class="bi bi-folder-symlink-fill text-primary" data-bs-toggle="tooltip" data-bs-placement="right"
                         title="Lihat detail laporan">
                     </i>
@@ -174,6 +177,26 @@
             <!-- Line Chart -->
             <div class="chart-bar">
                 <canvas id="chartBar_global_operasional_yayasan"></canvas>
+            </div>
+            <!-- End Line Chart -->
+        </div>
+    </div>
+</div>
+
+<div class="col-xl-6 col-md-12">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Grafik <span>/Jasa</span>
+                <a href="<?= $_SESSION["username"] ?>.php?id_dataManagement=jasa&id_grafik=grafik_jasa">
+                    <i class="bi bi-folder-symlink-fill text-primary" data-bs-toggle="tooltip" data-bs-placement="right"
+                        title="Lihat detail laporan">
+                    </i>
+                </a>
+            </h5>
+
+            <!-- Line Chart -->
+            <div class="chart-bar">
+                <canvas id="chartBar_global_jasa"></canvas>
             </div>
             <!-- End Line Chart -->
         </div>

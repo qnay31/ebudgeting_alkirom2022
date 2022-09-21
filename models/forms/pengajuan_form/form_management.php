@@ -48,12 +48,7 @@
             <div class="form-text mb-2">
                 Cabang
             </div>
-            <select class="form-select" aria-label="Default select example" name="cabang" required
-                oninvalid="this.setCustomValidity('Pilih salah satu cabang')" oninput="this.setCustomValidity('')">
-                <option selected value="">Pilih Salah Satu Cabang</option>
-                <option value="Bogor">Bogor</option>
-                <option value="Depok">Depok</option>
-            </select>
+            <input type="text" class="form-control" name="cabang" value="Depok" readonly>
         </div>
 
         <div class="form-group mb-3">
@@ -85,6 +80,10 @@
             <?php } elseif ($id_management == "operasional_yayasan") { ?>
             <input type="text" class="form-control" name="deskripsi" placeholder="operasional mobil dan lainnya"
                 id="alpabet" style="text-transform: capitalize;" autocomplete="off">
+
+            <?php } elseif ($id_management == "jasa") { ?>
+            <input type="text" class="form-control" name="deskripsi" placeholder="jasa supir dan lainnya" id="alpabet"
+                style="text-transform: capitalize;" autocomplete="off">
 
             <?php } else { ?>
             <input type="text" class="form-control" name="deskripsi" placeholder="biaya lain lain" id="alpabet"

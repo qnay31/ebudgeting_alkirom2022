@@ -826,7 +826,7 @@ if ($key_admin == "akunEbudget") {
                     <th scope="col">Status</th>
                     <th scope="col">Terpakai</th>
                     <th scope="col">Cashback</th>
-                    <th scope="col">Resi</th>
+                    <th scope="col">Menu</th>
                 </tr>
             </thead>
             <tbody>

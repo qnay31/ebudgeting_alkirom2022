@@ -5160,16 +5160,16 @@ $(document).ready(function () {
 
     // tabel akun pengurus
     $('#tabel-database_akunEbudget').DataTable({
-        buttons: [
-            'excel'
-        ],
         "scrollX": true,
         "autoWidth": true,
         "lengthMenu": [
             [10, 25, 50, 100, -1],
             [10, 25, 50, 100, "All"]
         ],
-        dom: 'Plfrtip',
+        dom: 'PBlfrtip',
+        buttons: [
+            'excel'
+        ],
         columnDefs: [{
             width: '10%',
             targets: 1

@@ -532,7 +532,7 @@
         <div class="card info-card customers-card">
             <div class="card-body">
                 <h5 class="card-title">
-                    Facebook I/RENAL
+                    Team Facebook
                 </h5>
 
                 <div class="d-flex align-items-center">
@@ -555,7 +555,7 @@
         </div>
     </div>
 
-    <div class="col-xxl-6 col-md-6">
+    <!-- <div class="col-xxl-6 col-md-6">
         <div class="card info-card customers-card">
             <div class="card-body">
                 <h5 class="card-title">
@@ -580,9 +580,9 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
-    <div class="col-xxl-6 col-md-6">
+    <!-- <div class="col-xxl-6 col-md-6">
         <div class="card info-card customers-card">
             <div class="card-body">
                 <h5 class="card-title">
@@ -607,9 +607,9 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
-    <div class="col-xxl-6 col-md-6">
+    <!-- <div class="col-xxl-6 col-md-6">
         <div class="card info-card customers-card">
             <div class="card-body">
                 <h5 class="card-title">
@@ -634,13 +634,13 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
-    <div class="col-xxl-4 col-md-4">
+    <div class="col-xxl-6 col-md-6">
         <div class="card info-card customers-card">
             <div class="card-body">
                 <h5 class="card-title">
-                    Instagram A/IDHAM
+                    Team Instagram
                 </h5>
 
                 <div class="d-flex align-items-center">
@@ -663,7 +663,7 @@
         </div>
     </div>
 
-    <div class="col-xxl-4 col-md-4">
+    <!-- <div class="col-xxl-4 col-md-4">
         <div class="card info-card customers-card">
             <div class="card-body">
                 <h5 class="card-title">
@@ -688,9 +688,9 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
-    <div class="col-xxl-4 col-md-4">
+    <!-- <div class="col-xxl-4 col-md-4">
         <div class="card info-card customers-card">
             <div class="card-body">
                 <h5 class="card-title">
@@ -714,6 +714,6 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <?php } ?>
 </div>

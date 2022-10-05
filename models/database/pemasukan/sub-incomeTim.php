@@ -309,11 +309,11 @@
     <div class="row">
         <!-- Card -->
         <?php if ($_SESSION["id_pengurus"] == "manager_facebook" || $_SESSION["id_pengurus"] == "manager_instagram") { ?>
-        <div class="col-xxl-4 col-md-4">
+        <div class="col-xxl-6 col-md-6">
             <div class="card info-card customers-card">
                 <div class="card-body">
                     <h5 class="card-title">
-                        Facebook I <span>(Renal)</span>
+                        Team Facebook</span>
                     </h5>
 
                     <div class="d-flex align-items-center">
@@ -375,7 +375,7 @@
             </div>
         </div>
 
-        <div class="col-xxl-4 col-md-4">
+        <!-- <div class="col-xxl-4 col-md-4">
             <div class="card info-card customers-card">
                 <div class="card-body">
                     <h5 class="card-title">
@@ -437,9 +437,9 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
-        <div class="col-xxl-4 col-md-4">
+        <!-- <div class="col-xxl-4 col-md-4">
             <div class="card info-card customers-card">
                 <div class="card-body">
                     <h5 class="card-title">
@@ -501,7 +501,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <!-- <div class="col-xxl-3 col-md-3">
             <div class="card info-card customers-card">
@@ -571,7 +571,7 @@
             <div class="card info-card customers-card">
                 <div class="card-body">
                     <h5 class="card-title">
-                        Instagram A <span>(Idham)</span>
+                        Team Instagram</span>
                     </h5>
 
                     <div class="d-flex align-items-center">
@@ -631,7 +631,7 @@
             </div>
         </div>
 
-        <div class="col-xxl-6 col-md-6">
+        <!-- <div class="col-xxl-6 col-md-6">
             <div class="card info-card customers-card">
                 <div class="card-body">
                     <h5 class="card-title">
@@ -693,7 +693,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <!-- <div class="col-xxl-4 col-md-4">
             <div class="card info-card customers-card">
@@ -760,11 +760,11 @@
         </div> -->
 
         <?php } else { ?>
-        <div class="col-xxl-4 col-md-4">
+        <div class="col-xxl-6 col-md-6">
             <div class="card info-card customers-card">
                 <div class="card-body">
                     <h5 class="card-title">
-                        Facebook I <span>(Renal)</span>
+                        Team Facebook
                     </h5>
 
                     <div class="d-flex align-items-center">
@@ -819,7 +819,7 @@
             </div>
         </div>
 
-        <div class="col-xxl-4 col-md-4">
+        <!-- <div class="col-xxl-4 col-md-4">
             <div class="card info-card customers-card">
                 <div class="card-body">
                     <h5 class="card-title">
@@ -876,9 +876,9 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
-        <div class="col-xxl-4 col-md-4">
+        <!-- <div class="col-xxl-4 col-md-4">
             <div class="card info-card customers-card">
                 <div class="card-body">
                     <h5 class="card-title">
@@ -935,7 +935,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <!-- <div class="col-xxl-3 col-md-3">
             <div class="card info-card customers-card">
@@ -1000,7 +1000,7 @@
             <div class="card info-card customers-card">
                 <div class="card-body">
                     <h5 class="card-title">
-                        Instagram A <span>(Idham)</span>
+                        Team Instagram
                     </h5>
 
                     <div class="d-flex align-items-center">
@@ -1055,7 +1055,7 @@
             </div>
         </div>
 
-        <div class="col-xxl-6 col-md-6">
+        <!-- <div class="col-xxl-6 col-md-6">
             <div class="card info-card customers-card">
                 <div class="card-body">
                     <h5 class="card-title">
@@ -1112,7 +1112,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <!-- <div class="col-xxl-4 col-md-4">
             <div class="card info-card customers-card">
@@ -1178,21 +1178,36 @@
 
     <?php } else { ?>
     <div class="table-responsive">
+        <?php
+            if ($team == "Facebook I") {
+                $newTeam = "Facebook";
+
+            } else {
+                $newTeam = "Instagram";
+            }
+            
+        ?>
+
         <?php if ($_SESSION["id_periode"] == "") { ?>
-        <h5 class="card-title text-center">Team <?= $team; ?> 2022</h5>
+        <h5 class="card-title text-center">Team <?= $newTeam ?> 2022</h5>
+
+        <?php } else { ?>
+        <?php if ($_GET["id_date"] == "") { ?>
+        <?php   if ($nInTeam > 0) { ?>
+        <h5 class="card-title text-center">Team <?= $newTeam ?> <?= $inTeamT; ?></h5>
+        <?php } ?>
 
         <?php } else { ?>
         <?php if ($nInTeam > 0 && $tanggalIni == $_GET["id_date"]) { ?>
-        <h5 class="card-title text-center">Team <?= $team; ?> <?= $tanggalIni; ?> <?= $inTeamT; ?></h5>
+        <h5 class="card-title text-center">Team <?= $newTeam ?> <?= $tanggalIni; ?> <?= $inTeamT; ?></h5>
 
         <?php } elseif ($nInTeam > 0 && $kemarin == $tanggalIni - 1) { ?>
-        <h5 class="card-title text-center">Team <?= $team; ?> <?= $kemarin; ?> <?= $inTeamT; ?></h5>
-
-        <?php } elseif ($nInTeam > 0) { ?>
-        <h5 class="card-title text-center">Team <?= $team; ?> <?= $inTeamT; ?></h5>
+        <h5 class="card-title text-center">Team <?= $newTeam ?> <?= $kemarin; ?> <?= $inTeamT; ?></h5>
 
         <?php } else { ?>
         <h5 class="card-title text-center">Tidak ada data</h5>
+        <?php } ?>
+
         <?php } ?>
         <?php } ?>
 
@@ -1200,13 +1215,13 @@
         <div class="row">
             <!-- Card -->
             <?php if ($_SESSION["idTable"] == "fbI") { ?>
-            <div class="col-xxl-4 col-md-4">
+            <div class="col-xxl-6 col-md-6">
                 <div class="card info-card customers-card">
                     <div class="card-body">
                         <h5 class="card-title">
                             <a href="<?= $_SESSION["username"] ?>.php?id_database=database_incomeTim&id_periode=<?= $bulanIni; ?>"
                                 class="btn-back"><i class="bi bi-arrow-left-short"></i> Kembali</a>&ensp;
-                            Facebook I <span>(Renal)</span>
+                            Team Facebook
                         </h5>
 
                         <div class="d-flex align-items-center">
@@ -1475,13 +1490,13 @@
                 </div>
             </div>
             <?php } elseif ($_SESSION["idTable"] == "igA") { ?>
-            <div class="col-xxl-4 col-md-4">
+            <div class="col-xxl-6 col-md-6">
                 <div class="card info-card customers-card">
                     <div class="card-body">
                         <h5 class="card-title">
                             <a href="<?= $_SESSION["username"] ?>.php?id_database=database_incomeTim&id_periode=<?= $bulanIni; ?>"
                                 class="btn-back"><i class="bi bi-arrow-left-short"></i> Kembali</a>&ensp;
-                            Instagram A <span>(Idham)</span>
+                            Team Instagram
                         </h5>
 
                         <div class="d-flex align-items-center">

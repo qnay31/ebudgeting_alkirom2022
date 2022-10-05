@@ -362,7 +362,7 @@ if ($_SESSION["id_pengurus"] == "ketua_yayasan" || $_SESSION["id_pengurus"] == "
     // PEMASUKAN
     // media sosial
     if ($_SESSION["id_pengurus"] == "ketua_yayasan") {
-        $incBulanan = mysqli_query($conn, "SELECT * FROM income_media WHERE MONTH(tanggal_tf) = '$bln' AND status = 'OK'");
+        $incBulanan = mysqli_query($conn, "SELECT * FROM income_media WHERE MONTH(tanggal_tf) = '$bln' AND status = 'OK' AND team NOT LIKE ''");
         while($data_incBulanan = mysqli_fetch_array($incBulanan))
         {
             $i++;   
@@ -381,7 +381,7 @@ if ($_SESSION["id_pengurus"] == "ketua_yayasan" || $_SESSION["id_pengurus"] == "
             $hasil_resiB = array_sum($total_resiB);
         }
 
-        $inc = mysqli_query($conn, "SELECT * FROM income_media WHERE status = 'OK'");
+        $inc = mysqli_query($conn, "SELECT * FROM income_media WHERE status = 'OK' AND team NOT LIKE '' ");
         while($data_inc = mysqli_fetch_array($inc))
         {
             $i++;   
@@ -398,144 +398,6 @@ if ($_SESSION["id_pengurus"] == "ketua_yayasan" || $_SESSION["id_pengurus"] == "
             $total_resi1[$i] = $d_resi1;
 
             $hasil_resi1 = array_sum($total_resi1);
-        }
-
-        $incFbPB = mysqli_query($conn, "SELECT data_akun.id_pengurus, data_akun.nama_akun, data_akun.team, income_media.jumlah_tf, income_media.pemegang 
-        FROM data_akun JOIN income_media ON income_media.nama_akun = data_akun.nama_akun WHERE data_akun.team = 'Facebook Pusat' AND MONTH(tanggal_tf)= '$bln' AND income_media.status = 'OK'");
-        while($data_incFbPB = mysqli_fetch_array($incFbPB))
-        {
-            $i++;   
-            $d_incomeFbPB = $data_incFbPB['jumlah_tf'];
-            $total_incomeFbPB[$i] = $d_incomeFbPB;
-
-            $hasil_incomeFbPB = array_sum($total_incomeFbPB);
-        }
-        
-        $incFbP = mysqli_query($conn, "SELECT data_akun.id_pengurus, data_akun.nama_akun, data_akun.team, income_media.jumlah_tf, income_media.pemegang 
-        FROM data_akun JOIN income_media ON income_media.nama_akun = data_akun.nama_akun WHERE data_akun.team = 'Facebook Pusat' AND income_media.status = 'OK'");
-        while($data_incFbP = mysqli_fetch_array($incFbP))
-        {
-            $i++;   
-            $d_incomeFbP = $data_incFbP['jumlah_tf'];
-            $total_incomeFbP[$i] = $d_incomeFbP;
-
-            $hasil_incomeFbP = array_sum($total_incomeFbP);
-        }
-
-        $incFbTB = mysqli_query($conn, "SELECT data_akun.id_pengurus, data_akun.nama_akun, data_akun.team, income_media.jumlah_tf, income_media.pemegang 
-        FROM data_akun JOIN income_media ON income_media.nama_akun = data_akun.nama_akun WHERE data_akun.team = 'Facebook Taman' AND MONTH(tanggal_tf)= '$bln' AND income_media.status = 'OK'");
-        while($data_incFbTB = mysqli_fetch_array($incFbTB))
-        {
-            $i++;   
-            $d_incomeFbTB = $data_incFbTB['jumlah_tf'];
-            $total_incomeFbTB[$i] = $d_incomeFbTB;
-
-            $hasil_incomeFbTB = array_sum($total_incomeFbTB);
-            // die(var_dump($hasil_incomeBulanan));
-        }
-        
-        $incFbT = mysqli_query($conn, "SELECT data_akun.id_pengurus, data_akun.nama_akun, data_akun.team, income_media.jumlah_tf, income_media.pemegang 
-        FROM data_akun JOIN income_media ON income_media.nama_akun = data_akun.nama_akun WHERE data_akun.team = 'Facebook Taman' AND income_media.status = 'OK'");
-        while($data_incFbT = mysqli_fetch_array($incFbT))
-        {
-            $i++;   
-            $d_incomeFbT = $data_incFbT['jumlah_tf'];
-            $total_incomeFbT[$i] = $d_incomeFbT;
-
-            $hasil_incomeFbT = array_sum($total_incomeFbT);
-        }
-
-        $incFbBB = mysqli_query($conn, "SELECT data_akun.id_pengurus, data_akun.nama_akun, data_akun.team, income_media.jumlah_tf, income_media.pemegang 
-        FROM data_akun JOIN income_media ON income_media.nama_akun = data_akun.nama_akun WHERE data_akun.team = 'Facebook Bogor' AND MONTH(tanggal_tf)= '$bln' AND income_media.status = 'OK'");
-        while($data_incFbBB = mysqli_fetch_array($incFbBB))
-        {
-            $i++;   
-            $d_incomeFbBB = $data_incFbBB['jumlah_tf'];
-            $total_incomeFbBB[$i] = $d_incomeFbBB;
-
-            $hasil_incomeFbBB = array_sum($total_incomeFbBB);
-            // die(var_dump($hasil_incomeBulanan));
-        }
-        
-        $incFbB = mysqli_query($conn, "SELECT data_akun.id_pengurus, data_akun.nama_akun, data_akun.team, income_media.jumlah_tf, income_media.pemegang 
-        FROM data_akun JOIN income_media ON income_media.nama_akun = data_akun.nama_akun WHERE data_akun.team = 'Facebook Bogor' AND income_media.status = 'OK'");
-        while($data_incFbB = mysqli_fetch_array($incFbB))
-        {
-            $i++;   
-            $d_incomeFbB = $data_incFbB['jumlah_tf'];
-            $total_incomeFbB[$i] = $d_incomeFbB;
-
-            $hasil_incomeFbB = array_sum($total_incomeFbB);
-        }
-
-        $incIgMB = mysqli_query($conn, "SELECT data_akun.id_pengurus, data_akun.nama_akun, data_akun.team, income_media.jumlah_tf, income_media.pemegang 
-        FROM data_akun JOIN income_media ON income_media.nama_akun = data_akun.nama_akun WHERE data_akun.team = 'Instagram Meruyung' AND MONTH(tanggal_tf)= '$bln' AND income_media.status = 'OK'");
-        while($data_incIgMB = mysqli_fetch_array($incIgMB))
-        {
-            $i++;   
-            $d_incomeIgMB = $data_incIgMB['jumlah_tf'];
-            $total_incomeIgMB[$i] = $d_incomeIgMB;
-
-            $hasil_incomeIgMB = array_sum($total_incomeIgMB);
-            // die(var_dump($hasil_incomeBulanan));
-        }
-        
-        
-        $incIgM = mysqli_query($conn, "SELECT data_akun.id_pengurus, data_akun.nama_akun, data_akun.team, income_media.jumlah_tf, income_media.pemegang 
-        FROM data_akun JOIN income_media ON income_media.nama_akun = data_akun.nama_akun WHERE data_akun.team = 'Instagram Meruyung' AND income_media.status = 'OK'");
-        while($data_incIgM = mysqli_fetch_array($incIgM))
-        {
-            $i++;   
-            $d_incomeIgM = $data_incIgM['jumlah_tf'];
-            $total_incomeIgM[$i] = $d_incomeIgM;
-
-            $hasil_incomeIgM = array_sum($total_incomeIgM);
-        }
-
-        $incIgBB = mysqli_query($conn, "SELECT data_akun.id_pengurus, data_akun.nama_akun, data_akun.team, income_media.jumlah_tf, income_media.pemegang 
-        FROM data_akun JOIN income_media ON income_media.nama_akun = data_akun.nama_akun WHERE data_akun.team = 'Instagram Bojong' AND MONTH(tanggal_tf)= '$bln' AND income_media.status = 'OK'");
-        while($data_incIgBB = mysqli_fetch_array($incIgBB))
-        {
-            $i++;   
-            $d_incomeIgBB = $data_incIgBB['jumlah_tf'];
-            $total_incomeIgBB[$i] = $d_incomeIgBB;
-
-            $hasil_incomeIgBB = array_sum($total_incomeIgBB);
-            // die(var_dump($hasil_incomeBulanan));
-        }
-        
-        $incIgB = mysqli_query($conn, "SELECT data_akun.id_pengurus, data_akun.nama_akun, data_akun.team, income_media.jumlah_tf, income_media.pemegang 
-        FROM data_akun JOIN income_media ON income_media.nama_akun = data_akun.nama_akun WHERE data_akun.team = 'Instagram Bojong' AND income_media.status = 'OK'");
-        while($data_incIgB = mysqli_fetch_array($incIgB))
-        {
-            $i++;   
-            $d_incomeIgB = $data_incIgB['jumlah_tf'];
-            $total_incomeIgB[$i] = $d_incomeIgB;
-
-            $hasil_incomeIgB = array_sum($total_incomeIgB);
-        }
-
-        $incIgTB = mysqli_query($conn, "SELECT data_akun.id_pengurus, data_akun.nama_akun, data_akun.team, income_media.jumlah_tf, income_media.pemegang 
-        FROM data_akun JOIN income_media ON income_media.nama_akun = data_akun.nama_akun WHERE data_akun.team = 'Instagram Taman' AND MONTH(tanggal_tf)= '$bln' AND income_media.status = 'OK'");
-        while($data_incIgTB = mysqli_fetch_array($incIgTB))
-        {
-            $i++;   
-            $d_incomeIgTB = $data_incIgTB['jumlah_tf'];
-            $total_incomeIgTB[$i] = $d_incomeIgTB;
-
-            $hasil_incomeIgTB = array_sum($total_incomeIgTB);
-            // die(var_dump($hasil_incomeBulanan));
-        }
-        
-        $incIgT = mysqli_query($conn, "SELECT data_akun.id_pengurus, data_akun.nama_akun, data_akun.team, income_media.jumlah_tf, income_media.pemegang 
-        FROM data_akun JOIN income_media ON income_media.nama_akun = data_akun.nama_akun WHERE data_akun.team = 'Instagram Taman' AND income_media.status = 'OK'");
-        while($data_incIgT = mysqli_fetch_array($incIgT))
-        {
-            $i++;   
-            $d_incomeIgT = $data_incIgT['jumlah_tf'];
-            $total_incomeIgT[$i] = $d_incomeIgT;
-
-            $hasil_incomeIgT = array_sum($total_incomeIgT);
         }
 
         $pemasukanMedia     = $hasil_incomeBulanan+$hasil_resiB;
@@ -1418,11 +1280,11 @@ if ($_SESSION["id_pengurus"] == "ketua_yayasan" || $_SESSION["id_pengurus"] == "
                 </div>
                 <div class="ps-3">
                     <h6>Rp.
-                        <?= number_format($pemasukanMedia,0,"." , ".") ?> <i class="bi bi-info-circle text-black"
-                            data-bs-toggle="tooltip" data-bs-placement="right" data-bs-html="true"
-                            title="FB Pusat : <?= number_format($hasil_incomeFbPB,0,".","."); ?> <br>FB Taman: <?= number_format($hasil_incomeFbTB,0,".","."); ?> <br>IG Meruyung : <?= number_format($hasil_incomeIgMB,0,".","."); ?> <br> IG Bojong : <?= number_format($hasil_incomeIgBB,0,".","."); ?> <br> IG Taman : <?= number_format($hasil_incomeIgTB,0,".","."); ?> <br>Non Resi : <?= number_format($hasil_resiB,0,".","."); ?>"></i>
+                        <?= number_format($pemasukanMedia,0,"." , ".") ?>
                     </h6>
-                    <a href="<?= $_SESSION["username"] ?>.php?idTeam=teamMedia"><span class="detail-bulanan">Lihat
+                    <a
+                        href="<?= $_SESSION["username"] ?>.php?id_database=database_incomeTim&id_periode=<?= $cToday; ?>"><span
+                            class="detail-bulanan">Lihat
                             detail →</span>
                     </a>
                 </div>
@@ -1488,7 +1350,9 @@ if ($_SESSION["id_pengurus"] == "ketua_yayasan" || $_SESSION["id_pengurus"] == "
                             data-bs-toggle="tooltip" data-bs-placement="right" data-bs-html="true"
                             title="FB Pusat : <?= number_format($hasil_incomeFbP,0,".","."); ?> <br>FB Taman: <?= number_format($hasil_incomeFbT,0,".","."); ?> <br>IG Meruyung : <?= number_format($hasil_incomeIgM,0,".","."); ?> <br> IG Bojong : <?= number_format($hasil_incomeIgB,0,".","."); ?> <br> IG Taman : <?= number_format($hasil_incomeIgT,0,".","."); ?> <br>Non Resi : <?= number_format($hasil_resi1,0,".","."); ?>"></i>
                     </h6>
-                    <a href="<?= $_SESSION["username"] ?>.php?idTeam=teamMedia"><span class="detail-bulanan">Lihat
+                    <a
+                        href="<?= $_SESSION["username"] ?>.php?id_database=database_incomeTim&id_periode=<?= $cToday; ?>"><span
+                            class="detail-bulanan">Lihat
                             detail →</span>
                     </a>
                 </div>

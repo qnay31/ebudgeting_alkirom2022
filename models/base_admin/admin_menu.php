@@ -236,13 +236,13 @@ if ($key_admin == "akunEbudget") {
                         <?= ucwords($r['yatim']) ?>
                         <?php if ($r['program'] == "Program Pendidikan Yatim") { ?>
                         <!-- Button trigger modal -->
-                        <a href="" data-bs-toggle="modal" data-bs-target="#modalAsalSekolah">
+                        <a href="" data-bs-toggle="modal" data-bs-target="#modalAsalSekolah<?= $r['id']; ?>">
                             <i class="bi bi-arrow-left-right"></i>
                         </a>
 
                         <!-- Modal -->
-                        <div class="modal fade" id="modalAsalSekolah" tabindex="-1" aria-labelledby="exampleModalLabel"
-                            aria-hidden="true">
+                        <div class="modal fade" id="modalAsalSekolah<?= $r['id']; ?>" tabindex="-1"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -252,13 +252,22 @@ if ($key_admin == "akunEbudget") {
                                     </div>
                                     <div class="modal-body">
                                         <form method="post" id="form2">
-                                            <div class="mb-3 forms-sekolah">
+                                            <div class="form-group mb-3">
+                                                <div class="form-text mb-2">
+                                                    Tentang
+                                                </div>
+                                                <input type="text" class="form-control" name="deskripsi"
+                                                    value="<?= $r['deskripsi']; ?>" readonly>
+                                            </div>
+
+                                            <div class="mb-3">
                                                 <input type="hidden" name="id" value="<?= $r['id'] ?>">
                                                 <select class="form-select" name="sekolah"
                                                     aria-label="Default select example" required
                                                     oninvalid="this.setCustomValidity('Pilih salah satu sekolah')"
                                                     oninput="this.setCustomValidity('')">
-                                                    <option selected value="">Pilih Salah Satu Sekolah</option>
+                                                    <option selected value="<?= $r['yatim']; ?>"><?= $r['yatim']; ?>
+                                                    </option>
                                                     <?php
                                                         $query  = mysqli_query($conn, "SELECT * FROM asal_sekolah ORDER BY `nama_sekolah` ASC"); ?>
                                                     <?php

@@ -28,9 +28,7 @@
                 <!--<option value="Zakat Fitrah">Zakat Fitrah</option>-->
                 <option value="Hampers">Hampers</option>
                 <?php } ?>
-
             </select>
-
             <?php } else { ?>
             <span class="input-group-text" id="basic-addon1">Kategori</span>
             <input type="text" class="form-control" name="program" value="<?= $judul ?>" readonly>
@@ -42,18 +40,7 @@
             <div class="form-text mb-2">
                 Cabang
             </div>
-            <?php if ($_GET["id_dataManagement"] == "program") { ?>
-            <select class="form-select" aria-label="Default select example" name="cabang" required
-                oninvalid="this.setCustomValidity('Pilih salah satu cabang')" oninput="this.setCustomValidity('')">
-                <option selected value="<?= $data["cabang"] ?>"><?= $data["cabang"] ?></option>
-                <option value="Bogor">Bogor</option>
-                <option value="Depok">Depok</option>
-            </select>
-
-            <?php } else { ?>
             <input type="text" class="form-control" name="cabang" value="Depok" readonly>
-            <?php } ?>
-
         </div>
 
         <?php if ($_GET["id_dataManagement"] == "program") { ?>
@@ -72,6 +59,25 @@
 
         <?php } elseif ($data["yatim"] == "Santunan Bulanan") { ?>
         <input type="hidden" name="yatim" value="Santunan Bulanan">
+
+        <?php } elseif ($data["program"] == "Program Pendidikan Yatim") { ?>
+        <div class="form-group mb-3">
+            <select class="form-select" name="yatim" aria-label="Default select example" required
+                oninvalid="this.setCustomValidity('Pilih salah satu sekolah')" oninput="this.setCustomValidity('')">
+                <option selected value="<?= $data['yatim']; ?>"><?= $data['yatim']; ?></option>
+                <?php
+                    $query  = mysqli_query($conn, "SELECT * FROM asal_sekolah ORDER BY `nama_sekolah` ASC");
+
+                    ?>
+                <?php
+            while ($qData = mysqli_fetch_array($query)) { ?>
+                <option value="<?= $qData['nama_sekolah'];?>">
+                    <?= ucwords($qData['nama_sekolah']) ?>
+                </option>
+
+                <?php } ?>
+            </select>
+        </div>
 
         <?php } else { ?>
         <div class="form-group mb-3">
@@ -107,7 +113,6 @@
             <input type="text" class="form-control" name="deskripsi" placeholder="perencanaan paudqu-elzamzam"
                 id="alpabet" style="text-transform: capitalize;" value="<?= $data["deskripsi"] ?>" autocomplete="off">
             <?php } ?>
-
         </div>
 
         <div class="form-text mb-2">

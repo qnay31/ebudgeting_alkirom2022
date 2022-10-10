@@ -2050,12 +2050,12 @@ global $conn;
 
 $id = htmlspecialchars($data["id"]);
 $sekolah = htmlspecialchars(strtolower($data["sekolah"]));
+$deskripsi = htmlspecialchars(strtolower($data["deskripsi"]));
 
 // update_target
 $update = mysqli_query($conn, "UPDATE `2022_program` SET
 `yatim` ='$sekolah'
-WHERE id = '$id' ");
-
+WHERE id = '$id' AND deskripsi = '$deskripsi' ");
 
 // die(var_dump($update));
 return mysqli_affected_rows($conn);

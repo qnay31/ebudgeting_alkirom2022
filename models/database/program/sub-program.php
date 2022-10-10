@@ -27,6 +27,12 @@
                     href="<?= $_SESSION["username"] ?>.php?id_database=database_program&yatim=santunanBulanan">Santunan
                     Bulanan</a>
             </span>
+
+            <span class="yatim">
+                <a class="btn border-success text-success"
+                    href="<?= $_SESSION["username"] ?>.php?id_database=database_program&yatim=pendidikanYatim">Pendidikan
+                    Yatim</a>
+            </span>
         </div>
 
         <?php } else { ?>
@@ -50,8 +56,12 @@
                     Bulanan</a>
             </span>
 
+            <span class="yatim">
+                <a class="btn border-success text-success"
+                    href="<?= $_SESSION["username"] ?>.php?id_database=database_program&yatim=pendidikanYatim">Pendidikan
+                    Yatim</a>
+            </span>
         </div>
-
         <h5 class="card-title text-center">Laporan Program <?= $pProgram; ?> Binaan</h5>
 
         <?php } elseif ($_GET["yatim"] == "luarBinaan") { ?>
@@ -72,6 +82,12 @@
                 <a class="btn bg-danger"
                     href="<?= $_SESSION["username"] ?>.php?id_database=database_program&yatim=santunanBulanan">Santunan
                     Bulanan</a>
+            </span>
+
+            <span class="yatim">
+                <a class="btn border-success text-success"
+                    href="<?= $_SESSION["username"] ?>.php?id_database=database_program&yatim=pendidikanYatim">Pendidikan
+                    Yatim</a>
             </span>
         </div>
         <h5 class="card-title text-center">Laporan Program <?= $pProgram; ?> Luar Binaan</h5>
@@ -95,8 +111,42 @@
                     href="<?= $_SESSION["username"] ?>.php?id_database=database_program&yatim=asramaYatim">Asrama
                     Yatim</a>
             </span>
+
+            <span class="yatim">
+                <a class="btn border-success text-success"
+                    href="<?= $_SESSION["username"] ?>.php?id_database=database_program&yatim=pendidikanYatim">Pendidikan
+                    Yatim</a>
+            </span>
         </div>
         <h5 class="card-title text-center">Laporan Program <?= $pProgram; ?> Santunan Bulanan </h5>
+
+        <?php } elseif ($_GET["yatim"] == "pendidikanYatim") { ?>
+        <div class="media-select">
+            <span class="yatim">
+                <a class="btn bg-success"
+                    href="<?= $_SESSION["username"] ?>.php?id_database=database_program&yatim=binaan">Yatim
+                    Binaan</a>
+            </span>
+
+            <span class="yatim">
+                <a class="btn bg-primary"
+                    href="<?= $_SESSION["username"] ?>.php?id_database=database_program&yatim=luarBinaan">Luar
+                    Binaan</a>
+            </span>
+
+            <span class="yatim">
+                <a class="btn bg-secondary"
+                    href="<?= $_SESSION["username"] ?>.php?id_database=database_program&yatim=asramaYatim">Asrama
+                    Yatim</a>
+            </span>
+
+            <span class="yatim">
+                <a class="btn bg-danger"
+                    href="<?= $_SESSION["username"] ?>.php?id_database=database_program&yatim=santunanBulanan">Santunan
+                    Bulanan</a>
+            </span>
+        </div>
+        <h5 class="card-title text-center">Laporan Program <?= $pProgram; ?> Pendidikan Yatim</h5>
 
         <?php } else { ?>
         <div class="media-select">
@@ -116,6 +166,12 @@
                 <a class="btn bg-danger"
                     href="<?= $_SESSION["username"] ?>.php?id_database=database_program&yatim=santunanBulanan">Santunan
                     Bulanan</a>
+            </span>
+
+            <span class="yatim">
+                <a class="btn border-success text-success"
+                    href="<?= $_SESSION["username"] ?>.php?id_database=database_program&yatim=pendidikanYatim">Pendidikan
+                    Yatim</a>
             </span>
         </div>
         <h5 class="card-title text-center">Laporan Program <?= $pProgram; ?> Asrama Yatim</h5>
@@ -208,7 +264,12 @@
                 <tr style="text-align: center;">
                     <th scope="col">No</th>
                     <th scope="col">Program</th>
+                    <?php if ($_GET["yatim"] == "pendidikanYatim") { ?>
+                    <th scope="col">Asal Sekolah</th>
+
+                    <?php } else { ?>
                     <th scope="col">Yatim</th>
+                    <?php } ?>
                     <th scope="col">Cabang</th>
                     <th scope="col">Periode</th>
                     <th scope="col">Tgl Pengajuan</th>

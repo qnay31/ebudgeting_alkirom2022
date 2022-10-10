@@ -37,6 +37,19 @@ if ($key_admin == "akunEbudget") {
                 echo mysqli_error($conn);
             }
         }
+
+        if (isset($_POST["changeSekolah"]) ) {
+            $link = $_SESSION["username"];
+            if(edit_changeSekolah($_POST) > 0 ) {
+                echo "<script>
+                    alert('Data Laporan Berhasil diubah');
+                    document.location.href = '$link.php?id_adminKey=$key_admin';
+                </script>";            
+            } 
+                else {
+                echo mysqli_error($conn);
+            }
+        }
     } else {
         if (isset($_POST["input"]) ) {
             $link = $_SESSION["username"];
@@ -221,6 +234,54 @@ if ($key_admin == "akunEbudget") {
                     <td><?= ucwords($r['program']) ?></td>
                     <td>
                         <?= ucwords($r['yatim']) ?>
+                        <?php if ($r['program'] == "Program Pendidikan Yatim") { ?>
+                        <!-- Button trigger modal -->
+                        <a href="" data-bs-toggle="modal" data-bs-target="#modalAsalSekolah">
+                            <i class="bi bi-arrow-left-right"></i>
+                        </a>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="modalAsalSekolah" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">List Sekolah Yatim</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form method="post" id="form2">
+                                            <div class="mb-3 forms-sekolah">
+                                                <input type="hidden" name="id" value="<?= $r['id'] ?>">
+                                                <select class="form-select" name="sekolah"
+                                                    aria-label="Default select example" required
+                                                    oninvalid="this.setCustomValidity('Pilih salah satu sekolah')"
+                                                    oninput="this.setCustomValidity('')">
+                                                    <option selected value="">Pilih Salah Satu Sekolah</option>
+                                                    <?php
+                                                        $query  = mysqli_query($conn, "SELECT * FROM asal_sekolah ORDER BY `nama_sekolah` ASC"); ?>
+                                                    <?php
+                                                        while ($data = mysqli_fetch_array($query)) { ?>
+                                                    <option value="<?= $data['nama_sekolah'];?>">
+                                                        <?= ucwords($data['nama_sekolah']) ?>
+                                                    </option>
+
+                                                    <?php } ?>
+                                                </select>
+                                            </div>
+
+                                            <div class="button">
+                                                <input type="submit" name="changeSekolah" class="btn btn-primary w-100"
+                                                    value="Simpan">
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <?php } else { ?>
                         <a href="../models/base_admin/switchYatim.php?id_unik=<?= $r['id'] ?>">
                             <?php if ($r['yatim'] == "Yatim Binaan") { ?>
                             <i class="bi bi-arrow-left-right" data-bs-toggle="tooltip" data-bs-placement="top"
@@ -231,6 +292,7 @@ if ($key_admin == "akunEbudget") {
                                 title="ganti" onclick="return confirm('Pindahkan ke Yatim Binaan?!')"></i>
                             <?php } ?>
                         </a>
+                        <?php } ?>
                     </td>
                     <td style="text-align: center;">
                         <?= ucwords($r['cabang']) ?>

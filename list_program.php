@@ -21,6 +21,31 @@ if (isset($_POST['menuProgram'])) {
     </select>
 </div>
 
+<?php } elseif ($program == "Program Pendidikan Yatim") { ?>
+<!-- Button trigger modal -->
+<div class="button mb-2">
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalSekolah">
+        Tambah Sekolah
+    </button> <span style="font-size: 13px;">(<b>Jika Belum Tersedia</b>)</span>
+</div>
+<div class="form-group mb-3" id="tampil">
+    <select class="form-select" name="yatim" aria-label="Default select example" required
+        oninvalid="this.setCustomValidity('Pilih salah satu sekolah')" oninput="this.setCustomValidity('')">
+        <option selected value="">Pilih Salah Satu Sekolah</option>
+        <?php
+        $query  = mysqli_query($conn, "SELECT * FROM asal_sekolah ORDER BY `nama_sekolah` ASC");
+
+        ?>
+        <?php
+            while ($data = mysqli_fetch_array($query)) { ?>
+        <option value="<?= $data['nama_sekolah'];?>">
+            <?= ucwords($data['nama_sekolah']) ?>
+        </option>
+
+        <?php } ?>
+    </select>
+</div>
+
 <?php } elseif ($program == "Program Santunan Bulanan") { ?>
 <input type="hidden" name="yatim" value="Santunan Bulanan">
 

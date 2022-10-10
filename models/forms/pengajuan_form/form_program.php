@@ -45,7 +45,6 @@
                 Cabang
             </div>
             <input type="text" class="form-control" name="cabang" value="Depok" readonly>
-
         </div>
 
         <div class="form-group mb-3">
@@ -75,8 +74,38 @@
             <input type="text" class="form-control" name="anggaran" id="rupiah" maxlength="11"
                 placeholder="Rencana Anggaran" onkeypress="return hanyaAngka(event)" autocomplete="off">
         </div>
+
         <div class="button">
             <input type="submit" name="input" class="btn btn-primary w-100" value="Ajukan">
         </div>
     </form>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalSekolah" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Isi Nama Sekolah Yatim</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" id="form2">
+                        <div class="mb-3 forms-sekolah">
+                            <div id="disabledSelect" class="form-text mb-2">
+                                Nama Sekolah
+                            </div>
+                            <input type="text" class="form-control" name="schollName" placeholder="TK/SD/MI/SMP/SMK"
+                                id="akunName" style="text-transform: capitalize;" autocomplete="off">
+                            <span class="pesan text-danger"></span>
+                        </div>
+
+                        <div class="button">
+                            <input type="button" name="simpanSekolah" id="Submit" class="btn btn-primary w-100"
+                                value="Simpan">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

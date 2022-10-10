@@ -2043,4 +2043,23 @@ return mysqli_affected_rows($conn);
 
 }
 
+// edit_changeSekolah
+function edit_changeSekolah($data)
+{
+global $conn;
+
+$id = htmlspecialchars($data["id"]);
+$sekolah = htmlspecialchars(strtolower($data["sekolah"]));
+
+// update_target
+$update = mysqli_query($conn, "UPDATE `2022_program` SET
+`yatim` ='$sekolah'
+WHERE id = '$id' ");
+
+
+// die(var_dump($update));
+return mysqli_affected_rows($conn);
+
+}
+
 ?>

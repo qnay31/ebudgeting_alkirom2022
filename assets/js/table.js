@@ -210,6 +210,80 @@ $(document).ready(function () {
             });
     }
 
+    $('#tampil').load("../tampil.php");
+    $("#Submit").click(function () {
+        var sekolah = $("input[name=schollName]").val();
+
+        if (sekolah == "") {
+            $("input[name=schollName]").focus();
+            $("input[name=schollName]").keyup(function () {
+                var value = $(this).val();
+                if (value == "") {
+                    $("input[name=schollName]").css({
+                        "box-shadow": "none",
+                        "border-color": "red"
+                    })
+                    $(".pesan").html("Nama sekolah tidak boleh kosong!");
+                } else {
+                    $("input[name=schollName]").css({
+                        "border-color": "green"
+                    })
+                    $(".pesan").empty();
+                }
+            }).keyup();
+            return false;
+        } else {
+            $.ajax({
+                type: 'POST',
+                url: "../insert.php",
+                data: {
+                    schollName: sekolah
+                },
+                success: function (data) {
+                    if (data == 1) {
+                        $('#tampil').load("../tampil.php");
+                        Swal.fire({
+                            type: 'error',
+                            position: 'center',
+                            title: 'Sekolah sudah ada',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                    } else {
+                        $('#tampil').load("../tampil.php");
+                        $('#modalSekolah').modal('hide')
+                        Swal.fire({
+                            type: 'success',
+                            position: 'center',
+                            title: 'Sekolah disimpan',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                    }
+                }
+            });
+        }
+    });
+
+    $("#modalSekolah").on('shown.bs.modal', function () {
+        $(this).find('input[type="text"]').focus();
+    });
+
+    $("#modalSekolah").on('hidden.bs.modal', function () {
+        $(this).find('form').trigger('reset');
+        $("input[name=schollName]").css({
+            "border-color": "blue"
+        })
+        $(".pesan").empty();
+    });
+
+    $('#modalSekolah').on('keypress', function (e) {
+        if (e.keyCode === 13) {
+            e.preventDefault();
+            $('#Submit').click();
+        }
+    });
+
     // Admin CrossCheck
     var table = $('#tabel-data_databaseCrossCheck').DataTable({
         "scrollX": true,
@@ -1270,14 +1344,14 @@ $(document).ready(function () {
             searchPanes: {
                 show: false
             },
-            targets: [2, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+            targets: [3, 5, 6, 7, 8, 9, 10, 11, 12, 13]
         }, {
             searchPanes: {
                 show: true,
                 initCollapsed: true,
                 orderable: false
             },
-            targets: [3]
+            targets: [2]
         }, {
             searchPanes: {
                 show: true,

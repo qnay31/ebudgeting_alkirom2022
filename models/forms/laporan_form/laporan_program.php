@@ -18,7 +18,8 @@
                 <?php if ($_GET["id_dataManagement"] == "program") { ?>
                 <div class="input-group mb-1">
                     <span class="input-group-text" id="basic-addon1"><b>Kategori</b></span>
-                    <input type="text" class="form-control" name="yatim" value="<?= $data["yatim"] ?>" readonly>
+                    <input type="text" class="form-control" name="yatim" value="<?= ucwords($data["yatim"]) ?>"
+                        readonly>
                 </div>
                 <?php } ?>
 

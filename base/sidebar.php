@@ -1438,7 +1438,7 @@
                     <?php } else { ?>
                     <li>
                         <a href="<?= $_SESSION["username"] ?>.php?id_database=database_logistik" class="active">
-                            <i class="bi bi-circle"></i><span>Laporan Logistik</span>
+                            <i class="bi bi-circle"></i><span>Lap Global Logistik</span>
                         </a>
                     </li>
                     <?php } ?>

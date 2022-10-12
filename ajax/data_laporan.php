@@ -123,102 +123,67 @@ $columns = array(
             return $bulan;
         }
     ),
-    array( 
-        'db'        => 'keterangan', 
-        'dt'        => 6,
-        'formatter' => function($d, $row) {
-            return $d == "" ? "-" : $d;
-        }
-    ),
-    array(
-        'db'        => 'jumlahTeman',
-        'dt'        => 7,
-        'formatter' => function( $d, $row ) {
-            return $d > 0 ? number_format($d) : "-";
-        }
-    ),
-    array(
-        'db'        => 'jumlahAdd',
-        'dt'        => 8,
-        'formatter' => function( $d, $row ) {
-            return $d > 0 ? number_format($d) : "0";
-        }
-    ),
-    array(
-        'db'        => 'temanBaru',
-        'dt'        => 9,
-        'formatter' => function( $d, $row ) {
-            return $d > 0 ? number_format($d) : "0";
-        }
-    ),
-    array(
-        'db'        => 'hapusTeman',
-        'dt'        => 10,
-        'formatter' => function( $d, $row ) {
-            return $d < 0 ? number_format($d) : "0";
-        }
-    ),
     array(
         'db'        => 'totalSerangan',
-        'dt'        => 11,
+        'dt'        => 6,
         'formatter' => function( $d, $row ) {
             return number_format($d);
         }
     ),
     array(
         'db'        => 'respon',
-        'dt'        => 12,
-        'formatter' => function( $d, $row ) {
-            return number_format($d);
-        }
-    ),
-    array(
-        'db'        => 'alamat',
-        'dt'        => 13,
-        'formatter' => function( $d, $row ) {
-            return number_format($d);
-        }
-    ),
-    array(
-        'db'        => 'insya_allah',
-        'dt'        => 14,
+        'dt'        => 7,
         'formatter' => function( $d, $row ) {
             return number_format($d);
         }
     ),
     array(
         'db'        => 'minta_norek',
-        'dt'        => 15,
+        'dt'        => 8,
+        'formatter' => function( $d, $row ) {
+            return number_format($d);
+        }
+    ),
+    array(
+        'db'        => 'alamat',
+        'dt'        => 9,
+        'formatter' => function( $d, $row ) {
+            return number_format($d);
+        }
+    ),
+    array(
+        'db'        => 'insya_allah',
+        'dt'        => 10,
         'formatter' => function( $d, $row ) {
             return number_format($d);
         }
     ),
     array(
         'db'        => 'belumbisa_bantu',
-        'dt'        => 16,
+        'dt'        => 11,
         'formatter' => function( $d, $row ) {
-            return number_format((float)$d);
+            return number_format($d);
         }
     ),
     array(
         'db'        => 'tidak_respon',
-        'dt'        => 17,
+        'dt'        => 12,
         'formatter' => function( $d, $row ) {
             return number_format($d);
         }
     ),
     array(
         'db'        => 'donatur',
-        'dt'        => 18,
+        'dt'        => 13,
         'formatter' => function( $d, $row ) {
             return number_format($d);
         }
     ),
     array(
         'db'        => 'total_income',
-        'dt'        => 19,
+        'dt'        => 14,
         'formatter' => function( $d, $row ) {
-            return number_format((float)$d);
+            return number_format($d);
         }
     )
 );

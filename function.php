@@ -2049,8 +2049,8 @@ function edit_changeSekolah($data)
 global $conn;
 
 $id = htmlspecialchars($data["id"]);
-$sekolah = htmlspecialchars(strtolower($data["sekolah"]));
-$deskripsi = htmlspecialchars(strtolower($data["deskripsi"]));
+$sekolah = htmlspecialchars($data["sekolah"]);
+$deskripsi = htmlspecialchars($data["deskripsi"]);
 
 // update_target
 $update = mysqli_query($conn, "UPDATE `2022_program` SET

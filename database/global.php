@@ -116,6 +116,13 @@ $CashOpYayasD   = $AngOpYayasD-$TerOpYayasD;
 $AngOpYayas     = $bOperasional["anggaran_global"]; 
 $TerOpYayas     = $bOperasional["terpakai_global"]; 
 $CashOpYayas    = $AngOpYayas-$TerOpYayas;
+
+// jasa
+$qJasa   = mysqli_query($conn, "SELECT * FROM 2022_data_jasa WHERE bulan = '$bToday'");
+$bJasa   = mysqli_fetch_assoc($qJasa);
+$AngJasa     = $bJasa["anggaran_global"]; 
+$TerJasa     = $bJasa["terpakai_global"]; 
+$CashJasa    = $AngJasa-$TerJasa;
 // die(var_dump($bProgram));
 ?>
 
@@ -174,7 +181,8 @@ $CashOpYayas    = $AngOpYayas-$TerOpYayas;
                 <div class="card">
                     <?php include '../models/database/global/all-data.php'; ?>
                 </div>
-                <?php } ?><!-- End Laporan  -->
+                <?php } ?>
+                <!-- End Laporan  -->
             </div><!-- End Left side columns -->
         </div>
     </section>

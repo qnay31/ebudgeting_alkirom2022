@@ -333,6 +333,39 @@
                     </td>
                 </tr>
 
+                <tr>
+                    <td style="text-align: center;">10</td>
+                    <td>Jasa</td>
+                    <td style="text-align: center;"><?= $bToday; ?> 2022</td>
+                    <td style="text-align: center;" data-bs-toggle="tooltip" data-bs-placement="right"
+                        data-bs-html="true" title="Global : <?= number_format($AngJasa) ?>">
+                        <?php if ($AngJasa > 0) { ?>
+                        <?= number_format($AngJasa) ?>
+
+                        <?php } else { ?>
+                        0
+                        <?php } ?>
+                    </td>
+                    <td style=" text-align: center;" data-bs-toggle="tooltip" data-bs-placement="right"
+                        data-bs-html="true" title="Global : <?= number_format($TerJasa) ?>">
+                        <?php if ($TerJasa > 0) { ?>
+                        <?= number_format($TerJasa) ?>
+
+                        <?php } else { ?>
+                        0
+                        <?php } ?>
+                    </td>
+                    <td style="text-align: center;" data-bs-toggle="tooltip" data-bs-placement="right"
+                        data-bs-html="true" title="Global : <?= number_format($CashJasa) ?>">
+                        <?php if ($CashJasa > 0) { ?>
+                        <?= number_format($CashJasa) ?>
+
+                        <?php } else { ?>
+                        0
+                        <?php } ?>
+                    </td>
+                </tr>
+
             </tbody>
             <tfoot>
                 <tr style="text-align: center;">

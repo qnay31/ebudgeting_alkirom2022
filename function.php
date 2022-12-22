@@ -316,6 +316,16 @@ $income = str_replace(' ', '', $anggar);
 $ip = get_client_ip();
 $date = date("Y-m-d H:i:s");
 
+$newTahun = substr($tanggal,0, 4);
+
+if ($newTahun == 2023) {
+echo "<script>
+alert('Untuk tahun ini belum tersedia, mohon menunggu update selanjutnya');
+</script>";
+
+return false;
+}
+
 if ($link == "facebook") {
 $result = mysqli_query($conn, "INSERT INTO income_media VALUES('', 'facebook_depok', '$id', '$_SESSION[nama]',
 '$akun', '$_SESSION[cabang]', '$namaDonatur', '$tanggal', '$jam', '$bank', '$income', 'Menunggu Verifikasi', '$team')");
@@ -470,6 +480,16 @@ $income = str_replace(' ', '', $anggar);
 
 $ip = get_client_ip();
 $date = date("Y-m-d H:i:s");
+
+$newTahun = substr($tanggal,0, 4);
+
+if ($newTahun == 2023) {
+echo "<script>
+alert('Untuk tahun ini belum tersedia, mohon menunggu update selanjutnya');
+</script>";
+
+return false;
+}
 
 $query = mysqli_query($conn, "SELECT * FROM laporan_media WHERE tgl_laporan = '$tanggal' AND nama_akun = '$akun' ");
 
@@ -673,6 +693,16 @@ $anggaran = str_replace(' ', '', $anggar);
 $ip = get_client_ip();
 $date = date("Y-m-d H:i:s");
 
+$newTahun = substr($tanggal,0, 4);
+
+if ($newTahun == 2023) {
+echo "<script>
+alert('Untuk tahun ini belum tersedia, mohon menunggu update selanjutnya');
+</script>";
+
+return false;
+}
+
 // input data ke database
 $result2 = mysqli_query($conn, "INSERT INTO 2022_log_aktivity VALUES('', '$_SESSION[nama]', '$posisi', '$ip',
 '$date', '$_SESSION[nama] Divisi $program Telah Menginput Anggaran $program dengan perencanaan $deskripsi')");
@@ -752,6 +782,16 @@ $anggar = RemoveSpecialChar($nom_acak);
 $terpakai = str_replace(' ', '', $anggar);
 $ip = get_client_ip();
 $date = date("Y-m-d H:i:s");
+
+$newTahun = substr($tanggal,0, 4);
+
+if ($newTahun == 2023) {
+echo "<script>
+alert('Untuk tahun ini belum tersedia, mohon menunggu update selanjutnya');
+</script>";
+
+return false;
+}
 
 $update = mysqli_query($conn, "UPDATE `2022_program` SET
 `tgl_pemakaian` ='$tanggal',
@@ -878,6 +918,16 @@ $anggaran = str_replace(' ', '', $anggar);
 $ip = get_client_ip();
 $date = date("Y-m-d H:i:s");
 
+$newTahun = substr($tanggal,0, 4);
+
+if ($newTahun == 2023) {
+echo "<script>
+alert('Untuk tahun ini belum tersedia, mohon menunggu update selanjutnya');
+</script>";
+
+return false;
+}
+
 // input data ke database
 $result2 = mysqli_query($conn, "INSERT INTO 2022_log_aktivity VALUES('', '$_SESSION[nama]', '$posisi', '$ip',
 '$date', '$_SESSION[nama] Divisi $program Telah Menginput Anggaran $program dengan perencanaan $deskripsi')");
@@ -945,6 +995,16 @@ $anggar = RemoveSpecialChar($nom_acak);
 $terpakai = str_replace(' ', '', $anggar);
 $ip = get_client_ip();
 $date = date("Y-m-d H:i:s");
+
+$newTahun = substr($tanggal,0, 4);
+
+if ($newTahun == 2023) {
+echo "<script>
+alert('Untuk tahun ini belum tersedia, mohon menunggu update selanjutnya');
+</script>";
+
+return false;
+}
 
 $update = mysqli_query($conn, "UPDATE `2022_paudqu` SET
 `tgl_pemakaian` ='$tanggal',
@@ -1039,8 +1099,6 @@ $update = mysqli_query($conn, "UPDATE `2022_paudqu` SET
 `dana_terpakai` ='$anggaran'
 WHERE id = '$id' ");
 
-// die(var_dump($update));
-
 // die(var_dump($result));
 return mysqli_affected_rows($conn);
 }
@@ -1060,6 +1118,16 @@ $anggar = RemoveSpecialChar($nom_acak);
 $anggaran = str_replace(' ', '', $anggar);
 $ip = get_client_ip();
 $date = date("Y-m-d H:i:s");
+
+$newTahun = substr($tanggal,0, 4);
+
+if ($newTahun == 2023) {
+echo "<script>
+alert('Untuk tahun ini belum tersedia, mohon menunggu update selanjutnya');
+</script>";
+
+return false;
+}
 
 // input data ke database
 $result2 = mysqli_query($conn, "INSERT INTO 2022_log_aktivity VALUES('', '$_SESSION[nama]', '$_SESSION[posisi]', '$ip',
@@ -1111,8 +1179,6 @@ $update = mysqli_query($conn, "UPDATE `2022_logistik` SET
 `dana_anggaran` ='$anggaran'
 WHERE id = '$id' ");
 
-// die(var_dump($update));
-
 // die(var_dump($result));
 return mysqli_affected_rows($conn);
 }
@@ -1133,6 +1199,16 @@ $anggar = RemoveSpecialChar($nom_acak);
 $terpakai = str_replace(' ', '', $anggar);
 $ip = get_client_ip();
 $date = date("Y-m-d H:i:s");
+
+$newTahun = substr($tanggal,0, 4);
+
+if ($newTahun == 2023) {
+echo "<script>
+alert('Untuk tahun ini belum tersedia, mohon menunggu update selanjutnya');
+</script>";
+
+return false;
+}
 
 $update = mysqli_query($conn, "UPDATE `2022_logistik` SET
 `tgl_pemakaian` ='$tanggal',
@@ -1263,6 +1339,16 @@ $anggaran = str_replace(' ', '', $anggar);
 $ip = get_client_ip();
 $date = date("Y-m-d H:i:s");
 
+$newTahun = substr($tanggal,0, 4);
+
+if ($newTahun == 2023) {
+echo "<script>
+alert('Untuk tahun ini belum tersedia, mohon menunggu update selanjutnya');
+</script>";
+
+return false;
+}
+
 if ($management == "Aset Yayasan") {
 $result = mysqli_query($conn, "INSERT INTO 2022_$id_management VALUES('', '$link', '$management', '$cabang', '$jenis',
 '$_SESSION[posisi]', '$tanggal', '$deskripsi', '$qty', '$anggaran', '', '', '', '', 'Pending', 'Belum Laporan')");
@@ -1357,6 +1443,16 @@ $anggar = RemoveSpecialChar($nom_acak);
 $terpakai = str_replace(' ', '', $anggar);
 $ip = get_client_ip();
 $date = date("Y-m-d H:i:s");
+
+$newTahun = substr($tanggal,0, 4);
+
+if ($newTahun == 2023) {
+echo "<script>
+alert('Untuk tahun ini belum tersedia, mohon menunggu update selanjutnya');
+</script>";
+
+return false;
+}
 
 if ($id_management == "aset_yayasan") {
 $update = mysqli_query($conn, "UPDATE `2022_$id_management` SET
@@ -1524,6 +1620,16 @@ $anggar = RemoveSpecialChar($nom_acak);
 $income = str_replace(' ', '', $anggar);
 $ip = get_client_ip();
 $date = date("Y-m-d H:i:s");
+
+$newTahun = substr($tanggal,0, 4);
+
+if ($newTahun == 2023) {
+echo "<script>
+alert('Untuk tahun ini belum tersedia, mohon menunggu update selanjutnya');
+</script>";
+
+return false;
+}
 
 if ($gedung == "Tanpa Resi") {
 $query = mysqli_query($conn, "SELECT tgl_pemasukan FROM 2022_incometanparesi WHERE tgl_pemasukan = '$tanggal' AND gedung

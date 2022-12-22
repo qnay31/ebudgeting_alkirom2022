@@ -3,36 +3,38 @@ $(document).ready(function () {
         $(this).find('form').trigger('reset');
         $('#modalDaily #divImageMediaPreview').empty();
     });
-    
+
     $("#modalLaporan").on('hidden.bs.modal', function () {
         $(this).find('form').trigger('reset');
     });
-    
+
     $(".akun_media").on('hidden.bs.modal', function () {
         $(this).find('form').trigger('reset');
         $('.akun_media .mID').empty();
     });
-    
-    $( '.admin_rp' ).mask('000.000.000', {reverse: true});
+
+    $('.admin_rp').mask('000.000.000', {
+        reverse: true
+    });
 
     $('.show').click(function () {
-        var toggleId= 'menu' + $(this).data("id")
+        var toggleId = 'menu' + $(this).data("id")
         // console.log(toggleId);
         $('.' + toggleId).slideToggle();
     });
 
     $('.showEdit').click(function () {
-        var toggleId= 'menuEdit' + $(this).data("id")
+        var toggleId = 'menuEdit' + $(this).data("id")
         // console.log(toggleId);
         $('.' + toggleId).slideToggle();
     });
-    
+
     $('.showIncome').click(function () {
-        var toggleId= 'incomeEdit' + $(this).data("id")
+        var toggleId = 'incomeEdit' + $(this).data("id")
         // console.log(toggleId);
         $('.' + toggleId).slideToggle();
     });
-    
+
     if (readCookie("login") == "kepala_income") {
         $('#namaPengurus').select2({
             placeholder: "- Pilih nama pengurus -",
@@ -40,16 +42,16 @@ $(document).ready(function () {
             language: "id"
         });
     }
-    
+
     function readCookie(name) {
         name += '=';
         for (var ca = document.cookie.split(/;\s*/), i = ca.length - 1; i >= 0; i--)
-        if (!ca[i].indexOf(name))
-            return ca[i].replace(name, '');
+            if (!ca[i].indexOf(name))
+                return ca[i].replace(name, '');
     }
-    
+
     console.log(readCookie("login"));
-    
+
     $('.chk_boxes1').click(function () {
         if ($(this).is(':checked')) {
             $(this).closest('tr').addClass('removeRow');
@@ -112,7 +114,7 @@ $(document).ready(function () {
             }
         })
     })
-    
+
     // modal lapran paudqu
     $('.view_data_paudqu').click(function () {
         var data_id = $(this).data("id")
@@ -193,7 +195,7 @@ $(document).ready(function () {
             }
         })
     })
-    
+
     $(".maintenance").click(function (e) {
         Swal.fire({
             type: 'error',
@@ -202,13 +204,14 @@ $(document).ready(function () {
         });
         e.preventDefault();
     });
-    
-    function Capitalize(str)
-    {  return str.replace (/\w\S*/g, 
-        function(txt)
-        {  return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); } );
+
+    function Capitalize(str) {
+        return str.replace(/\w\S*/g,
+            function (txt) {
+                return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+            });
     }
-    
+
     $('#tampil').load("../tampil.php");
 
     $("#Submit").click(function () {
@@ -263,7 +266,7 @@ $(document).ready(function () {
             });
         }
     });
-    
+
     $("#modalSekolah").on('shown.bs.modal', function () {
         $(this).find('input[type="text"]').focus();
     });
@@ -275,21 +278,21 @@ $(document).ready(function () {
         });
         $(".pesan").empty();
     });
-    
+
     $('#modalSekolah').on('keypress', function (e) {
         if (e.keyCode === 13) {
             e.preventDefault();
             $('#Submit').click();
         }
     });
-    
+
     // Admin CrossCheck
     var table = $('#tabel-data_databaseCrossCheck').DataTable({
         "scrollX": true,
         "processing": true,
         "serverSide": false,
         "ajax": "../ajax/data_income.php",
-        "deferRender": true, 
+        "deferRender": true,
         "scrollCollapse": true,
         "lengthMenu": [
             [10, 25, 50, 100, -1],
@@ -332,19 +335,18 @@ $(document).ready(function () {
         },
         searchPanes: {
             orderable: false
-        }, 
-        
-        columnDefs: [
-        {
-            "targets" : 0,
+        },
+
+        columnDefs: [{
+            "targets": 0,
             "render": function (data, type, row, meta) {
                 var no = meta.row + meta.settings._iDisplayStart + 1
-                return "<center>"+no+"</center>";
+                return "<center>" + no + "</center>";
             }
-        },{
+        }, {
             width: 150,
             targets: 1,
-            "render": function(data) {
+            "render": function (data) {
                 return Capitalize(data);
             }
         }, {
@@ -353,33 +355,33 @@ $(document).ready(function () {
         }, {
             width: 200,
             targets: 3,
-            "render": function(data) {
+            "render": function (data) {
                 return Capitalize(data);
             }
         }, {
             width: 50,
             targets: 4,
-            "render": function(data) {
-                return data == "OK" ? "<center><span class=\"badge bg-success\">"+data+"</span></center>" : "<center><span class=\"badge bg-danger\">"+data+"</span></center>"
+            "render": function (data) {
+                return data == "OK" ? "<center><span class=\"badge bg-success\">" + data + "</span></center>" : "<center><span class=\"badge bg-danger\">" + data + "</span></center>"
             }
         }, {
             width: 100,
             targets: 5,
-            "render": function(data) {
-                var btn = "<center><a href=\"../models/base_admin/hapus_income.php?id_unik="+data+"\" onclick=\"return confirm('Data akan dihapus?')\" class=\"btn btn-danger btn-xs\"><i class=\"bi bi-trash\"></i></a></center>"
+            "render": function (data) {
+                var btn = "<center><a href=\"../models/base_admin/hapus_income.php?id_unik=" + data + "\" onclick=\"return confirm('Data akan dihapus?')\" class=\"btn btn-danger btn-xs\"><i class=\"bi bi-trash\"></i></a></center>"
                 return btn;
             }
         }, {
             width: 200,
             targets: 6,
-            "render": function(data) {
+            "render": function (data) {
                 return Capitalize(data);
             }
         }, {
             width: 150,
             targets: 7,
-            "render" : function(data) {
-                return "<center>"+data+"</center>"
+            "render": function (data) {
+                return "<center>" + data + "</center>"
             }
         }, {
             width: 100,
@@ -630,7 +632,7 @@ $(document).ready(function () {
             );
         }
     });
-    
+
     $('#tabel-data_verifMedia2').DataTable({
         "scrollX": true,
         scrollCollapse: true,
@@ -790,7 +792,7 @@ $(document).ready(function () {
             searchPanes: {
                 show: false
             },
-            targets: [0,1, 7, 8, 9]
+            targets: [0, 1, 7, 8, 9]
         }, {
             searchPanes: {
                 show: true,
@@ -856,27 +858,29 @@ $(document).ready(function () {
             [10, 25, 50, 100, "All"]
         ],
         "ajax": "../ajax/data_log.php",
-        "order": [[ 4, "desc" ]],
+        "order": [
+            [4, "desc"]
+        ],
         // "autoWidth": true,
         columnDefs: [{
-            "targets" : 0,
+            "targets": 0,
             "render": function (data, type, row, meta) {
                 return meta.row + meta.settings._iDisplayStart + 1;
             }
         }, {
             targets: 1,
-            "render": function(data) {
+            "render": function (data) {
                 return Capitalize(data);
             }
         }, {
-            targets: [ 4 ],
-            orderData: [ 0, 4 ]
+            targets: [4],
+            orderData: [0, 4]
         }, {
-            targets: [ 5 ],
-            orderData: [ 1, 5 ]
+            targets: [5],
+            orderData: [1, 5]
         }],
     });
-    
+
     // tabel log admin
     $('#tabel-adminLog').DataTable({
         "scrollX": true,
@@ -896,25 +900,27 @@ $(document).ready(function () {
             [10, 25, 50, 100, "All"]
         ],
         "ajax": "../ajax/data_log.php",
-        "order": [[ 4, "desc" ]],
+        "order": [
+            [4, "desc"]
+        ],
         // "autoWidth": true,
         columnDefs: [{
-            "targets" : 0,
+            "targets": 0,
             "render": function (data) {
-                var btn = "<center><a href=\"../models/base_admin/hapus_log.php?id_unik="+data+"\" onclick=\"return confirm('Hapus log history ini?')\" class=\"btn btn-danger btn-xs\"><i class=\"bi bi-trash\"></i></a></center>"
+                var btn = "<center><a href=\"../models/base_admin/hapus_log.php?id_unik=" + data + "\" onclick=\"return confirm('Hapus log history ini?')\" class=\"btn btn-danger btn-xs\"><i class=\"bi bi-trash\"></i></a></center>"
                 return btn;
             }
         }, {
             targets: 1,
-            "render": function(data) {
+            "render": function (data) {
                 return Capitalize(data);
             }
         }, {
-            targets: [ 4 ],
-            orderData: [ 0, 4 ]
+            targets: [4],
+            orderData: [0, 4]
         }, {
-            targets: [ 5 ],
-            orderData: [ 1, 5 ]
+            targets: [5],
+            orderData: [1, 5]
         }],
     });
 
@@ -1729,7 +1735,7 @@ $(document).ready(function () {
             }
             // Update footer
             $(api.column(6).footer()).html(
-                 rupiah + ' Pcs'
+                rupiah + ' Pcs'
             );
 
             // Total over this page
@@ -1757,7 +1763,7 @@ $(document).ready(function () {
             );
         }
     });
-    
+
     // admin database income media global
     $('#tabel-data_adminDatabaseMedia').DataTable({
         "scrollX": true,
@@ -1775,22 +1781,22 @@ $(document).ready(function () {
             [5, 'desc']
         ],
         columnDefs: [{
-            "targets" : 0,
+            "targets": 0,
             "render": function (data, type, row, meta) {
                 var no = meta.row + meta.settings._iDisplayStart + 1
-                return "<center>"+no+"</center>";
+                return "<center>" + no + "</center>";
             }
-        },{
+        }, {
             width: '10%',
             targets: 1,
-            "render": function(data) {
-                return data == "Terverifikasi" ? "<center><span class=\"badge bg-success\">"+data+"</span></center>" : "<center><span class=\"badge bg-danger\">"+data+"</span></center>"
+            "render": function (data) {
+                return data == "Terverifikasi" ? "<center><span class=\"badge bg-success\">" + data + "</span></center>" : "<center><span class=\"badge bg-danger\">" + data + "</span></center>"
             }
         }, {
             width: '13%',
             targets: 2,
-            "render": function(data) {
-                return "<center>"+data+"</center>";
+            "render": function (data) {
+                return "<center>" + data + "</center>";
             }
         }, {
             width: '13%',
@@ -1798,8 +1804,8 @@ $(document).ready(function () {
         }, {
             width: '10%',
             targets: 6,
-            "render": function(data) {
-                var btn = "<center><a href=\"../models/base_admin/status_income.php?id_unik="+data+"\" onclick=\"return confirm('Sudah yakin ganti status?')\" class=\"btn btn-success btn-xs\"><i class=\"bi bi-arrow-left-right\"></i></a></center>"
+            "render": function (data) {
+                var btn = "<center><a href=\"../models/base_admin/status_income.php?id_unik=" + data + "\" onclick=\"return confirm('Sudah yakin ganti status?')\" class=\"btn btn-success btn-xs\"><i class=\"bi bi-arrow-left-right\"></i></a></center>"
                 return btn;
             }
         }, {
@@ -1843,7 +1849,7 @@ $(document).ready(function () {
             );
         }
     });
-    
+
     $('#tabel-data_adminDatabaseMedia2').DataTable({
         "scrollX": true,
         "scrollX": true,
@@ -1860,22 +1866,22 @@ $(document).ready(function () {
             [5, 'desc']
         ],
         columnDefs: [{
-            "targets" : 0,
+            "targets": 0,
             "render": function (data, type, row, meta) {
                 var no = meta.row + meta.settings._iDisplayStart + 1
-                return "<center>"+no+"</center>";
+                return "<center>" + no + "</center>";
             }
-        },{
+        }, {
             width: '10%',
             targets: 1,
-            "render": function(data) {
-                return data == "Terverifikasi" ? "<center><span class=\"badge bg-success\">"+data+"</span></center>" : "<center><span class=\"badge bg-danger\">"+data+"</span></center>"
+            "render": function (data) {
+                return data == "Terverifikasi" ? "<center><span class=\"badge bg-success\">" + data + "</span></center>" : "<center><span class=\"badge bg-danger\">" + data + "</span></center>"
             }
         }, {
             width: '13%',
             targets: 2,
-            "render": function(data) {
-                return "<center>"+data+"</center>";
+            "render": function (data) {
+                return "<center>" + data + "</center>";
             }
         }, {
             width: '13%',
@@ -1883,8 +1889,8 @@ $(document).ready(function () {
         }, {
             width: '10%',
             targets: 6,
-            "render": function(data) {
-                var btn = "<center><a href=\"../models/base_admin/status_incomeNonresi.php?id_unik="+data+"\" onclick=\"return confirm('Sudah yakin ganti status?')\" class=\"btn btn-success btn-xs\"><i class=\"bi bi-arrow-left-right\"></i></a></center>"
+            "render": function (data) {
+                var btn = "<center><a href=\"../models/base_admin/status_incomeNonresi.php?id_unik=" + data + "\" onclick=\"return confirm('Sudah yakin ganti status?')\" class=\"btn btn-success btn-xs\"><i class=\"bi bi-arrow-left-right\"></i></a></center>"
                 return btn;
             }
         }, {
@@ -1934,7 +1940,7 @@ $(document).ready(function () {
         "processing": true,
         "serverSide": false,
         "ajax": "../ajax/data_pemasukan.php",
-        "deferRender": true,        
+        "deferRender": true,
         "lengthMenu": [
             [10, 25, 50, 100, -1],
             [10, 25, 50, 100, "All"]
@@ -1948,10 +1954,10 @@ $(document).ready(function () {
             'colvis'
         ],
         columnDefs: [{
-            "targets" : 0,
+            "targets": 0,
             "render": function (data, type, row, meta) {
                 var no = meta.row + meta.settings._iDisplayStart + 1
-                return "<center>"+no+"</center>";
+                return "<center>" + no + "</center>";
             }
         }, {
             width: '11%',
@@ -1960,8 +1966,8 @@ $(document).ready(function () {
             width: '13%',
             targets: 2,
             "render": function (data) {
-                return "<center>"+data+"</center>";
-            } 
+                return "<center>" + data + "</center>";
+            }
         }, {
             width: '15%',
             targets: 3
@@ -1972,14 +1978,14 @@ $(document).ready(function () {
             width: '13%',
             targets: 5,
             "render": function (data) {
-                return "<center>"+data+"</center>";
+                return "<center>" + data + "</center>";
             }
         }, {
             width: '10%',
             targets: 6,
             "render": function (data) {
-                var verif = "<span class=\"badge bg-success\">"+data+"</span>";
-                return "<center>"+verif+"</center>";
+                var verif = "<span class=\"badge bg-success\">" + data + "</span>";
+                return "<center>" + verif + "</center>";
             }
         }, {
             width: '20%',
@@ -2402,7 +2408,7 @@ $(document).ready(function () {
             $(api.column(11).footer()).html(
                 'Rp. ' + rupiah + ''
             );
-            
+
             // Total over this page
             pageTotal = api
                 .column(12, {
@@ -2760,7 +2766,7 @@ $(document).ready(function () {
             searchPanes: {
                 show: false,
             },
-            targets: [1, 2, 5, 6, 7, 8, ,9, 10, 11, 12, 13, 14]
+            targets: [1, 2, 5, 6, 7, 8, , 9, 10, 11, 12, 13, 14]
         }],
         "footerCallback": function (row, data, start, end, display) {
             var api = this.api(),
@@ -2965,7 +2971,7 @@ $(document).ready(function () {
             $(api.column(13).footer()).html(
                 rupiah + ''
             );
-            
+
             // Total over this page
             pageTotal = api
                 .column(14, {
@@ -3857,8 +3863,8 @@ $(document).ready(function () {
             );
         }
     });
-    
-    $('#tabel-data_databaseIncomeMedia2').DataTable( {
+
+    $('#tabel-data_databaseIncomeMedia2').DataTable({
         "scrollX": true,
         "processing": true,
         "serverSide": false,
@@ -3876,65 +3882,64 @@ $(document).ready(function () {
             [10, 25, 50, 100, "All"]
         ],
         "ajax": "../ajax/data_income.php",
-        columnDefs : [{
-                "targets" : 0,
-                "render": function (data, type, row, meta) {
-                    var no = meta.row + meta.settings._iDisplayStart + 1
-                    return "<center>"+no+"</center>";
-                }
-            }, { 
-                width: 150,
-                targets: 1,
-                orderData: [ 1, 0 ]
-            }, {
-                "searchable": false,
-                "orderable" : false,
-                "targets" : 2,
-                width: 200,
-                "render": function(data) {
-                    var key = "admin_web"
-                    var btn = "<center><a href=\"../admin/"+ key +".php?id_adminKey=edit_income&id_unik="+data+"\" onclick=\"return confirm('Data akan diedit oleh anda?')\" class=\"btn btn-primary btn-xs\"><i class=\"bi bi-pencil\"></i></a>|<a href=\"../models/base_admin/hapus_income.php?id_unik="+data+"\" onclick=\"return confirm('Sudah yakin dihapus')\" class=\"btn btn-danger btn-xs\"><i class=\"bi bi-trash\"></i></a></center>"
-                    return btn;
-                }
-            }, {
-                width: 200,
-                "targets": 3,
-                "render": function(data) {
-                    var textCapitalize = "<span style=\"text-transform: capitalize\">"+data+"</span>"
-                    return textCapitalize;
-                }
-            }, {
-                width: 100,
-                targets: 4,
-                "render" : function (data) {
-                    var success = "<center><span class=\"badge bg-success\">"+data+"</span></center>"
-                    var pending = "<center><span class=\"badge bg-warning\">"+data+"</span></center>"
-                    var batal   = "<center><span class=\"badge bg-danger\">"+data+"</span></center>"
-                    return  data == "OK" ? success :(
-                            data == "Dibatalkan" ? batal : pending );
-                }
-            }, {
-                width: 150,
-                targets: 5
-            }, {
-                width: 200,
-                targets: 6,
-                "render": function(data) {
-                    var textCapitalize = "<span style=\"text-transform: capitalize\">"+data+"</span>"
-                    return textCapitalize;
-                }
-            }, {
-                width: 150,
-                targets: 7,
-                orderData: [ 0, 7 ]
-            }, {
-                width: 100,
-                targets: 8
-            }, {
-                width: 150,
-                targets: 9
+        columnDefs: [{
+            "targets": 0,
+            "render": function (data, type, row, meta) {
+                var no = meta.row + meta.settings._iDisplayStart + 1
+                return "<center>" + no + "</center>";
             }
-        ],
+        }, {
+            width: 150,
+            targets: 1,
+            orderData: [1, 0]
+        }, {
+            "searchable": false,
+            "orderable": false,
+            "targets": 2,
+            width: 200,
+            "render": function (data) {
+                var key = "admin_web"
+                var btn = "<center><a href=\"../admin/" + key + ".php?id_adminKey=edit_income&id_unik=" + data + "\" onclick=\"return confirm('Data akan diedit oleh anda?')\" class=\"btn btn-primary btn-xs\"><i class=\"bi bi-pencil\"></i></a>|<a href=\"../models/base_admin/hapus_income.php?id_unik=" + data + "\" onclick=\"return confirm('Sudah yakin dihapus')\" class=\"btn btn-danger btn-xs\"><i class=\"bi bi-trash\"></i></a></center>"
+                return btn;
+            }
+        }, {
+            width: 200,
+            "targets": 3,
+            "render": function (data) {
+                var textCapitalize = "<span style=\"text-transform: capitalize\">" + data + "</span>"
+                return textCapitalize;
+            }
+        }, {
+            width: 100,
+            targets: 4,
+            "render": function (data) {
+                var success = "<center><span class=\"badge bg-success\">" + data + "</span></center>"
+                var pending = "<center><span class=\"badge bg-warning\">" + data + "</span></center>"
+                var batal = "<center><span class=\"badge bg-danger\">" + data + "</span></center>"
+                return data == "OK" ? success : (
+                    data == "Dibatalkan" ? batal : pending);
+            }
+        }, {
+            width: 150,
+            targets: 5
+        }, {
+            width: 200,
+            targets: 6,
+            "render": function (data) {
+                var textCapitalize = "<span style=\"text-transform: capitalize\">" + data + "</span>"
+                return textCapitalize;
+            }
+        }, {
+            width: 150,
+            targets: 7,
+            orderData: [0, 7]
+        }, {
+            width: 100,
+            targets: 8
+        }, {
+            width: 150,
+            targets: 9
+        }],
         "footerCallback": function () {
             var api = this.api(),
                 data;
@@ -3972,8 +3977,8 @@ $(document).ready(function () {
             );
 
         }
-    } );
-    
+    });
+
     var collapsedGroups = {};
     var collapsedGroups2 = {};
     var table = $('#tabel-data_databaseIncomeMedia').DataTable({
@@ -4553,6 +4558,7 @@ $(document).ready(function () {
 
     $('.table-income tbody').on('click', 'tr.group-end', function () {
         var name = $(this).data('name');
+        console.log(name);
         collapsedGroups[name] = !collapsedGroups[name];
         table.draw(false);
 
@@ -4842,7 +4848,7 @@ $(document).ready(function () {
             );
         }
     });
-    
+
     // tabel akun pengurus
     $('#tabel-database_akunEbudget').DataTable({
         "scrollX": true,
@@ -4886,7 +4892,7 @@ $(document).ready(function () {
             targets: [1, 3, 4, 5, 6]
         }],
     });
-    
+
     $('#tabel-globalBulanan').DataTable({
         "scrollX": true,
         responsive: true,
@@ -4994,7 +5000,7 @@ $(document).ready(function () {
             );
         }
     });
-    
+
     $("#tabel-subLaporanMedia").DataTable({
         processing: true,
         serverSide: false,
@@ -5453,7 +5459,7 @@ $(document).ready(function () {
             $(api.column(9).footer()).html("Rp. " + rupiah + "");
         },
     });
-    
+
     if (readCookie("login") == "kepala_income") {
         $("#tabel-dataTeamMedia").DataTable({
             scrollX: true,

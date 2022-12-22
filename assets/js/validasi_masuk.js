@@ -39,7 +39,7 @@
             alert("Media Pilih Salah Satu!");
             form.media.focus();
             return (false);
-   
+
         } else if (form.username.value == "") {
             alert("Username Harus Diisi!");
             form.username.focus();
@@ -54,7 +54,7 @@
             alert("Password Harus Diisi!");
             form.password.focus();
             return (false);
-            
+
         } else if (form.password2.value == "") {
             alert(" Konfirmasi Password Harus Diisi!");
             form.password2.focus();
@@ -99,16 +99,15 @@
     })
 
     $("#alpabet2").on({
-        keydown: function(e) {
-          if (e.which === 32)
-            return false;
+        keydown: function (e) {
+            if (e.which === 32)
+                return false;
         },
-        keyup: function(){
-          this.value = this.value.toLowerCase();
+        keyup: function () {
+            this.value = this.value.toLowerCase();
         },
-        change: function() {
-          this.value = this.value.replace(/\s/g, "");
-          
+        change: function () {
+            this.value = this.value.replace(/\s/g, "");
+
         }
-      })
-    
+    })
